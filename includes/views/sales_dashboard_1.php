@@ -1,7 +1,5 @@
-<?php
-include("../includes/layouts/additional_body_js.php");
-include("../includes/data/sales_data_graph_fetch.php");
-
+<?php 
+include("../includes/data/sales_data_fetch.php");
 ?>
 
 <div class="row">
@@ -88,7 +86,7 @@ include("../includes/data/sales_data_graph_fetch.php");
     <div class="col-xl-7 col-lg-6">
         <div class="card card-h-100">
             <div class="d-flex card-header justify-content-between align-items-center">
-                <h4 class="header-title">Daily Sales </h4>
+                <h4 class="header-title">Sales Agents </h4>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -107,12 +105,46 @@ include("../includes/data/sales_data_graph_fetch.php");
                 </div>
             </div>
             <div class="card-body pt-0">
-                <div dir="ltr">
-                    <div id="sales-weekly-chart" class="apex-charts" data-colors="#727cf5,#e3eaef"></div>
-                </div>
+                <canvas id="salesGraphByAgents" style="width:100%;max-width:700px;height:90%"></canvas>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->
 
     </div> <!-- end col -->
 </div>
+
+<div class="row">
+    <div class="col-12 col-12">
+        <div class="card card-h-100">
+            <div class="d-flex card-header justify-content-between align-items-center">
+                <h4 class="header-title">Weekly Sales Graph </h4>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-vertical"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Profit</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body pt-0">
+                <canvas id="salesWeeklyChart" style="width:100%;max-height: 400px;"></canvas>
+
+            </div> <!-- end card-body-->
+        </div> <!-- end card-->
+
+    </div> <!-- end col -->
+</div>
+
+<?php
+include("../includes/data/sales_graph_weekly.php");
+include("../includes/data/sales_graph_by_agents.php");
+?>
