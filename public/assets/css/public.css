@@ -1,0 +1,552 @@
+:root {
+    --primary-color: linear-gradient(to bottom, #23a6d5, #2575fc, #0850cb);
+    --secondary-color: linear-gradient(to top, #e73c7e, #d83c78, #b43163);
+    --third-color: linear-gradient(to top, #23a6d5, #2575fc, #0850cb);
+    --forth-color: linear-gradient(to bottom, #e73c7e, #d83c78, #b43163);
+    --panel-primary-color: #cccccc;
+    --panel-secondary-color: #23a6d5;
+    --panel-third-color: #a4a6d2;
+    --border-primary-color: #eaeaeac9;
+    --border-secondary-color: rgb(148 148 148);
+    --border-primary-style: groove;
+    --border-secondary-style: solid;
+    --text-primary-color: white;
+    --text-secondary-color: black;
+    --text-third-color: #7d1a24;
+    --text-forth-color: blue;
+    --shadow-primary: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --shadow-secondary: -0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --transition-primary: all 500ms ease;
+    --transition-secondary: opacity 0.25s ease-in-out;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.panel-default {
+    background: var(--panel-secondary-color);
+    border: solid;
+    text-align: center;
+}
+
+.panel-groove {
+    background: var(--primary-color);
+    box-shadow: var(--shadow-primary);
+    border: groove;
+    text-align: center;
+}
+
+.panel-title {
+    text-align: left;
+}
+
+.panel-content-primary {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    font-weight: bold;
+    border: groove;
+    border-color: var(--border-secondary-color);
+}
+
+.panel-content-secondary {
+    display: flex;
+    align-items: center;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+
+/* custom display box */
+
+.simple-panel {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--text-primary-color);
+    background: var(--panel-third-color);
+}
+
+.custom-panel {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    height: 8vh;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--panel-secondary-color);
+    color: var(--text-primary-color);
+    box-shadow: var(--shadow-primary);
+}
+
+
+/* Nav bar css */
+
+.nav-link:hover {
+    color: var(--text-primary-color);
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+
+/* login css */
+
+.login-container {
+    margin-top: 100px;
+    background: var(--panel-primary-color);
+    box-shadow: var(--shadow-primary);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+img.logo {
+    max-height: 100px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-floating {
+    background: var(--panel-primary-color);
+    box-shadow: var(--shadow-primary);
+}
+
+img {
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* text colors */
+
+a {
+    color: var(--text-primary-color);
+}
+
+a:hover {
+    color: var(--text-third-color);
+}
+
+.dropdown-menu a {
+    color: var(--text-secondary-color);
+}
+
+.dropdown-menu a:hover {
+    color: rgb(42, 42, 42);
+    text-shadow: var(--shadow-primary);
+}
+
+
+/* table styling properties  */
+
+.dataTables_filter label {
+    display: none;
+}
+
+table.dataTable {
+    margin-bottom: 1vw;
+}
+
+.table-primary {
+    font-size: larger;
+}
+
+table th {
+    cursor: pointer;
+}
+
+.sort-arrows {
+    margin-left: 5px;
+    font-size: 10px;
+    opacity: 0.3;
+    /* Hide arrows by default */
+    transition: opacity 0.2s linear;
+    /* Add a smooth transition for opacity changes */
+}
+
+.sort-arrows.up:before {
+    content: "\25B2";
+    /* Use an up arrow character instead of borders */
+}
+
+.sort-arrows.down:before {
+    content: "\25BC";
+    /* Use a down arrow character instead of borders */
+}
+
+.sort-arrows.up,
+.sort-arrows.down {
+    opacity: 1;
+    /* Show current arrow when sorting */
+}
+
+
+/* pagination bar styling */
+
+.pagination-panel {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+/* Buttons  */
+
+button {
+    transition: var(--transition-primary);
+    box-shadow: var(--shadow-primary);
+}
+
+button:hover {
+    box-shadow: var(--shadow-secondary);
+}
+
+.primary-button {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    text-align: center;
+    color: var(--text-primary-color);
+    font-weight: bolder;
+    border-radius: 5px;
+    height: 8vh;
+    border-color: var(--secondary-color);
+    background: var(--secondary-color);
+}
+
+.primary-button:hover {
+    background: var(--forth-color);
+}
+
+
+/* Style the button that opens the dropdown */
+
+.dropbtn {
+    background: var(--panel-primary-color);
+    color: var(--text-secondary-color);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+/* Style the dropdown content (hidden by default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    min-width: 160px;
+    box-shadow: var(--shadow-primary);
+    top: 100%;
+    right: 0;
+    left: auto;
+}
+
+
+/* Style the buttons inside the dropdown */
+
+.dropdown-content button {
+    color: var(--text-secondary-color);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background: var(--panel-primary-color);
+}
+
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content button:hover {
+    background: var(--panel-secondary-color);
+}
+
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+.dropdown:hover .dropbtn {
+    background: var(--panel-primary-color);
+}
+
+
+/* Style the popup */
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    transition: var(--transition-secondary);
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Style the popup content */
+
+.status-popup-content {
+    background: var(--panel-primary-color);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: var(--shadow-primary);
+    max-width: 400px;
+    width: 90%;
+}
+
+
+/* Style the form elements inside the popup */
+
+.form-value-primary {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.status-popup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-popup-form label {
+    margin-top: 2vw;
+    margin-bottom: 0.5vw;
+    font-weight: bold;
+}
+
+.status-popup-form select,
+.status-popup-form input[type="text"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--border-primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.status-popup-form button[type="submit"],
+.status-popup-form button[type="button"] {
+    background: var(--panel-secondary-color);
+    color: var(--text-primary-color);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.status-popup-form button[type="submit"]:hover,
+.status-popup-form button[type="button"]:hover {
+    background: var(--panel-secondary-color);
+}
+
+
+/* Style the move popup */
+
+.move-popup-content {
+    background: var(--panel-primary-color);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: var(--shadow-primary);
+    max-width: 400px;
+    width: 90%;
+}
+
+
+/* Style the form elements inside the popup */
+
+.move-popup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.move-popup-form label {
+    margin-top: 2vw;
+    margin-bottom: 0.5vw;
+    font-weight: bold;
+}
+
+.move-popup-form select,
+.move-popup-form input[type="text"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--border-primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.move-popup-form button[type="submit"],
+.move-popup-form button[type="button"] {
+    background: var(--panel-secondary-color);
+    color: var(--text-primary-color);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.move-popup-form button[type="submit"]:hover,
+.move-popup-form button[type="button"]:hover {
+    background: var(--panel-secondary-color);
+}
+
+
+/* Style the dispatch popup */
+
+#dispatch-popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    transition: var(--transition-secondary);
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Style the dispatch popup content */
+
+.dispatch-popup-content {
+    background: var(--panel-primary-color);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: var(--shadow-primary);
+    max-width: 400px;
+    width: 90%;
+}
+
+
+/* Style the dispatch form elements inside the popup */
+
+.dispatch-popup-form label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#dispatch-popup .dispatch-popup-form input[type="text"],
+#dispatch-popup .dispatch-popup-form input[type="date"],
+#dispatch-popup .dispatch-popup-form input[type="number"],
+#dispatch-popup .dispatch-popup-form input[type="time"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--border-primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#dispatch-popup .dispatch-popup-form button[type="submit"],
+#dispatch-popup .dispatch-popup-form button[type="button"] {
+    background: var(--panel-secondary-color);
+    color: var(--text-primary-color);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#dispatch-popup .dispatch-popup-form button[type="submit"]:hover,
+#dispatch-popup .dispatch-popup-form button[type="button"]:hover {
+    background: var(--panel-secondary-color);
+}
+
+
+/* messages display  */
+
+div.message {
+    border: 2px groove var(--border-primary-color);
+    color: var(--text-third-color);
+    font-weight: bold;
+    margin: 1em 0;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--panel-secondary-color);
+    border-radius: 4px;
+    box-shadow: var(--shadow-primary);
+    color: var(--text-secondary-color);
+    font-size: 16px;
+    padding: 1em 2em;
+}
+
+
+/* errors */
+
+.error {
+    color: var(--text-third-color);
+    border: 2px groove var(--border-primary-color);
+    margin: 1em 0;
+    padding: 1em;
+}
+
+.error ul {
+    padding-left: 2em;
+}
+
+@media print {
+    .no-print {
+        visibility: hidden;
+    }
+    .page-break {
+        page-break-before: always;
+    }
+    header {
+        display: none;
+        position: fixed;
+        top: 0;
+    }
+}

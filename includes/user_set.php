@@ -1,0 +1,32 @@
+<?php
+if (isset($_POST['full_name'])) {$full_name = mysql_prep($_POST["full_name"]);} 
+else  $full_name = Null;
+if (isset($_POST['department_id'])) {$department_id = mysql_prep($_POST["department_id"]);} 
+else  $department_id = Null;
+if (isset($_POST['proficiency'])) {$proficiency = mysql_prep($_POST["proficiency"]);}
+else  $proficiency = Null;
+if (isset($_POST['phone_num'])) {$phone_num = mysql_prep($_POST["phone_num"]);}
+else  $phone_num = Null;
+if (isset($_POST['email'])) {$email = mysql_prep($_POST["email"]);}
+else  $email = Null;
+if (isset($_POST['gender'])) {$gender = mysql_prep($_POST["gender"]);}
+else  $gender = Null;
+if (isset($_POST['website'])) {$website = mysql_prep($_POST["website"]);}
+else  $website = Null;
+if (isset($_POST['about_me'])) {$about_me = mysql_prep($_POST["about_me"]);}
+else  $about_me = Null;
+if (isset($_POST['designation'])) {$designation = mysql_prep($_POST["designation"]);}
+else  $designation = Null;
+if (isset($_POST['birth_date'])) {$birth_date = mysql_prep($_POST["birth_date"]);}
+else  $birth_date = Null;
+if (isset($_POST['join_date'])) {$join_date = mysql_prep($_POST["join_date"]);}
+else  $join_date = Null;
+if (isset($_POST['email_privacy'])) {$email_privacy = mysql_prep($_POST["email_privacy"]);}
+else  $email_privacy = Null;
+if (isset($_POST['phone_privacy'])) {$phone_privacy = mysql_prep($_POST["phone_privacy"]);}
+else  $phone_privacy = Null;
+if (isset($_POST['birthday_privacy'])) {$birthday_privacy = mysql_prep($_POST["birthday_privacy"]);}
+else  $birthday_privacy = Null;
+if (isset($_POST['about_privacy'])) {$about_privacy = mysql_prep($_POST["about_privacy"]);}
+else  $about_privacy = Null;
+?>
