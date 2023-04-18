@@ -94,13 +94,7 @@ include("../includes/data/sales_data_fetch.php");
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                        <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
                     </div>
                 </div>
             </div>
@@ -124,19 +118,12 @@ include("../includes/data/sales_data_fetch.php");
                         <i class="mdi mdi-dots-vertical"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                        <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
                     </div>
                 </div>
             </div>
             <div class="card-body pt-0">
-                <canvas id="salesWeeklyChart" style="width:100%;max-height: 400px;"></canvas>
+                <canvas id="salesGraphWeekly" style="width:100%;max-height: 300px;"></canvas>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->

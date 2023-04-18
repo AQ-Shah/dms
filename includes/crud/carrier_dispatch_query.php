@@ -10,6 +10,7 @@
     $required_fields = array("location","rate","date","time");
     validate_presences($required_fields);
     
+     $dispatcher_id = $user['id'];
     if (isset($_POST['location'])) {$new_location = mysql_prep($_POST["location"]);} else {$new_location = "";}
     if (isset($_POST['date'])) {$delivery_date = mysql_prep($_POST["date"]);} else {$delivery_date = "";}
     if (isset($_POST['time'])) {$delivery_time = mysql_prep($_POST["time"]);} else {$delivery_time = "";}
@@ -29,9 +30,10 @@
             exit;
          } 
        
-         $query = "INSERT INTO dispatch_list (carrier_id, current_location, new_location, rate, delivery_time, delivery_date) ";
-         $query .= "VALUES ('" . $carrier["id"] . "', '" . $carrier["current_location"] . "', '$new_location', '$rate', '$delivery_time', '$delivery_date'); ";
+         $query = "INSERT INTO dispatch_list (carrier_id, dispatcher_id, current_location, new_location, rate, delivery_time, delivery_date) ";
+         $query .= "VALUES ('" . $carrier["id"] . "', '" . $dispatcher_id ."', '" . $carrier["current_location"] . "', '$new_location', '$rate', '$delivery_time', '$delivery_date'); ";
          $query  .= "UPDATE carrier_form SET status ='dispatched', current_location = '$new_location' WHERE id = $id LIMIT 1";
+         
         $result = mysqli_multi_query($connection, $query);
 
         echo $query;

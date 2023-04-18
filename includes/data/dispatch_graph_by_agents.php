@@ -1,11 +1,11 @@
 <script>
-var saleGraphByAgent = document.getElementById('salesGraphByAgents').getContext('2d');
-var saleGraphByAgentCreation = new Chart(saleGraphByAgent, {
+var dispatchGraphByAgents = document.getElementById('dispatchGraphByAgents').getContext('2d');
+var dispatchGraphByAgentsCreation = new Chart(dispatchGraphByAgents, {
     type: 'bar',
     data: {
         labels: ['Person 1', 'Person 2', 'Person 3', 'Person 4', 'Person 5'],
         datasets: [{
-            label: 'Sales Agents',
+            label: 'Dispatch Agents',
             data: [
                 Math.random() * 100,
                 Math.random() * 100,
@@ -21,10 +21,10 @@ var saleGraphByAgentCreation = new Chart(saleGraphByAgent, {
                 'rgba(204, 255, 0, 0.7)'
             ],
             borderColor: ["rgba(0, 0, 0, 0)"]
+
         }]
     },
     options: {
-
         maintainAspectRatio: false
     }
 });

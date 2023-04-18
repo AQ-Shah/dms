@@ -12,7 +12,7 @@ if (isset($_GET['id'])){
 	$user = find_user_by_id($_SESSION["id"]); 
 	if ($notification = find_notification($_GET['id'])){
 		
-		if (!($notification['reciever_id'] === $user['id'])){
+		if (!($notification['receiver_id'] === $user['id'])){
 			redirect_to("home.php");
 		}
 		global $connection;

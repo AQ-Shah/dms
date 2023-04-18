@@ -7,6 +7,7 @@
 	include("access_functions.php");
 	include("../includes/pagination/pagination_functions.php");
 	include("../includes/crud/carrier_search_functions.php");
+	include("../includes/crud/dispatch_search_functions.php");
 	
 	function redirect_to($url)
     {
@@ -93,7 +94,7 @@ function find_notifications_of($user_id){
 		$safe_user_id = mysqli_real_escape_string($connection, $user_id);
 		$query  = "SELECT * ";
 		$query .= "FROM notification ";
-		$query .= "WHERE reciever_id = '{$safe_user_id}' ";
+		$query .= "WHERE receiver_id = '{$safe_user_id}' ";
 		$set = mysqli_query($connection, $query);
 		confirm_query($set);
 		return $set;
@@ -103,7 +104,7 @@ function find_notifications_of_from($user_id,$start,$end){
 		$safe_user_id = mysqli_real_escape_string($connection, $user_id);
 		$query  = "SELECT * ";
 		$query .= "FROM notification ";
-		$query .= "WHERE reciever_id = '{$safe_user_id}' ";
+		$query .= "WHERE receiver_id = '{$safe_user_id}' ";
 		$query .= "ORDER BY id DESC ";
 		$query .= "LIMIT {$start},{$end}";
 		$set = mysqli_query($connection, $query);
@@ -116,7 +117,7 @@ function count_unseen_notifications_of($user_id){
 		$safe_user_id = mysqli_real_escape_string($connection, $user_id);
 		$query  = "SELECT COUNT('id') ";
 		$query .= "FROM notification ";
-		$query .= "WHERE reciever_id = '{$safe_user_id}' ";
+		$query .= "WHERE receiver_id = '{$safe_user_id}' ";
 		$query .= "AND seen = 0 ";
 		$set = mysqli_query($connection, $query);
 		confirm_query($set);
@@ -128,13 +129,12 @@ function create_notification($to,$from,$content,$link){
 	$safe_from = mysqli_real_escape_string($connection, $from);
 	$safe_content = mysqli_real_escape_string($connection, $content);
 	$safe_link = mysqli_real_escape_string($connection, $link);
-	$seen = 0;
 	$upload_date = date("Y-m-d");
 	$upload_time = date('H:i:s');
     $query  = "INSERT INTO notification (";
-    $query .= "  reciever_id, sender_id, content, link, seen, upload_date, 	upload_time ";
+    $query .= "  receiver_id, sender_id, content, link ";
     $query .= ") VALUES (";
-    $query .= "  '{$safe_to}', '{$safe_from}', '{$safe_content}', '{$safe_link}', '{$seen}', '{$upload_date}', '{$upload_time}'";
+    $query .= "  '{$safe_to}', '{$safe_from}', '{$safe_content}', '{$safe_link}'";
     $query .= ")";
     $result = mysqli_query($connection, $query);
 	confirm_query($result);
