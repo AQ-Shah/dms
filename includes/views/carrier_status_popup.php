@@ -1,9 +1,9 @@
 <div id="status-popup" class="popup">
-    <div class="status-popup-content">
+    <div class="popup-content">
         <h2>Change Status</h2>
         <form class="status-popup-form" action="" method="post">
-            <label for="status">Status:</label>
-            <select id="status" name="status">
+            <label for="carrier-status">Status:</label>
+            <select id="carrier-status" name="carrier-status">
                 <option value="available">Available</option>
                 <option value="unavailable">Unavailable</option>
             </select><br>
@@ -27,7 +27,7 @@ function showStatusPopup(carrierId) {
 
     // Populate the form fields with the current status
     document.getElementById("carrier-id").value = carrierId;
-    document.getElementById("status").value = currentStatus;
+    document.getElementById("carrier-status").value = currentStatus;
 
     var formAction = "update_carrier_status.php?id=" + carrierId;
 

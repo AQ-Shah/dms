@@ -109,6 +109,6 @@
 	include("../includes/views/carrier_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
 	include("../includes/views/carrier_dispatch_popup.php"); 
-	include("../includes/pagination/table_search.php"); 
+	include("../includes/pagination/table_script.php"); 
 	include("../includes/layouts/public_footer.php"); 
 ?>

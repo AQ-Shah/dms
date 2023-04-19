@@ -6,10 +6,10 @@
     }
     $prev_url = $_POST['prev_url'];
     
-    $required_fields = array("status");
+    $required_fields = array("carrier-status");
     validate_presences($required_fields);
 
-    $status = mysql_prep($_POST["status"]);
+    $status = mysql_prep($_POST["carrier-status"]);
     if (isset($_POST['reason'])) {$reason = mysql_prep($_POST["reason"]);} 
 
     if (empty($reason) && $status == "unavailable") {

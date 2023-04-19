@@ -81,8 +81,16 @@ function table_search() {
 
 
 function pagination() {
-    var record;
-    record = document.getElementById("no_of_record").value;
-    location.href = '<?php echo $current_page.'.php?page='.$page.'&&no_of_record='; ?>' + record + '';
+    var record = document.getElementById("no_of_record").value;
+    var currentUrl = window.location.href;
+    var urlParts = currentUrl.split('?');
+    var baseUrl = urlParts[0];
+    var queryString = urlParts.length > 1 ? '?' + urlParts[1] : '';
+    var params = new URLSearchParams(queryString);
+
+    // Set the 'no_of_record' parameter to the new value
+    params.set('no_of_record', record);
+
+    location.href = baseUrl + (params.toString() !== '' ? '?' + params.toString() : '');
 }
 </script>

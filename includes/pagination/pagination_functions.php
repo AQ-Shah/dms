@@ -1,23 +1,43 @@
 <?php
 
-	function add_pagination ($page,$total_pages,$current_page,$record_per_page){
-		
-		if ($total_pages>=1 && $page <= $total_pages){
+	function add_pagination($page, $total_pages, $current_page, $record_per_page) {
+		if ($total_pages >= 1 && $page <= $total_pages) {
 			echo '<ul class="pagination">';
-			  for ($x=1;$x<=$total_pages;$x++){
-				if ($x == $page){
-				  echo '<li class="page-item active">';
+			for ($x = 1; $x <= $total_pages; $x++) {
+				if ($x == $page) {
+					echo '<li class="page-item active">';
+				} else {
+					echo '<li class="page-item">';
 				}
-				else {
-				  echo '<li class="page-item">';
-				}
-				echo '<a class="page-link" href="'.$current_page.'?page='.$x.'&&no_of_record='.$record_per_page;
-				echo '">'.$x.'</a></li> ';
+				
+				// Get the current URL and split it to extract the base URL and query string
+				$currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+				$urlParts = explode('?', $currentUrl);
+				$baseUrl = $urlParts[0];
+				$queryString = isset($urlParts[1]) ? $urlParts[1] : '';
 
-			  }
-			echo '</ul>';
+				// Parse the current query string into an array
+				parse_str($queryString, $queryParams);
+
+				// Set the 'page' and 'no_of_record' parameters to the new values
+				$queryParams['page'] = $x;
+				$queryParams['no_of_record'] = $record_per_page;
+
+				// Build the new query string by encoding the updated parameters
+				$newQueryString = http_build_query($queryParams);
+
+				// Build the new URL by combining the base URL with the updated query string
+				$newUrl = $baseUrl . '?' . $newQueryString;
+
+				echo '<a class="page-link" href="' . $newUrl . '">' . $x . '</a></li> ';
 			}
+			echo '</ul>';
 		}
+	}
+
+
+
+
 		
 	function filter_users($filter, $search) {
   		global $connection;

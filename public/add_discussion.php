@@ -1,12 +1,9 @@
-<?php require_once("../includes/session.php"); ?>
-<?php require_once("../includes/db_connection.php"); ?>
-<?php require_once("../includes/functions.php"); ?>
-<?php require_once("../includes/validation_functions.php"); ?>
-<?php confirm_user_logged_in(); ?>
-<?php 
-$user = find_user_by_id($_SESSION["id"]); 
-
-$current_page = "forums";
+<?php
+require_once("../includes/public_require.php");  
+    $current_page = "add_discussion";
+    confirm_user_logged_in();
+    $user = find_user_by_id($_SESSION["id"]);
+    confirm_access($user,$current_page);
 
 
 if (isset($_POST['submit'])) {
@@ -32,10 +29,10 @@ if (isset($_POST['submit'])) {
     if ($result) {
       // Success
       $_SESSION["message"] = "Topic added";
-      redirect_to("forums.php");
+      redirect_to("discussion_board");
     } else {
       // Failure
-      $_SESSION["message"] = "Couldnot Add Topic";
+      $_SESSION["message"] = "Unable Add Topic";
     }
   }
 }
@@ -43,21 +40,21 @@ if (isset($_POST['submit'])) {
 
 <?php include("../includes/layouts/public_header.php"); ?>
 <div class="container">
-	<div class="col-md-6">
-		<div class="row">
-			<?php echo message(); ?>
-			<?php echo form_errors($errors); ?>
-			<h2>Add New Discussion :</h2><br/>
-				<form class="form-inline" role="form" action="" method="post">
-					
-					<div class="form-group">
-						<label>Topic :</label>
-						<input type="text" class="form-control" name="topic">
-					</div>
-					<br/>
-					<input class="btn btn-default" type="submit" name="submit" value="Submit" />
-				</form>
-		</div>
-	</div>
+    <div class="col-md-6">
+        <div class="row">
+            <?php echo message(); ?>
+            <?php echo form_errors($errors); ?>
+            <h2>Add New Discussion :</h2><br />
+            <form class="form-inline" role="form" action="" method="post">
+
+                <div class="form-group">
+                    <label>Topic :</label>
+                    <input type="text" class="form-control" name="topic">
+                </div>
+                <br />
+                <input class="btn btn-default" type="submit" name="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
 </div>
-<?php include("../includes/layouts/footer.php"); ?>
+<?php include("../includes/layouts/public_footer.php"); ?>

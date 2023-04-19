@@ -289,9 +289,10 @@
                        </a>
                    </li>
                    <li class="side-nav-item">
-                       <a href="forums" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                       <a href="discussion_board" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
                            <i class="uil-home-alt"></i>
-                           <span> Forums </span>
+                           <span> Discussion Board </span>
                        </a>
                    </li>
 

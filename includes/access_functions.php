@@ -12,7 +12,8 @@
     if ( $permission === '5' || $permission === '10') {
         if ($current_page === 'add_news') return true;
         if ($current_page === 'settings') return true;
-        if ($current_page === 'forums') return true;
+        if ($current_page === 'discussion_board') return true;
+        if ($current_page === 'show_discussion') return true;
         if ($current_page === 'notification') return true;
         if ($current_page === 'profile') return true;
         }

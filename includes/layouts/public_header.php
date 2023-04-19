@@ -15,6 +15,6 @@
 
 <body>
     <div class="wrapper">
-        <?php include("../includes/layouts/public_navbar.php"); ?>
+        <?php include("../includes/views/public_navbar.php"); ?>
         <div class="content-page">
             <div class="content">

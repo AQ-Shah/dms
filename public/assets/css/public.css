@@ -234,6 +234,10 @@ button:hover {
     background: var(--forth-color);
 }
 
+.btn-close {
+    box-shadow: none;
+}
+
 
 /* Style the button that opens the dropdown */
 
@@ -307,6 +311,7 @@ button:hover {
     width: 100%;
     height: 100%;
     z-index: 9999;
+    color: var(--text-secondary-color);
     transition: var(--transition-secondary);
     justify-content: center;
     align-items: center;
@@ -315,7 +320,7 @@ button:hover {
 
 /* Style the popup content */
 
-.status-popup-content {
+.popup-content {
     background: var(--panel-primary-color);
     padding: 20px;
     border-radius: 5px;
@@ -378,16 +383,6 @@ button:hover {
 
 /* Style the move popup */
 
-.move-popup-content {
-    background: var(--panel-primary-color);
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: var(--shadow-primary);
-    max-width: 400px;
-    width: 90%;
-}
-
 
 /* Style the form elements inside the popup */
 
@@ -434,34 +429,7 @@ button:hover {
 }
 
 
-/* Style the dispatch popup */
-
-#dispatch-popup {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    transition: var(--transition-secondary);
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-
 /* Style the dispatch popup content */
-
-.dispatch-popup-content {
-    background: var(--panel-primary-color);
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: var(--shadow-primary);
-    max-width: 400px;
-    width: 90%;
-}
 
 
 /* Style the dispatch form elements inside the popup */
@@ -472,10 +440,9 @@ button:hover {
     font-weight: bold;
 }
 
-#dispatch-popup .dispatch-popup-form input[type="text"],
-#dispatch-popup .dispatch-popup-form input[type="date"],
-#dispatch-popup .dispatch-popup-form input[type="number"],
-#dispatch-popup .dispatch-popup-form input[type="time"] {
+.dispatch-popup-form input[type="text"],
+.dispatch-popup-form input[type="number"],
+.dispatch-popup-form input[type="datetime-local"] {
     width: 100%;
     height: 40px;
     padding: 10px;
@@ -485,8 +452,8 @@ button:hover {
     margin-bottom: 10px;
 }
 
-#dispatch-popup .dispatch-popup-form button[type="submit"],
-#dispatch-popup .dispatch-popup-form button[type="button"] {
+.dispatch-popup-form button[type="submit"],
+.dispatch-popup-form button[type="button"] {
     background: var(--panel-secondary-color);
     color: var(--text-primary-color);
     padding: 10px;
@@ -498,8 +465,8 @@ button:hover {
     width: 100%;
 }
 
-#dispatch-popup .dispatch-popup-form button[type="submit"]:hover,
-#dispatch-popup .dispatch-popup-form button[type="button"]:hover {
+.dispatch-popup-form button[type="submit"]:hover,
+.dispatch-popup-form button[type="button"]:hover {
     background: var(--panel-secondary-color);
 }
 

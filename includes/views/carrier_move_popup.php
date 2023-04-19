@@ -1,5 +1,5 @@
 <div id="move-popup" class="popup">
-    <div class="move-popup-content">
+    <div class="popup-content">
         <h2>Changing Location</h2>
         <form class="move-popup-form" action="" method="post">
             <label for="location">New Location:</label>

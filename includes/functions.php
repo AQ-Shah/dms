@@ -8,6 +8,7 @@
 	include("../includes/pagination/pagination_functions.php");
 	include("../includes/crud/carrier_search_functions.php");
 	include("../includes/crud/dispatch_search_functions.php");
+	include("../includes/crud/discussion_functions.php");
 	
 	function redirect_to($url)
     {
@@ -140,85 +141,6 @@ function create_notification($to,$from,$content,$link){
 	confirm_query($result);
 }
 
-// forums
-
-function find_all_forums(){
-		global $connection;
-		$query  = "SELECT * ";
-		$query .= "FROM forum_subject ";
-		$subject_set = mysqli_query($connection, $query);
-		confirm_query($subject_set);
-		return $subject_set;
-
-}
-function find_forum_by_id($id){
-		global $connection;
-		$safe_id = mysqli_real_escape_string($connection, $id);
-		$query  = "SELECT * ";
-		$query .= "FROM forum_subject ";
-		$query .= "WHERE id = '{$safe_id}' ";
-		$query .= "LIMIT 1";
-		$set = mysqli_query($connection, $query);
-		confirm_query($set);
-		if($forum = mysqli_fetch_assoc($set)) {
-			return $forum;
-		} else {
-			return null;
-		}
-
-}
-function find_all_forums_from($start, $end){
-		global $connection;
-		$query  = "SELECT * ";
-		$query .= "FROM forum_subject ";
-		$query .= "ORDER BY id DESC ";
-		$query .= "LIMIT {$start},{$end}";
-		$forums_set = mysqli_query($connection, $query);
-		confirm_query($forums_set);
-		return $forums_set;
-	}
-
-function no_of_forums(){
-		global $connection;
-		$query  = "SELECT COUNT('id') ";
-		$query .= "FROM forum_subject ";
-		$count = mysqli_query($connection, $query);
-		confirm_query($count);
-		return $count;
-}
-function no_of_replies($topic_id){
-		global $connection;
-		$safe_topic_id = mysqli_real_escape_string($connection, $topic_id);
-		$query  = "SELECT COUNT('id') ";
-		$query .= "FROM forum_replies ";
-		$query .= "WHERE topic_id = {$safe_topic_id} ";
-		$count = mysqli_query($connection, $query);
-		confirm_query($count);
-		return $count;
-}
-function find_all_replies_from($topic_id, $start, $end){
-		global $connection;
-		$safe_topic_id = mysqli_real_escape_string($connection, $topic_id);
-		$query  = "SELECT * ";
-		$query .= "FROM forum_replies ";
-		$query .= "WHERE topic_id = {$safe_topic_id} ";
-		$query .= "ORDER BY id DESC ";
-		$query .= "LIMIT {$start},{$end}";
-		$replies_set = mysqli_query($connection, $query);
-		confirm_query($replies_set);
-		return $replies_set;
-	}
-function find_all_replies($topic_id){
-		global $connection;
-		$safe_topic_id = mysqli_real_escape_string($connection, $topic_id);
-		$query  = "SELECT * ";
-		$query .= "FROM forum_replies ";
-		$query .= "WHERE topic_id = {$safe_topic_id} ";
-		$query .= "ORDER BY id DESC ";
-		$replies_set = mysqli_query($connection, $query);
-		confirm_query($replies_set);
-		return $replies_set;
-	}
 //PASSWORD FUNCTIONS
 	function password_encrypt($password) {
   	$hash_format = "$2y$10$";   // Tells PHP to use Blowfish with a "cost" of 10
