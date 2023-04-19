@@ -182,15 +182,38 @@
 			confirm_query($set);
 			return $set;}
 
-		function find_dispatch_list_this_month() {
+		function find_dispatch_rate_total_this_month() {
 			global $connection;
 
-			$query  = "SELECT * ";
-			$query .= "FROM dispatch_list ";
-			$query .= ' WHERE MONTH(dispatch_time) = '.date("m");
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return $set;}
+			$query = "SELECT SUM(rate) AS total_rate
+			FROM dispatch_list
+			WHERE MONTH(dispatch_time) = MONTH(NOW())";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_rate_total_last_month() {
+			global $connection;
+
+			$query = "SELECT SUM(rate) AS total_rate
+					FROM dispatch_list
+					WHERE YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+					AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
 		
 
 		function find_dispatch_list_by_id($id){

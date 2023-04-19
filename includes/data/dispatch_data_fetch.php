@@ -24,4 +24,8 @@ $dispatchLastTue = no_of_dispatch_last_tue();
 $dispatchLastWed = no_of_dispatch_last_wed();
 $dispatchLastThu = no_of_dispatch_last_thu();
 $dispatchLastFri = no_of_dispatch_last_fri();
+
+$total_rate_this_month = find_dispatch_rate_total_this_month();
+$total_rate_last_month = find_dispatch_rate_total_last_month();
+$monthlyRateDifference = $total_rate_this_month - $total_rate_last_month;
 ?>

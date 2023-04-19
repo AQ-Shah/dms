@@ -19,13 +19,13 @@ include("../includes/data/dispatch_data_fetch.php");
                                 <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Monthly Dispatch
                                     Amount
                                 </h5>
-                                <h3 class="mt-3 mb-3"><?php echo $thisWeekDispatch;?></h3>
+                                <h3 class="mt-3 mb-3"><?php echo '$'.$total_rate_this_month;?></h3>
                                 <p class="mb-0 text-muted">
-                                    <span class="text-nowrap">Last week :
-                                        <?php echo $lastWeekDispatch;?></span></br>
-                                    <?php if ($weeklyDispatchDifference >0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weeklyDispatchDifference.' more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weeklyDispatchDifference.' less </span>';?>
+                                    <span class="text-nowrap">Last Month :
+                                        <?php echo '$'.$total_rate_last_month;?></span></br>
+                                    <?php if ($monthlyRateDifference >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$monthlyRateDifference.' more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$monthlyRateDifference.' less </span>';?>
 
                                 </p>
                             </div>
