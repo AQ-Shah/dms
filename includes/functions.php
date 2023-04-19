@@ -68,6 +68,10 @@
 		return $string = str_replace(' ', '', $string);
 	}
 
+	function find_commission($percentage, $rate){
+		  return ($percentage / 100) * $rate; 
+	}
+
 	//pagination functions
 
 

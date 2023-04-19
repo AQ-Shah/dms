@@ -28,4 +28,14 @@ $dispatchLastFri = no_of_dispatch_last_fri();
 $total_rate_this_month = find_dispatch_rate_total_this_month();
 $total_rate_last_month = find_dispatch_rate_total_last_month();
 $monthlyRateDifference = $total_rate_this_month - $total_rate_last_month;
+
+$total_rate_this_week = find_dispatch_rate_total_this_week();
+$total_rate_last_week = find_dispatch_rate_total_last_week();
+$weeklyRateDifference = $total_rate_this_week - $total_rate_last_week;
+
+$total_rate_today = find_dispatch_rate_total_today();
+$total_rate_yesterday = find_dispatch_rate_total_yesterday();
+$dailyRateDifference = $total_rate_today - $total_rate_yesterday;
+
+
 ?>

@@ -214,8 +214,67 @@
 
 			return $record;}
 
-		
+		function find_dispatch_rate_total_this_week() {
+			global $connection;
 
+			$query = "SELECT SUM(rate) AS total_rate
+			FROM dispatch_list
+			WHERE YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_rate_total_last_week() {
+			global $connection;
+
+			$query = "SELECT SUM(rate) AS total_rate
+			FROM dispatch_list
+			WHERE YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+		
+		function find_dispatch_rate_total_today() {
+			global $connection;
+
+			$query = "SELECT SUM(rate) AS total_rate
+			FROM dispatch_list
+			WHERE DATE(dispatch_time) = CURDATE()";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_rate_total_yesterday() {
+			global $connection;
+
+			$query = "SELECT SUM(rate) AS total_rate
+			FROM dispatch_list
+			WHERE DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		
 		function find_dispatch_list_by_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
