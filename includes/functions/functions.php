@@ -1,14 +1,15 @@
 <?php
 	//setting default timezone
 
-	include("news_functions.php");
-	include("admin_functions.php");
-	include("staff_functions.php");
-	include("access_functions.php");
-	include("../includes/pagination/pagination_functions.php");
-	include("../includes/crud/carrier_search_functions.php");
-	include("../includes/crud/dispatch_search_functions.php");
-	include("../includes/crud/discussion_functions.php");
+	require_once("news_functions.php");
+	require_once("admin_functions.php");
+	require_once("staff_functions.php");
+	require_once("access_functions.php");
+	require_once("pagination_functions.php");
+	require_once("carrier_search_functions.php");
+	require_once("dispatch_search_functions.php");
+	require_once("discussion_functions.php");
+	require_once("validation_functions.php");
 	
 	function redirect_to($url)
     {

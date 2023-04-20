@@ -1,6 +1,6 @@
 <?php 
 	require_once("../includes/public_require.php"); 
-	$current_page = "manage_departments";
+	$current_page = "departments";
 	include("../includes/layouts/public_header.php"); 
  
 $record_set = find_all_departments();

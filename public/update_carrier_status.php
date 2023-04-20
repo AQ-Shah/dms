@@ -7,7 +7,7 @@
 
     if (isset($_POST['submit'])) {
 
-    include("../includes/crud/carrier_status_update_query.php"); 
+    include("../includes/api/carrier_status_update_query.php"); 
       
     } else {
         $_SESSION["message"] = "Please use proper form to update the status.";

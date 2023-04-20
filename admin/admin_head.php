@@ -1,5 +1,5 @@
 <?php require_once("../includes/session.php"); ?>
-<?php require_once("../includes/functions.php"); ?>
+<?php require_once("../includes/functions/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <?php confirm_logged_in(); ?>
 

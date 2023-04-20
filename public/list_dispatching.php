@@ -84,8 +84,6 @@
 
 </div>
 
-
-
 <?php 
 	include("../includes/views/carrier_status_popup.php"); 
 	include("../includes/views/carrier_move_popup.php"); 

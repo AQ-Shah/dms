@@ -277,6 +277,16 @@
                        </a>
                    </li>
 
+                   <li class="side-nav-title">Management</li>
+
+                   <li class="side-nav-item">
+                       <a href="departments" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="uil-home-alt"></i>
+                           <span> Departments </span>
+                       </a>
+                   </li>
+
 
 
                    <li class="side-nav-title">Discussion</li>

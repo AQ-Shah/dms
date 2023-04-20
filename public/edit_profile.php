@@ -2,7 +2,7 @@
 	require_once("../includes/public_require.php"); 
 	$current_page = "settings";
 	include("../includes/layouts/public_header.php"); 
-   	include("../includes/crud/update_user.php");
+   	include("../includes/api/update_user.php");
 ?>
 
 <div class="container">

@@ -7,7 +7,7 @@
 
     if (isset($_POST['submit'])) {
 
-    include("../includes/crud/carrier_location_update_query.php"); 
+    include("../includes/api/carrier_location_update_query.php"); 
       
     } else {
         $_SESSION["message"] = "Please use proper form to update the location.";
