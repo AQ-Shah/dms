@@ -86,4 +86,4 @@ include("../includes/crud/privacy.php");
 </div>
 
 
-<?php include("../includes/layouts/footer.php"); ?>
+<?php include("../includes/layouts/public_footer.php"); ?>

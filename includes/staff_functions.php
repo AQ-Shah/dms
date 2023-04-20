@@ -100,22 +100,7 @@ function no_of_teachers_by_department($department_id){
         confirm_query($teachers_set);
         return $teachers_set;
     }
-function form_errors($errors=array()) {
-        $output = "";
-        if (!empty($errors)) {
-        $output .= "<div class=\"error\">";
-        $output .= "Please fix the following errors:";
-        $output .= "<ul>";
-        foreach ($errors as $key => $error) {
-            $output .= "<li>";
-                $output .= htmlentities($error);
-                $output .= "</li>";
-        }
-        $output .= "</ul>";
-        $output .= "</div>";
-        }
-        return $output;
-    }
+
 function find_student_by_id($student_id){
         global $connection;
         

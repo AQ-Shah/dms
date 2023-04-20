@@ -1,7 +1,7 @@
 <div id="status-popup" class="popup">
     <div class="popup-content">
         <h2>Change Status</h2>
-        <form class="status-popup-form" action="" method="post">
+        <form class="status-popup-form popup-form" action="" method="post">
             <label for="carrier-status">Status:</label>
             <select id="carrier-status" name="carrier-status">
                 <option value="available">Available</option>

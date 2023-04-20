@@ -42,7 +42,6 @@
          if ($result) {
             // Success
             $_SESSION["message"] = "Carrier Dispatched Successfully.";
-            echo 'here';
             header("Location: " . $prev_url);
             exit;
         } else {

@@ -23,12 +23,11 @@ if (isset($_POST['submit'])) {
 
     if ($result && mysqli_affected_rows($connection) == 1) {
         // Success
-        $_SESSION["message"] = "Profile Updated.";
-        header("Location: " . $prev_url);
-        exit;
+        $_SESSION["message"] = "Profile Privacy Updated.";
+        redirect_to("edit_privacy");
     } else {
       // Failure
-      $_SESSION["message"] = "Update failed.";
+      $_SESSION["message"] = "Something Went Wrong.";
     }
   }
 } 

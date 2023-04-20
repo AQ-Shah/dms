@@ -3,6 +3,7 @@
 	$current_page = "home";
 	include("../includes/layouts/public_header.php"); 
  ?>
+
 <div class="container-fluid">
 
     <div class="row">
@@ -32,11 +33,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12 card">
-            <?php include("../includes/views/dispatch_stats_1.php"); ?>
-        </div>
-    </div>
+    <?php include("../includes/views/dispatch_stats_1.php"); ?>
 
     <?php include("../includes/views/dispatch_dashboard_1.php"); ?>
 
@@ -90,4 +87,5 @@
 
     </div>
 </div>
+
 <?php include("../includes/layouts/public_footer.php"); ?>

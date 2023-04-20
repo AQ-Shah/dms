@@ -16,7 +16,7 @@ include("../includes/data/dispatch_data_fetch.php");
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Monthly Dispatch
+                                <h5 class="text-muted fw-normal mt-0">Monthly Dispatch
                                     Amount
                                 </h5>
                                 <h3 class="mt-3 mb-3"><?php echo '$'.$total_rate_this_month;?></h3>
@@ -29,18 +29,19 @@ include("../includes/data/dispatch_data_fetch.php");
 
                                 </p>
                             </div>
-                            <div class="col-sm-6">
-                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">ATC Commission</h5>
-                                <h3 class="mt-3 mb-3"><?php echo $thisWeekDispatch;?></h3>
+
+                            <div class="col-sm-6"> ATC Commission </h5>
+                                <h3 class="mt-3 mb-3"><?php echo '$'.$total_commission_this_month;?></h3>
                                 <p class="mb-0 text-muted">
-                                    <span class="text-nowrap">Last week :
-                                        <?php echo $lastWeekDispatch;?></span></br>
-                                    <?php if ($weeklyDispatchDifference >0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weeklyDispatchDifference.' $ more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weeklyDispatchDifference.' $ less </span>';?>
+                                    <span class="text-nowrap">Last Month :
+                                        <?php echo '$'.$total_commission_last_month;?></span></br>
+                                    <?php if ($monthly_commission_difference >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$monthly_commission_difference.' $ more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$monthly_commission_difference.' $ less </span>';?>
 
                                 </p>
                             </div>
+
                         </div> <!-- end text row -->
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
@@ -54,10 +55,10 @@ include("../includes/data/dispatch_data_fetch.php");
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Weekly Dispatch
+                                <h5 class="text-muted fw-normal mt-0">Weekly Dispatch
                                     Amount
                                 </h5>
-                                <h3 class="mt-3 mb-3"><?php echo '$'.$total_rate_today;?></h3>
+                                <h3 class="mt-3 mb-3"><?php echo '$'.$total_rate_this_week;?></h3>
                                 <p class="mb-0 text-muted">
                                     <span class="text-nowrap">Last Week :
                                         <?php echo '$'.$total_rate_last_week;?></span></br>
@@ -67,18 +68,20 @@ include("../includes/data/dispatch_data_fetch.php");
 
                                 </p>
                             </div>
+
                             <div class="col-sm-6">
-                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">ATC Commission</h5>
-                                <h3 class="mt-3 mb-3"><?php echo $thisWeekDispatch;?></h3>
+                                <h5 class="text-muted fw-normal mt-0">ATC Commission </h5>
+                                <h3 class="mt-3 mb-3"><?php echo '$'.$total_commission_this_week;?></h3>
                                 <p class="mb-0 text-muted">
-                                    <span class="text-nowrap">Last week :
-                                        <?php echo $lastWeekDispatch;?></span></br>
-                                    <?php if ($weeklyRateDifference > 0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weeklyRateDifference.' $ more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weeklyRateDifference.' $ less </span>';?>
+                                    <span class="text-nowrap">Last Week :
+                                        <?php echo '$'.$total_commission_last_week;?></span></br>
+                                    <?php if ($weekly_commission_difference >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weekly_commission_difference.' $ more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weekly_commission_difference.' $ less </span>';?>
 
                                 </p>
                             </div>
+
                         </div> <!-- end text row -->
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
@@ -97,7 +100,7 @@ include("../includes/data/dispatch_data_fetch.php");
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Today's Dispatch
+                                <h5 class="text-muted fw-normal mt-0">Today's Dispatch
                                     Amount
                                 </h5>
                                 <h3 class="mt-3 mb-3"><?php echo '$'.$total_rate_today;?></h3>
@@ -110,18 +113,20 @@ include("../includes/data/dispatch_data_fetch.php");
 
                                 </p>
                             </div>
+
                             <div class="col-sm-6">
-                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">ATC Commission</h5>
-                                <h3 class="mt-3 mb-3"><?php echo $thisWeekDispatch;?></h3>
+                                <h5 class="text-muted fw-normal mt-0">ATC Commission </h5>
+                                <h3 class="mt-3 mb-3"><?php echo '$'.$total_commission_today;?></h3>
                                 <p class="mb-0 text-muted">
-                                    <span class="text-nowrap">Last week :
-                                        <?php echo $lastWeekDispatch;?></span></br>
-                                    <?php if ($weeklyRateDifference > 0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weeklyRateDifference.' $ more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weeklyRateDifference.' $ less </span>';?>
+                                    <span class="text-nowrap">Yesterday :
+                                        <?php echo '$'.$total_commission_yesterday;?></span></br>
+                                    <?php if ($daily_commission_difference >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$daily_commission_difference.' $ more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$daily_commission_difference.' $ less </span>';?>
 
                                 </p>
                             </div>
+
                         </div> <!-- end text row -->
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->

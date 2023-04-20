@@ -6,6 +6,7 @@
 	include("../includes/pagination/carriers_data_fetch.php"); 
   ?>
 <div class="container">
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">

@@ -37,5 +37,16 @@ $total_rate_today = find_dispatch_rate_total_today();
 $total_rate_yesterday = find_dispatch_rate_total_yesterday();
 $dailyRateDifference = $total_rate_today - $total_rate_yesterday;
 
+$total_commission_this_month = find_dispatch_commission_total_this_month();
+$total_commission_last_month = find_dispatch_commission_total_last_month();
+$monthly_commission_difference = $total_commission_this_month - $total_commission_last_month;
+
+$total_commission_this_week = find_dispatch_commission_total_this_week();
+$total_commission_last_week = find_dispatch_commission_total_last_week();
+$weekly_commission_difference = $total_commission_this_week - $total_commission_last_week;
+
+$total_commission_today = find_dispatch_commission_total_today();
+$total_commission_yesterday = find_dispatch_commission_total_yesterday();
+$daily_commission_difference = $total_commission_today - $total_commission_yesterday;
 
 ?>

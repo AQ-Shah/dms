@@ -274,8 +274,100 @@
 
 			return $record;}
 
+		function find_dispatch_commission_total_this_month() {
+			global $connection;
+
+			$query = "SELECT SUM(commission) AS total_rate
+			FROM dispatch_list
+			WHERE MONTH(dispatch_time) = MONTH(NOW())";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_total_last_month() {
+			global $connection;
+
+			$query = "SELECT SUM(commission) AS total_rate
+					FROM dispatch_list
+					WHERE YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+					AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_total_this_week() {
+			global $connection;
+
+			$query = "SELECT SUM(commission) AS total_rate
+			FROM dispatch_list
+			WHERE YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_total_last_week() {
+			global $connection;
+
+			$query = "SELECT SUM(commission) AS total_rate
+			FROM dispatch_list
+			WHERE YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
 		
-		function find_dispatch_list_by_id($id){
+		function find_dispatch_commission_total_today() {
+			global $connection;
+
+			$query = "SELECT SUM(commission) AS total_rate
+			FROM dispatch_list
+			WHERE DATE(dispatch_time) = CURDATE()";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_total_yesterday() {
+			global $connection;
+
+			$query = "SELECT SUM(commission) AS total_rate
+			FROM dispatch_list
+			WHERE DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		
+			function find_dispatch_list_by_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";

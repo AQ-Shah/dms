@@ -338,111 +338,19 @@ button:hover {
     font-size: larger;
 }
 
-.status-popup-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.status-popup-form label {
-    margin-top: 2vw;
-    margin-bottom: 0.5vw;
-    font-weight: bold;
-}
-
-.status-popup-form select,
-.status-popup-form input[type="text"] {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid var(--border-primary-color);
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.status-popup-form button[type="submit"],
-.status-popup-form button[type="button"] {
-    background: var(--panel-secondary-color);
-    color: var(--text-primary-color);
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.status-popup-form button[type="submit"]:hover,
-.status-popup-form button[type="button"]:hover {
-    background: var(--panel-secondary-color);
-}
-
-
-/* Style the move popup */
-
 
 /* Style the form elements inside the popup */
 
-.move-popup-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.move-popup-form label {
-    margin-top: 2vw;
-    margin-bottom: 0.5vw;
-    font-weight: bold;
-}
-
-.move-popup-form select,
-.move-popup-form input[type="text"] {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid var(--border-primary-color);
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.move-popup-form button[type="submit"],
-.move-popup-form button[type="button"] {
-    background: var(--panel-secondary-color);
-    color: var(--text-primary-color);
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.move-popup-form button[type="submit"]:hover,
-.move-popup-form button[type="button"]:hover {
-    background: var(--panel-secondary-color);
-}
-
-
-/* Style the dispatch popup content */
-
-
-/* Style the dispatch form elements inside the popup */
-
-.dispatch-popup-form label {
+.popup-form label {
     margin-top: 10px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.dispatch-popup-form input[type="text"],
-.dispatch-popup-form input[type="number"],
-.dispatch-popup-form input[type="datetime-local"] {
+.popup-form select,
+.popup-form input[type="number"],
+.popup-form input[type="text"],
+.popup-form input[type="datetime-local"] {
     width: 100%;
     height: 40px;
     padding: 10px;
@@ -452,8 +360,8 @@ button:hover {
     margin-bottom: 10px;
 }
 
-.dispatch-popup-form button[type="submit"],
-.dispatch-popup-form button[type="button"] {
+.popup-form button[type="submit"],
+.popup-form button[type="button"] {
     background: var(--panel-secondary-color);
     color: var(--text-primary-color);
     padding: 10px;
@@ -465,8 +373,8 @@ button:hover {
     width: 100%;
 }
 
-.dispatch-popup-form button[type="submit"]:hover,
-.dispatch-popup-form button[type="button"]:hover {
+.popup-form button[type="submit"]:hover,
+.popup-form button[type="button"]:hover {
     background: var(--panel-secondary-color);
 }
 

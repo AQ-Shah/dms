@@ -1,14 +1,18 @@
-<?php require_once("../includes/session.php"); ?>
-<?php require_once("../includes/db_connection.php"); ?>
-<?php require_once("../includes/functions.php"); ?>
-<?php confirm_logged_in(); ?>
+<?php 
+  require_once("../includes/public_require.php"); 
+    $current_page = "department_create";
+    confirm_user_logged_in();
+    $user = find_user_by_id($_SESSION["id"]);
+    confirm_access($user,$current_page);
 
-<?php
+    //once verified the access it will continue 
+    
   $department = find_department_by_id($_GET["id"]);
+
   if (!$department) {
     // department ID was missing or invalid or 
     // department couldn't be found in database
-    redirect_to("manage_departments.php");
+    redirect_to("departments");
   }
   
   $id = $department["id"];
@@ -19,11 +23,11 @@
   if ($result && mysqli_affected_rows($connection) == 1) {
     // Success
     $_SESSION["message"] = "Department deleted.";
-    redirect_to("manage_departments.php");
+    redirect_to("departments");
   } else {
     // Failure
-    $_SESSION["message"] = "Department deletion failed.";
-    redirect_to("manage_departments.php");
+    $_SESSION["message"] = "something went wrong.";
+    redirect_to("departments");
   }
   
 ?>

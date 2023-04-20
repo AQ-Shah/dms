@@ -13,7 +13,15 @@
 			redirect_to("home");} } ?>
 
 <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
 
+                <?php echo message(); ?>
+
+            </div>
+        </div>
+    </div>
     <div class="row">
         <table class="table table-hover">
             <thead>

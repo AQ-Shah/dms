@@ -1,7 +1,7 @@
 <div id="dispatch-popup" class="popup">
     <div class="popup-content">
         <h2>Dispatch Carrier</h2>
-        <form class="dispatch-popup-form" action="" method="post">
+        <form class="dispatch-popup-form popup-form" action="" method="post">
             <label for="location">Location:</label>
             <input type="text" id="location" name="location"><br>
             <label for="datetime">Estimated Date and Time:</label>

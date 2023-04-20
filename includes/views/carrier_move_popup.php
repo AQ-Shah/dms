@@ -1,7 +1,7 @@
 <div id="move-popup" class="popup">
     <div class="popup-content">
         <h2>Changing Location</h2>
-        <form class="move-popup-form" action="" method="post">
+        <form class="move-popup-form popup-form" action="" method="post">
             <label for="location">New Location:</label>
             <input type="text" id="location" name="location" placeholder="If changing to new location.."><br><br>
             <input type="hidden" id="carrier-id" name="carrier_id" value="">
