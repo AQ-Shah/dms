@@ -22,12 +22,18 @@
     <div class="row card">
         <div class="col-12">
             <div class="row py-3">
-                <div class="col-6 simple-panel">
-                    <label>List of Users by Department</label>
+                <div class="col-5 simple-panel">
+                    <label>List of Employees by Department</label>
                 </div>
-                <div class="col-6 simple-panel" style="background-color:transparent">
+                <div class="col-5 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
                         placeholder="Search..">
+                </div>
+                <div class="col-2 text-xl-end mt-xl-0 mt-2">
+                    <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentUserCreatePopup()"><i
+                            class=" mdi mdi-basket me-1"></i>
+                        Add</button>
+
                 </div>
             </div>
             <div class="row panel table-primary p-2">
@@ -60,7 +66,7 @@
                                 <td><?php echo htmlentities($record["phone_num"]); ?></td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="dropbtn">Actions</button>
+                                        <button class="dropdown-button">Actions</button>
                                         <div class="dropdown-content">
                                             <button
                                                 onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">View</button>
@@ -72,7 +78,7 @@
                                           )">Edit</button>
 
                                             <button
-                                                onclick="if(confirm('Are you sure?')){location.href='user_delete?id=<?php echo urlencode($record["id"]); ?>'}">Delete</button>
+                                                onclick="if(confirm('Are you sure?')){location.href='profile_delete?id=<?php echo urlencode($record["id"]); ?>'}">Delete</button>
                                         </div>
                                     </div>
                                 </td>
@@ -91,7 +97,9 @@
 
 </div>
 
+
 <?php
-include("../includes/pagination/table_script.php"); 
-include("../includes/layouts/public_footer.php"); 
+    include("../includes/views/department_user_create_popup.php"); 
+    include("../includes/pagination/table_script.php"); 
+    include("../includes/layouts/public_footer.php"); 
 ?>

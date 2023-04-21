@@ -36,6 +36,18 @@ function find_all_departments() {
         return $department_set;
     }
 
+function find_departments_from($start,$end) {
+        global $connection;
+        
+        $query  = "SELECT * ";
+        $query .= "FROM department ";
+        $query .= "ORDER BY name ASC ";
+        $query .= "LIMIT {$start},{$end}";
+        $department_set = mysqli_query($connection, $query);
+        confirm_query($department_set);
+        return $department_set;
+    }
+
 
 
 function find_all_users_by_department($department_id){

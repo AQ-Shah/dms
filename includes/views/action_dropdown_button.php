@@ -1,5 +1,5 @@
  <div class="dropdown">
-     <button class="dropbtn">Actions</button>
+     <button class="dropdown-button">Actions</button>
      <div class="dropdown-content">
          <button onclick="location.href='show_carrier?id=<?php echo urlencode($record["id"]); ?>'">View</button>
          <button onclick="showDispatchPopup(<?php echo $record["id"]; ?>)">Dispatch</button>

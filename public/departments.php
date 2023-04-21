@@ -15,7 +15,7 @@ $record_set = find_all_departments();
                 <?php echo message(); ?>
 
                 <h2>
-                    Manage Departments
+                    Departments
                 </h2>
 
             </div>
@@ -25,12 +25,33 @@ $record_set = find_all_departments();
     <div class="row panel table-primary p-2 card">
         <div class="panel-body table-responsive">
 
-            <table class="table table-hover">
+            <div class="row mb-2">
+                <div class="col-xl-8">
+                    <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
+                        <div class="col-auto">
+                            <label for="tableSearch" class="visually-hidden">Search</label>
+                            <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
+                                placeholder="Search..">
+                        </div>
+
+                    </form>
+                </div>
+                <div class=" col-xl-4">
+                    <div class="text-xl-end mt-xl-0 mt-2">
+                        <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentCreatePopup()"><i
+                                class="mdi mdi-basket me-1"></i> Add
+                            New Department</button>
+
+                    </div>
+                </div><!-- end col-->
+            </div>
+            <table class="table table-hover" id="currentTable">
                 <thead>
                     <tr>
-                        <th style="width: 200px;">Department Name</th>
-                        <th style="width: 200px;">Email</th>
-                        <th colspan="2">Actions</th>
+                        <th>Department Name</th>
+                        <th>Email</th>
+                        <th>No of Employees</th>
+                        <th colspan=" 2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,38 +59,37 @@ $record_set = find_all_departments();
                     <tr>
                         <td><?php echo htmlentities($record["name"]); ?></td>
                         <td><?php echo htmlentities($record["email"]); ?></td>
-                        <td>
-                            <button class="dropbtn"
-                                onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">View</button>
+                        <td><?php echo htmlentities(no_of_users_by_department($record["id"])); ?></td>
 
-                            <button class="dropbtn" onclick="showDepartmentEditPopup(
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropdown-button">Actions</button>
+                                <div class="dropdown-content">
+                                    <button
+                                        onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">View</button>
+
+                                    <button onclick="showDepartmentEditPopup(
                                   '<?php echo urlencode($record["id"]); ?>',
                                   '<?php echo $record["name"]; ?>',
                                   '<?php echo $record["email"]; ?>'
                               )">Edit</button>
 
-                            <button class="dropbtn"
-                                onclick="if(confirm('Are you sure?')){location.href='department_delete?id=<?php echo urlencode($record["id"]); ?>'}">Delete</button>
+                                    <button
+                                        onclick="if(confirm('Are you sure?')){location.href='department_delete?id=<?php echo urlencode($record["id"]); ?>'}">Delete</button>
+                                </div>
+                            </div>
                         </td>
-
-
-
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>
-
-
-            <div class="mt-4 text-center">
-                <button class="dropbtn" onclick="showDepartmentCreatePopup()">New Department</button>
-            </div>
-
         </div>
     </div>
 </div>
 
 <?php 
-  include("../includes/views/department_create_popup.php"); 
-  include("../includes/views/department_edit_popup.php"); 
-  include("../includes/layouts/public_footer.php"); 
+    include("../includes/views/department_create_popup.php"); 
+    include("../includes/views/department_edit_popup.php"); 
+    include("../includes/pagination/table_script.php"); 
+    include("../includes/layouts/public_footer.php"); 
 ?>

@@ -1,8 +1,17 @@
-<?php require_once("../includes/session.php"); ?>
-<?php require_once("../includes/db_connection.php"); ?>
-<?php require_once("../includes/functions.php"); ?>
-<?php require_once("../includes/validation_functions.php"); ?>
-<?php confirm_logged_in(); ?>
+<?php 
+    require_once("../includes/public_require.php"); 
+    $current_page = "new_carrier";
+    include("../includes/layouts/public_header.php"); 
+
+
+    if (isset($_POST['submit'])) {
+
+      include("../includes/api/new_carrier_query.php"); 
+      
+    } else {
+      //this is not a post request
+    }
+?>
 
 <?php
 
@@ -80,43 +89,36 @@ if (isset($_POST['submit'])) {
 } // end: if (isset($_POST['submit']))
 
 ?>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <?php echo message(); ?>
+                <?php echo form_errors($errors); ?>
+                <h2>
+                    New Employee
+                </h2>
 
-<?php $layout_context = "admin"; ?>
-<?php include("../includes/layouts/header.php"); ?>
-<div id="main">
-  <div id="page">
-    <?php echo message(); ?>
-    <?php echo form_errors($errors); ?>
-    
-    <h2>Create <?php 
-	if (isset($_GET["designation"])){
-	if ($_GET["designation"]){
-		echo "Manager";}
-	else 
-		echo "Worker";
-	}
-	else 
-		echo "User";
-	
-	?></h2>
+            </div>
+        </div>
+    </div>
     <form action="new_user.php" method="post">
-      Username:
+        Username:
         <input type="text" name="username" value="" />
-    
-      Password:
+
+        Password:
         <input type="password" name="password" value="" />
-      <br/><br/>
-	<input type="radio" name="gender" value="male" checked> Male 
-	<input type="radio" name="gender" value="female"> Female<br><br>
-	<?php 
-	if((isset($_GET["department_id"])) || ( (isset($_GET["designation"]))&&($_GET["designation"]==1)) ){
+        <br /><br />
+        <input type="radio" name="gender" value="male" checked> Male
+        <input type="radio" name="gender" value="female"> Female<br><br>
+        <?php 
+	if(isset($_GET["department_id"])){
 		echo '<input type="radio" name="designation" value="1" checked> Manager<br/><br/>';
 		echo 'Department ID: <input type="text" name="department_id" value="';
 			if(isset($_GET["department_id"])){
 				echo $_GET["department_id"].'"'.'READONLY';
 			}
 			else {echo '"/>';}
-		echo ' Proficiency:<input type="text" name="proficiency" value="" /><br/>';
 	}
 	elseif((isset($_GET["designation"]))&&($_GET["designation"]==0))
 		echo  '<input type="radio" name="designation" value="0" checked> Worker<br/>';
@@ -126,36 +128,36 @@ if (isset($_POST['submit'])) {
 		echo '<input type="radio" name="designation" value="0" checked> Worker<br/>';
 	}
 	 ?>
-	<br/>
-	Full Name:
+        <br />
+        Full Name:
         <input type="text" name="full_name" value="" />
-     
-	  <p>Joining Date:
-        <input type="date" name="join_date" />
-      </p>
-	   <p>
-	   Birth Date:
-        <input type="date" name="birth_date"/>
-		Private :  
-	    <input type="radio" name="birthday_privacy" value="1" checked> Yes 
-		<input type="radio" name="birthday_privacy" value="0"> No
-      </p>
-	  <p>
-	  Phone Number:
-        <input type="text" name="phone_num" value="" />
-		Private :  
-	    <input type="radio" name="phone_privacy" value="1" checked> Yes 
-		<input type="radio" name="phone_privacy" value="0"> No
-      </p>
-	<p>
-	Email Adress:
-        <input type="text" name="email" value="" />
-		Private :  
-	    <input type="radio" name="email_privacy" value="1" checked> Yes 
-		<input type="radio" name="email_privacy" value="0"> No
-      </p>
-	  <p>
-<!-- Website:
+
+        <p>Joining Date:
+            <input type="date" name="join_date" />
+        </p>
+        <p>
+            Birth Date:
+            <input type="date" name="birth_date" />
+            Private :
+            <input type="radio" name="birthday_privacy" value="1" checked> Yes
+            <input type="radio" name="birthday_privacy" value="0"> No
+        </p>
+        <p>
+            Phone Number:
+            <input type="text" name="phone_num" value="" />
+            Private :
+            <input type="radio" name="phone_privacy" value="1" checked> Yes
+            <input type="radio" name="phone_privacy" value="0"> No
+        </p>
+        <p>
+            Email Adress:
+            <input type="text" name="email" value="" />
+            Private :
+            <input type="radio" name="email_privacy" value="1" checked> Yes
+            <input type="radio" name="email_privacy" value="0"> No
+        </p>
+        <p>
+            <!-- Website:
         <input type="text" name="website" value="" />
 		Private :  
 	    <input type="radio" name="webisite_privacy" value="1" checked> Yes 
@@ -167,11 +169,11 @@ if (isset($_POST['submit'])) {
 		<input type="radio" name="about_privacy" value="0"> No</p>
 	    <textarea name="about_me" rows="6" cols="30"></textarea>
 		-->
-      <input type="submit" name="submit" value="Create User" />
+            <input type="submit" name="submit" value="Create User" />
     </form>
     <br />
 
-   <?php 
+    <?php 
 	if(((isset($_GET["designation"])) && ($_GET["designation"])==1)|| (isset($_GET["department_id"])) ){
 		echo '<a href="show_department.php?id=';
 			if (isset($_GET["department_id"]))
@@ -184,7 +186,7 @@ if (isset($_POST['submit'])) {
 	else
 		echo '<a href="admin.php">Cancel';
 	?></a>
-  </div>
+</div>
 </div>
 
 <?php include("../includes/layouts/footer.php"); ?>

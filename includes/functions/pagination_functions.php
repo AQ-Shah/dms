@@ -1,7 +1,7 @@
 <?php
 
 	function add_pagination($page, $total_pages, $current_page, $record_per_page) {
-		if ($total_pages >= 1 && $page <= $total_pages) {
+		if ($total_pages > 1 && $page <= $total_pages) {
 			echo '<ul class="pagination">';
 			for ($x = 1; $x <= $total_pages; $x++) {
 				if ($x == $page) {

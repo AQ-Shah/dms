@@ -63,7 +63,7 @@ function table_search() {
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows and columns, and hide those that don't match the search query
-    for (i = 0; i < tr.length; i++) {
+    for (i = 1; i < tr.length; i++) {
         for (j = 0; j < tr[i].cells.length; j++) {
             td = tr[i].cells[j];
             if (td) {

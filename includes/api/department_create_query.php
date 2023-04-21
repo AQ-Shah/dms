@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $required_fields = array("name");
     validate_presences($required_fields);
 
-    $fields_with_max_lengths = array("name" => 30, , "email" => 30);
+    $fields_with_max_lengths = array("name" => 30 , "email" => 30);
     validate_max_lengths($fields_with_max_lengths);
 
     if (empty($errors)) {

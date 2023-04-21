@@ -170,6 +170,10 @@ table th {
     cursor: pointer;
 }
 
+.table-responsive {
+    overflow-x: clip !important;
+}
+
 .sort-arrows {
     margin-left: 5px;
     font-size: 10px;
@@ -204,6 +208,7 @@ table th {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    color: var(--ct-body-color);
 }
 
 
@@ -241,7 +246,7 @@ button:hover {
 
 /* Style the button that opens the dropdown */
 
-.dropbtn {
+.dropdown-button {
     background: var(--panel-primary-color);
     color: var(--text-secondary-color);
     padding: 10px;
@@ -259,10 +264,10 @@ button:hover {
     position: absolute;
     z-index: 1;
     min-width: 160px;
-    box-shadow: var(--shadow-primary);
-    top: 100%;
     right: 0;
     left: auto;
+    top: calc(100%);
+    box-shadow: var(--shadow-primary);
 }
 
 
@@ -296,7 +301,7 @@ button:hover {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
-.dropdown:hover .dropbtn {
+.dropdown:hover .dropdown-button {
     background: var(--panel-primary-color);
 }
 
