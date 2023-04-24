@@ -2,6 +2,7 @@
 include("../includes/data/dispatch_data_fetch.php");
 ?>
 
+<?php if (check_access("dispatch_dashboard_1")){ ?>
 <div class="row">
 
     <div class="col-xl-7 col-lg-6">
@@ -130,6 +131,8 @@ include("../includes/data/dispatch_data_fetch.php");
 
     </div> <!-- end col -->
 </div>
+<?php } ?>
+
 
 <?php
 include("../includes/data/dispatch_graph_weekly.php");

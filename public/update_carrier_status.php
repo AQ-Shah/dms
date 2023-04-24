@@ -1,9 +1,8 @@
 <?php 
      require_once("../includes/public_require.php"); 
     $current_page = "update_carrier_status";
-	confirm_user_logged_in();
-	$user = find_user_by_id($_SESSION["id"]);
-    confirm_access($user,$current_page);
+	
+    confirm_access($current_page);
 
     if (isset($_POST['submit'])) {
 

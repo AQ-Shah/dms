@@ -22,32 +22,12 @@
 
     <?php include("../includes/views/sales_dashboard_1.php"); ?>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <h2>
-                    Dispatch Stats
-                </h2>
-
-            </div>
-        </div>
-    </div>
-
     <?php include("../includes/views/dispatch_stats_1.php"); ?>
 
     <?php include("../includes/views/dispatch_dashboard_1.php"); ?>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <h2>
-                    Revenue Stats
-                </h2>
-
-            </div>
-        </div>
-    </div>
     <?php include("../includes/views/revenue_dashboard_1.php"); ?>
+
     <div class="row">
         <?php if ($user['permission']==1){ ?>
         <div class="col-12 col-md-3 my-2">

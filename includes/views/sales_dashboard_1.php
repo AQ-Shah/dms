@@ -1,7 +1,8 @@
 <?php 
 include("../includes/data/sales_data_fetch.php");
-?>
 
+?>
+<?php if (check_access("sales_dashboard_1")){ ?>
 <div class="row">
     <div class="col-xl-5 col-lg-6">
 
@@ -130,7 +131,7 @@ include("../includes/data/sales_data_fetch.php");
 
     </div> <!-- end col -->
 </div>
-
+<?php } ?>
 <?php
 include("../includes/data/sales_graph_weekly.php");
 include("../includes/data/sales_graph_by_agents.php");

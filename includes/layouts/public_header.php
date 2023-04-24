@@ -1,7 +1,5 @@
 <?php 
-	confirm_user_logged_in();
-	$user = find_user_by_id($_SESSION["id"]);
-    confirm_access($user,$current_page);
+    confirm_access($current_page);
 ?>
 <!DOCTYPE html>
 <html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">

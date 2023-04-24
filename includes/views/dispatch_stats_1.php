@@ -1,3 +1,17 @@
+<?php if (check_access("dispatch_stats_1")){ ?>
+
+<div class="row text-center">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h2>
+                Dispatch Stats
+            </h2>
+
+        </div>
+    </div>
+</div>
+
+
 <div class="row" id="form_box_button">
     <div class="col-3">
         <div class=" custom-panel card" style="background:#23a6d5">
@@ -24,3 +38,5 @@
         </div>
     </div>
 </div>
+
+<?php } ?>

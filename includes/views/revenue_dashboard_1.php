@@ -2,10 +2,20 @@
 include("../includes/data/dispatch_data_fetch.php");
 ?>
 
+<?php if (check_access("revenue_dashboard_1")){ ?>
 <div class="row">
 
     <div class="col-12">
+        <div class="row text-center">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <h2>
+                        Revenue Stats
+                    </h2>
 
+                </div>
+            </div>
+        </div>
         <div class="row">
 
             <div class="col-sm-6">
@@ -138,6 +148,7 @@ include("../includes/data/dispatch_data_fetch.php");
 
     </div> <!-- end col -->
 </div>
+<?php } ?>
 
 <?php
 include("../includes/data/dispatch_graph_weekly.php");

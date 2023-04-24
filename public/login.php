@@ -21,6 +21,8 @@ if (isset($_POST['submit'])) {
 			$_SESSION["id"] = $found_user["id"];
 			$_SESSION["username"] = $found_user["username"];
 			$_SESSION["full_name"] = $found_user["full_name"];
+			$_SESSION["designation"] = $found_user["designation"];
+			$_SESSION["permission"] = $found_user["permission"];
             redirect_to("home");
     } else {
       // Failure
