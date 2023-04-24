@@ -40,6 +40,35 @@
                        </div>
                    </button>
 
+                   <?php if ($user['permission']==1 || $user['permission']==5){ ?>
+
+                   <li class="d-none d-sm-inline-block">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_carriers'">
+                           <i class="mdi mdi-truck-snowflake font-22"></i>
+                       </a>
+                   </li>
+                   <li class="d-none d-sm-inline-block">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_dispatching'">
+                           <i class="mdi mdi-truck-minus-outline font-22"></i>
+                       </a>
+                   </li>
+                   <li class="d-none d-sm-inline-block">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_unavailable'">
+                           <i class="mdi mdi-truck-remove-outline font-22"></i>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if ($user['permission']==1 || $user['permission']==10){ ?>
+
+                   <li class="d-none d-sm-inline-block">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='new_carrier'">
+                           <i class="mdi mdi-truck-plus-outline font-22"></i>
+                       </a>
+                   </li>
+
+                   <?php } ?>
                </div>
 
                <ul class="topbar-menu d-flex align-items-center gap-3">
@@ -240,12 +269,13 @@
                        </a>
                    </li>
 
+                   <?php if ($user['permission']==1 || $user['permission']==5){ ?>
                    <li class="side-nav-title">Dispatch</li>
 
                    <li class="side-nav-item">
                        <a href="list_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-truck-snowflake font-22"></i>
                            <span> List Carriers </span>
                        </a>
                    </li>
@@ -253,7 +283,7 @@
                    <li class="side-nav-item">
                        <a href="list_dispatching" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-truck-minus-outline font-22"></i>
                            <span> Dispatch Pending </span>
                        </a>
                    </li>
@@ -261,32 +291,35 @@
                    <li class="side-nav-item">
                        <a href="list_Unavailable" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-truck-remove-outline font-22"></i>
                            <span> Unavailable </span>
                        </a>
                    </li>
+                   <?php } ?>
 
-
+                   <?php if ($user['permission']==1 || $user['permission']==10){ ?>
                    <li class="side-nav-title">Sales</li>
 
                    <li class="side-nav-item">
                        <a href="new_carrier" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-truck-plus-outline font-22"></i>
                            <span> New Carrier </span>
                        </a>
                    </li>
+                   <?php } ?>
 
+                   <?php if ($user['permission']==1 ){ ?>
                    <li class="side-nav-title">Management</li>
 
                    <li class="side-nav-item">
                        <a href="departments" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-office-building font-22"></i>
                            <span> Departments </span>
                        </a>
                    </li>
-
+                   <?php } ?>
 
 
                    <li class="side-nav-title">Discussion</li>
@@ -294,14 +327,14 @@
                    <li class="side-nav-item">
                        <a href="show_news" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-newspaper font-22"></i>
                            <span> News </span>
                        </a>
                    </li>
                    <li class="side-nav-item">
                        <a href="discussion_board" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
-                           <i class="uil-home-alt"></i>
+                           <i class="mdi mdi-newspaper-variant-multiple-outline font-22"></i>
                            <span> Discussion Board </span>
                        </a>
                    </li>

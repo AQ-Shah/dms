@@ -12,7 +12,7 @@ include("../includes/data/sales_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Monthly Sales</h5>
                         <h3 class="mt-3 mb-3"><?php echo $thisMonthSale;?></h3>
@@ -32,7 +32,7 @@ include("../includes/data/sales_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Weekly Sales</h5>
                         <h3 class="mt-3 mb-3"><?php echo $thisWeekSale;?></h3>
@@ -58,7 +58,7 @@ include("../includes/data/sales_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Today's Sales</h5>
                         <h3 class="mt-3 mb-3"><?php echo $todaySale;?></h3>

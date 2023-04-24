@@ -35,7 +35,7 @@ include("../includes/data/dispatch_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-truck-fill widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Monthly Dispatch</h5>
                         <h3 class="mt-3 mb-3"><?php echo $thisMonthDispatch;?></h3>
@@ -55,7 +55,7 @@ include("../includes/data/dispatch_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-truck-fill widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Weekly Dispatch</h5>
                         <h3 class="mt-3 mb-3"><?php echo $thisWeekDispatch;?></h3>
@@ -81,7 +81,7 @@ include("../includes/data/dispatch_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-truck-fill widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Today's Dispatch</h5>
                         <h3 class="mt-3 mb-3"><?php echo $todayDispatch;?></h3>

@@ -22,7 +22,7 @@ include("../includes/data/dispatch_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -61,7 +61,7 @@ include("../includes/data/dispatch_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -106,7 +106,7 @@ include("../includes/data/dispatch_data_fetch.php");
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
-                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                            <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
