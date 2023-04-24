@@ -46,5 +46,19 @@
         }
     }
 
+    function find_permission($department_id){
+        if ($department_id === '1') return 1;
+        if ($department_id === '5') return 5;
+        if ($department_id === '10') return 10;
+        return 10;
+    }
+   
+    function find_designation($department_id){
+        if ($department_id === '1') return 'Manager';
+        if ($department_id === '5') return 'Dispatch Agent';
+        if ($department_id === '10') return 'Sales Agent';
+        return 'Not Assigned';
+    }
+    
 
 ?>

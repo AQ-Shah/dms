@@ -1,7 +1,7 @@
 <?php 
   require_once("../includes/public_require.php"); 
     $current_page = "department_create";
-   include("../includes/layouts/public_header.php"); 
+   confirm_access($current_page);
 
     //once verified the access it will continue 
     

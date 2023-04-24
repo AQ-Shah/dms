@@ -30,7 +30,7 @@ function find_all_departments() {
         
         $query  = "SELECT * ";
         $query .= "FROM department ";
-        $query .= "ORDER BY name ASC";
+        $query .= "ORDER BY id ASC";
         $department_set = mysqli_query($connection, $query);
         confirm_query($department_set);
         return $department_set;
@@ -41,7 +41,7 @@ function find_departments_from($start,$end) {
         
         $query  = "SELECT * ";
         $query .= "FROM department ";
-        $query .= "ORDER BY name ASC ";
+        $query .= "ORDER BY id ASC ";
         $query .= "LIMIT {$start},{$end}";
         $department_set = mysqli_query($connection, $query);
         confirm_query($department_set);
