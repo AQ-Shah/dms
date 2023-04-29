@@ -289,7 +289,7 @@
                    </li>
 
                    <li class="side-nav-item">
-                       <a href="list_Unavailable" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="list_unavailable" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-remove-outline font-22"></i>
                            <span> Unavailable </span>

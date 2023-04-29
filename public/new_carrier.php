@@ -94,11 +94,12 @@
                         <div class="col-12 col-sm-6">
                             <select name="truck_type" class="form-control w-100" required>
                                 <option value="">Select truck type</option>
-                                <option value="Box Truck">Box truck</option>
+                                <option value="Box Truck">Box Truck</option>
                                 <option value="Dry Van">Dry Van</option>
                                 <option value="Refer">Refer</option>
                                 <option value="Power Only">Power Only</option>
                                 <option value="Flat Bed">Flat Bed</option>
+                                <option value="Hot Shot">Hot Shot</option>
                             </select>
                         </div>
                     </div>
@@ -107,9 +108,9 @@
                         <div class="col-12 col-sm-6">
                             <select name="mc_validity" class="form-control w-100" required>
                                 <option value="">Select the validity</option>
-                                <option value="3">less than 3 months</option>
-                                <option value="6">less than 6 months</option>
-                                <option value="12">more than 6 months</option>
+                                <option value="Less than 3 months">Less than 3 months</option>
+                                <option value="Less than 6 months">Less than 6 months</option>
+                                <option value="More than 3 months">More than 6 months</option>
                             </select>
                         </div>
                     </div>

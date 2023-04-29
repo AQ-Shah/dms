@@ -1,6 +1,11 @@
 <?php
-	session_start(); // session start
-	
+    
+    // Set the session timeout to 8 hours (28800 seconds)
+    ini_set('session.gc_maxlifetime', 28800 );
+    
+    // Start the session
+    session_start();
+
 	function message() {
 
 		$output = "";
