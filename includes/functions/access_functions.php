@@ -33,7 +33,7 @@
 
         //permissions for Sales staff only
         if ( $permission === '10'){
-                if ($current_page === 'new_carrier') return true;
+                if ($current_page === 'carrier_create') return true;
             }
         
       return false;

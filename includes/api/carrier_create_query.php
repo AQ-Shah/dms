@@ -1,7 +1,7 @@
 <?php 
 
 // validations
-    $required_fields = array("dot", "b_name", "mc");
+    $required_fields = array("dot", "b_name", "mc","b_address");
     validate_presences($required_fields);
 
     $creator_id = $user['id'];
@@ -19,6 +19,8 @@
     if (isset($_POST['d_number'])) {$d_number = mysql_prep($_POST["d_number"]);} else {$d_number = null;}
     if (isset($_POST['t_length'])) {$t_length = mysql_prep($_POST["t_length"]);} else {$t_length = null;}
     if (isset($_POST['t_weight'])) {$t_weight = mysql_prep($_POST["t_weight"]);} else {$t_weight = null;}
+    if (isset($_POST['truck_no'])) {$truck_no = mysql_prep($_POST["truck_no"]);} else {$truck_no = null;}
+    if (isset($_POST['trailer_no'])) {$trailer_no = mysql_prep($_POST["trailer_no"]);} else {$trailer_no = null;}
     if (isset($_POST['insurance_name'])) {$insurance_name = mysql_prep($_POST["insurance_name"]);} else {$insurance_name = null;}
     if (isset($_POST['insurance_number'])) {$insurance_number = mysql_prep($_POST["insurance_number"]);} else {$insurance_number = null;}
     if (isset($_POST['insurance_street'])) {$insurance_street = mysql_prep($_POST["insurance_street"]);} else {$insurance_street = null;}
@@ -43,8 +45,8 @@
       if (empty($errors)) {
         // Perform the insertion query
 
-        $sql = "INSERT INTO carrier_form (creator_id, dot, mc, b_name, b_address, o_name, b_number, b_email, tax_id, truck_type, mc_validity, d_name, d_number, t_length, t_weight, insurance_name, insurance_number, insurance_street, insurance_state, insurance_email, factoring_name, factoring_number, factoring_street, factoring_state, factoring_email, percentage, hazmat, twic, sida, tic)
-        VALUES ('$creator_id', '$dot', '$mc', '$b_name', '$b_address', '$o_name', '$b_number', '$b_email', '$tax_id', '$truck_type', '$mc_validity', '$d_name', '$d_number', '$t_length', '$t_weight', '$insurance_name', '$insurance_number', '$insurance_street', '$insurance_state', '$insurance_email', '$factoring_name', '$factoring_number', '$factoring_street', '$factoring_state', '$factoring_email', '$percentage', '$hazmat', '$twic', '$sida', '$tic')";
+        $sql = "INSERT INTO carrier_form (creator_id, dot, mc, b_name, b_address, o_name, b_number, b_email, tax_id, truck_type, mc_validity, d_name, d_number, t_length, t_weight, truck_no, trailer_no, insurance_name, insurance_number, insurance_street, insurance_state, insurance_email, factoring_name, factoring_number, factoring_street, factoring_state, factoring_email, percentage, hazmat, twic, sida, tic)
+        VALUES ('$creator_id', '$dot', '$mc', '$b_name', '$b_address', '$o_name', '$b_number', '$b_email', '$tax_id', '$truck_type', '$mc_validity', '$d_name', '$d_number', '$t_length', '$t_weight', '$truck_no', '$trailer_no', '$insurance_name', '$insurance_number', '$insurance_street', '$insurance_state', '$insurance_email', '$factoring_name', '$factoring_number', '$factoring_street', '$factoring_state', '$factoring_email', '$percentage', '$hazmat', '$twic', '$sida', '$tic')";
 
         $result = mysqli_query($connection, $sql);
 

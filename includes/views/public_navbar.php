@@ -63,7 +63,7 @@
                    <?php if ($user['permission']==1 || $user['permission']==10){ ?>
 
                    <li class="d-none d-sm-inline-block">
-                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='new_carrier'">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='carrier_create'">
                            <i class="mdi mdi-truck-plus-outline font-22"></i>
                        </a>
                    </li>
@@ -301,7 +301,7 @@
                    <li class="side-nav-title">Sales</li>
 
                    <li class="side-nav-item">
-                       <a href="new_carrier" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="carrier_create" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-plus-outline font-22"></i>
                            <span> New Carrier </span>

@@ -59,7 +59,8 @@
         <?php if ($user['permission']==1 || $user['permission']==10){ ?>
         <div class="col-12 col-md-3 my-2">
             <div class="d-grid gap-3">
-                <button type="button" class="primary-button" onclick="location.href='new_carrier'">New Carrier</button>
+                <button type="button" class="primary-button" onclick="location.href='carrier_create'">New
+                    Carrier</button>
             </div>
         </div>
         <?php } ?>
