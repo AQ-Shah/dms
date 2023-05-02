@@ -200,8 +200,8 @@
             </div>
             <!-- Last line -->
             <div class="row panel-content-primary card">
-                <div class="col-3 col-sm-3 col-md-3 text-center mt-2">Percentage:</div>
-                <div class="col-3 col-sm-3 col-md-3 text-center mt-2"> <?php echo $form['percentage']; ?></div>
+                <div class="col-3 col-sm-3 col-md-3 text-center mt-2"></div>
+                <div class="col-3 col-sm-3 col-md-3 text-center mt-2"></div>
 
             </div>
         </div>

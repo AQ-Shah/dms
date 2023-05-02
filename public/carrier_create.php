@@ -1,6 +1,6 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "new_carrier";
+    $current_page = "carrier_create";
     include("../includes/layouts/public_header.php"); 
 
 
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <!--Form-->
-            <form class="" role="form" action="new_carrier" method="post" id="carrier-form">
+            <form class="" role="form" action="carrier_create" method="post" id="carrier-form">
                 <?php include("../includes/views/carrier_form.php"); ?>
             </form>
 

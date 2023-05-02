@@ -38,10 +38,8 @@
     $sida = isset($_POST['sida']) ? 1 : 0;
     $tic = isset($_POST['tic']) ? 1 : 0;
 
-      
-    $mc_error = find_carrier_form_by_mc($mc);
 
-    if ($mc_error==null){
+
       if (empty($errors)) {
         // Perform the insertion query
 
@@ -58,8 +56,4 @@
           $_SESSION["message"] = "Carrier Creation failed.";
         }
       }
-    } else {
-      $_SESSION["message"] = "Carrier already exists.";
-    }
-
 ?>
