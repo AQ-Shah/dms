@@ -1,17 +1,21 @@
+<?php
+
+$record_set = find_all_dispatcher();
+
+?>
 <script>
 var dispatchGraphByAgents = document.getElementById('dispatchGraphByAgents').getContext('2d');
 var dispatchGraphByAgentsCreation = new Chart(dispatchGraphByAgents, {
     type: 'bar',
     data: {
-        labels: ['Person 1', 'Person 2', 'Person 3', 'Person 4', 'Person 5'],
+        labels: [
+            <?php while($record = mysqli_fetch_assoc($record_set)) {echo "'".$record['full_name']."',"; }?>
+        ],
+        <?php $record_set = find_all_dispatcher(); ?>
         datasets: [{
             label: 'Dispatch Agents',
             data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100
+                <?php while($record = mysqli_fetch_assoc($record_set)) {echo "'".no_of_dispatch_this_month_by_agent($record['id'])."',"; }?>
             ],
             backgroundColor: [
                 'rgba(	114, 124, 245,0.7)',
