@@ -19,6 +19,10 @@
         <?php if (check_access("update_carrier_location")) {?>
         <button onclick="showMovePopup(<?php echo $record["id"]; ?>)">Change Location</button>
         <?php } ?>
+
+        <?php if (check_access("carrier_assign_dispatcher")) {?>
+        <button onclick="showDAssignDispatcherPopup(<?php echo $record["id"]; ?>)">Assign Dispatcher</button>
+        <?php } ?>
         <!-- add more actions here as needed -->
     </div>
 </div>
