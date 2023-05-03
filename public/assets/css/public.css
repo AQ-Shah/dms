@@ -67,6 +67,17 @@ footer {
     margin-bottom: 1vw;
 }
 
+.panel-content-bordered {
+    display: flex;
+    align-items: center;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    border-style: double;
+    border-radius: 5px;
+    border-width: thin;
+    border-color: var(--ct-card-border-color);
+}
+
 
 /* custom display box */
 
@@ -461,5 +472,8 @@ div.message {
         display: none;
         position: fixed;
         top: 0;
+    }
+    .panel-content-primary {
+        font-size: 8pt;
     }
 }

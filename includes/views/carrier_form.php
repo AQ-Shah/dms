@@ -13,20 +13,20 @@
                     value="<?php if (isset($mc)){echo $mc;} ?>" required /></div>
         </div>
         <div class="col-6 col-sm-4 panel-content-secondary">
-            <div class="col-12 col-sm-6">MC validity : *</div>
+            <div class="col-12 col-sm-6">Service Date : *</div>
             <div class="col-12 col-sm-6">
-                <select name="mc_validity" class="form-control w-100" required>
-                    <option value="">Select the validity</option>
-                    <option value="Less than 3 months">Less than 3 months</option>
-                    <option value="Less than 6 months">Less than 6 months</option>
-                    <option value="More than 3 months">More than 6 months</option>
-                </select>
+                <input type="date" id="mc_validity" name="mc_validity"><br>
             </div>
         </div>
         <div class="col-6 col-sm-4 panel-content-secondary">
             <div class="col-12 col-sm-6">Legal Business Name : *</div>
             <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="b_name"
                     value="<?php if (isset($b_name)){echo $b_name;}  ?>" required></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">DBA : </div>
+            <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="dba"
+                    value="<?php if (isset($dba)){echo $dba;}  ?>"></div>
         </div>
         <div class="col-6 col-sm-4 panel-content-secondary">
             <div class="col-12 col-sm-6">Business Owner Name : </div>
@@ -51,15 +51,28 @@
                     value="<?php if (isset($b_email)){echo $b_email;}  ?>"></div>
         </div>
         <div class="col-6 col-sm-4 panel-content-secondary">
-            <div class="col-12 col-sm-6">Tax ID : </div>
+            <div class="col-12 col-sm-6">Tax ID /EIN : </div>
             <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="tax_id"
                     value="<?php if (isset($tax_id)){echo $tax_id;}  ?>"></div>
         </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Company Type : </div>
+            <div class="col-12 col-sm-6">
+                <select name="b_type" class="form-control w-100">
+                    <option value="Individual/sole proprietor or single-member LLC">Individual/sole proprietor or
+                        single-member LLC</option>
+                    <option value="C Corporation">C Corporation</option>
+                    <option value="S Corporation">S Corporation</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Trust/estate single-member LLC">Trust/estate single-member LLC</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <!-- Truck Info -->
+    <!-- Drivers Info -->
     <div class="row panel-content-primary card">
         <div class="col-12 panel-title mb-3">
-            <h2>Truck Info</h2>
+            <h2>Drivers Info</h2>
         </div>
 
         <div class="col-6 col-sm-4 panel-content-secondary">
@@ -73,6 +86,14 @@
                     class="form-control w-100" name="d_number" value="<?php if (isset($d_number)){echo $d_number;}  ?>">
             </div>
         </div>
+
+    </div>
+    <!-- Truck Info -->
+    <div class="row panel-content-primary card">
+        <div class="col-12 panel-title mb-3">
+            <h2>Truck Info</h2>
+        </div>
+
         <div class="col-6 col-sm-4 panel-content-secondary">
             <div class="col-12 col-sm-6">Truck Type : *</div>
             <div class="col-12 col-sm-6">
@@ -139,9 +160,9 @@
             <div class="col-lg-3">
                 <div class="form-check form-check-inline">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" name="tic"
-                            <?php if (isset($tic) && $tic != 0) echo 'checked'; ?>>
-                        <span class="custom-control-label ml-2" for="tic">Trailer Interchange</span>
+                        <input type="checkbox" class="custom-control-input" name="atp"
+                            <?php if (isset($atp) && $atp != 0) echo 'checked'; ?>>
+                        <span class="custom-control-label ml-2" for="atp">Alcohol Transport Permit </span>
                     </label>
                 </div>
             </div>
@@ -178,6 +199,81 @@
             <div class="col-12 col-sm-6">email: </div>
             <div class="col-12 col-sm-6"><input type="email" class="form-control w-100" name="insurance_email"
                     value="<?php if (isset($insurance_email)){echo $insurance_email;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <!-- alignment -->
+        </div>
+        <div class="text-center">
+            <h5>COMMERCIAL GENERAL LIABILITY</h5>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Number : </div>
+            <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="cgl_no"
+                    value="<?php if (isset($cgl_no)){echo $cgl_no;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Limit : </div>
+            <div class="col-12 col-sm-6"><input type="number" class="form-control w-100" name="cgl_limit"
+                    value="<?php if (isset($cgl_limit)){echo $cgl_limit;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Expiration : </div>
+            <div class="col-12 col-sm-6"><input type="date" class="form-control w-100" name="cgl_expiration"
+                    value="<?php if (isset($cgl_expiration)){echo $cgl_expiration;}  ?>"></div>
+        </div>
+        <div class="text-center">
+            <h5>AUTOMOBILE LIABILITY</h5>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Number : </div>
+            <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="aml_no"
+                    value="<?php if (isset($aml_no)){echo $aml_no;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Limit : </div>
+            <div class="col-12 col-sm-6"><input type="number" class="form-control w-100" name="aml_limit"
+                    value="<?php if (isset($aml_limit)){echo $aml_limit;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Expiration : </div>
+            <div class="col-12 col-sm-6"><input type="date" class="form-control w-100" name="aml_expiration"
+                    value="<?php if (isset($aml_expiration)){echo $aml_expiration;}  ?>"></div>
+        </div>
+        <div class="text-center">
+            <h5>MOTOR TRUCK CARGO</h5>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Number : </div>
+            <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="mtc_no"
+                    value="<?php if (isset($mtc_no)){echo $mtc_no;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Limit : </div>
+            <div class="col-12 col-sm-6"><input type="number" class="form-control w-100" name="mtc_limit"
+                    value="<?php if (isset($mtc_limit)){echo $mtc_limit;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Expiration : </div>
+            <div class="col-12 col-sm-6"><input type="date" class="form-control w-100" name="mtc_expiration"
+                    value="<?php if (isset($mtc_expiration)){echo $mtc_expiration;}  ?>"></div>
+        </div>
+        <div class="text-center">
+            <h5>TRAILER INTERCHANGE</h5>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Number : </div>
+            <div class="col-12 col-sm-6"><input type="text" class="form-control w-100" name="tic_no"
+                    value="<?php if (isset($tic_no)){echo $tic_no;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Limit : </div>
+            <div class="col-12 col-sm-6"><input type="number" class="form-control w-100" name="tic_limit"
+                    value="<?php if (isset($tic_limit)){echo $tic_limit;}  ?>"></div>
+        </div>
+        <div class="col-6 col-sm-4 panel-content-secondary">
+            <div class="col-12 col-sm-6">Policy Expiration : </div>
+            <div class="col-12 col-sm-6"><input type="date" class="form-control w-100" name="tic_expiration"
+                    value="<?php if (isset($tic_expiration)){echo $tic_expiration;}  ?>"></div>
         </div>
     </div>
     <!-- Factoring Info -->
