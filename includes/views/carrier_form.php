@@ -15,7 +15,8 @@
         <div class="col-6 col-sm-4 panel-content-secondary">
             <div class="col-12 col-sm-6">Service Date : *</div>
             <div class="col-12 col-sm-6">
-                <input type="date" id="mc_validity" name="mc_validity"><br>
+                <input type="date" id="mc_validity" name="mc_validity"
+                    value="<?php if (isset($mc_validity)){echo $mc_validity;} ?>"><br>
             </div>
         </div>
         <div class="col-6 col-sm-4 panel-content-secondary">
@@ -59,12 +60,26 @@
             <div class="col-12 col-sm-6">Company Type : </div>
             <div class="col-12 col-sm-6">
                 <select name="b_type" class="form-control w-100">
-                    <option value="Individual/sole proprietor or single-member LLC">Individual/sole proprietor or
+                    <option value="Individual/sole proprietor or single-member LLC"
+                        <?php if (isset($b_type) && $b_type == "Individual/sole proprietor or single-member LLC") echo 'selected'; ?>>
+                        Individual/sole proprietor or
                         single-member LLC</option>
-                    <option value="C Corporation">C Corporation</option>
-                    <option value="S Corporation">S Corporation</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="Trust/estate single-member LLC">Trust/estate single-member LLC</option>
+                    <option value="C Corporation"
+                        <?php if (isset($b_type) && $b_type == "C Corporation") echo 'selected'; ?>>C Corporation
+                    </option>
+                    <option value="S Corporation"
+                        <?php if (isset($b_type) && $b_type == "S Corporation") echo 'selected'; ?>>S Corporation
+                    </option>
+                    <option value="Partnership"
+                        <?php if (isset($b_type) && $b_type == "Partnership") echo 'selected'; ?>>Partnership</option>
+                    <option value="Trust/estate single-member LLC"
+                        <?php if (isset($b_type) && $b_type == "Trust/estate single-member LLC") echo 'selected'; ?>>
+                        Trust/estate single-member LLC</option>
+                    <option value="Limited liability company"
+                        <?php if (isset($b_type) && $b_type == "Limited liability company") echo 'selected'; ?>>
+                        Limited liability company</option>
+                    <option value="Others" <?php if (isset($b_type) && $b_type == "Others") echo 'selected'; ?>>
+                        Others</option>
                 </select>
             </div>
         </div>
@@ -99,12 +114,20 @@
             <div class="col-12 col-sm-6">
                 <select name="truck_type" class="form-control w-100" required>
                     <option value="">Select truck type</option>
-                    <option value="Box Truck">Box Truck</option>
-                    <option value="Dry Van">Dry Van</option>
-                    <option value="Refer">Refer</option>
-                    <option value="Power Only">Power Only</option>
-                    <option value="Flat Bed">Flat Bed</option>
-                    <option value="Hot Shot">Hot Shot</option>
+                    <option value="Box Truck"
+                        <?php if (isset($truck_type) && $truck_type == "Box Truck") echo 'selected'; ?>>Box Truck
+                    </option>
+                    <option value="Dry Van"
+                        <?php if (isset($truck_type) && $truck_type == "Dry Van") echo 'selected'; ?>>Dry Van</option>
+                    <option value="Reefer" <?php if (isset($truck_type) && $truck_type == "Reefer") echo 'selected'; ?>>
+                        Reefer</option>
+                    <option value="Power Only"
+                        <?php if (isset($truck_type) && $truck_type == "Power Only") echo 'selected'; ?>>Power Only
+                    </option>
+                    <option value="Flat Bed"
+                        <?php if (isset($truck_type) && $truck_type == "Flat Bed") echo 'selected'; ?>>Flat Bed</option>
+                    <option value="Hot Shot"
+                        <?php if (isset($truck_type) && $truck_type == "Hot Shot") echo 'selected'; ?>>Hot Shot</option>
                 </select>
             </div>
         </div>
