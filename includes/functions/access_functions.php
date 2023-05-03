@@ -9,8 +9,8 @@
             return true;
             }
             
-        //permission's for Sales & dispatch 
-        if ( $permission === '5' || $permission === '10') {
+        //permission's for Sales & Dispatch 
+        if ( $permission === '4' || $permission === '5' || $permission === '9' || $permission === '10') {
             if ($current_page === 'add_news') return true;
             if ($current_page === 'settings') return true;
             if ($current_page === 'discussion_board') return true;
@@ -20,7 +20,14 @@
             }
 
         //permissions for Dispatch staff only
-        if ( $permission === '5'){
+
+        //supervisor
+        if ( $permission === '4'){
+            if ($current_page === 'carrier_assign_dispatcher') return true;
+            if ($current_page === 'dispatch_dashboard_1') return true;
+            }
+
+        if ( $permission === '4' || $permission === '5'){
             if ($current_page === 'list_carriers') return true;
             if ($current_page === 'list_dispatching') return true;
             if ($current_page === 'list_unavailable') return true;
@@ -32,7 +39,16 @@
             }
 
         //permissions for Sales staff only
-        if ( $permission === '10'){
+
+        //supervisor
+        if ( $permission === '9'){
+            if ($current_page === 'list_carriers') return true;
+            if ($current_page === 'carrier_update') return true;
+            if ($current_page === 'show_carrier') return true;
+            if ($current_page === 'sales_dashboard_1') return true;
+            }
+
+        if ( $permission === '9' || $permission === '10'){
                 if ($current_page === 'carrier_create') return true;
             }
         
@@ -48,7 +64,9 @@
 
     function find_permission($department_id){
         if ($department_id === '1') return 1;
+        if ($department_id === '4') return 4;
         if ($department_id === '5') return 5;
+        if ($department_id === '9') return 9;
         if ($department_id === '10') return 10;
         return 10;
     }

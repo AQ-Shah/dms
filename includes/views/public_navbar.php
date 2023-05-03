@@ -40,18 +40,27 @@
                        </div>
                    </button>
 
-                   <?php if ($user['permission']==1 || $user['permission']==5){ ?>
+                   <?php if (check_access("list_carriers")){ ?>
 
                    <li class="d-none d-sm-inline-block">
                        <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_carriers'">
                            <i class="mdi mdi-truck-snowflake font-22"></i>
                        </a>
                    </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_dispatching")){ ?>
+
                    <li class="d-none d-sm-inline-block">
                        <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_dispatching'">
                            <i class="mdi mdi-truck-minus-outline font-22"></i>
                        </a>
                    </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_unavailable")){ ?>
                    <li class="d-none d-sm-inline-block">
                        <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_unavailable'">
                            <i class="mdi mdi-truck-remove-outline font-22"></i>
@@ -60,7 +69,8 @@
 
                    <?php } ?>
 
-                   <?php if ($user['permission']==1 || $user['permission']==10){ ?>
+
+                   <?php if (check_access("carrier_create")){ ?>
 
                    <li class="d-none d-sm-inline-block">
                        <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='carrier_create'">
@@ -269,8 +279,10 @@
                        </a>
                    </li>
 
-                   <?php if ($user['permission']==1 || $user['permission']==5){ ?>
+
                    <li class="side-nav-title">Dispatch</li>
+
+                   <?php if (check_access("list_carriers")){ ?>
 
                    <li class="side-nav-item">
                        <a href="list_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
@@ -280,6 +292,10 @@
                        </a>
                    </li>
 
+                   <?php } ?>
+
+                   <?php if (check_access("list_dispatching")){ ?>
+
                    <li class="side-nav-item">
                        <a href="list_dispatching" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
@@ -288,6 +304,10 @@
                        </a>
                    </li>
 
+                   <?php } ?>
+
+                   <?php if (check_access("list_unavailable")){ ?>
+
                    <li class="side-nav-item">
                        <a href="list_unavailable" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
@@ -295,9 +315,11 @@
                            <span> Unavailable </span>
                        </a>
                    </li>
+
                    <?php } ?>
 
-                   <?php if ($user['permission']==1 || $user['permission']==10){ ?>
+                   <?php if (check_access("carrier_create")){ ?>
+
                    <li class="side-nav-title">Sales</li>
 
                    <li class="side-nav-item">
@@ -307,9 +329,10 @@
                            <span> New Carrier </span>
                        </a>
                    </li>
+
                    <?php } ?>
 
-                   <?php if ($user['permission']==1 ){ ?>
+                   <?php if (check_access("management")){ ?>
                    <li class="side-nav-title">Management</li>
 
                    <li class="side-nav-item">

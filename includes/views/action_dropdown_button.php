@@ -8,7 +8,7 @@
             onclick="window.open('carrier_update?id=<?php echo urlencode($record["id"]); ?>', '_blank')">Edit</button>
         <?php } ?>
 
-        <?php if (check_access("carrier_update")) {?>
+        <?php if (check_access("dispatch_carrier")) {?>
         <button onclick="showDispatchPopup(<?php echo $record["id"]; ?>)">Dispatch</button>
         <?php } ?>
 

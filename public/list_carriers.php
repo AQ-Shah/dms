@@ -53,10 +53,7 @@
                                 <th onclick="sortTable(3)">Truck Type
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Truck location
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(5)">Status
+                                <th onclick="sortTable(4)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -77,12 +74,7 @@
                                 ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
-                                    <?php echo htmlentities($record["truck_type"]); ?><br>
-                                    <?php echo htmlentities($record["t_length"]).'ft, '; ?>
-                                    <?php echo htmlentities($record["t_weight"]).'lbs'; ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($record["current_location"]); ?>
+                                    <?php echo htmlentities($record["truck_type"]); ?>
                                 </td>
                                 <td><?php echo htmlentities($record["status"]); ?></td>
                                 <td>

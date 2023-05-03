@@ -56,9 +56,7 @@
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
-                                    <?php echo htmlentities($record["truck_type"]); ?><br>
-                                    <?php echo htmlentities($record["t_length"]).'ft, '; ?>
-                                    <?php echo htmlentities($record["t_weight"]).'lbs'; ?>
+                                    <?php echo htmlentities($record["truck_type"]); ?>
                                 </td>
                                 <td>
                                     <?php echo htmlentities($record["d_name"]); ?>
