@@ -74,6 +74,18 @@ function find_all_dispatcher(){
         return $users_set;
     }
 
+function find_all_sales_agent(){
+        global $connection;
+
+        $query  = "SELECT * ";
+        $query .= "FROM users ";
+        $query .= "WHERE department_id = 9 OR department_id = 10 ";
+        $query .= "ORDER BY full_name ASC";
+        $users_set = mysqli_query($connection, $query);
+        confirm_query($users_set);
+        return $users_set;
+    }
+
 function find_users_by_department($department_id, $start, $end){
         global $connection;
         $safe_department_id = mysqli_real_escape_string($connection, $department_id);

@@ -1,17 +1,21 @@
+<?php
+
+$record_set = find_all_sales_agent();
+
+?>
 <script>
 var saleGraphByAgent = document.getElementById('salesGraphByAgents').getContext('2d');
 var saleGraphByAgentCreation = new Chart(saleGraphByAgent, {
     type: 'bar',
     data: {
-        labels: ['Person 1', 'Person 2', 'Person 3', 'Person 4', 'Person 5'],
+        labels: [
+            <?php while($record = mysqli_fetch_assoc($record_set)) {echo "'".$record['full_name']."',"; }?>
+        ],
+        <?php $record_set = find_all_sales_agent(); ?>
         datasets: [{
             label: 'Sales Agents',
             data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100
+                <?php while($record = mysqli_fetch_assoc($record_set)) {echo "'".no_of_carrier_this_month_by_agent($record['id'])."',"; }?>
             ],
             backgroundColor: [
                 'rgba(	114, 124, 245,0.7)',
