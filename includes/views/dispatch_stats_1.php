@@ -4,7 +4,7 @@
     <div class="col-12">
         <div class="page-title-box">
             <h2>
-                Dispatch Stats
+                Carrier Stats
             </h2>
 
         </div>
@@ -21,20 +21,20 @@
     </div>
     <div class="col-3">
         <div class=" custom-panel card" style="background:#58467e">
-            <h3><?php echo no_of_unavailable_carriers();?></h3>
-            <p>Unavailable</p>
+            <h3><?php echo no_of_carrier_form()-no_of_unavailable_carriers();?></h3>
+            <p>Active Carriers</p>
         </div>
     </div>
     <div class="col-3">
         <div class=" custom-panel card" style="background:#0d6631">
             <h3><?php echo no_of_dispatched_carriers();?></h3>
-            <p>Dispatched</p>
+            <p>On Load</p>
         </div>
     </div>
     <div class="col-3">
         <div class=" custom-panel card" style="background:#d43a0f">
             <h3><?php echo no_of_carrier_form()-no_of_unavailable_carriers()-no_of_dispatched_carriers();?></h3>
-            <p>Pending</p>
+            <p>Pending Dispatch</p>
         </div>
     </div>
 </div>
