@@ -9,6 +9,16 @@
 			confirm_query($set);
 			return $set;}
 
+		function find_all_dispatch_list_from($start,$end){
+			global $connection;
+			$query  = "SELECT * ";
+			$query .= "FROM dispatch_list ";
+			$query .= "ORDER BY dispatch_time DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
 		function no_of_dispatch_list(){
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -380,7 +390,7 @@
 			return $record;}
 
 		
-			function find_dispatch_list_by_id($id){
+		function find_dispatch_list_by_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
@@ -423,8 +433,7 @@
 				return $data;
 			} else {
 				return null;
-			}}
-			
+			}}	
 
 	
 ?>

@@ -38,7 +38,6 @@
          
         $result = mysqli_multi_query($connection, $query);
 
-        echo $query;
          if ($result) {
             // Success
             $_SESSION["message"] = "Carrier Dispatched Successfully.";
