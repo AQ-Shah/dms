@@ -60,6 +60,16 @@
 
                    <?php } ?>
 
+                   <?php if (check_access("list_dispatched")){ ?>
+
+                   <li class="d-none d-sm-inline-block">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_dispatched'">
+                           <i class="mdi mdi-truck font-22"></i>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
                    <?php if (check_access("list_unavailable")){ ?>
                    <li class="d-none d-sm-inline-block">
                        <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_unavailable'">
@@ -301,6 +311,18 @@
                            class="side-nav-link">
                            <i class="mdi mdi-truck-minus-outline font-22"></i>
                            <span> Dispatch Pending </span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_dispatched")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck font-22"></i>
+                           <span> Dispatched List </span>
                        </a>
                    </li>
 

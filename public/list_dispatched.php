@@ -54,10 +54,22 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
-                                <td><?php echo htmlentities($record["dispatcher_id"]); ?></td>
-                                <td><?php echo htmlentities($record["dispatch_time"]); ?></td>
                                 <td>
-                                    <?php echo htmlentities($record["carrier_id"]); ?>
+                                    <?php
+                                    if($record["dispatcher_id"]){
+                                        $dispatcher = find_user_by_id($record["dispatcher_id"]);
+                                        echo $dispatcher['full_name'];
+                                    }
+                                    ?>
+                                </td>
+                                <td><?php echo htmlentities(date("d-m-Y", strtotime($record["dispatch_time"]))); ?></td>
+                                <td>
+                                    <?php
+                                    if($record["carrier_id"]){
+                                        $dispatcher = find_carrier_form_by_id($record["carrier_id"]);
+                                        echo $dispatcher['b_name'];
+                                    } 
+                                ?>
                                 </td>
                                 <td>
                                     <?php echo htmlentities($record["current_location"]); ?>

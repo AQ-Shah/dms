@@ -25,11 +25,13 @@
         if ( $permission === '4'){
             if ($current_page === 'carrier_assign_dispatcher') return true;
             if ($current_page === 'dispatch_dashboard_1') return true;
+            if ($current_page === 'update_dispatched_status') return true;
             }
 
         if ( $permission === '4' || $permission === '5'){
             if ($current_page === 'list_carriers') return true;
             if ($current_page === 'list_dispatching') return true;
+            if ($current_page === 'list_dispatched') return true;
             if ($current_page === 'list_unavailable') return true;
             if ($current_page === 'update_carrier_location') return true;
             if ($current_page === 'update_carrier_status') return true;
