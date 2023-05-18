@@ -33,6 +33,7 @@
             if ($current_page === 'list_dispatching') return true;
             if ($current_page === 'list_dispatched') return true;
             if ($current_page === 'list_unavailable') return true;
+            if ($current_page === 'list_working_carriers') return true;
             if ($current_page === 'update_carrier_location') return true;
             if ($current_page === 'update_carrier_status') return true;
             if ($current_page === 'dispatch_carrier') return true;

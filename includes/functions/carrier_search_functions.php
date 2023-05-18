@@ -35,6 +35,15 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_working_carriers(){
+			global $connection;
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status != 'unavailable' ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
 		function no_of_dispatched_carriers(){
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -227,6 +236,18 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 'available' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_working_carrier_form_from($start,$end) {
+			global $connection;
+
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status != 'unavailable' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);

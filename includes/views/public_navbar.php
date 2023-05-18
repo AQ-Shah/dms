@@ -50,21 +50,22 @@
 
                    <?php } ?>
 
-                   <?php if (check_access("list_dispatching")){ ?>
-
+                   <?php if (check_access("list_working_carriers")){ ?>
                    <li class="d-none d-sm-inline-block">
-                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_dispatching'">
-                           <i class="mdi mdi-truck-minus-outline font-22"></i>
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_working_carriers'">
+                           <i class="mdi mdi-truck font-22"></i>
                        </a>
                    </li>
 
                    <?php } ?>
 
+
+
                    <?php if (check_access("list_dispatched")){ ?>
 
                    <li class="d-none d-sm-inline-block">
                        <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_dispatched'">
-                           <i class="mdi mdi-truck font-22"></i>
+                           <i class="mdi mdi-truck-delivery font-22"></i>
                        </a>
                    </li>
 
@@ -78,6 +79,18 @@
                    </li>
 
                    <?php } ?>
+
+                   <?php if (check_access("list_dispatching")){ ?>
+
+                   <li class="d-none d-sm-inline-block">
+                       <a class="nav-link" data-bs-toggle="offcanvas" onclick="location.href='list_dispatching'">
+                           <i class="mdi mdi-truck-minus-outline font-22"></i>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+
 
 
                    <?php if (check_access("carrier_create")){ ?>
@@ -290,7 +303,7 @@
                    </li>
 
 
-                   <li class="side-nav-title">Dispatch</li>
+                   <li class="side-nav-title">Carriers Section</li>
 
                    <?php if (check_access("list_carriers")){ ?>
 
@@ -298,31 +311,19 @@
                        <a href="list_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-snowflake font-22"></i>
-                           <span> List Carriers </span>
+                           <span> All Carriers </span>
                        </a>
                    </li>
 
                    <?php } ?>
 
-                   <?php if (check_access("list_dispatching")){ ?>
+                   <?php if (check_access("list_working_carriers")){ ?>
 
                    <li class="side-nav-item">
-                       <a href="list_dispatching" aria-expanded="false" aria-controls="sidebarDashboards"
-                           class="side-nav-link">
-                           <i class="mdi mdi-truck-minus-outline font-22"></i>
-                           <span> Dispatch Pending </span>
-                       </a>
-                   </li>
-
-                   <?php } ?>
-
-                   <?php if (check_access("list_dispatched")){ ?>
-
-                   <li class="side-nav-item">
-                       <a href="list_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="list_working_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck font-22"></i>
-                           <span> Dispatched List </span>
+                           <span> Working Carriers </span>
                        </a>
                    </li>
 
@@ -340,9 +341,39 @@
 
                    <?php } ?>
 
+
+
+                   <?php if (check_access("list_dispatched")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck font-22"></i>
+                           <span> Dispatched List </span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_dispatching")){ ?>
+
+                   <li class="side-nav-title">Dispatcher Section</li>
+
+                   <li class="side-nav-item">
+                       <a href="list_dispatching" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-minus-outline font-22"></i>
+                           <span> My Pending Dispatches</span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+
+
                    <?php if (check_access("carrier_create")){ ?>
 
-                   <li class="side-nav-title">Sales</li>
+                   <li class="side-nav-title">Sales Section</li>
 
                    <li class="side-nav-item">
                        <a href="carrier_create" aria-expanded="false" aria-controls="sidebarDashboards"
