@@ -52,7 +52,13 @@
                                 <th onclick="sortTable(3)">Truck Type
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Driver Name
+                                <th onclick="sortTable(4)">Driver
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(4)">Contact
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(4)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -78,6 +84,8 @@
                                     <?php echo htmlentities($record["truck_type"]); ?>
                                 </td>
                                 <td><?php echo htmlentities($record["d_name"]); ?></td>
+                                <td><?php echo htmlentities($record["d_number"]); ?></td>
+                                <td><?php echo htmlentities($record["status"]); ?></td>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
                                 </td>

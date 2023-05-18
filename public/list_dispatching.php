@@ -3,7 +3,7 @@
     $current_page = "list_dispatching";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/available_carrier_data_fetch.php"); 
+	include("../includes/pagination/carriers_available_dispatch_by_dispatcher_data_fetch.php"); 
   ?>
 <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
                 <?php echo message(); ?>
 
                 <h2>
-                    Carriers
+                    My Carriers
                 </h2>
 
             </div>
@@ -28,7 +28,7 @@
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Carriers</label>
+                    <label>List of My Pending Dispatches</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
