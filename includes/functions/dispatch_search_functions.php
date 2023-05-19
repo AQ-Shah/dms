@@ -13,7 +13,7 @@
 			global $connection;
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
-			$query .= "ORDER BY dispatch_time DESC ";
+			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -23,6 +23,15 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_cancelled_dispatch_list(){
+			global $connection;
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE status = 'Cancelled' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -217,6 +226,19 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
+			$query .= "WHERE status = 'Dispatched' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_cancelled_dispatch_list_from($start,$end) {
+			global $connection;
+
+			$query  = "SELECT * ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE status = 'Cancelled' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);

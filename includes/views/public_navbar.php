@@ -323,7 +323,7 @@
                        <a href="list_working_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck font-22"></i>
-                           <span> Working Carriers </span>
+                           <span> Active Carriers </span>
                        </a>
                    </li>
 
@@ -335,7 +335,7 @@
                        <a href="list_unavailable" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-remove-outline font-22"></i>
-                           <span> Unavailable </span>
+                           <span> Inactive Carriers </span>
                        </a>
                    </li>
 
@@ -345,11 +345,25 @@
 
                    <?php if (check_access("list_dispatched")){ ?>
 
+                   <li class="side-nav-title">Dispatched Section</li>
+
                    <li class="side-nav-item">
                        <a href="list_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck font-22"></i>
                            <span> Dispatched List </span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_cancelled_dispatched")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_cancelled_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-remove font-22"></i>
+                           <span> Cancelled Dispatched </span>
                        </a>
                    </li>
 
