@@ -314,6 +314,16 @@
 
             </div>
 
+            <?php if (check_access("commission_view")){ ?>
+            <!-- Commission Info -->
+            <div class="row panel-content-primary card no-print ">
+
+                <div class="col-6 text-end">Percentage : </div>
+                <div class="col-6 text-start"> <?php echo $form['percentage']; ?></div>
+
+            </div>
+            <?php } ?>
+
         </div>
 
     </div>
