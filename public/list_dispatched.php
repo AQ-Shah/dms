@@ -46,6 +46,9 @@
                                 <th onclick="sortTable(3)">From <span class="sort-arrows"></span> </th>
                                 <th onclick="sortTable(4)">To <span class="sort-arrows"></span> </th>
                                 <th onclick="sortTable(5)">Rate <span class="sort-arrows"></span> </th>
+                                <?php if (check_access("commission_view")){ ?>
+                                <th onclick="sortTable(5)">Commission <span class="sort-arrows"></span> </th>
+                                <?php } ?>
                                 <th onclick="sortTable(6)">Status <span class="sort-arrows"></span> </th>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                             </tr>
@@ -75,7 +78,10 @@
                                     <?php echo htmlentities($record["current_location"]); ?>
                                 </td>
                                 <td><?php echo htmlentities($record["new_location"]); ?></td>
-                                <td><?php echo htmlentities($record["rate"]); ?></td>
+                                <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
+                                <?php if (check_access("commission_view")){ ?>
+                                <td><?php echo '$'.htmlentities($record["commission"]); ?></td>
+                                <?php } ?>
                                 <td <?php if($record["status"] == 'Cancelled') { ?> style="color: red;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
 
