@@ -7,5 +7,5 @@
 	$_SESSION["username"] = null;
 	$_SESSION["designation"] = null;
 	$_SESSION["permission"] = null;
-	redirect_to("login.php");
+	redirect_to("login");
 ?>
