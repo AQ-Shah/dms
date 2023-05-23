@@ -39,6 +39,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_available_carriers_by_dispatcher($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status != 'unavailable' ";
+			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
 		function no_of_unavailable_carriers(){
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -262,6 +275,20 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 'available' ";
+			$query .= "AND dispatcher_id = '{$safe_id}' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_available_carriers_by_dispatcher_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status != 'unavailable' ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";

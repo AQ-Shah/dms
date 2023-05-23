@@ -40,6 +40,7 @@
                        </div>
                    </button>
 
+                   <!-- removing the top icons in the nav bar 
                    <?php if (check_access("list_carriers")){ ?>
 
                    <li class="d-none d-sm-inline-block">
@@ -102,8 +103,8 @@
                    </li>
 
                    <?php } ?>
+                -->
                </div>
-
                <ul class="topbar-menu d-flex align-items-center gap-3">
 
 
@@ -303,9 +304,9 @@
                    </li>
 
 
-                   <li class="side-nav-title">Carriers Section</li>
 
                    <?php if (check_access("list_carriers")){ ?>
+                   <li class="side-nav-title">Carriers Section</li>
 
                    <li class="side-nav-item">
                        <a href="list_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
@@ -369,15 +370,39 @@
 
                    <?php } ?>
 
-                   <?php if (check_access("list_dispatching")){ ?>
+                   <?php if (check_access("list_my_carriers")){ ?>
 
                    <li class="side-nav-title">Dispatcher Section</li>
 
                    <li class="side-nav-item">
-                       <a href="list_dispatching" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="list_my_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-minus-outline font-22"></i>
-                           <span> My Pending Dispatches</span>
+                           <span> My Assigned Carriers</span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_my_dispatched")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_my_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck font-22"></i>
+                           <span> My Dispatched</span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_my_cancelled_dispatched")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_my_cancelled_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-remove font-22"></i>
+                           <span> My Cancelled Dispatched</span>
                        </a>
                    </li>
 

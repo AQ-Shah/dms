@@ -1,9 +1,9 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "list_dispatched";
+    $current_page = "list_my_cancelled_dispatched";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/dispatched_data_fetch.php"); 
+	include("../includes/pagination/dispatched_my_cancelled_dispatched_data_fetch.php"); 
   ?>
 <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
                 <?php echo message(); ?>
 
                 <h2>
-                    Carriers
+                    Dispatched Section
                 </h2>
 
             </div>
@@ -28,7 +28,7 @@
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Carriers</label>
+                    <label>List of My Canceled Dispatched</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
@@ -50,7 +50,9 @@
                                 <th onclick="sortTable(6)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
                                 <th onclick="sortTable(7)">Status <span class="sort-arrows"></span> </th>
+                                <?php if (check_access("update_dispatched_status")) { ?>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>

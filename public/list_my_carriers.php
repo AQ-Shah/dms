@@ -1,11 +1,11 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "list_working_carriers";
+    $current_page = "list_my_carriers";
 	include("../includes/layouts/public_header.php"); 
-	include("../includes/pagination/carriers_working_data_fetch.php"); 
+   
+	include("../includes/pagination/carriers_by_dispatcher_data_fetch.php"); 
   ?>
 <div class="container">
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -13,7 +13,7 @@
                 <?php echo message(); ?>
 
                 <h2>
-                    Working Carriers
+                    My Carriers
                 </h2>
 
             </div>
@@ -28,7 +28,7 @@
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Working Carriers</label>
+                    <label>List of My Assigned Carriers</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
@@ -40,28 +40,14 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(0)">MC
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(1)">Dispatcher
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(2)">Carrier Name
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(3)">Truck Type
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(4)">Driver
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(4)">Contact
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(4)">Status
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th>Action</th>
+                                <th onclick="sortTable(0)">MC <span class="sort-arrows"></span></th>
+                                <th onclick="sortTable(1)">Carrier Name <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(2)">Truck Type <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(3)">Truck location <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(4)">Driver Name <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(5)">Driver Number <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(6)">Status <span class="sort-arrows"></span> </th>
+                                <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,19 +55,12 @@
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
-                                <td><?php
-                                    if($record["dispatcher_id"]){
-                                        $dispatcher = find_user_by_id($record["dispatcher_id"]);
-                                        echo $dispatcher['full_name'];
-                                    } else {
-                                        echo "Not Assigned";
-                                    }
-                                ?></td>
-                                <td>
-                                    <?php echo htmlentities($record["b_name"]); ?>
-                                </td>
+                                <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
                                     <?php echo htmlentities($record["truck_type"]); ?>
+                                </td>
+                                <td>
+                                    <?php echo htmlentities($record["current_location"]); ?>
                                 </td>
                                 <td><?php echo htmlentities($record["d_name"]); ?></td>
                                 <td><?php echo htmlentities($record["d_number"]); ?></td>
@@ -105,12 +84,10 @@
 
 </div>
 
-
-
 <?php 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
-    include("../includes/views/carrier_move_popup.php"); 
+	include("../includes/views/carrier_move_popup.php"); 
 	include("../includes/views/carrier_dispatch_popup.php"); 
 	include("../includes/pagination/table_script.php"); 
 	include("../includes/layouts/public_footer.php"); 

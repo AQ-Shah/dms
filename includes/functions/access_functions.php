@@ -28,18 +28,20 @@
             if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'list_carriers') return true;
             if ($current_page === 'list_unavailable') return true;
+            if ($current_page === 'list_dispatching') return true;
+            if ($current_page === 'list_dispatched') return true;
+            if ($current_page === 'list_cancelled_dispatched') return true;
+            if ($current_page === 'list_working_carriers') return true;
             if ($current_page === 'update_carrier_status') return true;
             if ($current_page === 'dispatch_stats_1') return true;
             }
 
         if ( $permission === '4' || $permission === '5'){
             
-            if ($current_page === 'list_dispatching') return true;
-            if ($current_page === 'list_dispatched') return true;
-            if ($current_page === 'list_cancelled_dispatched') return true;
-            if ($current_page === 'list_working_carriers') return true;
+            if ($current_page === 'list_my_carriers') return true;
+            if ($current_page === 'list_my_dispatched') return true;
+            if ($current_page === 'list_my_cancelled_dispatched') return true;
             if ($current_page === 'update_carrier_location') return true;
-            
             if ($current_page === 'dispatch_carrier') return true;
             if ($current_page === 'show_carrier') return true;
             
@@ -80,7 +82,9 @@
    
     function find_designation($department_id){
         if ($department_id === '1') return 'Manager';
+        if ($department_id === '4') return 'Dispatch Supervisor';
         if ($department_id === '5') return 'Dispatch Agent';
+        if ($department_id === '9') return 'Sales Supervisor';
         if ($department_id === '10') return 'Sales Agent';
         return 'Not Assigned';
     }
