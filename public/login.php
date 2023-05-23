@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
             <div class="login-container">
                 <div class="d-flex justify-content-center mb-3">
                     <!-- add your logo image here -->
-                    <img src="images/icon.png" alt="Logo" class="logo rounded-pill">
+                    <img src="assets/images/logo-dark.png" alt="Logo" class="logo rounded-pill">
                 </div>
 
                 <?php echo message(); ?>

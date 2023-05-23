@@ -38,6 +38,7 @@
 
         if ( $permission === '4' || $permission === '5'){
             
+            if ($current_page === 'list_working_carriers') return true;
             if ($current_page === 'list_my_carriers') return true;
             if ($current_page === 'list_my_dispatched') return true;
             if ($current_page === 'list_my_cancelled_dispatched') return true;
