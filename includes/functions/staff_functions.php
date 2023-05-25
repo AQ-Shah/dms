@@ -157,6 +157,7 @@ function find_user_by_id($user_id) {
         $query .= "FROM users ";
         $query .= "WHERE id = {$safe_user_id} ";
         $query .= "LIMIT 1";
+
         $user_set = mysqli_query($connection, $query);
         confirm_query($user_set);
         if($user = mysqli_fetch_assoc($user_set)) {
@@ -166,6 +167,12 @@ function find_user_by_id($user_id) {
         }
     }
 
+function find_user_permission(){
+		$encryption_key = get_encryption_key();
+        $permission_vector_key = get_permission_vector_key();
+		$user_permission =  openssl_decrypt($_COOKIE["permission"], "AES-256-CBC", $encryption_key, 0, $permission_vector_key);
+		return $user_permission;
+	}
 
 function find_user_by_username($username) {
         global $connection;

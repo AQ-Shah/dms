@@ -2,7 +2,7 @@
 
     function check_access($current_page){
         
-        $permission= $_SESSION["permission"];
+        $permission= find_user_permission();
         
         //permission's for admin & top management 
         if ($permission === '1' || $current_page ==='home'){

@@ -11,6 +11,7 @@
 	require_once("discussion_functions.php");
 	require_once("validation_functions.php");
 	
+	
 	function redirect_to($url)
     {
         if (!headers_sent())
@@ -73,78 +74,91 @@
 		  return ($percentage / 100) * $rate; 
 	}
 
-	//pagination functions
 
+		// Notification functions
+	function find_notification($id){
+			global $connection;
 
+			$safe_id = mysqli_real_escape_string($connection, $id);
 
-																			// Notification functions
-function find_notification($id){
+			$query  = "SELECT * ";
+			$query .= "FROM notification ";
+			$query .= "WHERE id = '{$safe_id}' ";
+			$query .= "LIMIT 1";
+			$notification_set = mysqli_query($connection, $query);
+			confirm_query($notification_set);
+			if($notification = mysqli_fetch_assoc($notification_set)) {
+				return $notification;
+			} else {
+				return null;
+			}
+	}
+	function find_notifications_of($user_id){
+			global $connection;
+			$safe_user_id = mysqli_real_escape_string($connection, $user_id);
+			$query  = "SELECT * ";
+			$query .= "FROM notification ";
+			$query .= "WHERE receiver_id = '{$safe_user_id}' ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+	}
+	function find_notifications_of_from($user_id,$start,$end){
+			global $connection;
+			$safe_user_id = mysqli_real_escape_string($connection, $user_id);
+			$query  = "SELECT * ";
+			$query .= "FROM notification ";
+			$query .= "WHERE receiver_id = '{$safe_user_id}' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+	}
+
+	function count_unseen_notifications_of($user_id){
+			global $connection;
+			$safe_user_id = mysqli_real_escape_string($connection, $user_id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM notification ";
+			$query .= "WHERE receiver_id = '{$safe_user_id}' ";
+			$query .= "AND seen = 0 ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+	}
+	function create_notification($to,$from,$content,$link){
 		global $connection;
+		$safe_to = mysqli_real_escape_string($connection, $to);
+		$safe_from = mysqli_real_escape_string($connection, $from);
+		$safe_content = mysqli_real_escape_string($connection, $content);
+		$safe_link = mysqli_real_escape_string($connection, $link);
+		$upload_date = date("Y-m-d");
+		$upload_time = date('H:i:s');
+		$query  = "INSERT INTO notification (";
+		$query .= "  receiver_id, sender_id, content, link ";
+		$query .= ") VALUES (";
+		$query .= "  '{$safe_to}', '{$safe_from}', '{$safe_content}', '{$safe_link}'";
+		$query .= ")";
+		$result = mysqli_query($connection, $query);
+		confirm_query($result);
+	}
 
-		$safe_id = mysqli_real_escape_string($connection, $id);
+//encryption functions 
 
-		$query  = "SELECT * ";
-		$query .= "FROM notification ";
-		$query .= "WHERE id = '{$safe_id}' ";
-		$query .= "LIMIT 1";
-		$notification_set = mysqli_query($connection, $query);
-		confirm_query($notification_set);
-		if($notification = mysqli_fetch_assoc($notification_set)) {
-			return $notification;
-		} else {
-			return null;
-		}
-}
-function find_notifications_of($user_id){
-		global $connection;
-		$safe_user_id = mysqli_real_escape_string($connection, $user_id);
-		$query  = "SELECT * ";
-		$query .= "FROM notification ";
-		$query .= "WHERE receiver_id = '{$safe_user_id}' ";
-		$set = mysqli_query($connection, $query);
-		confirm_query($set);
-		return $set;
-}
-function find_notifications_of_from($user_id,$start,$end){
-		global $connection;
-		$safe_user_id = mysqli_real_escape_string($connection, $user_id);
-		$query  = "SELECT * ";
-		$query .= "FROM notification ";
-		$query .= "WHERE receiver_id = '{$safe_user_id}' ";
-		$query .= "ORDER BY id DESC ";
-		$query .= "LIMIT {$start},{$end}";
-		$set = mysqli_query($connection, $query);
-		confirm_query($set);
-		return $set;
-}
+	function get_encryption_key() {
+		require_once("../includes/config.php");
+		return ENCRYPTION_KEY;
+	}
+	function get_id_vector_key() {
+		require_once("../includes/config.php");
+		return ID_VECTOR_KEY;
+	}
+	function get_permission_vector_key() {
+		require_once("../includes/config.php");
+		return PERMISSION_VECTOR_KEY;
+	}
 
-function count_unseen_notifications_of($user_id){
-		global $connection;
-		$safe_user_id = mysqli_real_escape_string($connection, $user_id);
-		$query  = "SELECT COUNT('id') ";
-		$query .= "FROM notification ";
-		$query .= "WHERE receiver_id = '{$safe_user_id}' ";
-		$query .= "AND seen = 0 ";
-		$set = mysqli_query($connection, $query);
-		confirm_query($set);
-		return $set;
-}
-function create_notification($to,$from,$content,$link){
-	global $connection;
-	$safe_to = mysqli_real_escape_string($connection, $to);
-	$safe_from = mysqli_real_escape_string($connection, $from);
-	$safe_content = mysqli_real_escape_string($connection, $content);
-	$safe_link = mysqli_real_escape_string($connection, $link);
-	$upload_date = date("Y-m-d");
-	$upload_time = date('H:i:s');
-    $query  = "INSERT INTO notification (";
-    $query .= "  receiver_id, sender_id, content, link ";
-    $query .= ") VALUES (";
-    $query .= "  '{$safe_to}', '{$safe_from}', '{$safe_content}', '{$safe_link}'";
-    $query .= ")";
-    $result = mysqli_query($connection, $query);
-	confirm_query($result);
-}
 
 //PASSWORD FUNCTIONS
 	function password_encrypt($password) {
@@ -222,8 +236,19 @@ function create_notification($to,$from,$content,$link){
 			 return true ;
 		}
 	}
+
+	function find_user_id(){
+		$encryption_key = get_encryption_key();
+		$id_vector_key = get_id_vector_key();
+
+		$user_id =  openssl_decrypt($_COOKIE["id"], "AES-256-CBC", $encryption_key, 0, $id_vector_key);
+		return $user_id;
+	}
+
+
 	function user_logged_in() {
-		 if (isset($_SESSION['id'])){
+		$user_id = find_user_id();
+		if (isset($user_id) && !empty($user_id)) {
 			 return true ;
 		}
 	}

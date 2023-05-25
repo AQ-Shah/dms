@@ -3,9 +3,11 @@
 
 <?php
 	
-	$_SESSION["id"] = null;
-	$_SESSION["username"] = null;
-	$_SESSION["designation"] = null;
-	$_SESSION["permission"] = null;
+	setcookie("id", "", time() - 3600, "/");
+	setcookie("permission", "", time() - 3600, "/");
+	setcookie("username", "", time() - 3600, "/");
+	setcookie("full_name", "", time() - 3600, "/");
+	setcookie("designation", "", time() - 3600, "/");
+	
 	redirect_to("login");
 ?>

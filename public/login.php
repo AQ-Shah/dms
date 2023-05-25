@@ -1,36 +1,9 @@
 <?php require_once("../includes/session.php"); ?>
+<?php require_once("../includes/config.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions/functions.php"); ?>
 <?php include("../includes/layouts/public_stylesheets.php"); ?>
-<?php
-$username = "";
-
-if (isset($_POST['submit'])) {
-  $required_fields = array("username", "password");
-  validate_presences($required_fields);
-
-  if (empty($errors)) {
-    // Attempt Login
-		$username = $_POST["username"];
-		$password = $_POST["password"];
-		$found_user = attempt_login_user($username, $password);
-
-    if ($found_user) {
-      // Success
-			// Mark user as logged in
-			$_SESSION["id"] = $found_user["id"];
-			$_SESSION["username"] = $found_user["username"];
-			$_SESSION["full_name"] = $found_user["full_name"];
-			$_SESSION["designation"] = $found_user["designation"];
-			$_SESSION["permission"] = $found_user["permission"];
-            redirect_to("home");
-    } else {
-      // Failure
-      $_SESSION["message"] = "Username/password not found.";
-    }
-  }
-}
-?>
+<?php include("../includes/api/login.php"); ?>
 
 
 <div class="container">
