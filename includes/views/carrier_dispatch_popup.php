@@ -2,10 +2,15 @@
     <div class="popup-content">
         <h2>Dispatch Carrier</h2>
         <form class="dispatch-popup-form popup-form" action="" method="post">
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location"><br>
-            <label for="datetime">Estimated Date and Time:</label>
-            <input type="datetime-local" id="datetime" name="datetime"><br>
+            <label for="location">Dispatching From:</label>
+            <input type="text" id="current_location" name="current_location"
+                placeholder="if not from current location"><br>
+            <label for="location">Dispatching To:</label>
+            <input type="text" id="dispatch_location" name="dispatch_location"><br>
+            <label for="datetime">Estimated Pickup Time:</label>
+            <input type="datetime-local" id="pickup_datetime" name="pickup_datetime"><br>
+            <label for="datetime">Estimated Delivery Time:</label>
+            <input type="datetime-local" id="delivery_datetime" name="delivery_datetime"><br>
             <label for="rate">Rate:</label>
             <input type="number" id="rate" name="rate"><br><br>
             <input type="hidden" id="carrier-id" name="carrier_id" value="">
@@ -22,9 +27,6 @@
 function showDispatchPopup(carrierId) {
     // Populate the form fields with default values
     document.getElementById("carrier-id").value = carrierId;
-    document.getElementById("location").value = "";
-    document.getElementById("datetime").value = "";
-    document.getElementById("rate").value = "";
 
     var formAction = "dispatch_carrier?id=" + carrierId;
 

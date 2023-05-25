@@ -21,7 +21,7 @@
        
         $query  = "UPDATE dispatch_list SET status ='{$status}'";
         $query .= "WHERE id = {$dispatchedId} LIMIT 1; ";
-        $query  .= "UPDATE carrier_form SET status ='available', current_location = 'test' WHERE id = $carrierId LIMIT 1";
+        $query  .= "UPDATE carrier_form SET status ='available' WHERE id = $carrierId LIMIT 1";
          
         $result = mysqli_multi_query($connection, $query);
 
