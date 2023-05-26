@@ -5,8 +5,6 @@
     require_once("../includes/functions/functions.php");
     
     confirm_user_logged_in();
-    
-    $user_id = find_user_id();
-    $user = find_user_by_id($user_id);
+    $user = find_user_by_id( find_user_id());
     
 ?>

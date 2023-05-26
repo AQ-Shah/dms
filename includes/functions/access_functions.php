@@ -3,9 +3,14 @@
     function check_access($current_page){
         
         $permission= find_user_permission();
+
+         if ($current_page ==='home'){ return true; }
         
         //permission's for admin & top management 
-        if ($permission === '1' || $current_page ==='home'){
+        if ($permission === '1'){
+            if ($current_page === 'list_my_carriers') return false;
+            if ($current_page === 'list_my_dispatched') return false;
+            if ($current_page === 'list_my_cancelled_dispatched') return false;
             return true;
             }
             
@@ -38,7 +43,7 @@
 
         if ( $permission === '4' || $permission === '5'){
             
-            if ($current_page === 'list_working_carriers') return true;
+
             if ($current_page === 'list_my_carriers') return true;
             if ($current_page === 'list_my_dispatched') return true;
             if ($current_page === 'list_my_cancelled_dispatched') return true;
