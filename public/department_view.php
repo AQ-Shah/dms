@@ -45,9 +45,11 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
+                                <?php if($department['id'] != 1) { ?>
                                 <th onclick="sortTable(0)">Team
                                     <span class="sort-arrows"></span>
                                 </th>
+                                <?php } ?>
                                 <th onclick="sortTable(1)">Name
                                     <span class="sort-arrows"></span>
                                 </th>
@@ -67,6 +69,7 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
+                                <?php if($department['id'] != 1) { ?>
                                 <td><?php
                                     if($record["team_id"]){
                                         $team = find_team_by_id($record["team_id"]);
@@ -75,6 +78,7 @@
                                         echo "Not Assigned";
                                     }
                                 ?></td>
+                                <?php } ?>
                                 <td><?php echo htmlentities($record["full_name"]); ?></td>
                                 <td><?php echo htmlentities($record["designation"]); ?></td>
                                 <td><?php echo htmlentities($record["email"]); ?></td>
