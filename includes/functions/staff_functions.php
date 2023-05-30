@@ -62,6 +62,36 @@ function find_all_users_by_department($department_id){
         return $users_set;
     }
 
+//Team Functions
+function find_all_teams_by_department($department_id){
+        global $connection;
+        $safe_department_id = mysqli_real_escape_string($connection, $department_id);
+        $query  = "SELECT * ";
+        $query .= "FROM teams ";
+        $query .= "WHERE department_id = {$safe_department_id} ";
+        $query .= "ORDER BY name ASC";
+        $users_set = mysqli_query($connection, $query);
+        confirm_query($users_set);
+        return $users_set;
+    }
+function find_team_by_id($id){
+       global $connection;
+        
+        $safe_id = mysqli_real_escape_string($connection, $id);
+        
+        $query  = "SELECT * ";
+        $query .= "FROM teams ";
+        $query .= "WHERE id = {$safe_id} ";
+        $query .= "LIMIT 1";
+        $record_set = mysqli_query($connection, $query);
+        confirm_query($record_set);
+        if($record = mysqli_fetch_assoc($record_set)) {
+            return $record;
+        } else {
+            return null;
+        }
+    }
+
 function find_all_dispatcher(){
         global $connection;
 
@@ -137,6 +167,7 @@ function find_department_by_id($department_id) {
         }
     }
 
+    //
 function find_all_users() {
         global $connection;
         

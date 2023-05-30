@@ -77,21 +77,26 @@
         }
     }
 
-    function find_permission($department_id){
-        if ($department_id === '1') return 1;
-        if ($department_id === '4') return 4;
-        if ($department_id === '5') return 5;
-        if ($department_id === '9') return 9;
-        if ($department_id === '10') return 10;
+   function check_team_view_required($role_id){
+        if ($role_id === '1') return false;
+        return true;
+    }
+    
+    function find_permission($role_id){
+        if ($role_id === '1') return 1;
+        if ($role_id === '4') return 4;
+        if ($role_id === '5') return 5;
+        if ($role_id === '9') return 9;
+        if ($role_id === '10') return 10;
         return 10;
     }
    
-    function find_designation($department_id){
-        if ($department_id === '1') return 'Manager';
-        if ($department_id === '4') return 'Dispatch Supervisor';
-        if ($department_id === '5') return 'Dispatch Agent';
-        if ($department_id === '9') return 'Sales Supervisor';
-        if ($department_id === '10') return 'Sales Agent';
+    function find_designation($role_id){
+        if ($role_id === '1') return 'Manager';
+        if ($role_id === '4') return 'Dispatch Supervisor';
+        if ($role_id === '5') return 'Dispatch Agent';
+        if ($role_id === '9') return 'Sales Supervisor';
+        if ($role_id === '10') return 'Sales Agent';
         return 'Not Assigned';
     }
     

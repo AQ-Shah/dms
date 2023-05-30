@@ -57,9 +57,15 @@ $record_set = find_all_departments();
                 <tbody>
                     <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                     <tr>
-                        <td><?php echo htmlentities($record["name"]); ?></td>
-                        <td><?php echo htmlentities($record["email"]); ?></td>
-                        <td><?php echo htmlentities(no_of_users_by_department($record["id"])); ?></td>
+                        <td style="cursor: pointer;"
+                            onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
+                            <?php echo htmlentities($record["name"]); ?></td>
+                        <td style="cursor: pointer;"
+                            onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
+                            <?php echo htmlentities($record["email"]); ?></td>
+                        <td style="cursor: pointer;"
+                            onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
+                            <?php echo htmlentities(no_of_users_by_department($record["id"])); ?></td>
 
                         <td>
                             <div class="dropdown">

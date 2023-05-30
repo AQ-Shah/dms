@@ -22,18 +22,22 @@
     <div class="row card">
         <div class="col-12">
             <div class="row py-3">
-                <div class="col-5 simple-panel">
+                <div class="col-4 simple-panel">
                     <label>List of Employees by Department</label>
                 </div>
-                <div class="col-5 simple-panel" style="background-color:transparent">
+                <div class="col-4 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
                         placeholder="Search..">
                 </div>
-                <div class="col-2 text-xl-end mt-xl-0 mt-2">
+                <div class="col-4 text-xl-end mt-xl-0 mt-2">
                     <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentUserCreatePopup()"><i
                             class=" mdi mdi-basket me-1"></i>
-                        Add</button>
-
+                        Add User</button>
+                    <?php if (check_team_view_required($_GET['id'])) {?>
+                    <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentTeamCreatePopup()"><i
+                            class=" mdi mdi-basket me-1"></i>
+                        Add Team</button>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row panel table-primary p-2">
@@ -41,16 +45,19 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(0)">Name
+                                <th onclick="sortTable(0)">Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(1)">Designation
+                                <th onclick="sortTable(1)">Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Email
+                                <th onclick="sortTable(2)">Designation
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">Contact #
+                                <th onclick="sortTable(3)">Email
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(4)">Contact #
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -60,6 +67,14 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
+                                <td><?php
+                                    if($record["team_id"]){
+                                        $team = find_team_by_id($record["team_id"]);
+                                        echo $team['name'];
+                                    } else {
+                                        echo "Not Assigned";
+                                    }
+                                ?></td>
                                 <td><?php echo htmlentities($record["full_name"]); ?></td>
                                 <td><?php echo htmlentities($record["designation"]); ?></td>
                                 <td><?php echo htmlentities($record["email"]); ?></td>
@@ -99,6 +114,7 @@
 
 
 <?php
+    include("../includes/views/department_team_create_popup.php"); 
     include("../includes/views/department_user_create_popup.php"); 
     include("../includes/pagination/table_script.php"); 
     include("../includes/layouts/public_footer.php"); 
