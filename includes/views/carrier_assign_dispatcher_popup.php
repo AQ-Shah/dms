@@ -1,7 +1,7 @@
 <?php
-
-$record_set = find_all_dispatcher();
-
+if (check_access("carrier_assign_dispatcher")) {
+$record_set = find_all_users_by_team($user["team_id"]);
+} 
 ?>
 <div id="assign-dispatcher-popup" class="popup">
     <div class="popup-content">

@@ -25,9 +25,23 @@
 			$query .= "FROM dispatch_list ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+			return max(mysqli_fetch_assoc($set));
+			}
+		
+		function no_of_team_dispatch_list($id){
+
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));
+			}
 
 		function no_of_my_dispatch_list($id){
+
 			global $connection;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
@@ -35,6 +49,7 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatcher_id = '{$safe_id}' ";
 			$set = mysqli_query($connection, $query);
+			
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
@@ -45,8 +60,22 @@
 			$query .= "WHERE status = 'Cancelled' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+			return max(mysqli_fetch_assoc($set));
+			}
 		
+		function no_of_team_cancelled_dispatch_list($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE status = 'Cancelled' ";
+			$query .= "AND dispatch_team_id = '{$safe_id}' ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));
+			}
+			
 		function no_of_my_cancelled_dispatch_list($id){
 			global $connection;
 
@@ -57,7 +86,8 @@
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+			return max(mysqli_fetch_assoc($set));
+			}
 			
 		function no_of_dispatch_this_month(){
 			global $connection;
@@ -65,6 +95,19 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Dispatched' ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m");
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_this_month_by_team($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= 'AND MONTH(dispatch_time) = '.date("m") ;
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -92,6 +135,19 @@
 			confirm_query($set);
 			$result = mysqli_fetch_array($set)[0];
 			return max($result, 0);}
+		
+		function no_of_dispatch_last_month_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
 
 		function no_of_dispatch_this_week() {
 			global $connection;
@@ -103,6 +159,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_this_week_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 		function no_of_dispatch_last_week() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -112,6 +181,19 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_last_week_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
 
 		function no_of_dispatch_today() {
 			global $connection;
@@ -123,6 +205,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_today_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND DATE(dispatch_time) = CURDATE()";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 		function no_of_dispatch_yesterday() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -132,6 +227,19 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_yesterday_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
 
 		function no_of_dispatch_sameDayLastWeek() {
 			global $connection;
@@ -143,6 +251,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_sameDayLastWeek_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 		function no_of_dispatch_this_mon() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -152,6 +273,19 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_this_mon_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 0";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
 		
 		function no_of_dispatch_this_tue() {
 			global $connection;
@@ -163,6 +297,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_this_tue_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 1";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}		
+
 		function no_of_dispatch_this_wed() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -172,6 +319,19 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_this_wed_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 2";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
 		
 		function no_of_dispatch_this_thu() {
 			global $connection;
@@ -183,6 +343,20 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_this_thu_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 3";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
+	
 		function no_of_dispatch_this_fri() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -192,7 +366,20 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
-		
+
+		function no_of_dispatch_this_fri_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 4";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 		function no_of_dispatch_last_mon() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -203,6 +390,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 		
+		function no_of_dispatch_last_mon_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 0";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 		function no_of_dispatch_last_tue() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -212,6 +412,20 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_last_tue_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 1";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 
 		function no_of_dispatch_last_wed() {
 			global $connection;
@@ -223,6 +437,20 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_last_wed_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 2";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
+
 		function no_of_dispatch_last_thu() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -233,6 +461,20 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_dispatch_last_thu_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 3";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
+
 		function no_of_dispatch_last_fri() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -242,6 +484,20 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatch_last_fri_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 4";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
 
 		function find_dispatch_list_from($start,$end) {
 			global $connection;
@@ -254,11 +510,28 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
+		
+		function find_team_dispatch_list_from($id,$start,$end) {
+
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT * ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE status = 'Dispatched' ";
+			$query .= "AND dispatch_team_id = '{$safe_id}' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
 
 		function find_my_dispatch_list_from($id, $start,$end) {
-			global $connection;
 
+			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
+			
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Dispatched' ";
@@ -267,7 +540,8 @@
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return $set;}
+			return $set;
+			}
 
 		function find_cancelled_dispatch_list_from($start,$end) {
 			global $connection;
@@ -279,12 +553,30 @@
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return $set;}
+			return $set;
+			}
+		
+		function find_team_cancelled_dispatch_list_from($id,$start,$end) {
+			
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			
+			$query  = "SELECT * ";
+			$query .= "FROM dispatch_list ";
+			$query .= "WHERE status = 'Cancelled' ";
+			$query .= "AND dispatch_team_id = '{$safe_id}' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
 
 		function find_my_cancelled_dispatch_list_from($id,$start,$end) {
-			global $connection;
 
+			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
+
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Cancelled' ";
@@ -293,7 +585,8 @@
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return $set;}
+			return $set;
+			}
 
 		function find_dispatch_rate_total_this_month() {
 			global $connection;

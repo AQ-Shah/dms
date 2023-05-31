@@ -1,9 +1,8 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "list_carriers";
+    $current_page = "list_available_carriers";
 	include("../includes/layouts/public_header.php"); 
-   
-	include("../includes/pagination/carriers_data_fetch.php"); 
+	include("../includes/pagination/carriers_available_data_fetch.php"); 
   ?>
 <div class="container">
 
@@ -14,7 +13,7 @@
                 <?php echo message(); ?>
 
                 <h2>
-                    Carriers
+                    Working Carriers
                 </h2>
 
             </div>
@@ -29,7 +28,7 @@
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Carriers</label>
+                    <label>List of Working Carriers</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"

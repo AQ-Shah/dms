@@ -306,7 +306,8 @@
 
 
                    <?php if (check_access("list_carriers")){ ?>
-                   <li class="side-nav-title">Carriers Section</li>
+
+                   <li class="side-nav-title">All Carriers Section</li>
 
                    <li class="side-nav-item">
                        <a href="list_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
@@ -315,19 +316,17 @@
                            <span> All Carriers </span>
                        </a>
                    </li>
-
                    <?php } ?>
 
-                   <?php if (check_access("list_working_carriers")){ ?>
+                   <?php if (check_access("list_available_carriers")){ ?>
 
                    <li class="side-nav-item">
-                       <a href="list_working_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="list_available_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck font-22"></i>
                            <span> Active Carriers </span>
                        </a>
                    </li>
-
                    <?php } ?>
 
                    <?php if (check_access("list_unavailable")){ ?>
@@ -339,7 +338,41 @@
                            <span> Inactive Carriers </span>
                        </a>
                    </li>
+                   <?php } ?>
 
+                   <?php if (check_access("list_team_all_carriers")  && not_executive($user["permission"])){ ?>
+
+                   <li class="side-nav-title">Carriers List Section</li>
+
+                   <li class="side-nav-item">
+                       <a href="list_team_all_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-snowflake font-22"></i>
+                           <span> All Carriers </span>
+                       </a>
+                   </li>
+                   <?php } ?>
+
+                   <?php if (check_access("list_team_available_carriers")  && not_executive($user["permission"])){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_team_available_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck font-22"></i>
+                           <span> Active Carriers </span>
+                       </a>
+                   </li>
+                   <?php } ?>
+
+                   <?php if (check_access("list_team_unavailable_carriers")  && not_executive($user["permission"])){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_team_unavailable_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-remove-outline font-22"></i>
+                           <span> Inactive Carriers </span>
+                       </a>
+                   </li>
                    <?php } ?>
 
 
@@ -370,7 +403,33 @@
 
                    <?php } ?>
 
-                   <?php if (check_access("list_my_carriers")){ ?>
+                   <?php if (check_access("list_team_dispatched")  && not_executive($user["permission"])){ ?>
+
+                   <li class="side-nav-title">Dispatched Section</li>
+
+                   <li class="side-nav-item">
+                       <a href="list_team_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck font-22"></i>
+                           <span> Dispatched List </span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_team_cancelled_dispatched")  && not_executive($user["permission"])){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_team_cancelled_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-remove font-22"></i>
+                           <span> Cancelled Dispatched </span>
+                       </a>
+                   </li>
+
+                   <?php } ?>
+
+                   <?php if (check_access("list_my_carriers")  && not_executive($user["permission"])){ ?>
 
                    <li class="side-nav-title">Dispatcher Section</li>
 
@@ -384,7 +443,7 @@
 
                    <?php } ?>
 
-                   <?php if (check_access("list_my_dispatched")){ ?>
+                   <?php if (check_access("list_my_dispatched")  && not_executive($user["permission"])){ ?>
 
                    <li class="side-nav-item">
                        <a href="list_my_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"
@@ -396,7 +455,7 @@
 
                    <?php } ?>
 
-                   <?php if (check_access("list_my_cancelled_dispatched")){ ?>
+                   <?php if (check_access("list_my_cancelled_dispatched")  && not_executive($user["permission"])){ ?>
 
                    <li class="side-nav-item">
                        <a href="list_my_cancelled_dispatched" aria-expanded="false" aria-controls="sidebarDashboards"

@@ -1,12 +1,11 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "list_carriers";
+    $current_page = "list_team_available_carriers";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/carriers_data_fetch.php"); 
+	include("../includes/pagination/carriers_by_team_unavailable_data_fetch.php"); 
   ?>
 <div class="container">
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -14,7 +13,7 @@
                 <?php echo message(); ?>
 
                 <h2>
-                    Carriers
+                    Team Carriers
                 </h2>
 
             </div>
@@ -22,14 +21,14 @@
     </div>
 
     <div class="row card">
-        <?php include("../includes/views/dispatch_stats_1.php"); ?>
+        <?php include("../includes/views/stats_box_dispatch_team_1.php"); ?>
     </div>
 
     <div class="row card">
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Carriers</label>
+                    <label>List of Available Carriers</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
@@ -44,19 +43,19 @@
                                 <th onclick="sortTable(0)">MC
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(1)">Team
+                                <th onclick="sortTable(1)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Dispatcher
+                                <th onclick="sortTable(2)">Truck Type
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">Carrier Name
+                                <th onclick="sortTable(3)">Driver Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Truck Type
+                                <th onclick="sortTable(4)">Driver Number
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(5)">Status
+                                <th onclick="sortTable(5)">Reason of unavailability
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -67,28 +66,15 @@
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
-                                <td><?php
-                                    if($record["dispatch_team_id"]){
-                                        $dispatcher = find_team_by_id($record["dispatch_team_id"]);
-                                        echo $dispatcher['name'];
-                                    } else {
-                                        echo "Not Assigned";
-                                    }
-                                ?></td>
-                                <td><?php
-                                    if($record["dispatcher_id"]){
-                                        $dispatcher = find_user_by_id($record["dispatcher_id"]);
-                                        echo $dispatcher['full_name'];
-                                    } else {
-                                        echo "Not Assigned";
-                                    }
-                                ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
                                     <?php echo htmlentities($record["truck_type"]); ?>
                                 </td>
-                                <td <?php if($record["status"] == 'unavailable') { ?> style="color: red;" <?php } ?>>
-                                    <?php echo htmlentities($record["status"]); ?></td>
+                                <td>
+                                    <?php echo htmlentities($record["d_name"]); ?>
+                                </td>
+                                <td><?php echo htmlentities($record["d_number"]); ?></td>
+                                <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
                                 </td>
@@ -108,12 +94,10 @@
 
 </div>
 
-
-
 <?php 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
-    include("../includes/views/carrier_move_popup.php"); 
+	include("../includes/views/carrier_move_popup.php"); 
 	include("../includes/views/carrier_dispatch_popup.php"); 
 	include("../includes/pagination/table_script.php"); 
 	include("../includes/layouts/public_footer.php"); 

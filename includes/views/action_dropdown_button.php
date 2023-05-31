@@ -23,6 +23,10 @@
         <?php if (check_access("carrier_assign_dispatcher")) {?>
         <button onclick="showDAssignDispatcherPopup(<?php echo $record["id"]; ?>)">Assign Dispatcher</button>
         <?php } ?>
+
+        <?php if (check_access("carrier_assign_team")) {?>
+        <button onclick="showDAssignTeamPopup(<?php echo $record["id"]; ?>)">Assign Team</button>
+        <?php } ?>
         <!-- add more actions here as needed -->
     </div>
 </div>

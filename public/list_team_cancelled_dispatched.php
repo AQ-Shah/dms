@@ -1,9 +1,9 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "list_cancelled_dispatched";
+    $current_page = "list_team_cancelled_dispatched";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/dispatched_cancelled_data_fetch.php"); 
+	include("../includes/pagination/carriers_team_cancelled_dispatched_data_fetch.php"); 
   ?>
 <div class="container">
     <div class="row">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="row card">
-        <?php include("../includes/views/dispatch_stats_1.php"); ?>
+        <?php include("../includes/views/stats_box_dispatch_team_1.php"); ?>
     </div>
 
     <div class="row card">
@@ -47,9 +47,9 @@
                                 <th onclick="sortTable(4)">To <span class="sort-arrows"></span> </th>
                                 <th onclick="sortTable(5)">Rate <span class="sort-arrows"></span> </th>
                                 <?php if (check_access("commission_view")){ ?>
-                                <th onclick="sortTable(5)">Commission <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(6)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
-                                <th onclick="sortTable(6)">Status <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(7)">Status <span class="sort-arrows"></span> </th>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                             </tr>
                         </thead>

@@ -1,11 +1,11 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "list_working_carriers";
+    $current_page = "list_team_available_carriers";
 	include("../includes/layouts/public_header.php"); 
-	include("../includes/pagination/carriers_working_data_fetch.php"); 
+   
+	include("../includes/pagination/carriers_by_team_available_data_fetch.php"); 
   ?>
 <div class="container">
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -13,7 +13,7 @@
                 <?php echo message(); ?>
 
                 <h2>
-                    Working Carriers
+                    Team Carriers
                 </h2>
 
             </div>
@@ -21,14 +21,14 @@
     </div>
 
     <div class="row card">
-        <?php include("../includes/views/dispatch_stats_1.php"); ?>
+        <?php include("../includes/views/stats_box_dispatch_team_1.php"); ?>
     </div>
 
     <div class="row card">
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Working Carriers</label>
+                    <label>List of Available Carriers</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
@@ -52,12 +52,6 @@
                                 <th onclick="sortTable(3)">Truck Type
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Driver
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(4)">Contact
-                                    <span class="sort-arrows"></span>
-                                </th>
                                 <th onclick="sortTable(4)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
@@ -77,14 +71,10 @@
                                         echo "Not Assigned";
                                     }
                                 ?></td>
-                                <td>
-                                    <?php echo htmlentities($record["b_name"]); ?>
-                                </td>
+                                <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
                                     <?php echo htmlentities($record["truck_type"]); ?>
                                 </td>
-                                <td><?php echo htmlentities($record["d_name"]); ?></td>
-                                <td><?php echo htmlentities($record["d_number"]); ?></td>
                                 <td><?php echo htmlentities($record["status"]); ?></td>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
@@ -105,12 +95,10 @@
 
 </div>
 
-
-
 <?php 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
-    include("../includes/views/carrier_move_popup.php"); 
+	include("../includes/views/carrier_move_popup.php"); 
 	include("../includes/views/carrier_dispatch_popup.php"); 
 	include("../includes/pagination/table_script.php"); 
 	include("../includes/layouts/public_footer.php"); 
