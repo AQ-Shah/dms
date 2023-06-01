@@ -105,6 +105,18 @@ function find_team_by_id($id){
         }
     }
 
+function find_teams_by_department_id($id){
+       global $connection;
+        
+        $safe_id = mysqli_real_escape_string($connection, $id);
+        
+        $query  = "SELECT * ";
+        $query .= "FROM teams ";
+        $query .= "WHERE department_id = {$safe_id} ";
+        $record_set = mysqli_query($connection, $query);
+        confirm_query($record_set);
+        return $record_set;
+    }
 function find_team_by_department_id($id){
        global $connection;
         

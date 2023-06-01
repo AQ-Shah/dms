@@ -120,6 +120,18 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_dispatched_carriers_by_team($id){
+
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 'dispatched' ";
+			$query .= "AND dispatch_team_id = '{$safe_id}' ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
 			
 		function no_of_carrier_this_month(){
 			global $connection;

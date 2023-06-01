@@ -9,7 +9,6 @@
         //these pages will not be visible for admin & top management because it is used for individual performance not overall.  
         if ($permission === '1'){
            
-            if ($current_page === 'carrier_assign_dispatcher') return false;
             if ($current_page === 'update_carrier_location') return false;
             if ($current_page === 'dispatch_carrier') return false;
             return true;

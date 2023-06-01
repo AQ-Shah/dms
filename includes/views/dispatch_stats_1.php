@@ -22,7 +22,7 @@
         </a>
     </div>
     <div class="col-3">
-        <a href='list_working_carriers'>
+        <a href='list_available_carriers'>
             <div class=" custom-panel card" style="background:#58467e">
                 <h3><?php echo no_of_carrier_form()-no_of_unavailable_carriers();?></h3>
                 <p>Active Carriers</p>
@@ -38,7 +38,7 @@
         </a>
     </div>
     <div class="col-3">
-        <a href='list_working_carriers'>
+        <a href='list_available_carriers'>
             <div class=" custom-panel card" style="background:#d43a0f">
                 <h3><?php echo no_of_carrier_form()-no_of_unavailable_carriers()-no_of_dispatched_carriers();?></h3>
                 <p>Pending Dispatch</p>

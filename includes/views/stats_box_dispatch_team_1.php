@@ -33,7 +33,7 @@
     <div class="col-3">
         <a href='list_team_dispatched'>
             <div class=" custom-panel card" style="background:#0d6631">
-                <h3><?php echo no_of_team_dispatch_list($user["team_id"]);?></h3>
+                <h3><?php echo no_of_dispatched_carriers_by_team($user["team_id"]);?></h3>
                 <p>On Load</p>
             </div>
         </a>
@@ -41,7 +41,7 @@
     <div class="col-3">
         <a href='list_team_available_carriers'>
             <div class=" custom-panel card" style="background:#d43a0f">
-                <h3><?php echo no_of_available_carriers_by_team_dispatch($user["team_id"]) - no_of_team_dispatch_list($user["team_id"]);?>
+                <h3><?php echo no_of_available_carriers_by_team_dispatch($user["team_id"]) - no_of_dispatched_carriers_by_team($user["team_id"]);?>
                 </h3>
                 <p>Pending Dispatch</p>
             </div>

@@ -111,6 +111,7 @@
 
 
 <?php 
+    include("../includes/views/carrier_assign_team_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
