@@ -8,7 +8,6 @@
         
         //these pages will not be visible for admin & top management because it is used for individual performance not overall.  
         if ($permission === '1'){
-            if ($current_page === 'sales_agent_performance_1') return false;
             if ($current_page === 'update_carrier_location') return false;
             if ($current_page === 'dispatch_carrier') return false;
             return true;
@@ -77,7 +76,7 @@
         }
     }
 
-   function check_team_view_required($role_id){
+    function check_team_view_required($role_id){
         if ($role_id === '1') return false;
         return true;
     }
@@ -85,6 +84,16 @@
     function not_executive($role_id){
         if ($role_id === '1') return false;
         return true;
+    }
+
+    function is_executive($role_id){
+        if ($role_id === '1') return true;
+        return false;
+    }
+    
+    function is_sales_agent($role_id){
+        if ($role_id === '10') return true;
+        return false;
     }
     
     function find_permission($role_id){

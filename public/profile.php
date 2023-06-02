@@ -9,8 +9,6 @@
             $_SESSION["message"] = "User not found";
 			redirect_to("home");
 			}
-            
-            $permission = $userData['permission'];
 		}  else { 
             $userData = $user;
         } 
@@ -67,10 +65,7 @@
                                                 </h5>
                                                 <p class="mb-0 font-13 text-white-50">Joining Date</p>
                                             </li>
-                                            <!-- <li class="list-inline-item">
-                                                <h5 class="mb-1 text-white"><?php echo $userData['gender'];?></h5>
-                                                <p class="mb-0 font-13 text-white-50">Gender</p>
-                                            </li> -->
+
                                         </ul>
                                     </div>
                                 </div>
@@ -97,4 +92,7 @@
 
 </div>
 
-<?php include("../includes/layouts/public_footer.php"); ?>
+<?php 
+include("../includes/pagination/table_script.php"); 
+include("../includes/layouts/public_footer.php"); 
+?>

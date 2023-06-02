@@ -20,6 +20,7 @@
         </div>
     </div>
 
+
     <?php include("../includes/views/sales_dashboard_1.php"); ?>
 
     <?php include("../includes/views/dispatch_stats_1.php"); ?>
@@ -71,6 +72,13 @@
 
 
     </div>
+
+    <?php include("../includes/views/sales_agent_performance_1.php"); ?>
+
+
 </div>
 
-<?php include("../includes/layouts/public_footer.php"); ?>
+<?php 
+include("../includes/pagination/table_script.php"); 
+include("../includes/layouts/public_footer.php"); 
+?>

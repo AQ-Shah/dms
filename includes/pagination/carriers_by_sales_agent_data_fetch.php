@@ -5,11 +5,11 @@
 			}
 			
 			if ($record_per_page > 0 && $record_per_page <= 100) {
-			$no_of_records = no_of_carriers_by_sales_agent($user["id"]);
+			$no_of_records = no_of_carriers_by_sales_agent($userData["id"]);
 			$total_pages = ceil($no_of_records/$record_per_page);
 			$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
 			$start = ($page-1) * $record_per_page;
-			$record_set = find_carriers_by_sales_agent_form_from($user["id"],$start,$record_per_page);
+			$record_set = find_carriers_by_sales_agent_form_from($userData["id"],$start,$record_per_page);
 		}
 		else { 
 			$_SESSION["message"] = "Something went wrong.";

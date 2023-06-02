@@ -1,8 +1,23 @@
-   <?php   include("../includes/pagination/carriers_by_sales_agent_data_fetch.php");  ?>
+   <?php 
+    if (isset ($_GET['id'])){
+            $userData = find_user_by_id($_GET['id']);
+            if (!$userData){
+                $_SESSION["message"] = "User not found";
+                redirect_to("home");
+                }
+                
+                $permission = $userData['permission'];
+            }  else { 
+                $userData = $user;
+            } 
+    ?>
 
-   <?php if (check_access("sales_agent_performance_1")){ ?>
+   <?php  if ((check_access("sales_agent_performance_1") && $user['id'] === $userData['id']) || (($current_page != 'home') && is_executive($user['permission']))){ ?>
+
+   <?php if (is_sales_agent($userData['department_id'])) { ?>
+   <?php include("../includes/pagination/carriers_by_sales_agent_data_fetch.php"); ?>
+
    <div class="row">
-
        <div class="col-12">
 
 
@@ -10,9 +25,11 @@
                <div class="col-sm-4">
                    <div class="card tilebox-one">
                        <div class="card-body">
-                           <i class="ri-shopping-basket-2-line float-end text-muted"></i>
+                           <i class="ri-money-dollar-box-line float-end text-muted"></i>
                            <h6 class="text-muted text-uppercase mt-0">Total Sales</h6>
-                           <h2 class="m-b-20">0</h2>
+                           <h2 class="m-b-20">
+                               <span><?php echo no_of_carrier_by_agent($userData['id']); ?></span>
+                           </h2>
 
                        </div> <!-- end card-body-->
                    </div>
@@ -22,35 +39,40 @@
                <div class="col-sm-4">
                    <div class="card tilebox-one">
                        <div class="card-body">
-                           <i class="ri-archive-line float-end text-muted"></i>
-                           <h6 class="text-muted text-uppercase mt-0">This Month</h6>
-                           <h2 class="m-b-20"><span>0</span></h2>
-                           <!-- <span class="badge bg-danger"> -0% </span> <span class="text-muted">From
-                               previous Month</span> -->
-                       </div> <!-- end card-body-->
-                   </div>
-                   <!--end card-->
-               </div><!-- end col -->
-
-               <div class="col-sm-4">
-                   <div class="card tilebox-one">
-                       <div class="card-body">
-                           <i class="ri-vip-diamond-line float-end text-muted"></i>
+                           <i class="ri-money-dollar-box-fill float-end text-muted"></i>
                            <h6 class="text-muted text-uppercase mt-0">Total Active</h6>
-                           <h2 class="m-b-20">0</h2>
+                           <h2 class="m-b-20"><span><?php echo no_of_active_carrier_by_agent($userData['id']); ?></span>
+                           </h2>
 
                        </div> <!-- end card-body-->
                    </div>
                    <!--end card-->
                </div><!-- end col -->
+
+               <div class="col-sm-4">
+                   <div class="card tilebox-one">
+                       <div class="card-body">
+                           <i class="ri-money-dollar-box-line float-end text-muted"></i>
+                           <h6 class="text-muted text-uppercase mt-0">Month Sales</h6>
+                           <h2 class="m-b-20">
+                               <span><?php echo no_of_carrier_this_month_by_agent($userData['id']); ?></span>
+                           </h2>
+                           <!-- <span class="badge bg-danger"> -0% </span> <span class="text-muted">From
+                                previous Month</span> -->
+                       </div> <!-- end card-body-->
+                   </div>
+                   <!--end card-->
+               </div><!-- end col -->
+
+
 
            </div>
            <!-- end row -->
 
-
+           <?php if (!empty($record_set)) { ?>
            <div class="card">
                <div class="card-body">
-                   <h4 class="header-title mb-3">My Products</h4>
+                   <h4 class="header-title mb-3">Sales List</h4>
 
                    <div class="row panel table-primary p-2">
                        <div class="panel-body table-responsive">
@@ -80,7 +102,7 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                   <?php if (isset($record_set)) { ?>
+
                                    <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                                    <tr>
                                        <td><?php echo htmlentities($record["b_name"]); ?></td>
@@ -95,9 +117,9 @@
                                    </tr>
                                    <?php } ?>
                                    <?php } ?>
-                                   <?php } ?>
                                </tbody>
                            </table>
+
                            <div class="row form_panel">
                                <?php include("../includes/pagination/bottom_pagination_bar.php");?>
                            </div>
@@ -105,10 +127,9 @@
                    </div>
                </div> <!-- end col-->
            </div> <!-- end row-->
-
+           <?php } ?>
        </div>
-       <!-- end col -->
-
    </div>
 
+   <?php } ?>
    <?php } ?>
