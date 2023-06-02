@@ -5,6 +5,7 @@
     validate_presences($required_fields);
 
     $creator_id = $user['id'];
+    $sales_team_id = $user['team_id'];
     if (isset($_POST['dot'])) {$dot = mysql_prep($_POST["dot"]);} else {$dot = null;}
     if (isset($_POST['mc'])) {$mc = mysql_prep($_POST["mc"]);} else {$mc = null;}
     if (isset($_POST['b_name'])) {$b_name = mysql_prep($_POST["b_name"]);} else {$b_name = null;}
@@ -58,8 +59,8 @@
       if (empty($errors)) {
         // Perform the insertion query
 
-        $sql = "INSERT INTO carrier_form (creator_id, dot, mc, b_name, dba, b_address, o_name, b_number, b_email, b_type, tax_id, truck_type, mc_validity, d_name, d_number, t_length, t_weight, truck_no, trailer_no, insurance_name, insurance_number, insurance_street, insurance_state, insurance_email, cgl_no, cgl_limit, cgl_expiration, aml_no, aml_limit, aml_expiration, mtc_no, mtc_limit, mtc_expiration, tic_no, tic_limit, tic_expiration, factoring_name, factoring_number, factoring_street, factoring_state, factoring_email, percentage, hazmat, twic, sida, atp)
-        VALUES ('$creator_id', '$dot', '$mc', '$b_name', '$dba','$b_address', '$o_name', '$b_number', '$b_email', '$b_type', '$tax_id', '$truck_type', '$mc_validity', '$d_name', '$d_number', '$t_length', '$t_weight', '$truck_no', '$trailer_no', '$insurance_name', '$insurance_number', '$insurance_street', '$insurance_state', '$insurance_email', '$cgl_no', '$cgl_limit', '$cgl_expiration', '$aml_no', '$aml_limit', '$aml_expiration', '$mtc_no', '$mtc_limit', '$mtc_expiration', '$tic_no', '$tic_limit', '$tic_expiration', '$factoring_name', '$factoring_number', '$factoring_street', '$factoring_state', '$factoring_email', '$percentage', '$hazmat', '$twic', '$sida', '$atp')";
+        $sql = "INSERT INTO carrier_form (creator_id, sales_team_id,dot, mc, b_name, dba, b_address, o_name, b_number, b_email, b_type, tax_id, truck_type, mc_validity, d_name, d_number, t_length, t_weight, truck_no, trailer_no, insurance_name, insurance_number, insurance_street, insurance_state, insurance_email, cgl_no, cgl_limit, cgl_expiration, aml_no, aml_limit, aml_expiration, mtc_no, mtc_limit, mtc_expiration, tic_no, tic_limit, tic_expiration, factoring_name, factoring_number, factoring_street, factoring_state, factoring_email, percentage, hazmat, twic, sida, atp)
+        VALUES ('$creator_id','$sales_team_id', '$dot', '$mc', '$b_name', '$dba','$b_address', '$o_name', '$b_number', '$b_email', '$b_type', '$tax_id', '$truck_type', '$mc_validity', '$d_name', '$d_number', '$t_length', '$t_weight', '$truck_no', '$trailer_no', '$insurance_name', '$insurance_number', '$insurance_street', '$insurance_state', '$insurance_email', '$cgl_no', '$cgl_limit', '$cgl_expiration', '$aml_no', '$aml_limit', '$aml_expiration', '$mtc_no', '$mtc_limit', '$mtc_expiration', '$tic_no', '$tic_limit', '$tic_expiration', '$factoring_name', '$factoring_number', '$factoring_street', '$factoring_state', '$factoring_email', '$percentage', '$hazmat', '$twic', '$sida', '$atp')";
         $result = mysqli_query($connection, $sql);
         if ($result) {
           $_SESSION["message"] = "New Carrier Created.";
