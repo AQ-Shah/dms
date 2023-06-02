@@ -51,6 +51,18 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_carriers_by_sales_agent($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE creator_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
 		
 		function no_of_all_carriers_by_team_sales($id){
 
@@ -358,6 +370,20 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status != 'unavailable' ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
+
+		function find_carriers_by_sales_agent_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE creator_id = '{$safe_id}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);

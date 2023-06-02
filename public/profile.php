@@ -3,78 +3,98 @@
 	$current_page = "profile";
 	include("../includes/layouts/public_header.php"); 
 
-	if (isset ($_GET['user_id'])){
-		$user = find_user_by_id($_GET['user_id']);
-		if ($user){
-			$permission = $user['permission'];
-			$current_page = "profile";}
-		else {
-			$_SESSION["message"] = "User not found";
-			redirect_to("home");} } ?>
+	if (isset ($_GET['id'])){
+		$userData = find_user_by_id($_GET['id']);
+		if (!$userData){
+            $_SESSION["message"] = "User not found";
+			redirect_to("home");
+			}
+            
+            $permission = $userData['permission'];
+		}  else { 
+            $userData = $user;
+        } 
+           ?>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
 
                 <?php echo message(); ?>
-
+                <h4 class="page-title">Profile</h4>
             </div>
         </div>
     </div>
+
     <div class="row">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <h1><?php echo $user["full_name"]; ?></h1>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Username</th>
-                    <th><?php echo $user['username'];?></th>
-                </tr>
-                <tr>
-                    <th>Gender</th>
-                    <th><?php echo $user['gender'];?></th>
-                </tr>
-                <tr>
-                    <th>Designation</th>
-                    <th><?php echo $user['designation']; ?></th>
-                </tr>
-                <?php if($user['phone_privacy'] || $user["id"]=== $_SESSION["id"]) {?>
-                <tr>
-                    <th>Phone Number</th>
-                    <th><?php echo $user['phone_num'];?></th>
-                </tr>
-                <?php }?>
-                <?php if($user['birthday_privacy'] || $user["id"]=== $_SESSION["id"]) {?>
-                <tr>
-                    <th>Birth Date</th>
-                    <th><?php echo $user['birth_date'];?></th>
-                </tr>
-                <?php }?>
-                <tr>
-                    <th>Joining Date</th>
-                    <th><?php echo $user['join_date'];?></th>
-                </tr>
-                <?php if($user['email_privacy'] || $user["id"]=== $_SESSION["id"]) {?>
-                <tr>
-                    <th>Email</th>
-                    <th><?php echo $user['email'];?></th>
-                </tr>
-                <?php }?>
+        <div class="col-sm-12">
+            <!-- Profile -->
+            <div class="card bg-primary">
+                <div class="card-body profile-user-box">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="avatar-lg">
+                                        <img src="assets/images/users/img_avatar1" alt=""
+                                            class="rounded-circle img-thumbnail">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div>
+                                        <h4 class="mt-1 mb-1 text-white"><?php echo $userData["full_name"]; ?></h4>
+                                        <p class="font-13 text-white-50"><?php echo $userData["designation"]; ?></p>
 
+                                        <ul class="mb-0 list-inline text-light">
+                                            <li class="list-inline-item me-3">
+                                                <h5 class="mb-1 text-white">
+                                                    <?php if($userData['email_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo $userData['email'] ; }?>
 
-                <?php if($user['about_privacy'] || $user["id"]=== $_SESSION["id"]) {?>
-                <tr>
-                    <th>About Me</th>
-                    <th><?php echo $user['about_me'];?></th>
-                </tr>
-                <?php }?>
-            </tbody>
-        </table>
+                                                </h5>
+                                                <p class="mb-0 font-13 text-white-50">Email</p>
+                                            </li>
+                                            <li class="list-inline-item me-3">
+                                                <h5 class="mb-1 text-white">
+                                                    <?php if($userData['phone_num'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo $userData['phone_num'] ; }?>
+
+                                                </h5>
+                                                <p class="mb-0 font-13 text-white-50">Contact</p>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <h5 class="mb-1 text-white">
+                                                    <?php if($userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo date('d-M-Y', strtotime($userData['join_date']));}?>
+                                                </h5>
+                                                <p class="mb-0 font-13 text-white-50">Joining Date</p>
+                                            </li>
+                                            <!-- <li class="list-inline-item">
+                                                <h5 class="mb-1 text-white"><?php echo $userData['gender'];?></h5>
+                                                <p class="mb-0 font-13 text-white-50">Gender</p>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col-->
+
+                        <div class="col-sm-4">
+                            <div class="text-center mt-sm-0 mt-3 text-sm-end">
+                                <button type="button" class="btn btn-light">
+                                    <i class="mdi mdi-account-edit me-1"></i> Edit Profile
+                                </button>
+                            </div>
+                        </div> <!-- end col-->
+                    </div> <!-- end row -->
+
+                </div> <!-- end card-body/ profile-user-box-->
+            </div>
+            <!--end profile/ card -->
+        </div> <!-- end col-->
     </div>
+    <!-- end row -->
+
+    <?php include("../includes/views/sales_agent_performance_1.php"); ?>
+
 </div>
 
 <?php include("../includes/layouts/public_footer.php"); ?>

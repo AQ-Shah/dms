@@ -8,6 +8,7 @@
         
         //these pages will not be visible for admin & top management because it is used for individual performance not overall.  
         if ($permission === '1'){
+            if ($current_page === 'sales_agent_performance_1') return false;
             if ($current_page === 'update_carrier_location') return false;
             if ($current_page === 'dispatch_carrier') return false;
             return true;
@@ -62,6 +63,7 @@
             }
 
         if ( $permission === '9' || $permission === '10'){
+                if ($current_page === 'sales_agent_performance_1') return true;
                 if ($current_page === 'carrier_create') return true;
             }
         
