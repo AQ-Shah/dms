@@ -505,7 +505,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Dispatched' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -520,7 +520,7 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Dispatched' ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
