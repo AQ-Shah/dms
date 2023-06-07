@@ -70,7 +70,8 @@
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
                                 <?php if($department['id'] != 1) { ?>
-                                <td><?php
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'"><?php
                                     if($record["team_id"]){
                                         $team = find_team_by_id($record["team_id"]);
                                         echo $team['name'];
@@ -79,10 +80,18 @@
                                     }
                                 ?></td>
                                 <?php } ?>
-                                <td><?php echo htmlentities($record["full_name"]); ?></td>
-                                <td><?php echo htmlentities($record["designation"]); ?></td>
-                                <td><?php echo htmlentities($record["email"]); ?></td>
-                                <td><?php echo htmlentities($record["phone_num"]); ?></td>
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    <?php echo htmlentities($record["full_name"]); ?></td>
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    <?php echo htmlentities($record["designation"]); ?></td>
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    <?php echo htmlentities($record["email"]); ?></td>
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    <?php echo htmlentities($record["phone_num"]); ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="dropdown-button">Actions</button>
