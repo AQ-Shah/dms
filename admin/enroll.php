@@ -39,9 +39,7 @@ if ( (isset($_GET['student_id'])) && isset($_GET['course_id']) ){
 		}
    else {
 	  $_SESSION["message"] = "Student Enrollment Failed. Please Check IDs";
-	  
    }
   } 
 } 
 ?>
-

@@ -8,6 +8,7 @@
 	require_once("pagination_functions.php");
 	require_once("carrier_search_functions.php");
 	require_once("dispatch_search_functions.php");
+	require_once("invoice_functions.php");
 	require_once("discussion_functions.php");
 	require_once("validation_functions.php");
 	

@@ -510,6 +510,7 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
+
 		
 		function find_team_dispatch_list_from($id,$start,$end) {
 
@@ -587,6 +588,8 @@
 			confirm_query($set);
 			return $set;
 			}
+
+		
 
 		function find_dispatch_rate_total_this_month() {
 			global $connection;

@@ -41,13 +41,13 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(1)">Dispatch Team
+                                <th onclick="sortTable(0)">Dispatch Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Dispatcher
+                                <th onclick="sortTable(1)">Dispatcher
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(0)">MC
+                                <th onclick="sortTable(2)">MC
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th onclick="sortTable(3)">Carrier Name
@@ -57,13 +57,13 @@
                                     <span class="sort-arrows"></span>
                                 </th>
 
-                                <th onclick="sortTable(1)">Sales Team
+                                <th onclick="sortTable(5)">Sales Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Sales Agent
+                                <th onclick="sortTable(6)">Sales Agent
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(5)">Status
+                                <th onclick="sortTable(7)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>

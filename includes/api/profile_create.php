@@ -58,8 +58,7 @@
         $query .= "  '{$username}', '{$hashed_password}', '{$department_id}', '{$team_id}', '{$designation}', '{$full_name}', '{$permission}', '{$phone_num}', '{$email}', '{$gender}', '{$emergency_contact}', '{$about_me}', '{$email_privacy}', '{$phone_privacy}', '{$birthday_privacy}', '{$emergency_privacy}', '{$about_privacy}'";
         if (isset($birth_date) && isset ($join_date)) $query .= ", '{$birth_date}', '{$join_date}'";
         $query .= ")";
-
-        echo $query;
+        
         $result = mysqli_query($connection, $query);
 
         if ($result) {

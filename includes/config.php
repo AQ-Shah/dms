@@ -13,6 +13,11 @@ define("PERMISSION_VECTOR_KEY", "2738492057129376");
 define("BASE_URL", "https://portal.atcdispatching.com");
 define("TIMEZONE", "America/New_York");
 
+//Company Info
+define("COMPANY_NAME", "ATC Dispatching LLC");
+define("COMPANY_NUMBER", "302-433-6796");
+define("COMPANY_ADDRESS", "16192, Coastal Hwy, Lewes, DE 19958.");
+
 //DB Info
 define("DB_SERVER", "localhost");
 define("DB_USER", "root");
