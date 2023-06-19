@@ -535,8 +535,7 @@
 			
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed') AND dispatcher_id = '{$safe_id}'  ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);

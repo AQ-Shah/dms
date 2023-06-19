@@ -28,7 +28,6 @@
         //supervisor
         if ( $permission === '4'){
             if ($current_page === 'carrier_assign_dispatcher') return true;
-            if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'list_team_all_carriers') return true;
             if ($current_page === 'list_team_available_carriers') return true;
             if ($current_page === 'list_team_unavailable_carriers') return true;
@@ -46,6 +45,7 @@
             if ($current_page === 'list_my_dispatched') return true;
             if ($current_page === 'list_my_cancelled_dispatched') return true;
             if ($current_page === 'update_carrier_location') return true;
+            if ($current_page === 'update_carrier_status') return true;
             if ($current_page === 'dispatch_carrier') return true;
             if ($current_page === 'show_carrier') return true;
             
