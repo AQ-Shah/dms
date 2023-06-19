@@ -82,7 +82,8 @@
                                 <?php if (check_access("commission_view")){ ?>
                                 <td><?php echo '$'.htmlentities($record["commission"]); ?></td>
                                 <?php } ?>
-                                <td <?php if($record["status"] == 'Cancelled') { ?> style="color: red;" <?php } ?>>
+                                <td <?php if($record["status"] == 'Cancelled') { ?> style="color: red;" <?php } ?>
+                                    <?php if($record["status"] == 'Completed') { ?> style="color: green;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
 
                                 <td>

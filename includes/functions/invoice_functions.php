@@ -1,5 +1,37 @@
 <?php
 
+    function find_invoice_by_id($id){
+     	global $connection;
+        $safe_id = mysqli_real_escape_string($connection, $id);
+        $query  = "SELECT * ";
+        $query .= "FROM invoices ";
+        $query .= "WHERE id = {$safe_id} ";
+        $query .= "LIMIT 1";
+        $data_set = mysqli_query($connection, $query);
+
+        confirm_query($data_set);
+        
+        if($data = mysqli_fetch_assoc($data_set)) {
+            return $data;
+        } else {
+            return null;
+        }}
+
+    function find_pending_invoices_amount_by_carrier_id($id) {
+        
+        global $connection;
+        $safe_id = mysqli_real_escape_string($connection, $id);
+        $record_set_object = find_pending_invoices_by_carrier_id($safe_id);
+       
+        $total_amount = 0;
+        while ($record = mysqli_fetch_assoc($record_set_object)) {
+            $total_amount += $record["commission"] ;
+        }
+        
+        return $total_amount;
+       
+    }
+
     function find_pending_invoices_by_carrier_id($id) {
         global $connection;
         $safe_id = mysqli_real_escape_string($connection, $id);
@@ -8,7 +40,7 @@
         $query .= "FROM dispatch_list ";
         $query .= "WHERE invoice_status = '1' ";
         $query .= "AND carrier_id = '{$safe_id}' ";
-        $query .= "AND status != 'Cancelled' ";
+        $query .= "AND status = 'Completed' ";
         $query .= "ORDER BY dispatch_time DESC ";
         $set = mysqli_query($connection, $query);
         confirm_query($set);
@@ -31,11 +63,11 @@
                 $result = mysqli_query($connection, $sql);
             } 
             if($result){
-                $_SESSION["message"] = "Invoice Created.";
-                redirect_to("home");
+                redirect_to("invoice_view?invoice_id=" . $new_id);
+
             } else {
                 $_SESSION["message"] = "something went wrong.";
-                // redirect_to("home");
+                redirect_to("home");
             }
             
         } else {

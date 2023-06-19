@@ -4,7 +4,7 @@
     <div class="col-12">
         <div class="page-title-box">
             <h2>
-                Carrier Stats
+                Dispatch Stats
             </h2>
 
         </div>

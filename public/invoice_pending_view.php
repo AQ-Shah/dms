@@ -1,16 +1,21 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "invoice_view";
+    $current_page = "invoice_pending_view";
 	include("../includes/layouts/public_header.php");
     
-    include("../includes/api/invoice_created_find_query.php"); 
+    include("../includes/api/invoice_find_query.php"); 
 
+    $total_amount_view =0;
 ?>
 
 
 <div class="container">
     <div class="row">
-
+        <div class="col-12">
+            <div class="page-title-box">
+                <?php echo message();  ?>
+            </div>
+        </div>
         <div class="col-6">
             <div class="page-title-box">
                 <h2>
@@ -20,9 +25,10 @@
         </div>
         <div class="col-6 text-end">
             <div class="page-title-box mt-1">
-                <button type="button" class="btn btn-danger mb-2 me-2" onclick="invoicePrintFunction()">
+                <button type="button" class="btn btn-danger mb-2 me-2"
+                    onclick="window.open('invoice_create?carrier_id=<?php echo urlencode($carrier['id']); ?>')">
                     <i class=" mdi mdi-basket me-1"></i>
-                    Print</button>
+                    Generate</button>
             </div>
         </div>
     </div>
@@ -37,7 +43,7 @@
 
                 <div class="col-6 text-end">
                     <h4 class="mb-1">Invoice
-                        #<?php echo '786-'.htmlentities($carrier["id"]).'-'.htmlentities($invoice["id"])?></h4>
+                        #<?php echo '786-'.htmlentities($carrier["id"])?></h4>
                 </div>
             </div>
             <div class="row">
@@ -50,11 +56,9 @@
                     <p class="mb-0"><?php echo htmlentities($carrier["b_email"]); ?></p>
                 </div>
                 <div class="col-6 text-end">
-                    <p class="mb-1">Date:
-                        <?php echo htmlentities(date("d-M-Y", strtotime($invoice["creation_date"]))); ?></p>
+                    <p class="mb-1">Date: <?php echo date('d-M-y');?></p>
                     <p class="mb-1">Payment Terms: Quick Pay</p>
-                    <p class="mb-1">Due Date: <?php echo htmlentities(date("d-M-Y", strtotime($invoice["due_date"])));?>
-                    </p>
+                    <p class="mb-1">Due Date: <?php echo date('d-M-y', strtotime('next monday'));?></p>
                 </div>
             </div>
         </div>
@@ -87,14 +91,14 @@
                                 <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
                                 <td><?php echo '$'.htmlentities($record["commission"]); ?></td>
                             </tr>
-
+                            <?php $total_amount_view += $record["commission"] ?>
                             <?php } ?>
                             <?php } ?>
                         </tbody>
                     </table>
                     <div class="row form_panel mb-1">
                         <div class="col-10 text-end">
-                            <label>Subtotal: $<?php echo $invoice["total_amount"];?> </label>
+                            <label>Subtotal: $<?php echo $total_amount_view;?> </label>
                         </div>
                     </div>
                     <div class="row form_panel mb-1">
@@ -104,7 +108,7 @@
                     </div>
                     <div class="row form_panel mb-1">
                         <div class="col-10 text-end">
-                            <label> Total: $<?php echo $invoice["total_amount"];?></label>
+                            <label> Total: $<?php echo $total_amount_view;?></label>
                         </div>
                     </div>
                 </div>
@@ -115,8 +119,28 @@
 </div>
 
 <script>
-function invoicePrintFunction() {
+function invoiceCreateFunction() {
+
+    // Get the current URL
+    const currentUrl = window.location.href;
+
+    // Construct the new URL with the same parameters
+    const newUrl = 'invoice_create?' + currentUrl.split('?')[1];
+
+
+    $.ajax({
+        url: newUrl,
+        type: 'GET',
+        success: function(result) {
+            console.log('GET request succeeded.');
+            // do something with the result if needed
+        },
+        error: function(xhr, status, error) {
+            console.error('Error making GET request: ' + error);
+        }
+    });
     window.print();
+
 }
 </script>
 

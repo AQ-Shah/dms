@@ -248,6 +248,19 @@ button:hover {
     background: var(--forth-color);
 }
 
+.action-button {
+    text-align: center;
+    color: var(--text-primary-color);
+    font-weight: bolder;
+    border-radius: 5px;
+    border-color: var(--secondary-color);
+    background: var(--secondary-color);
+}
+
+.action-button:hover {
+    background: var(--forth-color);
+}
+
 .btn-close {
     box-shadow: none;
 }

@@ -3,6 +3,16 @@ include("../includes/data/sales_data_fetch.php");
 
 ?>
 <?php if (check_access("sales_dashboard_1")){ ?>
+<div class="row text-center">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h2>
+                Sales Team Stats
+            </h2>
+
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-xl-5 col-lg-6">
 
