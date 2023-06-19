@@ -13,7 +13,7 @@
             return true;
             }
             
-        //permission's for Sales & Dispatch 
+        //permission's for all 
         if ( $permission === '4' || $permission === '5' || $permission === '9' || $permission === '10') {
             if ($current_page === 'add_news') return true;
             if ($current_page === 'settings') return true;

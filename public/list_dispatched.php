@@ -41,15 +41,16 @@
                         <thead>
                             <tr>
                                 <th onclick="sortTable(0)">Dispatcher <span class="sort-arrows"></span></th>
-                                <th onclick="sortTable(1)">Dispatch Time <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(2)">Carrier Name <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(3)">From <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(4)">To <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(5)">Rate <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(1)">Dispatch <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(2)">Delivery <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(3)"> Name <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(4)">From <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(5)">To <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(6)">Rate <span class="sort-arrows"></span> </th>
                                 <?php if (check_access("commission_view")){ ?>
-                                <th onclick="sortTable(6)">Commission <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(7)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
-                                <th onclick="sortTable(7)">Status <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(8)">Status <span class="sort-arrows"></span> </th>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                             </tr>
                         </thead>
@@ -66,6 +67,7 @@
                                     ?>
                                 </td>
                                 <td><?php echo htmlentities(date("d-m-Y", strtotime($record["dispatch_time"]))); ?></td>
+                                <td><?php echo htmlentities(date("d-m-Y", strtotime($record["delivery_time"]))); ?></td>
                                 <td>
                                     <?php
                                     if($record["carrier_id"]){
