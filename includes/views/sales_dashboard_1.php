@@ -14,11 +14,11 @@ include("../includes/data/sales_data_fetch.php");
     </div>
 </div>
 <div class="row">
-    <div class="col-xl-5 col-lg-6">
+    <div class="col-12 col-12">
 
         <div class="row">
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
@@ -38,7 +38,7 @@ include("../includes/data/sales_data_fetch.php");
                 </div> <!-- end card-->
             </div> <!-- end col-->
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
@@ -58,13 +58,7 @@ include("../includes/data/sales_data_fetch.php");
                 </div> <!-- end card-->
             </div> <!-- end col-->
 
-
-        </div>
-        <!-- end row -->
-
-        <div class="row">
-
-            <div class="col-sm-12">
+            <div class="col-sm-4">
                 <div class="card widget-flat">
                     <div class="card-body">
                         <div class="float-end">
@@ -89,12 +83,13 @@ include("../includes/data/sales_data_fetch.php");
                 </div> <!-- end card-->
             </div> <!-- end col-->
 
+        </div>
+        <!-- end row -->
 
-        </div> <!-- end row -->
 
     </div> <!-- end col -->
 
-    <div class="col-xl-7 col-lg-6">
+    <div class="col-12 col-12">
         <div class="card card-h-100">
             <div class="d-flex card-header justify-content-between align-items-center">
                 <h4 class="header-title">Sales Agents </h4>
@@ -110,7 +105,7 @@ include("../includes/data/sales_data_fetch.php");
                 </div>
             </div>
             <div class="card-body pt-0">
-                <canvas id="salesGraphByAgents" style="width:100%;max-width:700px;height:90%"></canvas>
+                <canvas id="salesGraphByAgents" style="width:100%;height:250px"></canvas>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->
