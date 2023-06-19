@@ -93,7 +93,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m");
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -106,7 +106,7 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m") ;
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -119,7 +119,7 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatcher_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m") ;
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -129,7 +129,7 @@
 			global $connection;
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -142,7 +142,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -153,7 +153,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -165,7 +165,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -176,7 +176,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -188,7 +188,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -199,7 +199,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND DATE(dispatch_time) = CURDATE()";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -211,7 +211,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND DATE(dispatch_time) = CURDATE()";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -222,7 +222,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -234,7 +234,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -245,7 +245,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -257,7 +257,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -268,7 +268,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 0";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -280,7 +280,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 0";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -291,7 +291,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 1";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -303,7 +303,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 1";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -314,7 +314,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 2";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -326,7 +326,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 2";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -337,7 +337,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 3";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -349,7 +349,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 3";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -361,7 +361,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 4";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -373,7 +373,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 4";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -384,7 +384,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 0";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -396,7 +396,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 0";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -407,7 +407,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 1";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -419,7 +419,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 1";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -431,7 +431,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 2";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -443,7 +443,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 2";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -455,7 +455,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 3";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -467,7 +467,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 3";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -479,7 +479,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 4";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -491,7 +491,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "AND status = 'Dispatched' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 4";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -504,7 +504,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -519,7 +519,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE status = 'Dispatched' OR status = 'Completed'  ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
 			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
@@ -595,7 +595,7 @@
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed') 
 			AND MONTH(dispatch_time) = MONTH(NOW())";
 
 			$result = mysqli_query($connection, $query);
@@ -611,7 +611,7 @@
 
 			$query = "SELECT SUM(rate) AS total_rate
 					FROM dispatch_list
-					WHERE status = 'Dispatched' 
+					WHERE (status = 'Dispatched' OR status = 'Completed')  
 					AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 					AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 
@@ -629,7 +629,7 @@
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -645,7 +645,7 @@
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -661,7 +661,7 @@
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND DATE(dispatch_time) = CURDATE()";
 
 			$result = mysqli_query($connection, $query);
@@ -677,7 +677,7 @@
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 
 			$result = mysqli_query($connection, $query);
@@ -693,7 +693,7 @@
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND MONTH(dispatch_time) = MONTH(NOW())";
 
 			$result = mysqli_query($connection, $query);
@@ -709,7 +709,7 @@
 
 			$query = "SELECT SUM(commission) AS total_rate
 					FROM dispatch_list
-					WHERE status = 'Dispatched' 
+					WHERE (status = 'Dispatched' OR status = 'Completed')  
 					AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 					AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 
@@ -727,7 +727,7 @@
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -743,7 +743,7 @@
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -759,7 +759,7 @@
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND DATE(dispatch_time) = CURDATE()";
 
 			$result = mysqli_query($connection, $query);
@@ -775,7 +775,7 @@
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
-			WHERE status = 'Dispatched' 
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 
 			$result = mysqli_query($connection, $query);
