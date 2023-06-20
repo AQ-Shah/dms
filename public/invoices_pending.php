@@ -3,7 +3,7 @@
     $current_page = "list_carriers";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/carriers_data_fetch.php"); 
+	include("../includes/pagination/invoices_pending_data_fetch.php"); 
   ?>
 <div class="container">
 
@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Carriers</label>
+                    <label>List of Pending Dispatch to be Invoiced</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
@@ -77,9 +77,7 @@
                             <?php }}} ?>
                         </tbody>
                     </table>
-                    <div class="row form_panel">
-                        <?php include("../includes/pagination/bottom_pagination_bar.php");?>
-                    </div>
+
                 </div>
             </div>
         </div>

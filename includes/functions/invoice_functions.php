@@ -1,5 +1,29 @@
 <?php
 
+    function no_of_invoices_pending_carriers(){
+        $record_set = find_all_carrier_form();
+        $carriers_count = 0;
+        if (isset($record_set)) { 
+            while($record = mysqli_fetch_assoc($record_set)) { 
+                if (find_pending_invoices_amount_by_carrier_id($record["id"])) { 
+                    $carriers_count ++;
+                }
+            }
+        }
+        return $carriers_count;
+        }
+  
+    function find_all_invoices_pending_carriers(){
+        
+        $record_set_object = find_all_carrier_form();
+        $record_set = array();
+        
+        while ($record = mysqli_fetch_assoc($record_set_object)) {
+            $record_set[] = $record;
+        }
+        return $record_set;
+        }
+
     function find_invoice_by_id($id){
      	global $connection;
         $safe_id = mysqli_real_escape_string($connection, $id);

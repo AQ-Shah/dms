@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row justify-content-center">
 
     <?php if (check_access("invoice_management")){ ?>
     <div class="col-12 col-md-3 my-2">
         <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='invoices_pending'">Invoice
+            <button type="button" class="primary-button" onclick="location.href='invoices_section'">Invoice
                 Management</button>
         </div>
     </div>
