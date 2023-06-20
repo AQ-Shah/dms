@@ -23,6 +23,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
+			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));
@@ -35,6 +36,7 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed')  ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));
@@ -48,6 +50,7 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatcher_id = '{$safe_id}' ";
+			$query .= "AND (status = 'Dispatched' OR status = 'Completed')  ";
 			$set = mysqli_query($connection, $query);
 			
 			confirm_query($set);
