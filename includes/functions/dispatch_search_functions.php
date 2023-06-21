@@ -790,7 +790,7 @@
 			return $record;}
 
 		
-		function find_dispatch_by_id($id){
+		function find_dispatch_list_by_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
