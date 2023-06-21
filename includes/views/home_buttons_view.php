@@ -25,7 +25,7 @@
         </div>
     </div>
     <?php } ?>
-    <?php if (check_access("carrier_create")){ ?>
+    <?php if (check_access("sales_section")){ ?>
     <div class="col-12 col-md-3 my-2">
         <div class="d-grid gap-3">
             <button type="button" class="primary-button" onclick="location.href='carrier_create'">Sales Section
@@ -63,6 +63,14 @@
     <div class="col-12 col-md-3 my-2">
         <div class="d-grid gap-3">
             <button type="button" class="primary-button" onclick="location.href='edit_profile'">Settings</button>
+        </div>
+    </div>
+    <?php } ?>
+
+    <?php  if (check_access("carrier_create")  && not_executive($user["permission"])){ ?>
+    <div class="col-12 col-md-3 my-2">
+        <div class="d-grid gap-3">
+            <button type="button" class="primary-button" onclick="location.href='carrier_create'">New Carrier</button>
         </div>
     </div>
     <?php } ?>

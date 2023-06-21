@@ -34,6 +34,7 @@
             if ($current_page === 'list_team_dispatched') return true;
             if ($current_page === 'list_team_cancelled_dispatched') return true;
             if ($current_page === 'update_carrier_status') return true;
+            if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'stats_box_dispatch_team_1') return true;
             if ($current_page === 'stats_box_dispatch_team_2') return true;
             }
