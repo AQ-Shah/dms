@@ -24,13 +24,13 @@
 
         <div class="col-12 col-md-3 my-2">
             <div class="d-grid gap-3">
-                <button type="button" class="primary-button" onclick="location.href='invoices_pending'">Pending Invoices
+                <button type="button" class="primary-button" onclick="location.href='invoices_pending'">New Invoices
                 </button>
             </div>
         </div>
         <div class="col-12 col-md-3 my-2">
             <div class="d-grid gap-3">
-                <button type="button" class="primary-button" onclick="location.href='invoices_generated'">List Generated
+                <button type="button" class="primary-button" onclick="location.href='invoices_generated'"> Generated
                     Invoices</button>
             </div>
         </div>
