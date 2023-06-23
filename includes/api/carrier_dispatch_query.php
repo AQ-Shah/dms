@@ -33,11 +33,11 @@
 
     if (empty($errors)) { 
         
-        if ($carrier['status'] == 'dispatched') {
-            $_SESSION["message"] = "Already Dispatched";
-            header("Location: " . $prev_url);
-            exit;
-         } 
+        // if ($carrier['status'] == 'dispatched') {
+        //     $_SESSION["message"] = "Already Dispatched";
+        //     header("Location: " . $prev_url);
+        //     exit;
+        //  } 
        
          $query = "INSERT INTO dispatch_list (carrier_id, dispatcher_id, dispatch_team_id, current_location, new_location, rate, commission, delivery_time, dispatch_time) ";
          $query .= "VALUES ('" . $carrier["id"] . "', '" . $dispatcher_id ."', '" . $dispatch_team_id ."', '" . $current_location . "', '$new_location', '$rate', '$commission','$delivery_time','$pickup_datetime'); ";
