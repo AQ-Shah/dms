@@ -7,7 +7,6 @@
                 <option value="2">Pending</option>
                 <option value="3">Paid</option>
                 <option value="4">Cancelled</option>
-                <option value="5">Blocked</option>
             </select><br>
             <input type="hidden" id="carrier-id" name="carrier_id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">

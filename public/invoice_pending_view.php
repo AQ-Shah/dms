@@ -26,9 +26,10 @@
         <div class="col-6 text-end">
             <div class="page-title-box mt-1">
                 <button type="button" class="btn btn-danger mb-2 me-2"
-                    onclick="window.open('invoice_create?carrier_id=<?php echo urlencode($carrier['id']); ?>')">
+                    onclick="window.location.href='invoice_create?carrier_id=<?php echo urlencode($carrier['id']); ?>'">
                     <i class=" mdi mdi-basket me-1"></i>
-                    Generate</button>
+                    Generate
+                </button>
             </div>
         </div>
     </div>
