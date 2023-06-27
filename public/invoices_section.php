@@ -20,21 +20,23 @@
         </div>
     </div>
 
-    <div class='row justify-content-center'>
+    <div class='card'>
+        <div class='row card-body justify-content-center'>
 
-        <div class="col-12 col-md-3 my-2">
-            <div class="d-grid gap-3">
-                <button type="button" class="primary-button" onclick="location.href='invoices_pending'">New Invoices
-                </button>
+            <div class="col-12 col-md-3 my-2">
+                <div class="d-grid gap-3">
+                    <button type="button" class="primary-button" onclick="location.href='invoices_pending'">New Invoices
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-3 my-2">
-            <div class="d-grid gap-3">
-                <button type="button" class="primary-button" onclick="location.href='invoices_generated'"> Generated
-                    Invoices</button>
+            <div class="col-12 col-md-3 my-2">
+                <div class="d-grid gap-3">
+                    <button type="button" class="primary-button" onclick="location.href='invoices_generated'"> Generated
+                        Invoices</button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
 

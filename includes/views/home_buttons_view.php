@@ -1,79 +1,81 @@
-<div class="row justify-content-center">
+<div class="card ">
+    <div class="row card-body justify-content-center">
 
-    <?php if (check_access("invoice_management")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='invoices_section'">Invoice
-                Management</button>
+        <?php if (check_access("invoice_management")){ ?>
+        <div class="col-12 col-md-3 my-2 ">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='invoices_section'">Invoice
+                    Management</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
+        <?php } ?>
 
-    <?php if (check_access("list_carriers")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='list_carriers'">Carriers
-                Section</button>
+        <?php if (check_access("list_carriers")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='list_carriers'">Carriers
+                    Section</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
-    <?php if (check_access("list_dispatched")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='list_dispatched'">
-                Dispatched Sections</button>
+        <?php } ?>
+        <?php if (check_access("list_dispatched")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='list_dispatched'">
+                    Dispatched Sections</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
-    <?php if (check_access("sales_section")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='carrier_create'">Sales Section
-                Carriers</button>
+        <?php } ?>
+        <?php if (check_access("sales_section")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='carrier_create'">Sales Section
+                    Carriers</button>
+            </div>
         </div>
-    </div>
 
-    <?php } ?>
-    <?php if (check_access("departments")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='departments'">Departments
-                Management</button>
+        <?php } ?>
+        <?php if (check_access("departments")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='departments'">Departments
+                    Management</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
+        <?php } ?>
 
-    <?php if (check_access("show_news")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='show_news'">News
-                board</button>
+        <?php if (check_access("show_news")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='show_news'">News
+                    board</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
-    <?php if (check_access("show_discussion")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='discussion_board'">Discussion
-                board</button>
+        <?php } ?>
+        <?php if (check_access("show_discussion")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='discussion_board'">Discussion
+                    board</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
-    <?php if (check_access("settings")){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='edit_profile'">Settings</button>
+        <?php } ?>
+        <?php if (check_access("settings")){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='edit_profile'">Settings</button>
+            </div>
         </div>
-    </div>
-    <?php } ?>
+        <?php } ?>
 
-    <?php  if (check_access("carrier_create")  && not_executive($user["permission"])){ ?>
-    <div class="col-12 col-md-3 my-2">
-        <div class="d-grid gap-3">
-            <button type="button" class="primary-button" onclick="location.href='carrier_create'">New Carrier</button>
+        <?php  if (check_access("carrier_create")  && not_executive($user["permission"])){ ?>
+        <div class="col-12 col-md-3 my-2">
+            <div class="d-grid gap-3">
+                <button type="button" class="primary-button" onclick="location.href='carrier_create'">New
+                    Carrier</button>
+            </div>
         </div>
+        <?php } ?>
+
     </div>
-    <?php } ?>
-
-
 </div>
