@@ -9,7 +9,7 @@
 			$total_pages = ceil($no_of_records/$record_per_page);
 			$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
 			$start = ($page-1) * $record_per_page;
-			$record_set = find_all_carrier_form();
+			$record_set = find_all_invoices_pending_carriers_from($start,$record_per_page);
 		}
 		else { 
 			$_SESSION["message"] = "Something went wrong.";

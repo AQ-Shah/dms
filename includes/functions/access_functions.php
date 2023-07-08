@@ -9,7 +9,6 @@
         //these pages will not be visible for admin & top management because it is used for individual performance not overall.  
         if ($permission === '1'){
             if ($current_page === 'update_carrier_location') return false;
-            if ($current_page === 'dispatch_carrier') return false;
             return true;
             }
             
@@ -33,8 +32,6 @@
             if ($current_page === 'list_team_unavailable_carriers') return true;
             if ($current_page === 'list_team_dispatched') return true;
             if ($current_page === 'list_team_cancelled_dispatched') return true;
-            if ($current_page === 'update_carrier_status') return true;
-            if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'stats_box_dispatch_team_1') return true;
             if ($current_page === 'stats_box_dispatch_team_2') return true;
             }
@@ -47,6 +44,7 @@
             if ($current_page === 'list_my_cancelled_dispatched') return true;
             if ($current_page === 'update_carrier_location') return true;
             if ($current_page === 'update_carrier_status') return true;
+            if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'dispatch_carrier') return true;
             if ($current_page === 'show_carrier') return true;
             

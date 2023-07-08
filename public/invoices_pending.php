@@ -60,13 +60,13 @@
                         <tbody>
                             <?php 
                             if (isset($record_set)) { 
-                                while($record = mysqli_fetch_assoc($record_set)) { 
+                                foreach ($record_set as $record) { 
                                     if ($pending_amount = find_pending_invoices_amount_by_carrier_id($record["id"])) {?>
                             <tr>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td><?php echo htmlentities($record["b_email"]); ?></td>
                                 <td><?php echo htmlentities($record["o_name"]); ?></td>
-                                <td><?php echo htmlentities($record["o_name"]); ?></td>
+                                <td><?php echo htmlentities($record["b_number"]); ?></td>
                                 <td><?php echo '$'.htmlentities($pending_amount); ?>
                                 </td>
                                 <td>
@@ -77,7 +77,9 @@
                             <?php }}} ?>
                         </tbody>
                     </table>
-
+                    <div class="row form_panel">
+                        <?php include("../includes/pagination/bottom_pagination_bar.php");?>
+                    </div>
                 </div>
             </div>
         </div>

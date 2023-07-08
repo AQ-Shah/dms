@@ -1,18 +1,20 @@
 <?php
 
     function no_of_invoices_pending_carriers(){
-        $record_set = find_all_carrier_form();
-        $carriers_count = 0;
-        if (isset($record_set)) { 
-            while($record = mysqli_fetch_assoc($record_set)) { 
-                if (find_pending_invoices_amount_by_carrier_id($record["id"])) { 
-                    $carriers_count ++;
-                }
-            }
+    global $connection;
+
+        $query  = "SELECT COUNT(DISTINCT carrier_id) ";
+        $query .= "FROM dispatch_list ";
+        $query .= "WHERE invoice_status = 1 ";
+        $query .= "AND status != 'Cancelled' ";
+
+        $set = mysqli_query($connection, $query);
+        confirm_query($set);
+        return max(mysqli_fetch_assoc($set));
         }
-        return $carriers_count;
-        }
-    
+
+
+        
     function no_of_invoices_generated(){
 
         global $connection;
@@ -50,6 +52,52 @@
         }
         return $record_set;
         }
+
+function find_all_invoices_pending_carriers_from($start, $record_per_page){
+        global $connection;
+        $carrier_id_set = array();
+        $start_counter = 0;
+        $end_counter = 0;
+
+
+        $query  = "SELECT DISTINCT carrier_id ";
+        $query .= "FROM dispatch_list ";
+        $query .= "WHERE invoice_status = 1 ";
+        $query .= "AND status != 'Cancelled' ";
+
+        $set = mysqli_query($connection, $query);
+        confirm_query($set);
+
+        while ($record = mysqli_fetch_assoc($set)) {
+            $carrier_id = $record['carrier_id'];
+            $carrier_id_set[] = $carrier_id;
+        }
+
+        $carrier_record_set = array();
+        
+        foreach ($carrier_id_set as $carrier_id) {
+        
+            $start_counter++;
+            // Ignore the records until the start position is reached
+            if ($start_counter <= $start) {
+                continue;
+            }
+            
+
+            $carrier_record = find_carrier_form_by_id($carrier_id);
+            $carrier_record_set[] = $carrier_record;
+
+            $end_counter++;
+            // Check if the desired record limit has been reached
+            if ($end_counter >= $record_per_page) {
+            break;
+        }
+        }
+
+        return $carrier_record_set;
+        }
+
+
 
     function find_invoice_by_id($id){
      	global $connection;
