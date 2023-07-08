@@ -91,7 +91,7 @@
         $query .= "FROM dispatch_list ";
         $query .= "WHERE invoice_status = '1' ";
         $query .= "AND carrier_id = '{$safe_id}' ";
-        $query .= "AND status = 'Completed' ";
+        $query .= "AND status != 'Cancelled' ";
         $query .= "ORDER BY dispatch_time DESC ";
         $set = mysqli_query($connection, $query);
         confirm_query($set);

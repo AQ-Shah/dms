@@ -4,9 +4,13 @@
 	include("../includes/layouts/public_header.php");
     
     include("../includes/api/invoice_created_find_query.php"); 
-
+    
 ?>
-
+<!-- to add the Carrier name and invoice in the title -->
+<script>
+document.getElementById("pageTitle").innerHTML =
+    "<?php echo $carrier['b_name'].' - Invoice #786-'.htmlentities($carrier['id']).'-'.htmlentities($invoice['id'])?>";
+</script>
 
 <div class="container">
     <div class="row">
