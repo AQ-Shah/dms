@@ -61,8 +61,11 @@
             }
 
         if ( $permission === '9' || $permission === '10'){
+                
                 if ($current_page === 'sales_agent_performance_1') return true;
                 if ($current_page === 'carrier_create') return true;
+                if ($current_page === 'carrier_truck_create') return true;
+                if ($current_page === 'list_sales_agent_carriers') return true;
             }
         
       return false;

@@ -53,7 +53,7 @@
                                 <th onclick="sortTable(3)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Truck Type
+                                <th onclick="sortTable(4)">No of Trucks
                                     <span class="sort-arrows"></span>
                                 </th>
 
@@ -91,7 +91,7 @@
                                 ?></td>
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                <td><?php echo htmlentities($record["truck_type"]); ?> </td>
+                                <td><?php echo no_of_trucks_by_carrier($record["id"]); ?> </td>
 
                                 <td><?php
                                     if($record["sales_team_id"]){

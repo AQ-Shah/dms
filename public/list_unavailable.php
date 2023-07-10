@@ -42,9 +42,6 @@
                             <tr>
                                 <th>MC</th>
                                 <th>Carrier Name</th>
-                                <th>Truck Type</th>
-                                <th>Driver Name</th>
-                                <th>Driver Number</th>
                                 <th>Reason of unavailability</th>
                                 <th data-sortable="false">Action</th>
                             </tr>
@@ -55,13 +52,6 @@
                             <tr>
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                <td>
-                                    <?php echo htmlentities($record["truck_type"]); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($record["d_name"]); ?>
-                                </td>
-                                <td><?php echo htmlentities($record["d_number"]); ?></td>
                                 <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>

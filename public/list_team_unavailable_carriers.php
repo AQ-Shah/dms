@@ -46,15 +46,6 @@
                                 <th onclick="sortTable(1)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Truck Type
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(3)">Driver Name
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(4)">Driver Number
-                                    <span class="sort-arrows"></span>
-                                </th>
                                 <th onclick="sortTable(5)">Reason of unavailability
                                     <span class="sort-arrows"></span>
                                 </th>
@@ -67,13 +58,6 @@
                             <tr>
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                <td>
-                                    <?php echo htmlentities($record["truck_type"]); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($record["d_name"]); ?>
-                                </td>
-                                <td><?php echo htmlentities($record["d_number"]); ?></td>
                                 <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>

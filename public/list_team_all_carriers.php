@@ -49,7 +49,7 @@
                                 <th onclick="sortTable(2)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">Truck Type
+                                <th onclick="sortTable(3)">No of Trucks
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th onclick="sortTable(4)">Status
@@ -73,7 +73,7 @@
                                 ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
-                                    <?php echo htmlentities($record["truck_type"]); ?>
+                                    <?php echo no_of_trucks_by_carrier($record["id"]); ?>
                                 </td>
                                 <td <?php if($record["status"] == 'unavailable') { ?> style="color: red;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>

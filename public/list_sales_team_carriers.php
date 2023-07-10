@@ -47,16 +47,10 @@
                                 <th onclick="sortTable(2)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">Truck Type
+                                <th onclick="sortTable(3)">No of Trucks
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Driver Name
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(5)">Driver Number
-                                    <span class="sort-arrows"></span>
-                                </th>
-                                <th onclick="sortTable(6)">Status
+                                <th onclick="sortTable(5)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -77,14 +71,9 @@
                                 ?></td>
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td>
-                                    <?php echo htmlentities($record["truck_type"]); ?>
+                                    <?php echo no_of_trucks_by_carrier($record["id"]); ?>
                                 </td>
-                                <td>
-                                    <?php echo htmlentities($record["d_name"]); ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlentities($record["d_number"]); ?>
-                                </td>
+
                                 <td <?php if($record["status"] == 'unavailable') { ?> style="color: red;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
                                 <td>
@@ -107,6 +96,7 @@
 </div>
 
 <?php 
+    include("../includes/views/carrier_add_truck_popup.php"); 
     include("../includes/views/carrier_assign_team_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 

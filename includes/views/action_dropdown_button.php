@@ -16,8 +16,8 @@
         <button onclick="showStatusPopup(<?php echo $record['id']; ?>)">Change Status</button>
         <?php } ?>
 
-        <?php if (check_access("update_carrier_location")) {?>
-        <button onclick="showMovePopup(<?php echo $record['id']; ?>)">Change Location</button>
+        <?php if (check_access("carrier_truck_create")) {?>
+        <button onclick="showAddTruckPopup(<?php echo $record['id']; ?>)">Add Truck</button>
         <?php } ?>
 
         <?php if (check_access("carrier_assign_dispatcher")) {?>

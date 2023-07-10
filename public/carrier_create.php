@@ -23,7 +23,7 @@
                 <?php echo form_errors($errors); ?>
 
                 <h2>
-                    New Carrier Forum
+                    New Carrier Form
                 </h2>
 
             </div>

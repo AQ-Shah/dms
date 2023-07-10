@@ -14,7 +14,7 @@
             $_SESSION["message"] = "Something went wrong";
             redirect_to("home.php");
         } else {
-             include("../includes/api/carrier_find_form.php"); 
+             include("../includes/api/find_carrier_form.php"); 
         }
     }
     else {

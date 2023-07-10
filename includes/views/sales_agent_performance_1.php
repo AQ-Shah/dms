@@ -82,14 +82,14 @@
                                        <th onclick="sortTable(0)">Carrier Name
                                            <span class="sort-arrows"></span>
                                        </th>
-                                       <th onclick="sortTable(1)">Truck Type
+                                       <th onclick="sortTable(1)">Number of Trucks
                                            <span class="sort-arrows"></span>
                                        </th>
 
-                                       <th onclick="sortTable(2)">Driver Name
+                                       <th onclick="sortTable(2)">Owner Name
                                            <span class="sort-arrows"></span>
                                        </th>
-                                       <th onclick="sortTable(3)">Driver Number
+                                       <th onclick="sortTable(3)">Business Number
                                            <span class="sort-arrows"></span>
                                        </th>
                                        <th onclick="sortTable(4)">Sale Active
@@ -106,9 +106,9 @@
                                    <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                                    <tr>
                                        <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                       <td><?php echo htmlentities($record["truck_type"]); ?></td>
-                                       <td><?php echo htmlentities($record["d_name"]); ?> </td>
-                                       <td><?php echo htmlentities($record["d_number"]); ?> </td>
+                                       <td><?php echo no_of_trucks_by_carrier($record["id"]); ?></td>
+                                       <td><?php echo htmlentities($record["o_name"]); ?> </td>
+                                       <td><?php echo htmlentities($record["b_number"]); ?> </td>
                                        <td><?php echo htmlentities($record["sale_active"]); ?> </td>
                                        <?php if($record["status"] == 'unavailable') { ?>
                                        <td style="color: red;">Unavailable</td>
