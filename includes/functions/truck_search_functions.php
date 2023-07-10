@@ -11,5 +11,37 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));
 			}
+		
+		function find_trucks_by_carrier_id($id){
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "
+				SELECT * 
+				FROM trucks_info 
+				WHERE carrier_id = '{$safe_id}' 
+			";
+			$data_set = mysqli_query($connection, $query);
+			confirm_query($data_set);
+			if($data = mysqli_fetch_assoc($data_set)) {
+				return $data;
+			} else {
+				return null;
+			}}
+		function find_truck_by_id($id){
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "
+				SELECT * 
+				FROM trucks_info 
+				WHERE id = '{$safe_id}'
+				LIMIT 1 
+			";
+			$data_set = mysqli_query($connection, $query);
+			confirm_query($data_set);
+			if($data = mysqli_fetch_assoc($data_set)) {
+				return $data;
+			} else {
+				return null;
+			}}
 
 ?>

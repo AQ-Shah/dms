@@ -9,7 +9,7 @@
         <?php } ?>
 
         <?php if (check_access("dispatch_carrier")) {?>
-        <button onclick="showDispatchPopup(<?php echo $record['id']; ?>)">Dispatch</button>
+        <button onclick="showDispatchPopup(<?php echo $record['id'];?>)">Dispatch</button>
         <?php } ?>
 
         <?php if (check_access("update_carrier_status")) {?>
@@ -17,7 +17,8 @@
         <?php } ?>
 
         <?php if (check_access("carrier_truck_create")) {?>
-        <button onclick="showAddTruckPopup(<?php echo $record['id']; ?>)">Add Truck</button>
+        <button onclick="showAddTruckPopup(<?php echo $record['id']; ?>)">Add
+            Truck</button>
         <?php } ?>
 
         <?php if (check_access("carrier_assign_dispatcher")) {?>

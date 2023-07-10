@@ -7,9 +7,9 @@ if (!not_executive($user["permission"])) {
 }
 ?>
 <div id="assign-dispatcher-popup" class="popup">
-    <div class="popup-content">
-        <h2>Assign Dispatcher</h2>
-        <form class="assign-dispatcher-popup-form popup-form" action="" method="post">
+    <form class="assign-dispatcher-popup-form popup-form" action="" method="post">
+        <div class="row popup-content-wide">
+            <h2>Assign Dispatcher</h2>
             <label for="dispatcher">Dispatcher:</label>
             <select name="dispatcher" id="dispatcher">
 
@@ -23,8 +23,8 @@ if (!not_executive($user["permission"])) {
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideAssignDispatcherPopup()">Assign</button>
             <button type="button" onclick="hideAssignDispatcherPopup()">Cancel</button>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <script>

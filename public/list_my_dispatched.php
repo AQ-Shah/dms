@@ -40,16 +40,15 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(0)">Dispatcher <span class="sort-arrows"></span></th>
-                                <th onclick="sortTable(1)">Dispatch Time <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(2)">Carrier Name <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(3)">From <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(4)">To <span class="sort-arrows"></span> </th>
-                                <th onclick="sortTable(5)">Rate <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(0)">Dispatch Time <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(1)">Carrier Name <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(2)">Driver Name <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(3)">From -> To <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(4)">Rate <span class="sort-arrows"></span> </th>
                                 <?php if (check_access("commission_view")){ ?>
-                                <th onclick="sortTable(6)">Commission <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(5)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
-                                <th onclick="sortTable(7)">Status <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(6)">Status <span class="sort-arrows"></span> </th>
                                 <?php if (check_access("update_dispatched_status")) { ?>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                                 <?php } ?>
@@ -59,14 +58,7 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
-                                <td>
-                                    <?php
-                                    if($record["dispatcher_id"]){
-                                        $dispatcher = find_user_by_id($record["dispatcher_id"]);
-                                        echo $dispatcher['full_name'];
-                                    }
-                                    ?>
-                                </td>
+
                                 <td><?php echo htmlentities(date("d-m-Y", strtotime($record["dispatch_time"]))); ?></td>
                                 <td>
                                     <?php
@@ -77,9 +69,16 @@
                                 ?>
                                 </td>
                                 <td>
-                                    <?php echo htmlentities($record["current_location"]); ?>
+                                    <?php
+                                    if($record["truck_id"]){
+                                        $dispatcher = find_truck_by_id($record["truck_id"]);
+                                        echo $dispatcher['d_name'];
+                                    } 
+                                ?>
                                 </td>
-                                <td><?php echo htmlentities($record["new_location"]); ?></td>
+                                <td>
+                                    <?php echo htmlentities($record["current_location"]).' -> '.htmlentities($record["new_location"]); ?>
+                                </td>
                                 <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
                                 <?php if (check_access("commission_view")){ ?>
                                 <td><?php echo '$'.htmlentities($record["commission"]); ?></td>

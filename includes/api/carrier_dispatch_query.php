@@ -7,7 +7,7 @@
     
     $prev_url = $_POST['prev_url'];
     
-    $required_fields = array("dispatch_location","rate","delivery_datetime", "pickup_datetime");
+    $required_fields = array("dispatch_location","rate","delivery_datetime", "pickup_datetime", "truck-id");
     validate_presences($required_fields);
     
     $dispatcher_id = $user['id'];
@@ -17,6 +17,7 @@
     if (isset($_POST['delivery_datetime'])) {$delivery_time = mysql_prep($_POST["delivery_datetime"]);}
     if (isset($_POST['pickup_datetime'])) {$pickup_datetime = mysql_prep($_POST["pickup_datetime"]);}
     if (isset($_POST['rate'])) {$rate = mysql_prep($_POST["rate"]);} 
+    if (isset($_POST['truck-id'])) {$truck_id = mysql_prep($_POST["truck-id"]);} 
  
     $carrier = find_carrier_form_by_id($id);
     if (!$carrier){
@@ -39,8 +40,8 @@
         //     exit;
         //  } 
        
-         $query = "INSERT INTO dispatch_list (carrier_id, dispatcher_id, dispatch_team_id, current_location, new_location, rate, commission, delivery_time, dispatch_time) ";
-         $query .= "VALUES ('" . $carrier["id"] . "', '" . $dispatcher_id ."', '" . $dispatch_team_id ."', '" . $current_location . "', '$new_location', '$rate', '$commission','$delivery_time','$pickup_datetime'); ";
+         $query = "INSERT INTO dispatch_list (carrier_id, truck_id, dispatcher_id, dispatch_team_id, current_location, new_location, rate, commission, delivery_time, dispatch_time) ";
+         $query .= "VALUES ('" . $carrier["id"] . "', '" . $truck_id ."','" . $dispatcher_id ."', '" . $dispatch_team_id ."', '" . $current_location . "', '$new_location', '$rate', '$commission','$delivery_time','$pickup_datetime'); ";
          $query  .= "UPDATE carrier_form SET status ='dispatched', current_location = '$new_location' WHERE id = $id LIMIT 1";
          
         $result = mysqli_multi_query($connection, $query);
