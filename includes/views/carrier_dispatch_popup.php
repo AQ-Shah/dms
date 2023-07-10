@@ -1,8 +1,3 @@
-<?php
-
-    $truck_record_set = find_trucks_by_carrier_id($record['id']);
-
-?>
 <div id="dispatch-popup" class="popup">
 
     <form class="dispatch-popup-form popup-form" action="" method="post">
@@ -14,12 +9,6 @@
             <div class="col-6">
                 <label for="truck-id">Truck & Driver:</label>
                 <select name="truck-id" id="truck-id">
-
-                    <?php while($truck_record = mysqli_fetch_assoc($truck_record_set)) { ?>
-                    <option value="<?php echo htmlentities($truck_record["id"]); ?>">
-                        <?php echo htmlentities($truck_record["id"]); ?> </option>
-                    <?php } ?>
-
                 </select>
             </div>
             <div class="col-6">

@@ -5,13 +5,19 @@
 
 
    if (isset($_GET["id"])){
-        if (!($carrier = find_carrier_form_by_id($_GET["id"]))){
+
+        if (($carrier = find_carrier_form_by_id($_GET["id"]))){
+            $truck_counter = 0;
+            $truck_record_set = find_trucks_by_carrier_id($carrier['id']);
+           
+        } else {
             $_SESSION["message"] = "Carrier not found";
             redirect_to("home.php");
-        } else $truck_record_set = find_trucks_by_carrier_id($carrier['id']);
+        }
+
     }
     else {
-        $_SESSION["message"] = "Carrier not found";
+        $_SESSION["message"] = "something went wrong";
         redirect_to("home.php");
     }
 ?></label>
@@ -236,53 +242,46 @@
 
             </div>
 
-            <!-- 
+            <?php while ($truck = mysqli_fetch_assoc($truck_record_set)) { $truck_counter++ ;?>
             <div class="row panel-content-primary card">
                 <div class="col-12 panel-title text-center">
-                    <h4>Drivers Info</h4>
+                    <h4>Drivers & Truck : <?php echo $truck_counter;?></h4>
                 </div>
                 <div class="col-12 panel-content-bordered">
                     <div class="col-6">
                         <div>Driver Name : </div>
-                        <div> <label><?php echo $carrier['d_name']; ?></label></div>
+                        <div> <label><?php echo htmlentities($truck['d_name']); ?></label></div>
                     </div>
                     <div class="col-6">
                         <div>Driver Number : </div>
-                        <div> <label><?php echo $carrier['d_number']; ?></label></div>
+                        <div> <label><?php echo $truck['d_number']; ?></label></div>
                     </div>
-                </div>
-            </div>
-
-           
-            <div class="row panel-content-primary card">
-                <div class="col-12 panel-title text-center">
-                    <h4>Truck Info</h4>
                 </div>
                 <div class="col-12 panel-content-bordered">
                     <div class="col-6">Truck Type : </div>
                     <div class="col-6">
-                        <label><?php echo $carrier['truck_type']; ?></label>
+                        <label><?php echo $truck['truck_type']; ?></label>
                     </div>
                 </div>
 
                 <div class="col-6 panel-content-bordered">
                     <div class="col-6">Truck Length (ft) :</div>
-                    <div class="col-6"> <label><?php echo $carrier['t_length']; ?></label></div>
+                    <div class="col-6"> <label><?php echo $truck['t_length']; ?></label></div>
                 </div>
                 <div class="col-6 panel-content-bordered">
                     <div class="col-6">Weight Limit (lbs) : </div>
-                    <div class="col-6"> <label><?php echo $carrier['t_weight']; ?></label></div>
+                    <div class="col-6"> <label><?php echo $truck['t_weight']; ?></label></div>
                 </div>
                 <div class="col-6 panel-content-bordered">
                     <div class="col-6">Truck Number : </div>
-                    <div class="col-6"> <label><?php echo $carrier['truck_no']; ?></label></div>
+                    <div class="col-6"> <label><?php echo $truck['truck_no']; ?></label></div>
                 </div>
                 <div class="col-6 panel-content-bordered">
                     <div class="col-6">Trailer Number : </div>
-                    <div class="col-6"> <label><?php echo $carrier['trailer_no']; ?></label></div>
+                    <div class="col-6"> <label><?php echo $truck['trailer_no']; ?></label></div>
                 </div>
                 <div class="col-12 panel-content-bordered">
-                    <?php if ($carrier['hazmat']) echo'
+                    <?php if ($truck['hazmat']) echo'
                     <div class="col-3">
                         <div class="form-check form-radio-success">
                             <label class="custom-control custom-checkbox">
@@ -292,7 +291,7 @@
                         </div>
                     </div>
                         '?></label>
-                    <?php if ($carrier['twic']) echo'
+                    <?php if ($truck['twic']) echo'
                     <div class="col-3">
                         <div class="form-check form-radio-success">
                             <label class="custom-control custom-checkbox">
@@ -302,7 +301,7 @@
                         </div>
                     </div>
                         '?></label>
-                    <?php if ($carrier['sida']) echo'
+                    <?php if ($truck['sida']) echo'
                     <div class="col-3">
                         <div class="form-check form-radio-success">
                             <label class="custom-control custom-checkbox">
@@ -312,7 +311,7 @@
                         </div>
                     </div>
                         '?></label>
-                    <?php if ($carrier['atp']) echo'
+                    <?php if ($truck['atp']) echo'
                     <div class="col-3">
                         <div class="form-check form-radio-success">
                             <label class="custom-control custom-checkbox">
@@ -324,7 +323,8 @@
                         '?></label>
 
                 </div>
-            </div> -->
+            </div>
+            <?php } ?>
 
             <?php if (check_access("commission_view")){ ?></label>
             <!-- Commission Info -->
