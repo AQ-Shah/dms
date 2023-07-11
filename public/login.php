@@ -26,6 +26,7 @@
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="password" placeholder="Password"
                             name="password">
+                        <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">Show</button>
                         <label for="password">Password:</label>
                     </div>
 
@@ -36,3 +37,20 @@
         </div>
     </div>
 </div>
+
+
+<script>
+// JavaScript code to toggle password visibility
+const passwordInput = document.getElementById('password');
+const showPasswordButton = document.getElementById('showPasswordButton');
+
+showPasswordButton.addEventListener('click', function() {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        showPasswordButton.textContent = 'Hide';
+    } else {
+        passwordInput.type = 'password';
+        showPasswordButton.textContent = 'Show';
+    }
+});
+</script>

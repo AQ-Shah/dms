@@ -26,8 +26,10 @@
                 <div class="col-md-12">
                     <label for="validate_new_password" class="form-label">Confirm New Password:</label>
                     <input type="password" class="form-control" name="validate_new_password" id="validate_new_password">
+
                 </div>
                 <div class="col-12">
+                    <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">Show</button>
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </div>
             </form>
@@ -39,6 +41,27 @@
 <script>
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+// JavaScript code to toggle password visibility
+const passwordInput = document.getElementById('current_password');
+const passwordInput2 = document.getElementById('password');
+const passwordInput3 = document.getElementById('validate_new_password');
+const showPasswordButton = document.getElementById('showPasswordButton');
+
+showPasswordButton.addEventListener('click', function() {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordInput2.type = 'text';
+        passwordInput3.type = 'text';
+        showPasswordButton.textContent = 'Hide';
+    } else {
+        passwordInput.type = 'password';
+        passwordInput2.type = 'password';
+        passwordInput3.type = 'password';
+        showPasswordButton.textContent = 'Show';
+    }
 });
 </script>
 
