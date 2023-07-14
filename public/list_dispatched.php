@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="row panel table-primary p-2">
-                <div class="panel-body table-responsive">
+                <div class="panel-body table-responsive-sm" style="overflow-x:auto;">
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
@@ -51,6 +51,7 @@
                                 <th onclick="sortTable(7)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
                                 <th onclick="sortTable(8)">Status <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(9)">Invoice Status <span class="sort-arrows"></span> </th>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                             </tr>
                         </thead>
@@ -94,6 +95,11 @@
                                 <td <?php if($record["status"] == 'Cancelled') { ?> style="color: red;" <?php } ?>
                                     <?php if($record["status"] == 'Completed') { ?> style="color: green;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
+                                <?php if (check_access("invoice_view")){ ?>
+                                <?php if($record["invoice_status"] == 0) echo "<td>None</td>"; ?>
+                                <?php if($record["invoice_status"] == 1) echo "<td>New</td>"; ?>
+                                <?php if($record["invoice_status"] == 2) echo "<td>Invoiced</td>"; ?>
+                                <?php } ?>
 
                                 <td>
                                     <?php include("../includes/views/dispatched_dropdown_button.php");?>

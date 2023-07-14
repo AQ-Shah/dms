@@ -50,7 +50,6 @@
                                 <th onclick="sortTable(5)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
                                 <th onclick="sortTable(6)">Status <span class="sort-arrows"></span> </th>
-                                <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,10 +83,6 @@
                                 <?php } ?>
                                 <td <?php if($record["status"] == 'Cancelled') { ?> style="color: red;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
-
-                                <td>
-                                    <?php include("../includes/views/dispatched_dropdown_button.php");?>
-                                </td>
 
                             </tr>
                             <?php } ?>

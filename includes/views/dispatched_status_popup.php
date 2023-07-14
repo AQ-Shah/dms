@@ -5,6 +5,7 @@
             <label for="dispatched-status">Dispatched Status:</label>
             <select id="dispatched-status" name="dispatched-status">
                 <option value="Dispatched">Dispatched</option>
+                <option value="Completed">Completed</option>
                 <option value="Cancelled">Cancelled</option>
             </select><br>
             <input type="hidden" id="carrier-id" name="carrier-id" value="">

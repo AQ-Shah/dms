@@ -1,6 +1,6 @@
  <?php if (check_access("update_dispatched_status")) { ?>
 
-
+ <?php if ($record["status"] != "Cancelled") { ?>
  <div class="dropdown">
      <button class="dropdown-button">Actions</button>
      <div class="dropdown-content">
@@ -13,4 +13,5 @@
      </div>
  </div>
 
+ <?php } ?>
  <?php } ?>
