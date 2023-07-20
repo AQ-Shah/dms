@@ -42,7 +42,7 @@
 			return max(mysqli_fetch_assoc($set));
 			}
 
-		function no_of_my_dispatch_list($id){
+		function no_of_dispatched_by_dispatcher($id){
 
 			global $connection;
 
@@ -531,7 +531,7 @@
 			return $set;
 			}
 
-		function find_my_dispatch_list_from($id, $start,$end) {
+		function find_dispatched_by_id_from($id, $start,$end) {
 
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
@@ -819,6 +819,49 @@
 			} else {
 				return null;
 			}}
+		function count_dispatch_list_by_carrier_name($keyword) {
+
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$carrier_set = find_carrier_form_by_keyword($safe_keyword);
+			$carrier = mysqli_fetch_assoc($carrier_set);
+			$carrier_id = $carrier['id'];
+			
+			if ($carrier) {
+				$query  = "
+					SELECT COUNT(id) 
+					FROM dispatch_list 
+					WHERE carrier_id = {$carrier_id}
+				";
+
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				$result = mysqli_fetch_array($set)[0];
+				return max($result, 0);
+			} else return 0;
+			}
+			
+
+		function find_dispatch_list_by_carrier_name_from($keyword,$start,$end) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$carrier_set = find_carrier_form_by_keyword($safe_keyword);
+			$carrier = mysqli_fetch_assoc($carrier_set);
+			$carrier_id = $carrier['id'];
+			
+			if ($carrier) {
+				$query  = "
+					SELECT * 
+					FROM dispatch_list 
+					WHERE carrier_id = {$carrier_id}
+					LIMIT {$start},{$end}
+				";
+			
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				return $set;}
+		}
 
 		function find_dispatch_list_by_invoice_id($invoice_id){
 

@@ -32,7 +32,7 @@
                     <label>List of Carriers</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
-                    <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
+                    <input class="form-control" id="tableSearch" onkeyup="table_search(event)" type="text"
                         placeholder="Search..">
                 </div>
             </div>

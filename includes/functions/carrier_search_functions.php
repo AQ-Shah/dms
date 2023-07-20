@@ -361,6 +361,21 @@
 			confirm_query($set);
 			return $set;}
 		
+		function find_carrier_form_by_keyword($keyword) {
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$query  = "
+			SELECT * 
+			FROM carrier_form 
+			WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+			LIKE '%{$safe_keyword}%'
+			LIMIT 1
+			";
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+		
 		function find_available_carrier_form_from($start,$end) {
 			global $connection;
 

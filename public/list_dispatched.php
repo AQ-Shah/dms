@@ -31,7 +31,7 @@
                     <label>List of Carriers</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
-                    <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
+                    <input class="form-control" id="tableSearch" onkeyup="table_search(event)" type="text"
                         placeholder="Search..">
                 </div>
             </div>
@@ -59,7 +59,8 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
-                                <td>
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='list_dispatched?dispatcher_id=<?php echo urlencode($record['dispatcher_id']); ?>'">
                                     <?php
                                     if($record["dispatcher_id"]){
                                         $dispatcher = find_user_by_id($record["dispatcher_id"]);
