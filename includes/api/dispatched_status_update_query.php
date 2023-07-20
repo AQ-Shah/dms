@@ -13,15 +13,23 @@
     
     if (empty($errors) && $dispatched) { 
         
+        $carrier = find_carrier_form_by_id($carrierId);
+        
+        $truckId =  $dispatched['truck_id'];
         if ($dispatched['status'] == $status) {
             $_SESSION["message"] = "Status is already ".$status;
             header("Location: " . $prev_url);
             exit;
          } 
-       
+
         $query  = "UPDATE dispatch_list SET status ='{$status}'";
         $query .= "WHERE id = {$dispatchedId} LIMIT 1; ";
-        $query  .= "UPDATE carrier_form SET status ='available' WHERE id = $carrierId LIMIT 1";
+        if ($status == 'Completed') 
+            $query  .= "UPDATE dispatch_list SET invoice_status = 1 WHERE id = $dispatchedId LIMIT 1;";
+        if ($status == 'Cancelled' || $status == 'Completed') 
+            $query  .= "UPDATE trucks_info SET truck_load_status = 1 WHERE id = $truckId LIMIT 1;";
+        if ($carrier['sale_activation_dispatch_id'] == $dispatchedId && $status == 'Cancelled') 
+         $query  .= "UPDATE carrier_form SET sale_activation_dispatch_id = 0, sale_active =0 WHERE id = $carrierId LIMIT 1";
          
         $result = mysqli_multi_query($connection, $query);
 
