@@ -539,7 +539,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed') AND dispatcher_id = '{$safe_id}'  ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -552,7 +552,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Cancelled' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -855,6 +855,7 @@
 					SELECT * 
 					FROM dispatch_list 
 					WHERE carrier_id = {$carrier_id}
+					ORDER BY dispatch_time DESC
 					LIMIT {$start},{$end}
 				";
 			

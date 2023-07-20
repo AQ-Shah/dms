@@ -259,6 +259,28 @@ function find_user_by_id($user_id) {
         }
     }
 
+function find_user_by_keyword($keyword) {
+        global $connection;
+        
+        $safe_keyword = mysqli_real_escape_string($connection, $keyword);
+        
+       $query  = "
+			SELECT * 
+			FROM users 
+			WHERE CONCAT(full_name, username, email) 
+			LIKE '%{$safe_keyword}%'
+			LIMIT 1
+			";
+
+        $user_set = mysqli_query($connection, $query);
+        confirm_query($user_set);
+        if($user = mysqli_fetch_assoc($user_set)) {
+            return $user;
+        } else {
+            return null;
+        }
+    }
+
 function find_user_permission(){
 		$encryption_key = get_encryption_key();
         $permission_vector_key = get_permission_vector_key();
