@@ -75,6 +75,7 @@ document.getElementById("pageTitle").innerHTML =
                             <tr>
 
                                 <th> Dispatch Date</span> </th>
+                                <th> Driver</span> </th>
                                 <th> From</span> </th>
                                 <th> To</span> </th>
                                 <th> Rate Con.</span> </th>
@@ -86,6 +87,14 @@ document.getElementById("pageTitle").innerHTML =
                             <?php foreach ($record_set as $record)  { ?>
                             <tr>
                                 <td><?php echo htmlentities(date("d-m-Y", strtotime($record["dispatch_time"]))); ?></td>
+                                <td>
+                                    <?php
+                                    if($record["truck_id"]){
+                                        $dispatcher = find_truck_by_id($record["truck_id"]);
+                                        echo $dispatcher['d_name'];
+                                    } 
+                                ?>
+                                </td>
                                 <td><?php echo htmlentities($record["current_location"]); ?></td>
                                 <td><?php echo htmlentities($record["new_location"]); ?></td>
                                 <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
