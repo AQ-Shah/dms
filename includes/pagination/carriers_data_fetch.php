@@ -7,11 +7,11 @@
 			if ($record_per_page > 0 && $record_per_page <= 100) {
 
 				if (isset ($_GET['keyword'])) {
-					$no_of_records = 1;
+					$no_of_records = no_of_carrier_form_by_keyword($_GET['keyword']);
 					$total_pages = ceil($no_of_records/$record_per_page);
 					$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
 					$start = ($page-1) * $record_per_page;
-					$record_set = find_carrier_form_by_keyword($_GET['keyword']);
+					$record_set = find_carrier_form_by_keyword($_GET['keyword'],$start,$record_per_page);
 
 
 				} else {

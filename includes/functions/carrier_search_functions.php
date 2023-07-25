@@ -369,17 +369,58 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
-		
-		function find_carrier_form_by_keyword($keyword) {
+
+		function no_of_carrier_form_by_keyword($keyword) {
+			
 			global $connection;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$query  = "
-			SELECT * 
-			FROM carrier_form 
-			WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-			LIKE '%{$safe_keyword}%'
-			LIMIT 1
-			";
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT COUNT('id')
+				FROM carrier_form 
+				WHERE CONCAT(dispatcher_id, creator_id) 
+				LIKE '%{$user_id}%'
+				";
+			} else {
+				$query  = "
+				SELECT COUNT('id') 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				";
+			}
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+		
+		
+		
+		function find_carrier_form_by_keyword($keyword,$start,$end) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE CONCAT(dispatcher_id, creator_id) 
+				LIKE '%{$user_id}%'
+				ORDER BY id DESC
+				LIMIT {$start},{$end}
+				";
+			} else {
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				ORDER BY id DESC
+				LIMIT {$start},{$end}
+				";
+			}
 			
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);

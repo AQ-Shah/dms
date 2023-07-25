@@ -259,7 +259,7 @@ function find_user_by_id($user_id) {
         }
     }
 
-function find_user_by_keyword($keyword) {
+function find_user_id_by_keyword($keyword) {
         global $connection;
         
         $safe_keyword = mysqli_real_escape_string($connection, $keyword);
@@ -275,7 +275,7 @@ function find_user_by_keyword($keyword) {
         $user_set = mysqli_query($connection, $query);
         confirm_query($user_set);
         if($user = mysqli_fetch_assoc($user_set)) {
-            return $user;
+            return $user['id'];
         } else {
             return null;
         }
