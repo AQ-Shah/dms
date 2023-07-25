@@ -1,6 +1,6 @@
 <?php
 
-$record_set = find_all_sales_agent();
+$record_set = find_all_active_sales_agent();
 
 ?>
 <script>
@@ -11,7 +11,7 @@ var saleGraphByAgentCreation = new Chart(saleGraphByAgent, {
         labels: [
             <?php while($record = mysqli_fetch_assoc($record_set)) {echo "'".$record['full_name']."',"; }?>
         ],
-        <?php $record_set = find_all_sales_agent(); ?>
+        <?php $record_set = find_all_active_sales_agent(); ?>
         datasets: [{
             label: 'Sales Agents',
             data: [

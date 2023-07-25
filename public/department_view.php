@@ -62,6 +62,9 @@
                                 <th onclick="sortTable(4)">Contact #
                                     <span class="sort-arrows"></span>
                                 </th>
+                                <th onclick="sortTable(5)">Status
+                                    <span class="sort-arrows"></span>
+                                </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -92,6 +95,9 @@
                                 <td style="cursor: pointer;"
                                     onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
                                     <?php echo htmlentities($record["phone_num"]); ?></td>
+                                <td style="cursor: pointer;"
+                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    <?php if ($record["status"] == 1) echo "Active"; else echo "Resigned"; ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="dropdown-button">Actions</button>
