@@ -21,7 +21,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'available' ";
+			$query .= "WHERE status = 1 ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -32,7 +32,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'available' ";
+			$query .= "WHERE status = 1 ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -45,7 +45,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status != 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -98,7 +98,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status != 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -112,7 +112,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -124,7 +124,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -133,7 +133,7 @@
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status != 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -381,7 +381,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'available' ";
+			$query .= "WHERE status = 1 ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -394,7 +394,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'available' ";
+			$query .= "WHERE status = 1 ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
@@ -408,7 +408,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status != 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
@@ -465,7 +465,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status != 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
@@ -480,7 +480,7 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
@@ -494,7 +494,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status != 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -506,7 +506,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 'unavailable' ";
+			$query .= "WHERE status = 1  ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);

@@ -12,7 +12,7 @@
     $status = mysql_prep($_POST["carrier-status"]);
     if (isset($_POST['reason'])) {$reason = mysql_prep($_POST["reason"]);} 
 
-    if (empty($reason) && $status == "unavailable") {
+    if (empty($reason) && $status != 1) {
        $_SESSION["message"] = "Please give reason for unavailability.";
         header("Location: " . $prev_url);
         exit;

@@ -4,8 +4,12 @@
         <form class="status-popup-form popup-form" action="" method="post">
             <label for="carrier-status">Status:</label>
             <select id="carrier-status" name="carrier-status">
-                <option value="available">Available</option>
-                <option value="unavailable">Unavailable</option>
+                <option value="1">Available</option>
+                <option value="2">Temporary Unavailable</option>
+                <?php if (check_access("removing carrier")) { ?>
+                <option value="3">Not working anymore</option>
+                <option value="4">Black List</option>
+                <?php } ?>
             </select><br>
             <input type="hidden" id="carrier-id" name="carrier_id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -23,7 +27,7 @@
 function showStatusPopup(carrierId) {
     // Get the current status for the carrier with the given ID
     // You'll need to replace this with your own code to fetch the status from your database
-    var currentStatus = "available"; // replace this with your query result
+    var currentStatus = 1; // replace this with your query result
 
     // Populate the form fields with the current status
     document.getElementById("carrier-id").value = carrierId;
