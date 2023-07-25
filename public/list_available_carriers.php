@@ -86,8 +86,11 @@
                                 <td>
                                     <?php echo no_of_trucks_by_carrier($record["id"]); ?>
                                 </td>
-                                <td <?php if($record["status"] == 'unavailable') { ?> style="color: red;" <?php } ?>>
-                                    <?php echo htmlentities($record["status"]); ?></td>
+                                <?php if($record["status"] == 'unavailable') { ?>
+                                <td style="color: red;">Unavailable</td>
+                                <?php } else { ?>
+                                <td style="color: green;">Available</td>
+                                <?php } ?>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
                                 </td>

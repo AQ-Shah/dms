@@ -56,7 +56,13 @@
                                 <td><?php echo htmlentities($record["b_name"]); ?></td>
                                 <td><?php  echo no_of_trucks_by_carrier($record["id"]); ?></td>
                                 <td><?php echo htmlentities($record["b_number"]); ?></td>
-                                <td><?php echo htmlentities($record["status"]); ?></td>
+
+                                <?php if($record["status"] == 1) { ?>
+                                <td style="color: green;">Available</td>
+                                <?php } else { ?>
+                                <td style="color: red;">Unavailable</td>
+                                <?php } ?>
+
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
                                 </td>
