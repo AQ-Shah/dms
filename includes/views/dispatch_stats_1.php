@@ -24,7 +24,7 @@
     <div class="col-4">
         <a href='list_available_carriers'>
             <div class=" custom-panel card" style="background:#58467e">
-                <h3><?php echo no_of_carrier_form()-no_of_unavailable_carriers();?></h3>
+                <h3><?php echo no_of_working_carriers();?></h3>
                 <p>Active Carriers</p>
             </div>
         </a>

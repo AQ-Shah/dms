@@ -364,20 +364,10 @@
                    </li>
                    <?php } ?>
 
-                   <?php if (check_access("list_team_all_carriers")  && not_executive($user["permission"])){ ?>
-
-                   <li class="side-nav-title">Carriers List Section</li>
-
-                   <li class="side-nav-item">
-                       <a href="list_team_all_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
-                           class="side-nav-link">
-                           <i class="mdi mdi-truck-snowflake font-22"></i>
-                           <span> All Carriers </span>
-                       </a>
-                   </li>
-                   <?php } ?>
 
                    <?php if (check_access("list_team_available_carriers")  && not_executive($user["permission"])){ ?>
+
+                   <li class="side-nav-title">Carriers List Section</li>
 
                    <li class="side-nav-item">
                        <a href="list_team_available_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
