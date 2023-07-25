@@ -345,7 +345,7 @@
                    <?php if (check_access("list_available_carriers")){ ?>
 
                    <li class="side-nav-item">
-                       <a href="list_available_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="list_carriers?only_active=1" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck font-22"></i>
                            <span> Active Carriers </span>
@@ -356,7 +356,7 @@
                    <?php if (check_access("list_unavailable")){ ?>
 
                    <li class="side-nav-item">
-                       <a href="list_unavailable" aria-expanded="false" aria-controls="sidebarDashboards"
+                       <a href="list_carriers?only_inactive=1" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-remove-outline font-22"></i>
                            <span> Inactive Carriers </span>
@@ -364,6 +364,16 @@
                    </li>
                    <?php } ?>
 
+                   <?php if (check_access("list_removed")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="list_carriers?only_removed=1" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-remove-outline font-22"></i>
+                           <span> Removed Carriers </span>
+                       </a>
+                   </li>
+                   <?php } ?>
 
                    <?php if (check_access("list_team_available_carriers")  && not_executive($user["permission"])){ ?>
 

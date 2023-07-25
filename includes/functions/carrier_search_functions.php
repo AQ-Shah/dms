@@ -129,6 +129,15 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_removed_carriers(){
+			global $connection;
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 3 OR status = 4  ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
 		function no_of_working_carriers(){
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -507,6 +516,18 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 2  ";
+			$query .= "ORDER BY id DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_removed_carrier_form_from($start,$end) {
+			global $connection;
+
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 3 OR status = 4  ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);

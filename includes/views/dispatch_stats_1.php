@@ -4,7 +4,7 @@
     <div class="col-12">
         <div class="page-title-box">
             <h2>
-                Dispatch Stats
+                Carriers Stats
             </h2>
 
         </div>
@@ -22,7 +22,7 @@
         </a>
     </div>
     <div class="col-4">
-        <a href='list_available_carriers'>
+        <a href='list_carriers?only_active=1'>
             <div class=" custom-panel card" style="background:#58467e">
                 <h3><?php echo no_of_working_carriers();?></h3>
                 <p>Active Carriers</p>
