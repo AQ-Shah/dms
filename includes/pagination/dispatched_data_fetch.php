@@ -14,7 +14,7 @@
 					$start = ($page-1) * $record_per_page;
 					$record_set = find_dispatch_list_by_carrier_name_from($_GET['keyword'],$start,$record_per_page);
 
-				} elseif (isset ($_GET['dispatcher_id'])) {
+				} else if (isset ($_GET['dispatcher_id'])) {
 
 					$no_of_records = no_of_dispatched_by_dispatcher($_GET['dispatcher_id']);
 					$total_pages = ceil($no_of_records/$record_per_page);

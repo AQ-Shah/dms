@@ -47,25 +47,33 @@
                                 <th onclick="sortTable(1)">Dispatcher
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">MC
+                                <th onclick="sortTable(2)">Serving Time
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">Carrier Name
+                                <th onclick="sortTable(3)">MC
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">No of Trucks
+                                <th onclick="sortTable(4)">Carrier Name
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(5)">Truck
                                     <span class="sort-arrows"></span>
                                 </th>
 
-                                <th onclick="sortTable(5)">Sales Team
+                                <th onclick="sortTable(6)">Sales Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(6)">Sales Agent
+                                <th onclick="sortTable(7)">Sales Agent
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(7)">Status
+                                <th onclick="sortTable(8)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
+                                <?php if (isset($_GET['only_inactive']) == 1 || isset($_GET['only_removed']) == 1) { ?>
+                                <th onclick="sortTable(9)">Reason
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <?php }  ?>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -89,12 +97,38 @@
                                         echo "Not Assigned";
                                     }
                                 ?></td>
-                                <td><?php echo htmlentities($record["mc"]); ?></td>
-                                <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                <td><?php echo no_of_trucks_by_carrier($record["id"]); ?> </td>
 
+                                <td>
+                                    <?php
+                                        $mc_validity = new DateTime($record["mc_validity"]);
+                                        $current_date = new DateTime(); 
+
+                                        $interval = $current_date->diff($mc_validity);
+                                        $days_passed = $interval->days;
+
+                                        echo "{$days_passed} days ago";
+                                        ?>
+                                </td>
+
+
+                                <td><?php echo htmlentities($record["mc"]); ?></td>
+                                <td><?php echo htmlentities($record["b_name"]).'('.no_of_trucks_by_carrier($record["id"]).')'; ?>
+                                </td>
+                                <td>
+                                    <?php  
+                                        $truckSet = find_trucks_by_carrier_id($record["id"]);
+                                        $counter = 1;
+                                        
+                                        while($truck = mysqli_fetch_assoc($truckSet)) {
+                                            if ($counter > 1) echo ','; 
+                                            echo htmlentities($truck["truck_type"]).' ';    
+                                            $counter ++;
+                                        }
+                                    ?>
+                                </td>
                                 <td><?php
                                     if($record["sales_team_id"]){
+                                        
                                         $sales_team = find_team_by_id($record["sales_team_id"]);
                                         echo $sales_team['name'];
                                     } else {
@@ -116,6 +150,10 @@
                                 <?php } else { ?>
                                 <td style="color: red;">Unavailable</td>
                                 <?php } ?>
+
+                                <?php if (isset($_GET['only_inactive']) == 1 || isset($_GET['only_removed']) == 1) { ?>
+                                <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
+                                <?php }  ?>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
                                 </td>

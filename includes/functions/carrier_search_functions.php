@@ -4,7 +4,7 @@
 			global $connection;
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
@@ -364,7 +364,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -397,7 +397,25 @@
 		
 		
 		
-		function find_carrier_form_by_keyword($keyword,$start,$end) {
+		function find_carrier_form_by_keyword($keyword) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				LIMIT 1
+				";
+		
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
 			global $connection;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
@@ -408,7 +426,7 @@
 				FROM carrier_form 
 				WHERE CONCAT(dispatcher_id, creator_id) 
 				LIKE '%{$user_id}%'
-				ORDER BY id DESC
+				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
 			} else {
@@ -417,7 +435,7 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
-				ORDER BY id DESC
+				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
 			}
@@ -432,7 +450,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1 ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -446,7 +464,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1 ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -460,7 +478,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -474,7 +492,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE creator_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -488,7 +506,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE sales_team_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -502,7 +520,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -517,7 +535,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -532,7 +550,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 2  ";
 			$query .= "AND dispatch_team_id = '{$safe_id}' ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -545,7 +563,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -557,7 +575,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 2  ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -569,7 +587,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 3 OR status = 4  ";
-			$query .= "ORDER BY id DESC ";
+			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);

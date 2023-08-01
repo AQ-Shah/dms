@@ -40,16 +40,16 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(0)">MC
+                                <th onclick="sortTable(0)">Serving Time
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(1)">Dispatcher
+                                <th onclick="sortTable(1)">MC
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Carrier Name
+                                <th onclick="sortTable(2)">Dispatcher
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">No of Trucks
+                                <th onclick="sortTable(3)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th onclick="sortTable(4)">Status
@@ -62,6 +62,18 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
+                                <td>
+                                    <?php
+                                        $mc_validity = new DateTime($record["mc_validity"]);
+                                        $current_date = new DateTime(); // This will automatically use the current date and time
+
+                                        $interval = $current_date->diff($mc_validity);
+                                        $days_passed = $interval->days;
+
+                                        echo "{$days_passed} days ago";
+                                        ?>
+                                </td>
+
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
                                 <td><?php
                                     if($record["dispatcher_id"]){
@@ -71,9 +83,7 @@
                                         echo "Not Assigned";
                                     }
                                 ?></td>
-                                <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                <td>
-                                    <?php echo no_of_trucks_by_carrier($record["id"]); ?>
+                                <td><?php echo '('.no_of_trucks_by_carrier($record["id"]).')'.htmlentities($record["b_name"]); ?>
                                 </td>
 
                                 <?php if($record["status"] == 1) { ?>

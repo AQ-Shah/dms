@@ -50,7 +50,10 @@
                                 <th onclick="sortTable(3)">No of Trucks
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(5)">Status
+                                <th onclick="sortTable(4)">Status
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(5)">Reason (if inactive)
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -76,6 +79,7 @@
 
                                 <td <?php if($record["status"] == 'unavailable') { ?> style="color: red;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
+                                <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <td>
                                     <?php include("../includes/views/action_dropdown_button.php");?>
                                 </td>
