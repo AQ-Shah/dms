@@ -75,7 +75,8 @@
                                 <?php } else { ?>
                                 <td style="color: green;">Available</td>
                                 <td>
-                                    <?php include("../includes/views/action_dropdown_button.php");?>
+                                    <button class="dropdown dropdown-button"
+                                        onclick="showCarriersActionPopup(<?php echo $record['id']; ?>)">Actions</button>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -93,6 +94,7 @@
 </div>
 
 <?php 
+    include("../includes/views/action_dropdown_button.php");
     include("../includes/views/carrier_add_truck_popup.php"); 
     include("../includes/views/carrier_assign_team_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 

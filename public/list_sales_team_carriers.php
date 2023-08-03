@@ -47,13 +47,16 @@
                                 <th onclick="sortTable(2)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">No of Trucks
+                                <th onclick="sortTable(3)">Truck Type
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Status
+                                <th onclick="sortTable(4)">Sales Status
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(5)">Reason (if inactive)
+                                <th onclick="sortTable(5)">Carrier Status
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(6)">Reason (if inactive)
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -72,16 +75,43 @@
                                         echo "Not Assigned";
                                     }
                                 ?></td>
-                                <td><?php echo htmlentities($record["b_name"]); ?></td>
-                                <td>
-                                    <?php echo no_of_trucks_by_carrier($record["id"]); ?>
+                                <td><?php echo htmlentities($record["b_name"]).'('.no_of_trucks_by_carrier($record["id"]).')'; ?>
                                 </td>
-
-                                <td <?php if($record["status"] == 'unavailable') { ?> style="color: red;" <?php } ?>>
-                                    <?php echo htmlentities($record["status"]); ?></td>
-                                <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <td>
-                                    <?php include("../includes/views/action_dropdown_button.php");?>
+                                    <?php  
+                                        $truckSet = find_trucks_by_carrier_id($record["id"]);
+                                        $counter = 1;
+                                        
+                                        while($truck = mysqli_fetch_assoc($truckSet)) {
+                                            if ($counter > 1) echo ','; 
+                                            echo htmlentities($truck["truck_type"]).' ';    
+                                            $counter ++;
+                                        }
+                                    ?>
+                                </td>
+                                <?php if($record["sale_active"]) { ?>
+                                <td style="color: Green;"> Active</td>
+                                <?php } else { ?>
+                                <td style="color: red;"> Inactive</td>
+                                <?php }  ?>
+
+                                <?php if($record["status"] == 1) { ?>
+                                <td style="color: Green;"> Available</td>
+                                <td></td>
+                                <?php } ?>
+                                <?php if($record["status"] == 2) { ?>
+                                <td style="color: red;">Unavailable</td>
+                                <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
+                                <?php } ?>
+                                <?php if($record["status"] == 3 || $record["status"] == 4) { ?>
+                                <td style="color: red;">BLACKLISTED</td>
+                                <td></td>
+                                <?php } ?>
+
+
+                                <td>
+                                    <button class="dropdown dropdown-button"
+                                        onclick="showCarriersActionPopup(<?php echo $record['id']; ?>)">Actions</button>
                                 </td>
 
                             </tr>
@@ -100,6 +130,7 @@
 </div>
 
 <?php 
+    include("../includes/views/action_dropdown_button.php");
     include("../includes/views/carrier_add_truck_popup.php"); 
     include("../includes/views/carrier_assign_team_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 

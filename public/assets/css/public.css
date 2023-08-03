@@ -180,7 +180,7 @@ table th {
 }
 
 .table-responsive {
-    overflow-x: clip !important;
+    overflow-x: clip;
 }
 
 .sort-arrows {

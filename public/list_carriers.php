@@ -59,18 +59,21 @@
                                 <th onclick="sortTable(5)">Truck
                                     <span class="sort-arrows"></span>
                                 </th>
+                                <th onclick="sortTable(6)">Sales Status
+                                    <span class="sort-arrows"></span>
+                                </th>
 
-                                <th onclick="sortTable(6)">Sales Team
+                                <th onclick="sortTable(7)">Sales Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(7)">Sales Agent
+                                <th onclick="sortTable(8)">Sales Agent
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(8)">Status
+                                <th onclick="sortTable(9)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <?php if (isset($_GET['only_inactive']) == 1 || isset($_GET['only_removed']) == 1) { ?>
-                                <th onclick="sortTable(9)">Reason
+                                <th onclick="sortTable(10)">Reason
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <?php }  ?>
@@ -126,6 +129,11 @@
                                         }
                                     ?>
                                 </td>
+                                <?php if($record["sale_active"]) { ?>
+                                <td style="color: Green;"> Active</td>
+                                <?php } else { ?>
+                                <td style="color: red;"> Inactive</td>
+                                <?php }  ?>
                                 <td><?php
                                     if($record["sales_team_id"]){
                                         
@@ -155,7 +163,8 @@
                                 <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <?php }  ?>
                                 <td>
-                                    <?php include("../includes/views/action_dropdown_button.php");?>
+                                    <button class="dropdown dropdown-button"
+                                        onclick="showCarriersActionPopup(<?php echo $record['id']; ?>)">Actions</button>
                                 </td>
 
                             </tr>
@@ -176,6 +185,8 @@
 
 
 <?php 
+    include("../includes/views/action_dropdown_button.php");
+    include("../includes/views/carrier_add_truck_popup.php"); 
     include("../includes/views/carrier_assign_team_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
