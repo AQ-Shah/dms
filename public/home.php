@@ -35,6 +35,8 @@
 
     <?php include("../includes/views/revenue_dashboard_1.php"); ?>
 
+    <?php include("../includes/views/revenue_dashboard_2.php"); ?>
+
     <?php include("../includes/views/sales_agent_performance_1.php"); ?>
 
 
