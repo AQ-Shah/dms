@@ -177,6 +177,7 @@ table.dataTable {
 
 table th {
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .table-responsive {
