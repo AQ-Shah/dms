@@ -410,6 +410,176 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 
 			return $record;}
 
+    function total_unpaid_invoices_amount_week_0() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW(), 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+            
+    function total_unpaid_invoices_amount_week_1() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_2() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 2 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_3() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 3 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_4() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 4 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_5() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 5 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_6() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 6 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_7() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 7 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_8() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 8 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
+    function total_unpaid_invoices_amount_week_9() {
+			global $connection;
+
+			$query = "SELECT SUM(total_amount) AS total
+            FROM invoices
+            WHERE (invoice_status = 2)
+            AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 9 WEEK, 1)
+            ";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total'] !== null) ? $row['total'] : 0;
+
+			return $record;}
+
     
 
     
