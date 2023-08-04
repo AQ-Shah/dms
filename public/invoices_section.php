@@ -45,6 +45,8 @@
 
     <?php include("../includes/views/revenue_dashboard_2.php"); ?>
 
+    <?php include("../includes/views/revenue_dashboard_3.php"); ?>
+
 
 
 

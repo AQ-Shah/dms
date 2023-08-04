@@ -211,7 +211,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
-			WHERE invoice_status = 2
+			WHERE invoice_status = 3
 			AND YEAR(creation_date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
             AND MONTH(creation_date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 

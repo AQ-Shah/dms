@@ -9,7 +9,7 @@ include("../includes/data/dispatch_data_fetch.php");
             <div class="col-12">
                 <div class="page-title-box">
                     <h2>
-                        Revenue Stats
+                        Dispatching Commission Stats
                     </h2>
 
                 </div>
