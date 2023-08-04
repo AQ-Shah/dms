@@ -16,7 +16,7 @@ $record_set = find_teams_by_department_id("5");
                 <?php } ?>
 
             </select><br>
-            <input type="hidden" id="carrier-id" name="carrier-id" value="">
+            <input type="hidden" id="team-carrier-id" name="team-carrier-id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideAssignTeamPopup()">Assign</button>
             <button type="button" onclick="hideAssignTeamPopup()">Cancel</button>
@@ -29,7 +29,7 @@ $record_set = find_teams_by_department_id("5");
 
 function showDAssignTeamPopup(carrierId) {
     // Populate the form fields with default values
-    document.getElementById("carrier-id").value = carrierId;
+    document.getElementById("team-carrier-id").value = carrierId;
     document.getElementById("team-id").value = "";
 
     var formAction = "carrier_assign_team";

@@ -15,7 +15,7 @@
             <?php } ?>
             <?php if (check_access("carrier_truck_create")) {?>
             <div class="col-6">
-                <button type="button" onclick="showCarriersPopup(document.getElementById('carrier-id').value)">Add
+                <button type="button" onclick="showAddTruckPopup(document.getElementById('carrier-id').value)">Add
                     Truck</button>
             </div>
             <?php } ?>

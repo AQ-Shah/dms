@@ -3,11 +3,11 @@
     
     $prev_url = $_POST['prev_url'];
     
-    $required_fields = array("team-id", "carrier-id");
+    $required_fields = array("team-id", "team-carrier-id");
     validate_presences($required_fields);
     
     if (isset($_POST['team-id'])) {$teamId = mysql_prep($_POST["team-id"]);} 
-    if (isset($_POST['carrier-id'])) {$carrierId = mysql_prep($_POST["carrier-id"]);} 
+    if (isset($_POST['team-carrier-id'])) {$carrierId = mysql_prep($_POST["team-carrier-id"]);} 
     
     $carrier = find_carrier_form_by_id($carrierId);
     if (!$carrier){
