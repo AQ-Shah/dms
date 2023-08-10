@@ -100,6 +100,8 @@
                                 <?php if($record["invoice_status"] == 0) echo "<td>None</td>"; ?>
                                 <?php if($record["invoice_status"] == 1) echo "<td>New</td>"; ?>
                                 <?php if($record["invoice_status"] == 2) echo "<td>Invoiced</td>"; ?>
+                                <?php if($record["invoice_status"] == 3) echo "<td style ='color:Green;'>Paid</td>"; ?>
+                                <?php if($record["invoice_status"] == 4) echo "<td  style ='color:Red;'>Cancelled</td>"; ?>
                                 <?php } ?>
 
                                 <td>

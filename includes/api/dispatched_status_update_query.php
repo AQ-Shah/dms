@@ -22,6 +22,12 @@
             exit;
          } 
 
+        if ($dispatched['invoice_status'] == 2 || $dispatched['invoice_status'] == 3) {
+            $_SESSION["message"] = "Invoice is already Generated, Please contact Finance ";
+            header("Location: " . $prev_url);
+            exit;
+         }
+
         $query  = "UPDATE dispatch_list SET status ='{$status}'";
         $query .= "WHERE id = {$dispatchedId} LIMIT 1; ";
         if ($status == 'Completed') 

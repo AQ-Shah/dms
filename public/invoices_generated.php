@@ -41,16 +41,22 @@
                                 <th onclick="sortTable(1)">Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">Carrier Email
+                                <th onclick="sortTable(2)">Owner Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">Invoice Amount
+                                <th onclick="sortTable(3)"> Email
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">Due Date
+                                <th onclick="sortTable(4)"> Number
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(5)">Status
+                                <th onclick="sortTable(5)">Invoice Amount
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(6)">Due Date
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(7)">Status
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th>Action</th>
@@ -67,7 +73,13 @@
                                         echo $carrier['b_name'];
                                 ?></td>
                                 <td><?php
+                                        echo $carrier['o_name'];
+                                ?></td>
+                                <td><?php
                                         echo $carrier['b_email'];
+                                ?></td>
+                                <td><?php
+                                        echo $carrier['b_number'];
                                 ?></td>
 
                                 <td><?php echo '$'.htmlentities($record["total_amount"]); ?></td>

@@ -21,10 +21,10 @@
             exit;
          } 
        
-        $query  = "UPDATE invoices SET invoice_status ='{$status}' ";
-        $query .= "WHERE id = {$id} LIMIT 1  ";
+        $query  = "UPDATE invoices SET invoice_status ='{$status}' WHERE id = {$id} LIMIT 1; ";
+        $query .= "UPDATE dispatch_list SET invoice_status = '{$status}' WHERE invoice_id='$id'; ";
        
-        $result = mysqli_query($connection, $query);
+        $result = mysqli_multi_query($connection, $query);
 
         if ($result && mysqli_affected_rows($connection) == 1) {
             // Success
