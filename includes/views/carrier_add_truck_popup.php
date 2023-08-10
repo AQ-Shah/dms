@@ -32,6 +32,8 @@
                         <option value="Hot Shot"
                             <?php if (isset($truck_type) && $truck_type == "Hot Shot") echo 'selected'; ?>>
                             Hot Shot</option>
+                        <option value="RGN" <?php if (isset($truck_type) && $truck_type == "RGN") echo 'selected'; ?>>
+                            RGN</option>
                     </select>
                 </div>
             </div>
