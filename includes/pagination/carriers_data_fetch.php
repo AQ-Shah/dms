@@ -5,38 +5,68 @@
 			}
 			
 			if ($record_per_page > 0 && $record_per_page <= 100) {
+					if (isset ($_GET['only_available'])) {
 
-				if (isset ($_GET['keyword'])) {
-					$no_of_records = no_of_carrier_form_by_keyword($_GET['keyword']);
-					$total_pages = ceil($no_of_records/$record_per_page);
-					$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
-					$start = ($page-1) * $record_per_page;
-					$record_set = find_carrier_form_by_keyword_from($_GET['keyword'],$start,$record_per_page);
+						if (isset ($_GET['keyword'])) {
+							$no_of_records = no_of_available_carrier_form_by_keyword($_GET['keyword']);
+							$total_pages = ceil($no_of_records/$record_per_page);
+							$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
+							$start = ($page-1) * $record_per_page;
+							$record_set = find_available_carrier_form_by_keyword_from($_GET['keyword'],$start,$record_per_page);
+						}
+						else {
+							$no_of_records = no_of_working_carriers();
+							$total_pages = ceil($no_of_records/$record_per_page);
+							$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
+							$start = ($page-1) * $record_per_page;
+							$record_set = find_working_carrier_form_from($start,$record_per_page);
+						}
 
+					 }  
+					 
+					else if (isset ($_GET['only_unavailable'])){
 
-				} else {
-					if (isset ($_GET['only_active']) == 1) {
-						$no_of_records = no_of_working_carriers();
+						if (isset ($_GET['keyword'])) {
+							$no_of_records = no_of_unavailable_carrier_form_by_keyword($_GET['keyword']);
+							$total_pages = ceil($no_of_records/$record_per_page);
+							$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
+							$start = ($page-1) * $record_per_page;
+							$record_set = find_unavailable_carrier_form_by_keyword_from($_GET['keyword'],$start,$record_per_page);
+						} else {
+							$no_of_records = no_of_unavailable_carriers();
+							$total_pages = ceil($no_of_records/$record_per_page);
+							$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
+							$start = ($page-1) * $record_per_page;
+							$record_set = find_unavailable_carrier_form_from($start,$record_per_page);
+						}
+					 } 
+					 
+					else if (isset ($_GET['only_removed'])){
+
+						if (isset ($_GET['keyword'])) {
+							$no_of_records = no_of_removed_carrier_form_by_keyword($_GET['keyword']);
+							$total_pages = ceil($no_of_records/$record_per_page);
+							$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
+							$start = ($page-1) * $record_per_page;
+							$record_set = find_removed_carrier_form_by_keyword_from($_GET['keyword'],$start,$record_per_page);
+						} else {
+							$no_of_records = no_of_removed_carriers();
+							$total_pages = ceil($no_of_records/$record_per_page);
+							$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
+							$start = ($page-1) * $record_per_page;
+							$record_set = find_removed_carrier_form_from($start,$record_per_page);
+						}
+					 }
+
+					else if (isset ($_GET['keyword'])) {
+						$no_of_records = no_of_carrier_form_by_keyword($_GET['keyword']);
 						$total_pages = ceil($no_of_records/$record_per_page);
 						$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
 						$start = ($page-1) * $record_per_page;
-						$record_set = find_working_carrier_form_from($start,$record_per_page);
-
-					 }  else if (isset ($_GET['only_inactive']) == 1){
-						$no_of_records = no_of_unavailable_carriers();
-						$total_pages = ceil($no_of_records/$record_per_page);
-						$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
-						$start = ($page-1) * $record_per_page;
-						$record_set = find_unavailable_carrier_form_from($start,$record_per_page);
-
-					 } else if (isset ($_GET['only_removed']) == 1){
-						$no_of_records = no_of_removed_carriers();
-						$total_pages = ceil($no_of_records/$record_per_page);
-						$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
-						$start = ($page-1) * $record_per_page;
-						$record_set = find_removed_carrier_form_from($start,$record_per_page);
-
-					 } else {
+						$record_set = find_carrier_form_by_keyword_from($_GET['keyword'],$start,$record_per_page);
+						} 
+					
+					else {
 						$no_of_records = no_of_carrier_form();
 						$total_pages = ceil($no_of_records/$record_per_page);
 						$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
@@ -44,7 +74,6 @@
 						$record_set = find_carrier_form_from($start,$record_per_page);
 					 }
 					
-				}
 			}
 			else { 
 				$_SESSION["message"] = "Something went wrong.";

@@ -22,23 +22,23 @@
         </a>
     </div>
     <div class="col-3">
-        <a href='list_carriers?only_active=1'>
+        <a href='list_carriers?only_available'>
             <div class=" custom-panel card" style="background:#58467e">
                 <h3><?php echo no_of_working_carriers();?></h3>
-                <p>Active Carriers</p>
+                <p>Available Carriers</p>
             </div>
         </a>
     </div>
     <div class="col-3">
-        <a href='list_carriers?only_inactive=1'>
+        <a href='list_carriers?only_unavailable'>
             <div class=" custom-panel card" style="background:#55847e">
                 <h3><?php echo no_of_unavailable_carriers();?></h3>
-                <p>Inactive Carriers</p>
+                <p>Unavailable Carriers</p>
             </div>
         </a>
     </div>
     <div class="col-3">
-        <a href='list_carriers?only_removed=1'>
+        <a href='list_carriers?only_removed'>
             <div class=" custom-panel card" style="background:#d43a0f">
                 <h3><?php echo no_of_removed_carriers();?></h3>
                 <p>Removed Carriers</p>

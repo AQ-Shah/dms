@@ -394,6 +394,87 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_available_carrier_form_by_keyword($keyword) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT COUNT('id')
+				FROM carrier_form 
+				WHERE CONCAT(dispatcher_id, creator_id)
+				LIKE '%{$user_id}%'
+				AND status = 1
+				";
+			} else {
+				$query  = "
+				SELECT COUNT('id') 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				AND status = 1
+				";
+			}
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_unavailable_carrier_form_by_keyword($keyword) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT COUNT('id')
+				FROM carrier_form 
+				WHERE CONCAT(dispatcher_id, creator_id)
+				LIKE '%{$user_id}%'
+				AND status = 2
+				";
+			} else {
+				$query  = "
+				SELECT COUNT('id') 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				AND status = 2
+				";
+			} 
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_removed_carrier_form_by_keyword($keyword) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT COUNT('id')
+				FROM carrier_form 
+				WHERE CONCAT(dispatcher_id, creator_id)
+				LIKE '%{$user_id}%'
+				AND (status = 3 || status =4)
+				";
+			} else {
+				$query  = "
+				SELECT COUNT('id') 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				AND (status = 3 || status =4)
+				";
+			}
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
 		
 		
 		
@@ -424,8 +505,7 @@
 				$query  = "
 				SELECT * 
 				FROM carrier_form 
-				WHERE CONCAT(dispatcher_id, creator_id) 
-				LIKE '%{$user_id}%'
+				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -443,6 +523,98 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
+
+		function find_available_carrier_form_by_keyword_from($keyword,$start,$end) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
+				AND status = 1
+				ORDER BY creation_time DESC
+				LIMIT {$start},{$end}
+				";
+			} else {
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				AND status = 1
+				ORDER BY creation_time DESC
+				LIMIT {$start},{$end}
+				";
+			}
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_unavailable_carrier_form_by_keyword_from($keyword,$start,$end) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
+				AND status = 2
+				ORDER BY creation_time DESC
+				LIMIT {$start},{$end}
+				";
+			} else {
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				AND status = 2
+				ORDER BY creation_time DESC
+				LIMIT {$start},{$end}
+				";
+			}
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+
+		function find_removed_carrier_form_by_keyword_from($keyword,$start,$end) {
+			
+			global $connection;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$user_id = find_user_id_by_keyword($safe_keyword);
+			if($user_id){
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
+				AND (status = 3 || status = 4)
+				ORDER BY creation_time DESC
+				LIMIT {$start},{$end}
+				";
+			} else {
+				$query  = "
+				SELECT * 
+				FROM carrier_form 
+				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				LIKE '%{$safe_keyword}%'
+				AND (status = 3 || status = 4)
+				ORDER BY creation_time DESC
+				LIMIT {$start},{$end}
+				";
+			}
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;}
+			
+			
 		
 		function find_available_carrier_form_from($start,$end) {
 			global $connection;

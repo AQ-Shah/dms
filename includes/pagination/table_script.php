@@ -83,14 +83,31 @@ function table_search(event) {
     // Check if the Enter key is pressed (key code 13) and trigger the GET request
     if (event.keyCode === 13) {
         // Add the search keyword to the query string and navigate to the same page with the GET request
-        var searchParams = new URLSearchParams();
+        var searchParams = new URLSearchParams(window.location.search);
+
         searchParams.set("keyword", filter);
         var url = window.location.pathname + "?" + searchParams.toString();
         window.location.href = url;
     }
 }
 
+function toggleColumn(columnIndex) {
+    var table = document.getElementById("currentTable");
+    var checked = document.getElementById("toggleColumn" + columnIndex).checked;
 
+    // Update the header cell
+    var headerCell = table.rows[0].cells[columnIndex];
+    headerCell.style.display = checked ? '' : 'none';
+
+    // Update the data cells for the specified column
+    for (var i = 1; i < table.rows.length; i++) {
+        var row = table.rows[i];
+        if (row.cells.length > columnIndex) {
+            var dataCell = row.cells[columnIndex];
+            dataCell.style.display = checked ? '' : 'none';
+        }
+    }
+}
 
 
 

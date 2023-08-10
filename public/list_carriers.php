@@ -226,27 +226,6 @@
 
 </div>
 
-<script>
-function toggleColumn(columnIndex) {
-    var table = document.getElementById("currentTable");
-    var checked = document.getElementById("toggleColumn" + columnIndex).checked;
-
-    // Update the header cell
-    var headerCell = table.rows[0].cells[columnIndex];
-    headerCell.style.display = checked ? '' : 'none';
-
-    // Update the data cells for the specified column
-    for (var i = 1; i < table.rows.length; i++) {
-        var row = table.rows[i];
-        if (row.cells.length > columnIndex) {
-            var dataCell = row.cells[columnIndex];
-            dataCell.style.display = checked ? '' : 'none';
-        }
-    }
-}
-</script>
-
-
 
 <?php 
     include("../includes/views/action_dropdown_button.php");
