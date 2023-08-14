@@ -4,6 +4,8 @@
 	include("../includes/layouts/public_header.php"); 
    
 	include("../includes/pagination/carriers_data_fetch.php"); 
+    $columnIndex = 0;
+    
   ?>
 <div class="container">
 
@@ -23,6 +25,7 @@
 
     <div class="row card">
         <?php include("../includes/views/dispatch_stats_1.php"); ?>
+        <?php if (check_access("stats_box_dispatch_team_1")){ include("../includes/views/stats_box_dispatch_team_1.php"); } ?>
     </div>
 
     <div class="row card">
@@ -38,79 +41,118 @@
                 <div class="col-3 simple-panel dropdown">
                     <h5>Columns</h5>
                     <div class="dropdown-content">
-                        <button><input type="checkbox" id="toggleColumn0" checked onclick="toggleColumn(0)">Dispatch
+                        <?php if (check_access("executive")){ ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Dispatch
                             Team</button>
-                        <button><input type="checkbox" id="toggleColumn1" checked
-                                onclick="toggleColumn(1)">Dispatcher</button>
-                        <button><input type="checkbox" id="toggleColumn2" checked onclick="toggleColumn(2)">Serving
+
+                        <?php } ?>
+                        <?php if (check_access("dispatch_supervisor")){ ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Dispatcher</button>
+                        <?php } ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Serving
                             Time</button>
-                        <button><input type="checkbox" id="toggleColumn3" checked onclick="toggleColumn(3)">MC</button>
-                        <button><input type="checkbox" id="toggleColumn4" checked onclick="toggleColumn(4)">Carrier
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">MC</button>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Carrier
                             Name</button>
-                        <button><input type="checkbox" id="toggleColumn5" checked
-                                onclick="toggleColumn(5)">Truck</button>
-                        <button><input type="checkbox" id="toggleColumn6" checked onclick="toggleColumn(6)">Sales
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Owner
+                            Name</button>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Business
+                            Number</button>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Truck</button>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Sales
                             Status</button>
-                        <button><input type="checkbox" id="toggleColumn7" checked onclick="toggleColumn(7)">Sales
+                        <?php if (check_access("executive")){ ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Sales
                             Team</button>
-                        <button><input type="checkbox" id="toggleColumn8" checked onclick="toggleColumn(8)">Sales
+                        <?php } ?>
+                        <?php if (check_access("sales_supervisor")){ ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Sales
                             Agent</button>
-                        <button><input type="checkbox" id="toggleColumn9" checked
-                                onclick="toggleColumn(9)">Status</button>
-                        <?php if (isset($_GET['only_inactive']) == 1 || isset($_GET['only_removed']) == 1) { ?>
-                        <button><input type="checkbox" id="toggleColumn10" checked
-                                onclick="toggleColumn(10)">Reason</button>
+                        <?php } ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Status</button>
+                        <?php if (isset($_GET['only_unavailable'])|| (isset($_GET['only_removed']) && check_access("executive"))) { ?>
+                        <button><input type="checkbox" id="toggleColumn<?php echo $columnIndex;?>" checked
+                                onclick="toggleColumn(<?php echo $columnIndex;$columnIndex++;?>)">Reason</button>
                         <?php } ?>
                     </div>
                 </div>
             </div>
+            <?php $columnIndex = 0; ?>
             <div class="row panel table-primary p-2">
                 <div class="panel-body table-responsive">
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(0)">
+                                <?php if (check_access("executive")){ ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Dispatch Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(1)">
+                                <?php } ?>
+                                <?php if (check_access("dispatch_supervisor")){ ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Dispatcher
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(2)">
+                                <?php } ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Serving Time
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(3)">
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     MC
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(4)">
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Carrier Name
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(5)">
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
+                                    Owner Name
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
+                                    Business Number
+                                    <span class="sort-arrows"></span>
+                                </th>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Truck
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(6)">
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Sales Status
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(7)">
+                                <?php if (check_access("executive")){ ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Sales Team
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(8)">
+                                <?php } ?>
+                                <?php if (check_access("sales_supervisor")){ ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Sales Agent
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <th onclick="sortTable(9)">
+                                <?php } ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Status
                                     <span class="sort-arrows"></span>
                                 </th>
-                                <?php if (isset($_GET['only_inactive']) == 1 || isset($_GET['only_removed']) == 1) { ?>
-                                <th onclick="sortTable(10)">
+                                <?php if (isset($_GET['only_unavailable']) || (isset($_GET['only_removed']) && check_access("executive"))) { ?>
+                                <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
                                     Reason
                                     <span class="sort-arrows"></span>
                                 </th>
@@ -125,6 +167,7 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
+                                <?php if (check_access("executive")){ ?>
                                 <td>
                                     <?php
                                     if($record["dispatch_team_id"]){
@@ -135,6 +178,8 @@
                                     }
                                     ?>
                                 </td>
+                                <?php } ?>
+                                <?php if (check_access("dispatch_supervisor")){ ?>
                                 <td>
                                     <?php
                                     if($record["dispatcher_id"]){
@@ -145,6 +190,7 @@
                                     }
                                     ?>
                                 </td>
+                                <?php } ?>
                                 <td>
                                     <?php
                                         $mc_validity = new DateTime($record["mc_validity"]);
@@ -159,6 +205,8 @@
                                 <td><?php echo htmlentities($record["mc"]); ?></td>
                                 <td><?php echo htmlentities($record["b_name"]).'('.no_of_trucks_by_carrier($record["id"]).')'; ?>
                                 </td>
+                                <td><?php echo htmlentities($record["o_name"]); ?></td>
+                                <td><?php echo htmlentities($record["b_number"]); ?></td>
                                 <td>
                                     <?php  
                                         $truckSet = find_trucks_by_carrier_id($record["id"]);
@@ -171,12 +219,16 @@
                                         }
                                     ?>
                                 </td>
-                                <td><?php echo ($record["sale_active"]) ? '<span style="color: green;">Active</span>' : '<span style="color: red;">Inactive</span>'; ?>
+                                <td><?php echo ($record["sale_active"]) ? '<span style="color: green;">'.htmlentities(date("M-d-Y", strtotime($record["sale_activation_date"]))).'</span>' : '<span style="color: red;">Inactive</span>'; ?>
                                 </td>
+                                <?php if (check_access("executive")){ ?>
                                 <td><?php echo ($record["sales_team_id"]) ? find_team_by_id($record["sales_team_id"])['name'] : "Not Assigned"; ?>
                                 </td>
+                                <?php } ?>
+                                <?php if (check_access("sales_supervisor")){ ?>
                                 <td><?php echo ($record["creator_id"]) ? find_user_by_id($record["creator_id"])['full_name'] : "Not Assigned"; ?>
                                 </td>
+                                <?php } ?>
                                 <td>
                                     <?php
                                         $status = $record["status"];
@@ -203,7 +255,7 @@
                                         ?>
                                 </td>
 
-                                <?php if (isset($_GET['only_inactive']) == 1 || isset($_GET['only_removed']) == 1) { ?>
+                                <?php if (isset($_GET['only_unavailable']) || (isset($_GET['only_removed']) && check_access("executive"))) { ?>
                                 <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
                                 <?php } ?>
                                 <td>

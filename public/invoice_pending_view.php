@@ -87,7 +87,7 @@
                             <?php if (isset($record_set)) { ?>
                             <?php foreach ($record_set as $record)  { ?>
                             <tr>
-                                <td><?php echo htmlentities(date("d-m-Y", strtotime($record["dispatch_time"]))); ?></td>
+                                <td><?php echo htmlentities(date("M-d-Y", strtotime($record["dispatch_time"]))); ?></td>
                                 <td>
                                     <?php
                                     if($record["truck_id"]){

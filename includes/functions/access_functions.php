@@ -26,10 +26,10 @@
 
         //supervisor
         if ( $permission === '4'){
+            if ($current_page === 'dispatch_supervisor') return true;
             if ($current_page === 'carrier_assign_dispatcher') return true;
-            if ($current_page === 'list_team_all_carriers') return true;
-            if ($current_page === 'list_team_available_carriers') return true;
-            if ($current_page === 'list_team_unavailable_carriers') return true;
+            if ($current_page === 'list_dispatch_team_carriers') return true;
+            if ($current_page === 'list_my_carriers') return true;
             if ($current_page === 'list_team_dispatched') return true;
             if ($current_page === 'list_team_cancelled_dispatched') return true;
             if ($current_page === 'stats_box_dispatch_team_1') return true;
@@ -38,8 +38,8 @@
 
         if ( $permission === '4' || $permission === '5'){
             
-
-            if ($current_page === 'list_my_carriers') return true;
+            if ($current_page === 'list_carriers') return true;
+            if ($current_page === 'list_dispatch_agent_carriers') return true;
             if ($current_page === 'list_my_dispatched') return true;
             if ($current_page === 'list_my_cancelled_dispatched') return true;
             if ($current_page === 'update_carrier_location') return true;
@@ -54,6 +54,8 @@
 
         //supervisor
         if ( $permission === '9'){
+            if ($current_page === 'sales_supervisor') return true;
+            if ($current_page === 'list_carriers') return true;
             if ($current_page === 'list_sales_team_carriers') return true;
             if ($current_page === 'carrier_update') return true;
             if ($current_page === 'show_carrier') return true;

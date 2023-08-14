@@ -39,6 +39,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_all_carriers_by_dispatcher($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE (status = 1 || status = 2) ";
+			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
 		function no_of_available_carriers_by_dispatcher($id){
 			global $connection;
 
@@ -46,6 +59,19 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
+			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+		
+		function no_of_unavailable_carriers_by_dispatcher($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 2  ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -77,6 +103,50 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));
 			}
+		
+		function no_of_available_carriers_by_team_sales($id){
+
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE sales_team_id = '{$safe_id}' ";
+			$query .= "AND status = 1  ";
+			$set = mysqli_query($connection, $query);
+			
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));
+			}
+		
+		function no_of_unavailable_carriers_by_team_sales($id){
+
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE sales_team_id = '{$safe_id}' ";
+			$query .= "AND status = 2  ";
+			$set = mysqli_query($connection, $query);
+			
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));
+			}
+		
+		function no_of_removed_carriers_by_team_sales($id){
+
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE sales_team_id = '{$safe_id}' ";
+			$query .= "AND (status = 3 || status = 4)   ";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));
+			}
 
 		function no_of_all_carriers_by_team_dispatch($id){
 
@@ -86,6 +156,7 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND (status =1 || status =2) ";
 			$set = mysqli_query($connection, $query);
 			
 			confirm_query($set);
@@ -642,6 +713,21 @@
 			confirm_query($set);
 			return $set;}
 
+		function find_all_carriers_by_dispatcher_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE (status = 1 || status = 2 )  ";
+			$query .= "AND dispatcher_id = '{$safe_id}' ";
+			$query .= "ORDER BY creation_time DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
+
 		function find_available_carriers_by_dispatcher_form_from($id,$start,$end) {
 			global $connection;
 
@@ -649,6 +735,21 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
+			$query .= "AND dispatcher_id = '{$safe_id}' ";
+			$query .= "ORDER BY creation_time DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
+
+		function find_unavailable_carriers_by_dispatcher_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 2  ";
 			$query .= "AND dispatcher_id = '{$safe_id}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
@@ -685,6 +786,51 @@
 			return $set;
 			}
 
+		function find_available_carriers_by_team_sales_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE sales_team_id = '{$safe_id}' ";
+			$query .= "AND status = 1 ";
+			$query .= "ORDER BY creation_time DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
+
+		function find_unavailable_carriers_by_team_sales_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE sales_team_id = '{$safe_id}' ";
+			$query .= "AND status = 2 ";
+			$query .= "ORDER BY creation_time DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
+
+		function find_removed_carriers_by_team_sales_form_from($id,$start,$end) {
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT * ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE sales_team_id = '{$safe_id}' ";
+			$query .= "AND (status = 3 || status = 4) ";
+			$query .= "ORDER BY creation_time DESC ";
+			$query .= "LIMIT {$start},{$end}";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return $set;
+			}
+
 		function find_all_carriers_by_team_dispatch_form_from($id,$start,$end) {
 			global $connection;
 
@@ -692,6 +838,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
+			$query .= "AND (status =1 || status =2) ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
