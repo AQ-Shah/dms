@@ -32,7 +32,6 @@
             if ($current_page === 'list_my_carriers') return true;
             if ($current_page === 'list_team_dispatched') return true;
             if ($current_page === 'list_team_cancelled_dispatched') return true;
-            if ($current_page === 'stats_box_dispatch_team_1') return true;
             if ($current_page === 'stats_box_dispatch_team_2') return true;
             }
 
@@ -47,6 +46,7 @@
             if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'dispatch_carrier') return true;
             if ($current_page === 'show_carrier') return true;
+            if ($current_page === 'stats_box_dispatch_team_1') return true;
             
             }
 
@@ -60,6 +60,7 @@
             if ($current_page === 'carrier_update') return true;
             if ($current_page === 'show_carrier') return true;
             if ($current_page === 'sales_dashboard_1') return true;
+            if ($current_page === 'stats_box_sales_team_1') return true;
             }
 
         if ( $permission === '9' || $permission === '10'){

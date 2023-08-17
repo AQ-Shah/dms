@@ -20,9 +20,20 @@
    <div class="row">
        <div class="col-12">
 
+           <div class="row text-center">
+               <div class="col-12">
+                   <div class="page-title-box">
+                       <h2>
+                           My Sales Stats
+                       </h2>
+
+                   </div>
+               </div>
+           </div>
+
 
            <div class="row">
-               <div class="col-sm-4">
+               <div class="col-sm-3">
                    <div class="card tilebox-one">
                        <div class="card-body">
                            <i class="ri-money-dollar-box-line float-end text-muted"></i>
@@ -36,20 +47,7 @@
                    <!--end card-->
                </div><!-- end col -->
 
-               <div class="col-sm-4">
-                   <div class="card tilebox-one">
-                       <div class="card-body">
-                           <i class="ri-money-dollar-box-fill float-end text-muted"></i>
-                           <h6 class="text-muted text-uppercase mt-0">Total Active</h6>
-                           <h2 class="m-b-20"><span><?php echo no_of_active_carrier_by_agent($userData['id']); ?></span>
-                           </h2>
-
-                       </div> <!-- end card-body-->
-                   </div>
-                   <!--end card-->
-               </div><!-- end col -->
-
-               <div class="col-sm-4">
+               <div class="col-sm-3">
                    <div class="card tilebox-one">
                        <div class="card-body">
                            <i class="ri-money-dollar-box-line float-end text-muted"></i>
@@ -63,6 +61,36 @@
                    </div>
                    <!--end card-->
                </div><!-- end col -->
+
+               <div class="col-sm-3">
+                   <div class="card tilebox-one">
+                       <div class="card-body">
+                           <i class="ri-money-dollar-box-fill float-end text-muted"></i>
+                           <h6 class="text-muted text-uppercase mt-0">Total Active</h6>
+                           <h2 class="m-b-20"><span><?php echo no_of_active_carrier_by_agent($userData['id']); ?></span>
+                           </h2>
+
+                       </div> <!-- end card-body-->
+                   </div>
+                   <!--end card-->
+               </div><!-- end col -->
+
+               <div class="col-sm-3">
+                   <div class="card tilebox-one">
+                       <div class="card-body">
+                           <i class="ri-money-dollar-box-line float-end text-muted"></i>
+                           <h6 class="text-muted text-uppercase mt-0">Month Active</h6>
+                           <h2 class="m-b-20">
+                               <span><?php echo no_of_carrier_this_month_by_agent($userData['id']); ?></span>
+                           </h2>
+                           <!-- <span class="badge bg-danger"> -0% </span> <span class="text-muted">From
+                                previous Month</span> -->
+                       </div> <!-- end card-body-->
+                   </div>
+                   <!--end card-->
+               </div><!-- end col -->
+
+
 
 
 

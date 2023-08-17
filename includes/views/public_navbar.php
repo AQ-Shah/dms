@@ -519,19 +519,6 @@
 
                    <?php } ?>
 
-                   <?php if (check_access("list_sales_team_carriers")  && not_executive($user["permission"])){ ?>
-
-                   <li class="side-nav-title">Sales Supervisor Section</li>
-
-                   <li class="side-nav-item">
-                       <a href="list_sales_team_carriers" aria-expanded="false" aria-controls="sidebarDashboards"
-                           class="side-nav-link">
-                           <i class="mdi mdi-truck font-22"></i>
-                           <span> List All Carriers </span>
-                       </a>
-                   </li>
-
-                   <?php } ?>
 
                    <?php if (check_access("management")){ ?>
                    <li class="side-nav-title">Management</li>

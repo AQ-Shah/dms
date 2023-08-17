@@ -26,6 +26,7 @@
     <div class="row card">
         <?php include("../includes/views/dispatch_stats_1.php"); ?>
         <?php if (check_access("stats_box_dispatch_team_1")){ include("../includes/views/stats_box_dispatch_team_1.php"); } ?>
+        <?php if (check_access("stats_box_sales_team_1")){ include("../includes/views/stats_box_sales_team_1.php"); } ?>
     </div>
 
     <div class="row card">

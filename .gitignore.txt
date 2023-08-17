@@ -1,0 +1,6 @@
+# Ignore config.php inside includes directory
+includes/config.php
+
+# Other patterns to ignore (if needed)
+# file.txt
+# directory/
