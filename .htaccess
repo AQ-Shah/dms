@@ -10,13 +10,18 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-
 # Serve images without file extensions
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.png -f [OR]
 RewriteCond %{REQUEST_FILENAME}.jpg -f [OR]
 RewriteCond %{REQUEST_FILENAME}.jpeg -f
 RewriteRule ^(.+)$ $1.png [NC,L]
+
+# Rewrite clean URLs to their corresponding PHP files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^home$ home.php [L]
+RewriteRule ^about$ about.php [L]
+# Add more rules for other pages as needed
 
 # Serve PHP files without file extensions
 RewriteCond %{REQUEST_FILENAME} !-f
