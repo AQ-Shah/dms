@@ -39,8 +39,10 @@
                                <i class="ri-money-dollar-circle-line widget-icon"></i>
                            </div>
                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Last Month</h5>
-                           <h3 class="mt-3 mb-3">
-                               <?php echo '$'.find_dispatch_commission_paid_last_month_by_user($userData['id']);?></h3>
+                           <h3 class="mt-3">
+                               <?php echo '$'.find_dispatch_commission_paid_last_month_by_user($userData['id']);?>
+                               <h4 class="mb-3 text-muted"> Received</h4>
+                           </h3>
                            <p class="mb-0 text-muted">
                                <span class="text-nowrap">Total dispatch :
                                    <?php echo '$'.find_dispatch_commission_last_month_by_user($userData['id']);?></span></br>
@@ -61,8 +63,10 @@
                                <i class="ri-money-dollar-circle-line widget-icon"></i>
                            </div>
                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">This Month</h5>
-                           <h3 class="mt-3 mb-3">
-                               <?php echo '$'.find_dispatch_commission_paid_this_month_by_user($userData['id']);?></h3>
+                           <h3 class="mt-3">
+                               <?php echo '$'.find_dispatch_commission_paid_this_month_by_user($userData['id']);?>
+                               <h4 class="mb-3 text-muted"> Received</h4>
+                           </h3>
                            <p class="mb-0 text-muted">
                                <span class="text-nowrap">Total dispatch :
                                    <?php echo '$'.find_dispatch_commission_this_month_by_user($userData['id']);?></span></br>
@@ -83,8 +87,10 @@
                                <i class="ri-money-dollar-circle-line widget-icon"></i>
                            </div>
                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Last Week</h5>
-                           <h3 class="mt-3 mb-3">
-                               <?php echo '$'.find_dispatch_commission_paid_last_week_by_user($userData['id']);?></h3>
+                           <h3 class="mt-3">
+                               <?php echo '$'.find_dispatch_commission_paid_last_week_by_user($userData['id']);?>
+                               <h4 class="mb-3 text-muted"> Received</h4>
+                           </h3>
                            <p class="mb-0 text-muted">
                                <span class="text-nowrap">Total dispatch :
                                    <?php echo '$'.find_dispatch_commission_last_week_by_user($userData['id']);?></span></br>
