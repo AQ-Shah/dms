@@ -609,6 +609,41 @@
 
 			return $record;}
 
+		function find_dispatch_commission_this_month_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed')
+			AND MONTH(dispatch_time) = MONTH(NOW())
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_paid_this_month_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed') 
+			AND invoice_status = 3 
+			AND MONTH(dispatch_time) = MONTH(NOW())
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
 		function find_dispatch_rate_total_last_month() {
 			global $connection;
 
@@ -627,6 +662,43 @@
 
 			return $record;}
 
+		function find_dispatch_commission_last_month_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_paid_last_month_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND invoice_status = 3  
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
 		function find_dispatch_rate_total_this_week() {
 			global $connection;
 
@@ -640,6 +712,41 @@
 
 			$row = mysqli_fetch_assoc($result);
 			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_last_week_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed') 
+			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_paid_last_week_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed') 
+			AND invoice_status = 3  
+			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
 
 			return $record;}
 

@@ -47,6 +47,7 @@
             if ($current_page === 'dispatch_carrier') return true;
             if ($current_page === 'show_carrier') return true;
             if ($current_page === 'stats_box_dispatch_team_1') return true;
+            if ($current_page === 'dispatch_agent_performance_1') return true;
             
             }
 
@@ -98,6 +99,11 @@
     
     function is_sales_agent($role_id){
         if ($role_id === '10') return true;
+        return false;
+    }
+    
+    function is_dispatch_agent($role_id){
+        if ($role_id === '5') return true;
         return false;
     }
     
