@@ -32,7 +32,7 @@
 
 
            <div class="row">
-               <div class="col-sm-4">
+               <div class="col-3">
                    <div class="card widget-flat">
                        <div class="card-body">
                            <div class="float-end">
@@ -56,7 +56,7 @@
                    </div> <!-- end card-->
                </div>
 
-               <div class="col-sm-4">
+               <div class="col-3">
                    <div class="card widget-flat">
                        <div class="card-body">
                            <div class="float-end">
@@ -79,8 +79,7 @@
                        </div> <!-- end card-body-->
                    </div> <!-- end card-->
                </div>
-
-               <div class="col-sm-4">
+               <div class="col-3">
                    <div class="card widget-flat">
                        <div class="card-body">
                            <div class="float-end">
@@ -98,6 +97,29 @@
                                             if ((find_dispatch_commission_last_week_by_user($userData['id']) - find_dispatch_commission_paid_last_week_by_user($userData['id'])) == 0 ) 
                                                         {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.' All Paid </span>'; 
                                                         } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> $'.(find_dispatch_commission_last_week_by_user($userData['id']) - find_dispatch_commission_paid_last_week_by_user($userData['id'])).' remaining </span>';
+                                                    }?>
+                           </p>
+                       </div> <!-- end card-body-->
+                   </div> <!-- end card-->
+               </div>
+               <div class="col-3">
+                   <div class="card widget-flat">
+                       <div class="card-body">
+                           <div class="float-end">
+                               <i class="ri-money-dollar-circle-line widget-icon"></i>
+                           </div>
+                           <h5 class="text-muted fw-normal mt-0" title="Number of Customers">This Week</h5>
+                           <h3 class="mt-3">
+                               <?php echo '$'.find_dispatch_commission_paid_this_week_by_user($userData['id']);?>
+                               <h4 class="mb-3 text-muted"> Received</h4>
+                           </h3>
+                           <p class="mb-0 text-muted">
+                               <span class="text-nowrap">Total dispatch :
+                                   <?php echo '$'.find_dispatch_commission_this_week_by_user($userData['id']);?></span></br>
+                               <?php if (find_dispatch_commission_this_week_by_user($userData['id']) != 0 ){
+                                            if ((find_dispatch_commission_this_week_by_user($userData['id']) - find_dispatch_commission_paid_this_week_by_user($userData['id'])) == 0 ) 
+                                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.' All Paid </span>'; 
+                                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> $'.(find_dispatch_commission_this_week_by_user($userData['id']) - find_dispatch_commission_paid_this_week_by_user($userData['id'])).' remaining </span>';
                                                     }?>
                            </p>
                        </div> <!-- end card-body-->

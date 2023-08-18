@@ -715,6 +715,57 @@
 
 			return $record;}
 
+			function find_dispatch_commission_this_week_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed') 
+			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
+		function find_dispatch_commission_paid_this_week_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed') 
+			AND invoice_status = 3  
+			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+
+		function find_dispatch_rate_total_last_week() {
+			global $connection;
+
+			$query = "SELECT SUM(rate) AS total_rate
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
+
+			return $record;}
+
 		function find_dispatch_commission_last_week_by_user($id) {
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
@@ -747,22 +798,6 @@
 
 			$row = mysqli_fetch_assoc($result);
 			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
-
-			return $record;}
-
-		function find_dispatch_rate_total_last_week() {
-			global $connection;
-
-			$query = "SELECT SUM(rate) AS total_rate
-			FROM dispatch_list
-			WHERE (status = 'Dispatched' OR status = 'Completed')  
-			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
-
-			$result = mysqli_query($connection, $query);
-			confirm_query($result);
-
-			$row = mysqli_fetch_assoc($result);
-			$record = ($row['total_rate'] !== null) ? $row['total_rate'] : 0;
 
 			return $record;}
 		
