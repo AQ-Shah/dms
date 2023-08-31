@@ -1,4 +1,4 @@
- <?php if (check_access("update_invoices_status")) { ?>
+ <?php if (check_access("update_invoice_status")) { ?>
 
 
  <div class="dropdown">

@@ -303,26 +303,28 @@
                        </a>
                    </li>
 
-                   <?php if (check_access("invoices_section")){ ?>
+                   
 
-                   <li class="side-nav-title">Invoices Section</li>
+                   <?php if (check_access("invoice_generated")){ ?>
 
-                   <li class="side-nav-item">
-                       <a href="invoices_pending" aria-expanded="false" aria-controls="sidebarDashboards"
-                           class="side-nav-link">
-                           <i class="mdi mdi-truck-snowflake font-22"></i>
-                           <span> New Invoices </span>
-                       </a>
-                   </li>
-                   <?php } ?>
-
-                   <?php if (check_access("invoices_section")){ ?>
+                    <li class="side-nav-title">Invoices Section</li>
 
                    <li class="side-nav-item">
                        <a href="invoices_generated" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-snowflake font-22"></i>
                            <span> Invoice Generated </span>
+                       </a>
+                   </li>
+                   <?php } ?>
+
+                   <?php if (check_access("invoices_pending")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="invoices_pending" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-snowflake font-22"></i>
+                           <span> New Invoices </span>
                        </a>
                    </li>
                    <?php } ?>

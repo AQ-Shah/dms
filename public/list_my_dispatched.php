@@ -49,6 +49,7 @@
                                 <th onclick="sortTable(5)">Commission <span class="sort-arrows"></span> </th>
                                 <?php } ?>
                                 <th onclick="sortTable(6)">Status <span class="sort-arrows"></span> </th>
+                                <th onclick="sortTable(7)">Invoice Status <span class="sort-arrows"></span> </th>
                                 <?php if (check_access("update_dispatched_status")) { ?>
                                 <th data-sortable="false">Action <span class="sort-arrows"></span> </th>
                                 <?php } ?>
@@ -86,6 +87,13 @@
                                 <td <?php if($record["status"] == 'Cancelled') { ?> style="color: red;" <?php } ?>
                                     <?php if($record["status"] == 'Completed') { ?> style="color: green;" <?php } ?>>
                                     <?php echo htmlentities($record["status"]); ?></td>
+                                
+                                <?php if($record["invoice_status"] == 0) echo "<td>None</td>"; ?>
+                                <?php if($record["invoice_status"] == 1) echo "<td>New</td>"; ?>
+                                <?php if($record["invoice_status"] == 2) echo "<td>Invoiced</td>"; ?>
+                                <?php if($record["invoice_status"] == 3) echo "<td style ='color:Green;'>Paid</td>"; ?>
+                                <?php if($record["invoice_status"] == 4) echo "<td  style ='color:Red;'>Cancelled</td>"; ?>
+                                
                                 <td>
                                     <?php include("../includes/views/dispatched_dropdown_button.php");?>
                                 </td>

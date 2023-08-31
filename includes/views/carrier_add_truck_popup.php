@@ -26,12 +26,15 @@
                         <option value="Power Only"
                             <?php if (isset($truck_type) && $truck_type == "Power Only") echo 'selected'; ?>>Power Only
                         </option>
-                        <option value="Flat Bed"
-                            <?php if (isset($truck_type) && $truck_type == "Flat Bed") echo 'selected'; ?>>
-                            Flat Bed</option>
                         <option value="Hot Shot"
                             <?php if (isset($truck_type) && $truck_type == "Hot Shot") echo 'selected'; ?>>
                             Hot Shot</option>
+                        <option value="Flat Bed"
+                            <?php if (isset($truck_type) && $truck_type == "Flat Bed") echo 'selected'; ?>>
+                            Flat Bed</option>
+                        <option value="Step Deck"
+                            <?php if (isset($truck_type) && $truck_type == "Step Deck") echo 'selected'; ?>>
+                            Step Deck</option>
                         <option value="RGN" <?php if (isset($truck_type) && $truck_type == "RGN") echo 'selected'; ?>>
                             RGN</option>
                     </select>

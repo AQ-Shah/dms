@@ -29,6 +29,7 @@
             if ($current_page === 'dispatch_supervisor') return true;
             if ($current_page === 'invoice_generated') return true;
             if ($current_page === 'invoice_view') return true;
+            if ($current_page === 'update_invoice_status') return true;
             if ($current_page === 'commission_view') return true;
             if ($current_page === 'carrier_assign_dispatcher') return true;
             if ($current_page === 'list_dispatch_team_carriers') return true;
