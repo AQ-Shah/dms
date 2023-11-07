@@ -679,6 +679,23 @@
 			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
 
 			return $record;}
+		function find_dispatch_commission_month_before_last_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 2 MONTH)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 2 MONTH)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
 
 		function find_dispatch_commission_paid_last_month_by_user($id) {
 			global $connection;
@@ -689,6 +706,24 @@
 			AND invoice_status = 3  
 			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+			AND dispatcher_id = {$safe_id}";
+
+			$result = mysqli_query($connection, $query);
+			confirm_query($result);
+
+			$row = mysqli_fetch_assoc($result);
+			$record = ($row['commission'] !== null) ? $row['commission'] : 0;
+
+			return $record;}
+		function find_dispatch_commission_paid_month_before_last_by_user($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query = "SELECT SUM(commission) AS commission
+			FROM dispatch_list
+			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND invoice_status = 3  
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 2 MONTH)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 2 MONTH)
 			AND dispatcher_id = {$safe_id}";
 
 			$result = mysqli_query($connection, $query);
