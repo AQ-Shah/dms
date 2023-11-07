@@ -90,7 +90,7 @@
 				else if (check_access("list_dispatch_agent_carriers")) {
 					$no_of_records = (
 						isset($_GET['only_available']) ? no_of_available_carriers_by_dispatcher($user["id"]) :
-						(isset($_GET['only_unavailable']) ? no_of_unavailable_carriers_by_team_dispatch($user["team_id"]) :
+						(isset($_GET['only_unavailable']) ? no_of_unavailable_carriers_by_dispatcher($user["id"]) :
 						no_of_all_carriers_by_dispatcher($user["id"]))
 					);
 
@@ -100,7 +100,7 @@
 					
 					$record_set = (
 						isset($_GET['only_available']) ? find_available_carriers_by_dispatcher_form_from($user["id"],$start, $record_per_page) :
-						(isset($_GET['only_unavailable']) ? find_unavailable_carriers_by_team_dispatch_form_from($user["team_id"],$start, $record_per_page) :
+						(isset($_GET['only_unavailable']) ? find_unavailable_carriers_by_dispatcher_form_from($user["id"],$start, $record_per_page) :
 						find_all_carriers_by_dispatcher_form_from($user["id"],$start, $record_per_page))
 					);
 				}

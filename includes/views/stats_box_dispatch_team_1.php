@@ -28,10 +28,10 @@
             <div class=" custom-panel card" style="background:#58467e">
                 <h3><?php 
                 echo check_access("dispatch_supervisor") ? no_of_unavailable_carriers_by_team_dispatch($user["team_id"]) : 
-                no_of_unavailable_carriers_by_team_dispatch($user["team_id"]);
+                no_of_unavailable_carriers_by_dispatcher($user["id"]);
                 ?></h3>
                 </h3>
-                <p>All Unavailable Carriers</p>
+                <p>Unavailable Carriers</p>
             </div>
         </a>
     </div>
