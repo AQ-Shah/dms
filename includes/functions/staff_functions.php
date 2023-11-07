@@ -184,7 +184,7 @@ function find_users_by_department($department_id, $start, $end){
         $query  = "SELECT * ";
         $query .= "FROM users ";
         $query .= "WHERE department_id = {$safe_department_id} ";
-        $query .= "ORDER BY full_name ASC ";
+        $query .= "ORDER BY status ASC, designation ASC, full_name ASC ";
         $query .= "LIMIT {$start},{$end} ";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
