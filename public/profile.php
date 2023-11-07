@@ -35,7 +35,7 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <div class="avatar-lg">
-                                        <img src="assets/images/users/img_avatar1" alt=""
+                                        <img src="assets/images/users/img_avatar1.png" alt=""
                                             class="rounded-circle img-thumbnail">
                                     </div>
                                 </div>
