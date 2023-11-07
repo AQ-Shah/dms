@@ -330,8 +330,10 @@
             <!-- Commission Info -->
             <div class="row panel-content-primary card no-print ">
 
-                <div class="col-6 text-end">Percentage : </div>
-                <div class="col-6 text-start"> <label><?php echo $carrier['percentage']; ?></label></div>
+                <div class="col-3 text-end">Percentage : </div>
+                <div class="col-3 text-start"> <label><?php echo $carrier['percentage']; ?></label></div>
+                <div class="col-3 text-end">Weekly Fixed : </div>
+                <div class="col-3 text-start"> <label><?php echo $carrier['weekly_fixed']; ?></label></div>
 
             </div>
             <?php } ?></label>
