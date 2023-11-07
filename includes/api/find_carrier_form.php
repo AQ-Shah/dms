@@ -33,7 +33,8 @@
     if (isset($form['factoring_street'])) {$factoring_street = $form["factoring_street"];} else {$factoring_street = null;}
     if (isset($form['factoring_state'])) {$factoring_state = $form["factoring_state"];} else {$factoring_state = null;}
     if (isset($form['factoring_email'])) {$factoring_email = $form["factoring_email"];} else {$factoring_email = null;}
-    if (isset($form['percentage'])) {$percentage= $form["percentage"];}
+    if (isset($form['percentage'])) {$percentage= $form["percentage"];} else {$percentage = 0;}
+    if (isset($form['weekly_fixed'])) {$weekly_fixed= $form["weekly_fixed"];} else {$weekly_fixed = 0;}
 
 
 
