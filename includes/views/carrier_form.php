@@ -227,11 +227,14 @@
 
     <!-- Last line -->
     <div class="row panel-content-primary card">
-        <div class="col-3 col-sm-3 col-md-3 text-center mt-2">Percentage:</div>
-        <div class="col-3 col-sm-3 col-md-3 text-center mt-2"><input type="float" style="width:100%" name="percentage"
-                min="0" max="100" value="<?php if (isset($percentage)){echo $percentage;}else {echo 5;} ?>"" required/></div>
+        <div class="col-2 text-center mt-2">Percentage (%):</div>
+        <div class="col-2 text-center mt-2"><input type="float" style="width:100%" name="percentage"
+                min="0" max="100" value="<?php if (isset($percentage)){echo $percentage;}else {echo 5;} ?>" required/></div>
+        <div class="col-2 text-center mt-2">Or Weekly Fixed ($):</div>
+        <div class="col-2 text-center mt-2"><input type="float" style="width:100%" name="weekly_fixed"
+                min="0" value="<?php if (isset($weekly_fixed)){echo $weekly_fixed;}else {echo 0;} ?>" required/></div>
             
-                                <div class=" col-6 col-sm-6 col-md-6 text-center mt-2"><button type="submit"
+        <div class=" col-4 text-center mt-2"><button type="submit"
                 name="submit" class="btn btn-primary" style="width:100%" onclick="validateForm()">Save
                 Carrier</button>
         </div>

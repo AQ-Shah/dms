@@ -33,6 +33,7 @@
     if (isset($_POST['factoring_street'])) {$factoring_street = mysql_prep($_POST["factoring_street"]);} else {$factoring_street = null;}
     if (isset($_POST['factoring_state'])) {$factoring_state = mysql_prep($_POST["factoring_state"]);} else {$factoring_state = null;}
     if (isset($_POST['factoring_email'])) {$factoring_email = mysql_prep($_POST["factoring_email"]);} else {$factoring_email = null;}
-    if (isset($_POST['percentage'])) {$percentage= mysql_prep($_POST["percentage"]);}
+    if (isset($_POST['percentage'])) {$percentage= mysql_prep($_POST["percentage"]);} else {$percentage = 0;}
+    if (isset($_POST['weekly_fixed'])) {$weekly_fixed= mysql_prep($_POST["weekly_fixed"]);} else {$weekly_fixed = 0;}
 
 ?>
