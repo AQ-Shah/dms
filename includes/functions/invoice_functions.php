@@ -61,10 +61,10 @@
 
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
-        $query .= "ORDER BY id DESC ";
         $query .= "WHERE invoice_status = 2 ";
+        $query .= "ORDER BY id DESC ";
         $query .= "LIMIT {$start},{$end}";
-
+       
         $set = mysqli_query($connection, $query);
         confirm_query($set);
         return $set;
