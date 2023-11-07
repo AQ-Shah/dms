@@ -9,7 +9,7 @@ define("ENCRYPTION_KEY", "ATCdispatching2@!");
 define("ID_VECTOR_KEY", "4239687521963084");
 define("PERMISSION_VECTOR_KEY", "2738492057129376");
 
-//Domain Info
+//Domain URL & Timezone Info
 define("BASE_URL", "https://portal.atcdispatching.com");
 define("TIMEZONE", "America/New_York");
 
