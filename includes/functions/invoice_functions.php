@@ -28,6 +28,20 @@
 
         }
     
+    function no_of_invoices_unpaid(){
+
+        global $connection;
+        
+        $query  = "SELECT COUNT('id') ";
+        $query .= "FROM invoices ";
+        $query .= "WHERE invoice_status = 2 ";
+
+        $set = mysqli_query($connection, $query);
+        confirm_query($set);
+        return max(mysqli_fetch_assoc($set));
+
+        }
+    
     function find_all_invoices_generated_from($start,$end){
 
        global $connection;
@@ -35,6 +49,20 @@
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
         $query .= "ORDER BY id DESC ";
+        $query .= "LIMIT {$start},{$end}";
+
+        $set = mysqli_query($connection, $query);
+        confirm_query($set);
+        return $set;
+        }
+    function find_all_invoices_unpaid_from($start,$end){
+
+       global $connection;
+
+        $query  = "SELECT * ";
+        $query .= "FROM invoices ";
+        $query .= "ORDER BY id DESC ";
+        $query .= "WHERE invoice_status = 2 ";
         $query .= "LIMIT {$start},{$end}";
 
         $set = mysqli_query($connection, $query);

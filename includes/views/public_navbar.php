@@ -305,31 +305,44 @@
 
                    
 
-                   <?php if (check_access("invoice_generated")){ ?>
+                   <?php if (check_access("invoices_pending")){ ?>
 
                     <li class="side-nav-title">Invoices Section</li>
 
-                   <li class="side-nav-item">
-                       <a href="invoices_generated" aria-expanded="false" aria-controls="sidebarDashboards"
-                           class="side-nav-link">
-                           <i class="mdi mdi-truck-snowflake font-22"></i>
-                           <span> Invoice Generated </span>
-                       </a>
-                   </li>
-                   <?php } ?>
-
-                   <?php if (check_access("invoices_pending")){ ?>
-
-                   <li class="side-nav-item">
+                    <li class="side-nav-item">
                        <a href="invoices_pending" aria-expanded="false" aria-controls="sidebarDashboards"
                            class="side-nav-link">
                            <i class="mdi mdi-truck-snowflake font-22"></i>
                            <span> New Invoices </span>
                        </a>
-                   </li>
+                    </li>
+
+                  
                    <?php } ?>
 
+                    <?php if (check_access("invoices_generated")){ ?>
 
+                        <li class="side-nav-item">
+                            <a href="invoices_generated" aria-expanded="false" aria-controls="sidebarDashboards"
+                                class="side-nav-link">
+                                <i class="mdi mdi-truck-snowflake font-22"></i>
+                                <span> Invoice Generated </span>
+                            </a>
+                        </li>
+
+                 
+                   <?php } ?>
+
+                   <?php if (check_access("invoices_unpaid")){ ?>
+
+                   <li class="side-nav-item">
+                       <a href="invoices_unpaid" aria-expanded="false" aria-controls="sidebarDashboards"
+                           class="side-nav-link">
+                           <i class="mdi mdi-truck-snowflake font-22"></i>
+                           <span> Unpaid Invoices </span>
+                       </a>
+                   </li>
+                   <?php } ?>
 
                    <?php if (check_access("list_carriers")){ ?>
 

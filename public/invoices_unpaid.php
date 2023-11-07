@@ -1,9 +1,9 @@
 <?php 
     require_once("../includes/public_require.php"); 
-    $current_page = "invoice_generated";
+    $current_page = "invoices_unpaid";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/invoices_generated_data_fetch.php"); 
+	include("../includes/pagination/invoices_unpaid_data_fetch.php"); 
   ?>
 <div class="container">
 
@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-6 simple-panel">
-                    <label>List of Invoices</label>
+                    <label>List of Unpaid Invoices</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="tableSearch" onkeyup="table_search()" type="text"
