@@ -1,5 +1,5 @@
 <?php
-header("Refresh: 0; URL=home.php");
+header("Refresh: 0; URL=home");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,6 @@ header("Refresh: 0; URL=home.php");
 </head>
 <body>
     <!-- Optional: You can add a message for users who don't support redirection -->
-    <p>If you are not redirected automatically, <a href="home.php">click here</a>.</p>
+    <p>If you are not redirected automatically, <a href="home">click here</a>.</p>
 </body>
 </html>
