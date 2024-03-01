@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title id="pageTitle">ATC Dispatching</title>
+    <title id="pageTitle">24.7 Dispatch</title>
     <?php include("../includes/layouts/public_stylesheets.php"); ?>
 </head>
 
