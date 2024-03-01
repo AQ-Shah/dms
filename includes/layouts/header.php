@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>ATC Dispatching</title>
+		<title>24.7 Dispatch</title>
 		<?php include("../includes/layouts/admin_stylesheets.php"); ?>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -10,7 +10,7 @@
 	<body>
 		<nav class="navbar navbar-expand-sm bg-primary navbar-dark rounded">
 			<div class="container-fluid">		
-				<a class="navbar-brand" href="admin.php">ATC Dispatching</a>
+				<a class="navbar-brand" href="admin.php">24.7 Dispatch</a>
 				<div class="collapse navbar-collapse" id="mynavbar">
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item">
