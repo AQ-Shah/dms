@@ -8,7 +8,7 @@
 				<!-- ONLY MOBILE VIEW -->
 			<div class="d-lg-none">
 				<nav class="navbar navbar-expand-sm bg-primary navbar-dark" id= "">
-				<h4>copyright <?php echo date("Y");?>, Optimal UAE </h4>
+				<h4>copyright <?php echo date("Y");?>, 7 Dispatch LLC </h4>
 			</nav>
 			</div>
 		</div>
