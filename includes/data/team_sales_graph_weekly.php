@@ -1,17 +1,17 @@
 <script>
-const salesGraphWeeklyXValue = ['mon', 'tue', 'wed', 'thu', 'fri'];
-const salesGraphWeeklyYValues1 = [
-    <?php echo $salesThisMon.','.$salesThisTue.','.$salesThisWed.','.$salesThisThu.','.$salesThisFri; ?>
+const teamSalesGraphWeeklyXValue = ['mon', 'tue', 'wed', 'thu', 'fri'];
+const teamSalesGraphWeeklyYValues1 = [
+    <?php echo $salesThisMonByTeam.','.$salesThisTueByTeam.','.$salesThisWedByTeam.','.$salesThisThuByTeam.','.$salesThisFriByTeam; ?>
 ];
-const salesGraphWeeklyYValues2 = [
-    <?php echo $salesLastMon.','.$salesLastTue.','.$salesLastWed.','.$salesLastThu.','.$salesLastFri; ?>
+const teamSalesGraphWeeklyYValues2 = [
+    <?php echo $salesLastMonByTeam.','.$salesLastTueByTeam.','.$salesLastWedByTeam.','.$salesLastThuByTeam.','.$salesLastFriByTeam; ?>
 ];
 
-var saleGraphWeekly = document.getElementById('teamSalesGraphWeekly').getContext('2d');
-var saleGraphWeeklyCreation = new Chart(saleGraphWeekly, {
+var teamSaleGraphWeekly = document.getElementById('teamSalesGraphWeekly').getContext('2d');
+var teamSaleGraphWeeklyCreation = new Chart(teamSaleGraphWeekly, {
     type: 'bar',
     data: {
-        labels: salesGraphWeeklyXValue,
+        labels: teamSalesGraphWeeklyXValue,
         datasets: [{
             label: 'This week',
             fill: true,
@@ -19,7 +19,7 @@ var saleGraphWeeklyCreation = new Chart(saleGraphWeekly, {
             backgroundColor: "rgba(	114, 124, 245,0.7)",
             borderColor: "rgba(	114, 124, 245,0.1)",
             opacity: 50,
-            data: salesGraphWeeklyYValues1
+            data: teamSalesGraphWeeklyYValues1
         }, {
             label: 'Last week',
             fill: true,
@@ -27,7 +27,7 @@ var saleGraphWeeklyCreation = new Chart(saleGraphWeekly, {
             backgroundColor: "rgba(	10, 207, 151,0.7)",
             borderColor: "rgba(	10, 207, 151,0.1)",
             opacity: 50,
-            data: salesGraphWeeklyYValues2
+            data: teamSalesGraphWeeklyYValues2
         }]
     }
 

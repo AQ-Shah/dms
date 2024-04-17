@@ -13,15 +13,15 @@ $sameDayLastWeekSaleByTeam = no_of_carrier_sameDayLastWeek_by_team($user['team_i
 $oneDaySalesDifferenceByTeam = $todaySaleByTeam - $yesterdaySaleByTeam;
 $sameDaySalesDifferenceByTeam = $todaySaleByTeam - $sameDayLastWeekSaleByTeam;
 
-$salesThisMon = no_of_carrier_this_mon();
-$salesThisTue = no_of_carrier_this_tue();
-$salesThisWed = no_of_carrier_this_wed();
-$salesThisThu = no_of_carrier_this_thu();
-$salesThisFri = no_of_carrier_this_fri();
+$salesThisMonByTeam = no_of_carrier_this_mon($user['team_id']);
+$salesThisTueByTeam = no_of_carrier_this_tue($user['team_id']);
+$salesThisWedByTeam = no_of_carrier_this_wed($user['team_id']);
+$salesThisThuByTeam = no_of_carrier_this_thu($user['team_id']);
+$salesThisFriByTeam = no_of_carrier_this_fri($user['team_id']);
 
-$salesLastMon = no_of_carrier_last_mon();
-$salesLastTue = no_of_carrier_last_tue();
-$salesLastWed = no_of_carrier_last_wed();
-$salesLastThu = no_of_carrier_last_thu();
-$salesLastFri = no_of_carrier_last_fri();
+$salesLastMonByTeam = no_of_carrier_last_mon($user['team_id']);
+$salesLastTueByTeam = no_of_carrier_last_tue($user['team_id']);
+$salesLastWedByTeam = no_of_carrier_last_wed($user['team_id']);
+$salesLastThuByTeam = no_of_carrier_last_thu($user['team_id']);
+$salesLastFriByTeam = no_of_carrier_last_fri($user['team_id']);
 ?>
