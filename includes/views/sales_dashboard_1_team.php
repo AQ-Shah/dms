@@ -43,13 +43,13 @@
                             <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Weekly Sales</h5>
-                        <h3 class="mt-3 mb-3"><?php echo $thisWeekSale;?></h3>
+                        <h3 class="mt-3 mb-3"><?php echo $thisWeekSaleByTeam;?></h3>
                         <p class="mb-0 text-muted">
                             <span class="text-nowrap">Last week :
-                                <?php echo $lastWeekSale;?></span></br>
-                            <?php if ($weeklySalesDifference >0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weeklySalesDifference.' more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weeklySalesDifference.' less </span>';?>
+                                <?php echo $lastWeekSaleByTeam;?></span></br>
+                            <?php if ($weeklySalesDifferenceByTeam >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$weeklySalesDifferenceByTeam.' more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$weeklySalesDifferenceByTeam.' less </span>';?>
 
                         </p>
                     </div> <!-- end card-body-->
@@ -63,18 +63,18 @@
                             <i class="ri-money-dollar-circle-line widget-icon"></i>
                         </div>
                         <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Today's Sales</h5>
-                        <h3 class="mt-3 mb-3"><?php echo $todaySale;?></h3>
+                        <h3 class="mt-3 mb-3"><?php echo $todaySaleByTeam;?></h3>
                         <p class="mb-0 text-muted">
                             <span class="text-nowrap">Yesterday :
-                                <?php echo $yesterdaySale;?></span>
-                            <?php if ($oneDaySalesDifference >0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$oneDaySalesDifference.' more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$oneDaySalesDifference.' less </span>';?>
+                                <?php echo $yesterdaySaleByTeam;?></span>
+                            <?php if ($oneDaySalesDifferenceByTeam >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$oneDaySalesDifferenceByTeam.' more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$oneDaySalesDifferenceByTeam.' less </span>';?>
                             <span class="text-nowrap">Same Day Last Week :
-                                <?php echo $sameDayLastWeekSale;?></span>
-                            <?php if ($sameDaySalesDifference >0 ) 
-                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$sameDaySalesDifference.' more </span>'; 
-                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$sameDaySalesDifference.' less </span>';?>
+                                <?php echo $sameDayLastWeekSaleByTeam;?></span>
+                            <?php if ($sameDaySalesDifferenceByTeam >0 ) 
+                                        {echo '<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i>'.$sameDaySalesDifferenceByTeam.' more </span>'; 
+                                        } else echo '<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i>'.$sameDaySalesDifferenceByTeam.' less </span>';?>
 
                         </p>
                     </div> <!-- end card-body-->

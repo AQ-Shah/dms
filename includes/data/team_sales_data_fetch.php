@@ -1,17 +1,17 @@
 <?php 
 $thisMonthSaleByTeam = no_of_carrier_this_month_by_team($user['team_id']);
-$lastMonthSaleByTeam = no_of_carrier_last_month_team($user['team_id']);
+$lastMonthSaleByTeam = no_of_carrier_last_month_by_team($user['team_id']);
 $monthlySalesDifferenceByTeam =$thisMonthSaleByTeam - $lastMonthSaleByTeam;
 
-$thisWeekSale = no_of_carrier_this_week();
-$lastWeekSale = no_of_carrier_last_week();
-$weeklySalesDifference =$thisWeekSale - $lastWeekSale;
+$thisWeekSaleByTeam = no_of_carrier_this_week_by_team($user['team_id']);
+$lastWeekSaleByTeam = no_of_carrier_last_week_by_team($user['team_id']);
+$weeklySalesDifferenceByTeam =$thisWeekSaleByTeam - $lastWeekSaleByTeam;
 
-$todaySale = no_of_carrier_today();
-$yesterdaySale = no_of_carrier_yesterday();
-$sameDayLastWeekSale = no_of_carrier_sameDayLastWeek();
-$oneDaySalesDifference = $todaySale - $yesterdaySale;
-$sameDaySalesDifference = $todaySale - $sameDayLastWeekSale;
+$todaySaleByTeam = no_of_carrier_today_by_team($user['team_id']);
+$yesterdaySaleByTeam = no_of_carrier_yesterday_by_team($user['team_id']);
+$sameDayLastWeekSaleByTeam = no_of_carrier_sameDayLastWeek_by_team($user['team_id']);
+$oneDaySalesDifferenceByTeam = $todaySaleByTeam - $yesterdaySaleByTeam;
+$sameDaySalesDifferenceByTeam = $todaySaleByTeam - $sameDayLastWeekSaleByTeam;
 
 $salesThisMon = no_of_carrier_this_mon();
 $salesThisTue = no_of_carrier_this_tue();

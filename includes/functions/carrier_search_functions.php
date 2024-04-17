@@ -334,7 +334,7 @@
 			$result = mysqli_fetch_array($set)[0];
 			return max($result, 0);}
 
-		function no_of_carrier_last_month_team($id) {
+		function no_of_carrier_last_month_by_team($id) {
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 
@@ -358,6 +358,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_carrier_this_week_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1)";
+			$query .= " AND sales_team_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
 		function no_of_carrier_last_week() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -367,6 +380,20 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_carrier_last_week_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+			$query .= " AND sales_team_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+	
 		function no_of_carrier_today() {
 			global $connection;
 			$query  = "SELECT COUNT('id') ";
@@ -390,6 +417,45 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_carrier_today_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE DATE(creation_time) = CURDATE()";
+			$query .= " AND sales_team_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_carrier_yesterday_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+			$query .= " AND sales_team_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_carrier_sameDayLastWeek_by_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$query .= " AND sales_team_id = '{$safe_id}' ";
+					
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
