@@ -90,7 +90,7 @@
     <div class="col-12 col-12">
         <div class="card card-h-100">
             <div class="d-flex card-header justify-content-between align-items-center">
-                <h4 class="header-title">Sales Agents </h4>
+                <h4 class="header-title">Sales Agents Of My Team</h4>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="card-body pt-0">
-                <canvas id="salesGraphByAgents" style="width:100%;height:250px"></canvas>
+                <canvas id="teamSalesGraphByAgents" style="width:100%;height:250px"></canvas>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->
@@ -137,5 +137,5 @@
 <?php } ?>
 <?php
 include("../includes/data/team_sales_graph_weekly.php");
-include("../includes/data/sales_graph_by_agents.php");
+include("../includes/data/team_sales_graph_by_agents.php");
 ?>
