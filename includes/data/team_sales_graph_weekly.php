@@ -7,7 +7,7 @@ const salesGraphWeeklyYValues2 = [
     <?php echo $salesLastMon.','.$salesLastTue.','.$salesLastWed.','.$salesLastThu.','.$salesLastFri; ?>
 ];
 
-var saleGraphWeekly = document.getElementById('salesGraphWeekly').getContext('2d');
+var saleGraphWeekly = document.getElementById('teamSalesGraphWeekly').getContext('2d');
 var saleGraphWeeklyCreation = new Chart(saleGraphWeekly, {
     type: 'bar',
     data: {
