@@ -115,7 +115,7 @@
     <div class="col-12 col-12">
         <div class="card card-h-100">
             <div class="d-flex card-header justify-content-between align-items-center">
-                <h4 class="header-title">Weekly Sales Graph </h4>
+                <h4 class="header-title">Weekly Sales Graph By Team</h4>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                         aria-expanded="false">
