@@ -274,6 +274,19 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		function no_of_carrier_this_month_by_team($id){
+				global $connection;
+				$safe_id = mysqli_real_escape_string($connection, $id);
+
+				$query  = "SELECT COUNT('id') ";
+				$query .= "FROM carrier_form ";
+				$query .= ' WHERE MONTH(creation_time) = '.date("m");
+				$query .= " AND sales_team_id = '{$safe_id}' ";
+
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				return max(mysqli_fetch_assoc($set));}
+
 		function no_of_carrier_by_agent($id){
 			global $connection;
 
@@ -317,6 +330,21 @@
 			$query .= "FROM carrier_form ";
 			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
 			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_array($set)[0];
+			return max($result, 0);}
+
+		function no_of_carrier_last_month_team($id) {
+			global $connection;
+			$safe_id = mysqli_real_escape_string($connection, $id);
+
+			$query  = "SELECT COUNT(id) ";
+			$query .= "FROM carrier_form ";
+			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
+			$query .= " AND sales_team_id = '{$safe_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			
 			confirm_query($set);
 			$result = mysqli_fetch_array($set)[0];
 			return max($result, 0);}

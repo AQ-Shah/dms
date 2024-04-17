@@ -65,6 +65,7 @@
             if ($current_page === 'carrier_update') return true;
             if ($current_page === 'show_carrier') return true;
             if ($current_page === 'sales_dashboard_1') return true;
+            if ($current_page === 'sales_dashboard_1_team') return true;
             if ($current_page === 'stats_box_sales_team_1') return true;
             }
 
