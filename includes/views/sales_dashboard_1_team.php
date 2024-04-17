@@ -136,6 +136,6 @@
 </div>
 <?php } ?>
 <?php
-include("../includes/data/sales_graph_weekly.php");
+include("../includes/data/team_sales_graph_weekly.php");
 include("../includes/data/sales_graph_by_agents.php");
 ?>
