@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="card-body pt-0">
-                <canvas id="salesGraphWeekly" style="width:100%;max-height: 300px;"></canvas>
+                <canvas id="teamSalesGraphWeekly" style="width:100%;max-height: 300px;"></canvas>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->
