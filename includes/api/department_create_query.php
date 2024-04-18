@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     
     // setting the values
      if (isset($_POST['name'])) {$name = mysql_prep($_POST["name"]);} else {$name = '';}
-     if (isset($_POST['function-type'])) {$functionType = mysql_prep($_POST["function-type"]);} else {$functionType = '10';}
+     if (isset($_POST['function-type'])) {$functionType = mysql_prep($_POST["function-type"]);} else {$functionType = '';}
     
      // validations
     $required_fields = array("name","function-type");

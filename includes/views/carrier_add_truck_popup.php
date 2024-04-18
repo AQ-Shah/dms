@@ -103,7 +103,7 @@
 
             <input type="hidden" id="trucks-carrier-id" name="trucks-carrier-id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
-            <button type="submit" name="submit">Save</button>
+            <button type="submit" name="submit"  onclick="hideAddTruckPopup()">Save</button>
             <button type="button" onclick="hideAddTruckPopup()">Cancel</button>
         </div>
     </form>

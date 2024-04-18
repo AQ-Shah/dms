@@ -7,7 +7,7 @@
             <input type="text" id="new-department-name" name="name"><br>
 
             <label for="function-type">Unit Function:</label>
-            <select name="function-type" class="form-control w-100" required>
+            <select name="function-type" class="form-control w-100">
                 <option value="">Select Function type</option>
                 <option value="5">Dispatching</option>
                 <option value="10">Clients Acquisition</option>
