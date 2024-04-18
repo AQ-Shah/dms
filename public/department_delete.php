@@ -12,6 +12,17 @@
     // department couldn't be found in database
     redirect_to("departments");
   }
+
+
+  if ($department["company_id"] != $user["company_id"]) {
+    $_SESSION["message"] = "Unit Not Found.";
+    redirect_to("departments");
+  }
+
+  if ($department["is_executive"]) {
+    $_SESSION["message"] = "Cannot Remove the Executive Unit.";
+    redirect_to("departments");
+  }
   
   $id = $department["id"];
   $safe_admin_id = mysqli_real_escape_string($connection, $id);
@@ -20,11 +31,11 @@
 
   if ($result && mysqli_affected_rows($connection) == 1) {
     // Success
-    $_SESSION["message"] = "Department deleted.";
+    $_SESSION["message"] = "Unit deleted.";
     redirect_to("departments");
   } else {
     // Failure
-    $_SESSION["message"] = "something went wrong.";
+    $_SESSION["message"] = "something went wrong. Please contact Admin";
     redirect_to("departments");
   }
   
