@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $query  = "INSERT INTO department (";
         $query .= "  name, function_code, company_id";
         $query .= ") VALUES (";
-        $query .= "  '{$name}', '{$functionType}' '{$company_id}'";
+        $query .= "  '{$name}', '{$functionType}', '{$company_id}'";
         $query .= ")";
         $result = mysqli_query($connection, $query);
         if ($result) {
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
             redirect_to("departments");
         } else {
             // DB Failure
-            $_SESSION["message"] = "Something went wrong....";
+            $_SESSION["message"] = "Something went wrong.";
             header("Location: " . $prev_url);
             exit;
         }
