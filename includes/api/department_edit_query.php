@@ -4,26 +4,36 @@ if (isset($_POST['submit'])) {
     //location from which the redirect came
       $prev_url = $_POST['prev_url'];
 
-    if($_GET["id"]){
-        $department = find_department_by_id($_GET["id"]);
-        }
-    else
-        redirect_to("manage_departments.php");
-    
-    if (!$department) {
+      $department = find_department_by_id($_GET["id"]);
+
+      if (!$department) {
         // department ID was missing or invalid or 
-        // department couldn't be found in database
-        redirect_to("manage_departments.php");
-    }
+        $_SESSION["message"] = "Unit Not Found.";
+        redirect_to("departments");
+      }
+    
+    
+      if ($department["company_id"] != $user["company_id"]) {
+        $_SESSION["message"] = "Unit Not Found.";
+        redirect_to("departments");
+      }
+    
+      if ($department["is_executive"]) {
+        $_SESSION["message"] = "Cannot Edit the Executive Unit.";
+        redirect_to("departments");
+      }
+      
 
   // Process the form
 
-  
+      // setting the values
+      if (isset($_POST['name'])) {$name = mysql_prep($_POST["name"]);} else {$name = '';}
+      if (isset($_POST['function-type'])) {$functionType = mysql_prep($_POST["function-type"]);} else {$functionType = '';}
   // validations
     $required_fields = array("name");
     validate_presences($required_fields);
   
-    $fields_with_max_lengths = array("name" => 30 , "email" => 30);
+    $fields_with_max_lengths = array("name" => 30 , "function-type" => 2);
     validate_max_lengths($fields_with_max_lengths);
   
   if (empty($errors)) {
@@ -31,19 +41,16 @@ if (isset($_POST['submit'])) {
     // Perform Update
 
     $id = $department["id"];
-    $name = mysql_prep($_POST["name"]);
-    $email = mysql_prep($_POST["email"]);
   
     $query  = "UPDATE department SET name = '{$name}', ";
-    $query .= "email ='{$email}',";
-    $query .= "website ='1' ";
+    $query .= "function_code ='{$functionType}' ";
     $query .= "WHERE id = {$id} LIMIT 1  ";
     
     $result = mysqli_query($connection, $query);
 
     if ($result && mysqli_affected_rows($connection) == 1) {
       // DB Success
-        $_SESSION["message"] = "Department updated.";
+        $_SESSION["message"] = "Unit updated.";
         header("Location: " . $prev_url);
         exit;
     } else {
