@@ -1,4 +1,7 @@
-<div id="department-edit-popup" class="popup" style="display:none;">
+User
+is there any sytax error in the following code ? 
+
+<div id="department-edit-popup" class="popup">
     <div class="popup-content">
         <h2>Edit Unit</h2>
         <form class="department-edit-popup-form popup-form" action="" method="post">
@@ -10,56 +13,33 @@
                 <option value="10">Clients Acquisition</option>
             </select>
             <input type="hidden" id="department_id" name="department_id" value="">
-            <input type="hidden" name="prev_url" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+            <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideDepartmentEditPopup()">Edit</button>
             <button type="button" onclick="hideDepartmentEditPopup()">Cancel</button>
         </form>
     </div>
 </div>
 
-
 <script>
+//for dispatch popup
 
-// For dispatch popup
 function showDepartmentEditPopup(recordId, recordName, functionType) {
-    const popup = document.getElementById("department-edit-popup");
-    const departmentIdInput = document.getElementById("department_id");
-    const nameInput = document.getElementById("name");
-    const functionTypeSelect = document.getElementById("function-type");
+    // Populate the form fields with default values
+    document.getElementById("department_id").value = recordId;
+    document.getElementById("name").value = recordName;
+    document.getElementById("function-type").value = functionType;
 
-    if (popup && departmentIdInput && nameInput && functionTypeSelect) {
-        departmentIdInput.value = recordId;
-        nameInput.value = recordName;
-        functionTypeSelect.value = functionType;
+    var formAction = "department_edit?id=" + recordId;
 
-        // Ensure the appropriate option is selected
-        for (let option of functionTypeSelect.options) {
-            if (option.value === functionType.toString()) {
-                option.selected = true;
-                break;
-            }
-        }
-
-        var formAction = "department_edit?id=" + recordId;
-        document.querySelector(".department-edit-popup-form").action = formAction;
-
-        // Show the popup by setting display to flex
-        popup.style.display = "flex";
-    } else {
-        console.error("Element not found!");
-    }
+    // set the form action to the constructed URL
+    document.querySelector(".department-edit-popup-form").action = formAction;
+    // Show the popup
+    var popup = document.getElementById("department-edit-popup");
+    popup.style.display = "flex";
 }
 
 function hideDepartmentEditPopup() {
-    const popup = document.getElementById("department-edit-popup");
-    if (popup) {
-        // Hide the popup by setting display to none
-        popup.style.display = "none";
-    } else {
-        console.error("Element not found!");
-    }
+    var popup = document.getElementById("department-edit-popup");
+    popup.style.display = "none";
 }
-
-
-
 </script>
