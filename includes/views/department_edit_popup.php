@@ -1,12 +1,15 @@
 <div id="department-edit-popup" class="popup">
     <div class="popup-content">
-        <h2>Edit Department</h2>
+        <h2>Edit Unit</h2>
         <form class="department-edit-popup-form popup-form" action="" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value=""><br>
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value=""><br>
-            <input type="hidden" id="carrier-id" name="carrier_id" value="">
+            <label for="function-type">Unit Function:</label>
+            <select name="function-type" class="form-control w-100">
+                <option value="5">Dispatching</option>
+                <option value="10">Clients Acquisition</option>
+            </select>
+            <input type="hidden" id="department_id" name="department_id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideDepartmentEditPopup()">Edit</button>
             <button type="button" onclick="hideDepartmentEditPopup()">Cancel</button>
@@ -17,11 +20,11 @@
 <script>
 //for dispatch popup
 
-function showDepartmentEditPopup(recordId, recordName, recordEmail) {
+function showDepartmentEditPopup(recordId, recordName, functionType) {
     // Populate the form fields with default values
-    document.getElementById("carrier-id").value = recordId;
+    document.getElementById("department_id").value = recordId;
     document.getElementById("name").value = recordName;
-    document.getElementById("email").value = recordEmail;
+    document.getElementById("function-type").value = functionType;
 
     var formAction = "department_edit?id=" + recordId;
 
