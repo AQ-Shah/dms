@@ -14,16 +14,6 @@ if (isset($_POST['submit'])) {
      if (isset($_POST['department_id'])) $department_id = mysql_prep($_POST["department_id"]);
      if (isset($_POST['prev_url'])) $prev_url = mysql_prep($_POST["prev_url"]);
 
-    //find department by department ID, fetch company ID from that as well, valid user from same company. 
-     
-    $department = find_department_by_id($department_id);
-
-    if ($department["company_id"] === $user("company_id")) { 
-        $company_id = $department["company_id"];
-    } else {
-        $_SESSION["message"] = "Not Authorised";
-        redirect_to("departments");
-    }
 
     if (empty($errors)) {
         // Perform Create
