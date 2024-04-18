@@ -9,7 +9,7 @@
 
   if (!$department) {
     // department ID was missing or invalid or 
-    // department couldn't be found in database
+    $_SESSION["message"] = "Unit Not Found.";
     redirect_to("departments");
   }
 

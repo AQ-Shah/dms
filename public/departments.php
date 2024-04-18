@@ -15,7 +15,7 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                 <?php echo message(); ?>
 
                 <h2>
-                    Departments
+                    Office Units 
                 </h2>
 
             </div>
@@ -40,7 +40,7 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                     <div class="text-xl-end mt-xl-0 mt-2">
                         <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentCreatePopup()"><i
                                 class="mdi mdi-basket me-1"></i> Add
-                            New Department</button>
+                            New Unit</button>
 
                     </div>
                 </div><!-- end col-->
@@ -48,8 +48,7 @@ $record_set = find_all_departments_of_company($user["company_id"]);
             <table class="table table-hover" id="currentTable">
                 <thead>
                     <tr>
-                        <th>Department Name</th>
-                        <th>Email</th>
+                        <th>Unit Name</th>
                         <th>No of Employees</th>
                         <th colspan=" 2">Actions</th>
                     </tr>
@@ -60,9 +59,6 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                         <td style="cursor: pointer;"
                             onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
                             <?php echo htmlentities($record["name"]); ?></td>
-                        <td style="cursor: pointer;"
-                            onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
-                            <?php echo htmlentities($record["email"]); ?></td>
                         <td style="cursor: pointer;"
                             onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
                             <?php echo htmlentities(no_of_users_by_department($record["id"])); ?></td>
@@ -77,7 +73,7 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                                     <button onclick="showDepartmentEditPopup(
                                   '<?php echo urlencode($record["id"]); ?>',
                                   '<?php echo $record["name"]; ?>',
-                                  '<?php echo $record["email"]; ?>'
+                                  '<?php echo $record["function-type"]; ?>'
                               )">Edit</button>
 
                                     <button
