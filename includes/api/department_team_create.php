@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
         // Perform Create
 
-        $sql = "INSERT INTO teams (name,  department_id) VALUES ('$team_name', '$department_id')";
+        $sql = "INSERT INTO teams (name, company_id,  department_id) VALUES ('$team_name', '$company_id', '$department_id')";
         $result = mysqli_query($connection, $sql);
     
 
