@@ -57,8 +57,8 @@ $record_set = find_all_teams_by_department($department["id"]);
                 <label for="phone_num">Phone Number:</label>
                 <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="phone_num" name="phone_num">
 
-                <label for="emergency_num">Emergency Number:</label>
-                <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="emergency_num" name="emergency_num">
+                <label for="emergency_contact">Emergency Number:</label>
+                <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="emergency_contact" name="emergency_contact">
             </div>
 
             <div class="form-row-col-6">
