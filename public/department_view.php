@@ -45,7 +45,7 @@
                     <table class="table table-hover" id="currentTable">
                         <thead>
                             <tr>
-                                <?php if($department['id'] != 1) { ?>
+                            <?php if (!$department['is_executive']) {?>
                                 <th onclick="sortTable(0)">Team
                                     <span class="sort-arrows"></span>
                                 </th>
