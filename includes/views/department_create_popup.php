@@ -1,13 +1,17 @@
 <div id="department-create-popup" class="popup">
     <div class="popup-content">
-        <h2>Create Department</h2>
+        <h2>Create Unit</h2>
         <form class="department-create-popup-form popup-form" action="" method="post">
 
-            <label for="name">Department Name:</label>
+            <label for="name">Unit Name:</label>
             <input type="text" id="new-department-name" name="name"><br>
 
-            <label for="email">Email:</label>
-            <input type="text" id="new-department-email" name="email"><br>
+            <label for="function-type">Unit Function:</label>
+            <select name="function-type" class="form-control w-100" required>
+                <option value="">Select Function type</option>
+                <option value="5">Dispatching</option>
+                <option value="10">Clients Acquisition</option>
+            </select>
 
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 

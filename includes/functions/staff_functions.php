@@ -48,6 +48,19 @@ function find_all_departments() {
         return $department_set;
     }
 
+function find_all_departments_of_company($company_id) {
+        global $connection;
+        $safe_company_id = mysqli_real_escape_string($connection, $company_id);
+
+        $query  = "SELECT * ";
+        $query .= "FROM department ";
+        $query .= "WHERE company_id = {$safe_company_id} ";
+        $query .= "ORDER BY id ASC";
+        $department_set = mysqli_query($connection, $query);
+        confirm_query($department_set);
+        return $department_set;
+    }
+
 function find_departments_from($start,$end) {
         global $connection;
         
