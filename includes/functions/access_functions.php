@@ -122,9 +122,9 @@
    
     function find_designation($role_id){
         if ($role_id === '1') return 'Manager';
-        if ($role_id === '4') return 'Dispatch Supervisor';
+        if ($role_id === '4') return 'Team Supervisor';
         if ($role_id === '5') return 'Dispatch Agent';
-        if ($role_id === '9') return 'Sales Supervisor';
+        if ($role_id === '9') return 'Team Supervisor';
         if ($role_id === '10') return 'Sales Agent';
         return 'Not Assigned';
     }
