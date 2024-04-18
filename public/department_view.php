@@ -33,7 +33,7 @@
                     <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentUserCreatePopup()"><i
                             class=" mdi mdi-basket me-1"></i>
                         Add User</button>
-                    <?php if (check_team_view_required($_GET['id'])) {?>
+                    <?php if (!$department['is_executive']) {?>
                     <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentTeamCreatePopup()"><i
                             class=" mdi mdi-basket me-1"></i>
                         Add Team</button>
