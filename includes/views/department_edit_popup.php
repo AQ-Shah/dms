@@ -1,6 +1,3 @@
-User
-is there any sytax error in the following code ? 
-
 <div id="department-edit-popup" class="popup">
     <div class="popup-content">
         <h2>Edit Unit</h2>
