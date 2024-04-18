@@ -7,10 +7,10 @@ if (isset($_POST['submit'])) {
     // setting the values
     if (isset($_POST['name'])) {$name = mysql_prep($_POST["name"]);} else {$name = '';}
     if (isset($_POST['function-type'])) {$functionType = mysql_prep($_POST["function-type"]);} else {$functionType = '';}
-    
+   
     $company_id = $user['company_id'];
 
-     // validations
+    // validations
     $required_fields = array("name","function-type");
     validate_presences($required_fields);
 
@@ -26,14 +26,13 @@ if (isset($_POST['submit'])) {
         $query .= "  '{$name}', '{$functionType}' '{$company_id}'";
         $query .= ")";
         $result = mysqli_query($connection, $query);
-        echo $query;
         if ($result) {
             // DB Success
             $_SESSION["message"] = "Unit created.";
             redirect_to("departments");
         } else {
             // DB Failure
-            $_SESSION["message"] = "Something went wrong.";
+            $_SESSION["message"] = "Something went wrong....";
             header("Location: " . $prev_url);
             exit;
         }
