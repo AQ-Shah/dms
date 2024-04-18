@@ -10,7 +10,7 @@ $record_set = find_all_teams_by_department($department["id"]);
             <?php if (not_executive($_GET['id'])) {?>
             <div class="form-row-col-6">
                 <label for="team_id">Team:</label>
-                <?php if ($record_set) { ?>
+                <?php if ($record_set && $record_set->rowCount() > 0)  { ?>
                     <select name="team_id">
 
                         <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
