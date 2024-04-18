@@ -96,6 +96,23 @@ function showDepartmentUserCreatePopup() {
 
 function hideDepartmentUserCreatePopup() {
     var popup = document.getElementById("department-user-create-popup");
+    var errorMessages = popup.querySelectorAll('.error-message');
+    
+    // Check if there are any visible error messages
+    var hasErrors = false;
+    errorMessages.forEach(function(message) {
+        if (window.getComputedStyle(message).display !== 'none') {
+            hasErrors = true;
+        }
+    });
+
+    // If there are errors, do not hide the form
+    if (hasErrors) {
+        return;
+    }
+
+    // If no errors, hide the popup
     popup.style.display = "none";
 }
+
 </script>
