@@ -40,7 +40,7 @@ function no_of_teams_by_department($department_id){
         global $connection;
         $safe_department_id = mysqli_real_escape_string($connection, $department_id);
         $query  = "SELECT COUNT('id') ";
-        $query .= "FROM team ";
+        $query .= "FROM teams ";
         $query .= "WHERE department_id = {$safe_department_id} ";
         $set = mysqli_query($connection, $query);
         confirm_query($set);
