@@ -11,7 +11,7 @@
             </select>
             <input type="hidden" id="department_id" name="department_id" value="">
             <input type="hidden" name="prev_url" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
-            <button type="submit" name="submit" onclick="event.preventDefault(); submitEditForm();">Edit</button>
+            <button type="submit" name="submit" onclick="hideDepartmentEditPopup()">Edit</button>
             <button type="button" onclick="hideDepartmentEditPopup()">Cancel</button>
         </form>
     </div>
@@ -40,7 +40,7 @@ function showDepartmentEditPopup(recordId, recordName, functionType) {
             }
         }
 
-        let formAction = "department_edit?id=" + recordId;
+        var formAction = "department_edit?id=" + recordId;
         document.querySelector(".department-edit-popup-form").action = formAction;
 
         // Show the popup by setting display to flex
@@ -60,13 +60,6 @@ function hideDepartmentEditPopup() {
     }
 }
 
-function submitEditForm() {
-    const form = document.querySelector(".department-edit-popup-form");
-    if (form) {
-        form.submit();
-    } else {
-        console.error("Form not found!");
-    }
-}
+
 
 </script>
