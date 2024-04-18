@@ -19,14 +19,14 @@ if (isset($_POST['submit'])) {
 
         //find department by department ID, fetch company ID from that as well, valid user from same company. 
      
-        // $department = find_department_by_id($department_id);
+        $department = find_department_by_id($department_id);
 
-        // if ($department["company_id"] === $user("company_id")) { 
-        //     $company_id = $department["company_id"];
-        // } else {
-        //     $_SESSION["message"] = "Not Authorised";
-        //     redirect_to("departments");
-        // }
+        if ($department["company_id"] === $user("company_id")) { 
+            $company_id = $department["company_id"];
+        } else {
+            $_SESSION["message"] = "Not Authorised";
+            redirect_to("departments");
+        }
 
         // Perform Create
 
