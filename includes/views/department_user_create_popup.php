@@ -7,15 +7,19 @@ $record_set = find_all_teams_by_department($department["id"]);
     <div class="row popup-content-wide">
         <form class="department-user-create-popup-form popup-form" action="" method="post">
 
-            <?php if (check_team_view_required($_GET['id'])) {?>
+            <?php if (not_executive($_GET['id'])) {?>
             <div class="form-row-col-6">
                 <label for="team_id">Team:</label>
-                <select name="team_id">
-                    <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                    <option value="<?php echo htmlentities($record["id"]); ?>">
-                        <?php echo htmlentities($record["name"]); ?> </option>
-                    <?php } ?>
-                </select>
+                <?php if ($record_set) { ?>
+                    <select name="team_id">
+
+                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
+                            <option value="<?php echo htmlentities($record["id"]); ?>">
+                            <?php echo htmlentities($record["name"]); ?> </option>
+                        <?php } ?>
+
+                    </select>
+                <?php } else { echo 'Please Create a New Team'; }?>
                 <label for="role_id">Role:</label>
                 <select name="role_id">
                     <?php if($department['id']== 5) { ?>
