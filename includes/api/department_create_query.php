@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         $query .= "  '{$name}', '{$functionType}' '{$company_id}'";
         $query .= ")";
         $result = mysqli_query($connection, $query);
-
+        echo $query;
         if ($result) {
             // DB Success
             $_SESSION["message"] = "Unit created.";

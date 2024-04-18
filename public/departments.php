@@ -8,7 +8,7 @@ $record_set = find_all_departments_of_company($user["company_id"]);
 
 <div class="container">
 
-    <div class="row">ß
+    <div class="row">
         <div class="col-12 text-center mb-4">
             <div class="page-title-box">
 
