@@ -73,7 +73,7 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                                     <button onclick="showDepartmentEditPopup(
                                   '<?php echo urlencode($record["id"]); ?>',
                                   '<?php echo $record["name"]; ?>',
-                                  '<?php echo $record["function-type"]; ?>'
+                                  '<?php echo $record["function_code"]; ?>'
                               )">Edit</button>
 
                                     <button
