@@ -4,11 +4,11 @@
         <form class="department-edit-popup-form popup-form" action="" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value=""><br>
-            <label for="function-type">Unit Function:</label>
+            <!-- <label for="function-type">Unit Function:</label>
             <select name="function-type" class="form-control w-100">
                 <option value="5">Dispatching</option>
                 <option value="10">Clients Acquisition</option>
-            </select>
+            </select> -->
             <input type="hidden" id="department_id" name="department_id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideDepartmentEditPopup()">Edit</button>
