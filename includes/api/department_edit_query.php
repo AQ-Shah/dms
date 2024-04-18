@@ -1,8 +1,7 @@
 <?php
 if (isset($_POST['submit'])) {
 
-    //location from which the redirect came
-      $prev_url = $_POST['prev_url'];
+
 
       $department = find_department_by_id($_GET["id"]);
 
@@ -27,6 +26,7 @@ if (isset($_POST['submit'])) {
   // Process the form
 
       // setting the values
+      if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
       if (isset($_POST['name'])) {$name = mysql_prep($_POST["name"]);} else {$name = '';}
       if (isset($_POST['function-type'])) {$functionType = mysql_prep($_POST["function-type"]);} else {$functionType = '';}
   // validations

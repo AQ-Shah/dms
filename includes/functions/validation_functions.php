@@ -20,7 +20,7 @@ function validate_presences_get($required_fields) {
   foreach($required_fields as $field) {
     $value = trim($_GET[$field]);
   	if (!has_presence($value)) {
-  		$errors[$field] = fieldname_as_text($field) . " can't be blank";
+  		$errors[$field] = fieldname_as_text($field) . " can not be blank";
   	}
   }
 }
@@ -30,7 +30,7 @@ function validate_presences($required_fields) {
   foreach($required_fields as $field) {
     $value = trim($_POST[$field]);
   	if (!has_presence($value)) {
-  		$errors[$field] = fieldname_as_text($field) . " can't be blank";
+  		$errors[$field] = fieldname_as_text($field) . " can not be blank";
   	}
   }
 }

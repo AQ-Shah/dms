@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     // setting the values
      if (isset($_POST['team_name'])) $team_name = mysql_prep($_POST["team_name"]);
      if (isset($_POST['department_id'])) $department_id = mysql_prep($_POST["department_id"]);
-     if (isset($_POST['prev_url'])) $prev_url = mysql_prep($_POST["prev_url"]);
+     if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
 
 
     if (empty($errors)) {

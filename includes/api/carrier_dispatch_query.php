@@ -5,14 +5,15 @@
         redirect_to("home");
     } 
     
-    $prev_url = $_POST['prev_url'];
+
     
     $required_fields = array("dispatch_location","rate","delivery_datetime", "pickup_datetime", "truck-id");
     validate_presences($required_fields);
     
     $dispatcher_id = $user['id'];
     $dispatch_team_id = $user['team_id'];
-
+    
+    if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
     if (isset($_POST['dispatch_location'])) {$new_location = mysql_prep($_POST["dispatch_location"]);} 
     if (isset($_POST['delivery_datetime'])) {$delivery_time = mysql_prep($_POST["delivery_datetime"]);}
     if (isset($_POST['pickup_datetime'])) {$pickup_datetime = mysql_prep($_POST["pickup_datetime"]);}

@@ -4,7 +4,7 @@ if (isset($_POST['submit'])) {
   
   if (empty($errors)) {
     // Perform Create
-    $prev_url = $_POST['prev_url'];
+    if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
 	  $id = $user["id"];
     $email_privacy = mysql_prep($_POST["email_privacy"]);
     $phone_privacy = mysql_prep($_POST["phone_privacy"]);

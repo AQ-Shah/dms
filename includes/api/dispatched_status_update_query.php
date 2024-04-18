@@ -1,6 +1,6 @@
 <?php 
    
-    $prev_url = $_POST['prev_url'];
+   if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
     
     $required_fields = array("dispatched-status", "carrier-id","dispatch-id");
     validate_presences($required_fields);

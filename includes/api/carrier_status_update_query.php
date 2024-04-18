@@ -4,7 +4,7 @@
         $_SESSION["message"] = "Please provide valid id through the dashboard.";
         redirect_to("home");
     }
-    $prev_url = $_POST['prev_url'];
+    if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
     
     $required_fields = array("carrier-status");
     validate_presences($required_fields);

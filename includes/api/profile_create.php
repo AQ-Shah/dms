@@ -1,10 +1,10 @@
   <?php 
   
-  $prev_url = $_POST['prev_url'];
+
   
     // Process the form
-  
-    if (isset($_POST['username'])) {$username = mysql_prep($_POST["username"]);}
+    if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
+    if (isset($_POST['email'])) {$email = mysql_prep($_POST["email"]);}
     if (isset($_POST['password'])) {$hashed_password = password_encrypt($_POST["password"]);}
     if (isset($_POST['full_name'])) {$full_name = mysql_prep($_POST["full_name"]);}
     if (isset($_POST['department_id'])) {$department_id = mysql_prep($_POST["department_id"]);}
@@ -12,15 +12,15 @@
     if (isset($_POST['role_id'])) {$role_id = mysql_prep($_POST["role_id"]);}
    
     // validations
-    $required_fields = array("username", "password","full_name", "department_id", "team_id");
+    $required_fields = array("email", "password", "full_name", "department_id", "team_id");
     validate_presences($required_fields);
     
-    $fields_with_max_lengths = array("username" => 30, "full_name" => 30, "password" => 20,);
+    $fields_with_max_lengths = array("email" => 30, "full_name" => 30, "password" => 20,);
     validate_max_lengths($fields_with_max_lengths);
     
-    if (find_user_by_username($username)) {
+    if (find_user_by_email($email)) {
         global $errors;
-        $errors[$username] =  "Username (".fieldname_as_text($username) .") already exists";
+        $errors[$email] =  "email (".fieldname_as_text($email) .") already exists";
     }
     if (empty($errors)) {
        // Perform Create
@@ -52,10 +52,10 @@
             else  $about_privacy = 0;
 
         $query  = "INSERT INTO users (";
-        $query .= "  username, hashed_password, department_id, team_id, designation, full_name, permission, phone_num,  email, gender, emergency_contact, about_me, email_privacy, phone_privacy, birthday_privacy, emergency_privacy, about_privacy";
+        $query .= "  email, hashed_password, department_id, team_id, designation, full_name, permission, phone_num,  email, gender, emergency_contact, about_me, email_privacy, phone_privacy, birthday_privacy, emergency_privacy, about_privacy";
         if (isset($birth_date) && isset ($join_date)) $query .= ",birth_date, join_date";
         $query .= ") VALUES (";
-        $query .= "  '{$username}', '{$hashed_password}', '{$department_id}', '{$team_id}', '{$designation}', '{$full_name}', '{$permission}', '{$phone_num}', '{$email}', '{$gender}', '{$emergency_contact}', '{$about_me}', '{$email_privacy}', '{$phone_privacy}', '{$birthday_privacy}', '{$emergency_privacy}', '{$about_privacy}'";
+        $query .= "  '{$email}', '{$hashed_password}', '{$department_id}', '{$team_id}', '{$designation}', '{$full_name}', '{$permission}', '{$phone_num}', '{$email}', '{$gender}', '{$emergency_contact}', '{$about_me}', '{$email_privacy}', '{$phone_privacy}', '{$birthday_privacy}', '{$emergency_privacy}', '{$about_privacy}'";
         if (isset($birth_date) && isset ($join_date)) $query .= ", '{$birth_date}', '{$join_date}'";
         $query .= ")";
         
