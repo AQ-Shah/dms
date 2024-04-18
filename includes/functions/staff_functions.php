@@ -378,15 +378,33 @@ function find_user_by_username($username) {
         $query .= "FROM users ";
         $query .= "WHERE username = '{$safe_username}' ";
         $query .= "LIMIT 1";
-        $admin_set = mysqli_query($connection, $query);
-        confirm_query($admin_set);
-        if($admin = mysqli_fetch_assoc($admin_set)) {
-            return $admin;
+        $record_set = mysqli_query($connection, $query);
+        confirm_query($record_set);
+        if($record = mysqli_fetch_assoc($record_set)) {
+            return $record;
         } else {
             return null;
         }
     }
     
+    function find_user_by_email($email) {
+        global $connection;
+        
+        $safe_email = mysqli_real_escape_string($connection, $email);
+        
+        $query  = "SELECT * ";
+        $query .= "FROM users ";
+        $query .= "WHERE email = '{$safe_email}' ";
+        $query .= "LIMIT 1";
+        $record_set = mysqli_query($connection, $query);
+        confirm_query($record_set);
+        if($record = mysqli_fetch_assoc($record_set)) {
+            return $record;
+        } else {
+            return null;
+        }
+    }
+
 function no_of_users(){
         global $connection;
         
