@@ -10,7 +10,6 @@ $record_set = find_all_teams_by_department($department["id"]);
             <?php if (not_executive($_GET['id'])) {?>
             <div class="form-row-col-6">
                 <label for="team_id">Team:</label>
-                <?php if ($record_set && $record_set->rowCount() > 0)  { ?>
                     <select name="team_id">
 
                         <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
@@ -19,25 +18,26 @@ $record_set = find_all_teams_by_department($department["id"]);
                         <?php } ?>
 
                     </select>
-                <?php } else { echo 'Please Create a New Team'; }?>
+
                 <label for="role_id">Role:</label>
                 <select name="role_id">
-                    <?php if($department['id']== 5) { ?>
+                    <?php if($department['function_code']== 5) { ?>
                     <option value="5">Dispatch Agent </option>
                     <option value="4">Dispatch Supervisor </option>
                     <?php } ?>
-                    <?php if($department['id']== 10) { ?>
+                    <?php if($department['function_code']== 10) { ?>
                     <option value="10">Sales Agent </option>
                     <option value="9">Sales Supervisor </option>
                     <?php } ?>
                 </select>
             </div>
             <?php } ?>
-            <div class="form-row-col-6">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
 
-                <label for="password">Password:</label>
+            <div class="form-row-col-6">
+                <label for="email">Email:</label>
+                <input type="text" id="new-department-email" name="email">
+                
+                <label for="password">Set Password:</label>
                 <input type="text" id="password" name="password">
             </div>
 
@@ -53,11 +53,12 @@ $record_set = find_all_teams_by_department($department["id"]);
             </div>
 
             <div class="form-row-col-6">
-                <label for="email">Email:</label>
-                <input type="text" id="new-department-email" name="email">
 
                 <label for="phone_num">Phone Number:</label>
-                <input type="tel" pattern="[0-9]{10}" minlength="10" maxlength="10" id="phone_num" name="phone_num">
+                <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="phone_num" name="phone_num">
+
+                <label for="emergency_num">Emergency Number:</label>
+                <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="emergency_num" name="emergency_num">
             </div>
 
             <div class="form-row-col-6">
