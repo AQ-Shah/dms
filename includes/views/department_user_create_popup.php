@@ -35,7 +35,7 @@ $record_set = find_all_teams_by_department($department["id"]);
 
             <div class="form-row-col-6">
                 <label for="email">Email:</label>
-                <input type="text" id="new-department-email" name="email">
+                <input type="text" id="email" name="email">
                 
                 <label for="password">Set Password:</label>
                 <input type="text" id="password" name="password">
@@ -70,6 +70,7 @@ $record_set = find_all_teams_by_department($department["id"]);
             </div>
 
             <input type="hidden" name="department_id" value="<?php echo $department["id"];?>">
+            <input type="hidden" name="company_id" value="<?php echo $department["company_id"];?>">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 
             <div class="form-actions">
