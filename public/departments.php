@@ -3,12 +3,12 @@
 	$current_page = "departments";
 	include("../includes/layouts/public_header.php"); 
  
-$record_set = find_all_departments();
+$record_set = find_all_departments_of_company($user["company_id"]);
 ?>
 
 <div class="container">
 
-    <div class="row">
+    <div class="row">ß
         <div class="col-12 text-center mb-4">
             <div class="page-title-box">
 
