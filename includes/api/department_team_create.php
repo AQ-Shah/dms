@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
      
         $department = find_department_by_id($department_id);
         try {
-            if ($department["company_id"] == $user("company_id")) { 
+            if ($department["company_id"] === $user["company_id"]) { 
                 $company_id = $department["company_id"];
             } else {
                 $_SESSION["message"] = "Not Authorised";
