@@ -23,6 +23,18 @@ function no_of_users_by_department($department_id){
 		confirm_query($set);
 		return max(mysqli_fetch_assoc($set));}
 
+function no_of_users_by_department_of_company($department_id,$company_id){
+        global $connection;
+        $safe_department_id = mysqli_real_escape_string($connection, $department_id);
+        $safe_company_id = mysqli_real_escape_string($connection, $company_id);
+        $query  = "SELECT COUNT('id') ";
+        $query .= "FROM users ";
+        $query .= "WHERE department_id = {$safe_department_id} ";
+        $query .= "AND company_id = {$safe_company_id} ";
+        $set = mysqli_query($connection, $query);
+        confirm_query($set);
+        return max(mysqli_fetch_assoc($set));}
+    
 
 
 function find_all_departments() {
@@ -62,7 +74,22 @@ function find_all_users_by_department($department_id){
         return $users_set;
     }
 
+function find_all_users_by_department_of_company($department_id,$company_id){
+        global $connection;
+        $safe_department_id = mysqli_real_escape_string($connection, $department_id);
+        $safe_company_id = mysqli_real_escape_string($connection, $company_id);
+        $query  = "SELECT * ";
+        $query .= "FROM users ";
+        $query .= "WHERE department_id = {$safe_department_id} ";
+        $query .= "AND company_id = {$safe_company_id} ";
+        $query .= "ORDER BY full_name ASC";
+        $users_set = mysqli_query($connection, $query);
+        confirm_query($users_set);
+        return $users_set;
+    }
+
 //Team Functions
+
 function find_all_users_by_team($team_id){
         global $connection;
         $safe_team_id = mysqli_real_escape_string($connection, $team_id);
@@ -188,6 +215,21 @@ function find_all_active_sales_agent_by_team($id){
     $query .= "WHERE department_id = 9 OR department_id = 10 ";
     $query .= "AND status = 1 ";
     $query .= " AND team_id = '{$safe_id}' "; 
+    $query .= "ORDER BY full_name ASC";
+    $users_set = mysqli_query($connection, $query);
+    confirm_query($users_set);
+    return $users_set;
+}
+
+function find_all_active_sales_agent_by_company($id){
+    global $connection;
+    $safe_id = mysqli_real_escape_string($connection, $id);
+
+    $query  = "SELECT * ";
+    $query .= "FROM users ";
+    $query .= "WHERE department_id = 9 OR department_id = 10 ";
+    $query .= "AND status = 1 ";
+    $query .= " AND company_id = '{$safe_id}' "; 
     $query .= "ORDER BY full_name ASC";
     $users_set = mysqli_query($connection, $query);
     confirm_query($users_set);
