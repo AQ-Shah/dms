@@ -16,9 +16,21 @@ if (isset($_POST['submit'])) {
 
 
     if (empty($errors)) {
+
+        //find department by department ID, fetch company ID from that as well, valid user from same company. 
+     
+        // $department = find_department_by_id($department_id);
+
+        // if ($department["company_id"] === $user("company_id")) { 
+        //     $company_id = $department["company_id"];
+        // } else {
+        //     $_SESSION["message"] = "Not Authorised";
+        //     redirect_to("departments");
+        // }
+
         // Perform Create
 
-        $sql = "INSERT INTO teams (name, company_id, department_id) VALUES ('$team_name', '$company_id', '$department_id')";
+        $sql = "INSERT INTO teams (name,  department_id) VALUES ('$team_name', '$department_id')";
         $result = mysqli_query($connection, $sql);
     
 
