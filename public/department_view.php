@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-4 text-xl-end mt-xl-0 mt-2">
   
-                    <?php if (no_of_users_by_department($department['id']) > 0) {?>
+                    <?php if (no_of_teams_by_department($department['id']) > 0) {?>
                     <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentUserCreatePopup()"><i
                             class=" mdi mdi-basket me-1"></i>
                         Add User</button>

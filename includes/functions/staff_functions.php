@@ -36,6 +36,15 @@ function no_of_users_by_department_of_company($department_id,$company_id){
         return max(mysqli_fetch_assoc($set));}
     
 
+function no_of_teams_by_department($department_id){
+        global $connection;
+        $safe_department_id = mysqli_real_escape_string($connection, $department_id);
+        $query  = "SELECT COUNT('id') ";
+        $query .= "FROM team ";
+        $query .= "WHERE department_id = {$safe_department_id} ";
+        $set = mysqli_query($connection, $query);
+        confirm_query($set);
+        return max(mysqli_fetch_assoc($set));}
 
 function find_all_departments() {
         global $connection;
