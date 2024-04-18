@@ -55,10 +55,10 @@ $record_set = find_all_teams_by_department($department["id"]);
             <div class="form-row-col-6">
 
                 <label for="phone_num">Phone Number:</label>
-                <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="phone_num" name="phone_num">
+                <input type="tel" pattern="[0-9]{11}" maxlength="11" id="phone_num" name="phone_num">
 
                 <label for="emergency_contact">Emergency Number:</label>
-                <input type="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" id="emergency_contact" name="emergency_contact">
+                <input type="tel" pattern="[0-9]{11}" maxlength="11" id="emergency_contact" name="emergency_contact">
             </div>
 
             <div class="form-row-col-6">
@@ -96,23 +96,6 @@ function showDepartmentUserCreatePopup() {
 
 function hideDepartmentUserCreatePopup() {
     var popup = document.getElementById("department-user-create-popup");
-    var errorMessages = popup.querySelectorAll('.error-message');
-    
-    // Check if there are any visible error messages
-    var hasErrors = false;
-    errorMessages.forEach(function(message) {
-        if (window.getComputedStyle(message).display !== 'none') {
-            hasErrors = true;
-        }
-    });
-
-    // If there are errors, do not hide the form
-    if (hasErrors) {
-        return;
-    }
-
-    // If no errors, hide the popup
     popup.style.display = "none";
 }
-
 </script>
