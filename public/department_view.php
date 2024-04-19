@@ -88,35 +88,35 @@
                                 ?></td>
                                 <?php } ?>
                                 <td style="cursor: pointer;"
-                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                                     <?php echo htmlentities($record["full_name"]); ?></td>
                                 <td style="cursor: pointer;"
-                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                                     <?php echo htmlentities($record["designation"]); ?></td>
                                 <td style="cursor: pointer;"
-                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                                     <?php echo htmlentities($record["email"]); ?></td>
                                 <td style="cursor: pointer;"
-                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                                     <?php echo htmlentities($record["phone_num"]); ?></td>
                                 <td style="cursor: pointer;"
-                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">
+                                    onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                                     <?php if ($record["status"] == 1) echo "Active"; else echo "Resigned"; ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="dropdown-button">Actions</button>
                                         <div class="dropdown-content">
                                             <button
-                                                onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'">View</button>
+                                                onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">View</button>
 
                                             <button onclick="showDepartmentEditPopup(
-                                              '<?php echo urlencode($record["id"]); ?>',
+                                              '<?php echo urlencode(encrypt_id($record["id"])); ?>',
                                               '<?php echo $record["full_name"]; ?>',
                                               '<?php echo $record["email"]; ?>'
                                           )">Edit</button>
 
                                             <button
-                                                onclick="if(confirm('Are you sure?')){location.href='profile_delete?id=<?php echo urlencode($record["id"]); ?>'}">Delete</button>
+                                                onclick="if(confirm('Are you sure?')){location.href='profile_delete?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'}">Delete</button>
                                         </div>
                                     </div>
                                 </td>
