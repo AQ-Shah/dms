@@ -58,7 +58,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 3 OR status = 4  ";
+			$query .= "WHERE ( status = 3 OR status = 4 )  ";
 			$query .= "AND company_id = '{$company_id}' ";
 
 			$set = mysqli_query($connection, $query);
