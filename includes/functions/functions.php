@@ -251,14 +251,15 @@
 
 	function encrypt_id($id){
 		global $connection;
-		echo "heree2";
+		
 		$safe_id = mysqli_real_escape_string($id);
-
+		echo ">1<";
 		$encryption_key = get_encryption_key();
+		echo "<2>";
 		$id_vector_key = get_id_vector_key();
-
+		echo "<3>";
 		$encrypted_id = openssl_encrypt($safe_id, "AES-256-CBC", $encryption_key, 0, $id_vector_key);
-		echo "heree32";
+		
 		return $encrypted_id;
 	}
 
