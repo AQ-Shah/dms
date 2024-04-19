@@ -1,4 +1,4 @@
-no_of_carriers_by_company<?php if (check_access("dispatch_stats_1")){ ?>
+<?php if (check_access("dispatch_stats_1")){ ?>
 
 <div class="row text-center">
     <div class="col-12">
@@ -16,7 +16,7 @@ no_of_carriers_by_company<?php if (check_access("dispatch_stats_1")){ ?>
     <div class="col-3">
         <a href='list_carriers'>
             <div class=" custom-panel card" style="background:#23a6d5">
-                <h3><?php echo no_of_carrier_form();?></h3>
+                <h3><?php echo no_of_carriers_by_company($user['company_id']);?></h3>
                 <p>Total Carriers</p>
             </div>
         </a>
