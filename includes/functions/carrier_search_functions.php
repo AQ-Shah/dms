@@ -1,30 +1,84 @@
 <?php
-	//Carrier FUNCTIONS
-		function find_all_carrier_form(){
+		//Carrier FUNCTIONS FOR COMPANY 
+
+		function find_all_company_carriers(){
 			global $connection;
+			$company_id = $user['company_id'];
+
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "ORDER BY creation_time DESC ";
+			$query .= "WHERE company_id = '{$company_id}' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
 
 		function no_of_carrier_form(){
 			global $connection;
+			$company_id = $user['company_id'];
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
+			$query .= "WHERE company_id = '{$company_id}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_available_carriers(){
 			global $connection;
+			$company_id = $user['company_id'];
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1 ";
+			$query .= "AND company_id = '{$company_id}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_unavailable_carriers(){
+			global $connection;
+			$company_id = $user['company_id'];
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 2  ";
+			$query .= "AND company_id = '{$company_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_removed_carriers(){
+			global $connection;
+			$company_id = $user['company_id'];
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 3 OR status = 4  ";
+			$query .= "AND company_id = '{$company_id}' ";
+
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_working_carriers(){
+			global $connection;
+			$company_id = $user['company_id'];
+
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE status = 1  ";
+			$query .= "AND company_id = '{$company_id}' ";
+			
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		
+		//Carrier search for Dispatchers 
 
 		function no_of_available_dispatch_by_dispatcher($id){
 			global $connection;
@@ -216,33 +270,6 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));
 			}
-
-		function no_of_unavailable_carriers(){
-			global $connection;
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 2  ";
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
-
-		function no_of_removed_carriers(){
-			global $connection;
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 3 OR status = 4  ";
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
-
-		function no_of_working_carriers(){
-			global $connection;
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 1  ";
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_dispatched_carriers(){
 			global $connection;

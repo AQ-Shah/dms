@@ -72,7 +72,7 @@
   
     function find_all_invoices_pending_carriers(){
         
-        $record_set_object = find_all_carrier_form();
+        $record_set_object = find_all_company_carriers();
         $record_set = array();
         
         while ($record = mysqli_fetch_assoc($record_set_object)) {

@@ -3,7 +3,7 @@
     $current_page = "list_carriers";
 	include("../includes/layouts/public_header.php"); 
    
-	include("../includes/pagination/carriers_data_fetch.php"); 
+	include("../includes/pagination/carriers_by_company_data_fetch.php"); 
     $columnIndex = 0;
     
   ?>
