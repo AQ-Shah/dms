@@ -9,10 +9,11 @@
             $_SESSION["message"] = "User not found";
 			redirect_to("home");
 			}
-		}  elseif ($userData["compnay_id"] != $user["compnay_id"] ){ 
-            $_SESSION["message"] = "User not found";
-			redirect_to("home");
-        } else {
+            elseif ($userData["compnay_id"] != $user["compnay_id"] ){ 
+                $_SESSION["message"] = "User not found";
+                redirect_to("home");
+            } 
+		} else {
             $userData = $user;
         }
            ?>
