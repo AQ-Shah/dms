@@ -1,9 +1,10 @@
 <?php
 		//Carrier FUNCTIONS FOR COMPANY 
 
-		function find_all_company_carriers(){
+		function find_all_company_carriers($id){
 			global $connection;
-			$company_id = $users['company_id'];
+
+			$company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
@@ -13,9 +14,9 @@
 			confirm_query($set);
 			return $set;}
 
-		function no_of_carrier_form(){
+		function no_of_carriers_by_company($id){
 			global $connection;
-			$company_id = $userz['company_id'];
+			$company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
@@ -27,7 +28,6 @@
 
 		function no_of_available_carriers(){
 			global $connection;
-			$company_id = $user['company_id'];
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
@@ -718,17 +718,20 @@
 			confirm_query($set);
 			return $set;}
 
-		function no_of_carrier_form_by_keyword($keyword) {
+		function no_of_carriers_by_company_by_keyword($company_id,$keyword) {
 			
 			global $connection;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$safe_company_id = mysqli_real_escape_string($connection, $company_id);
+
 			$user_id = find_user_id_by_keyword($safe_keyword);
 			if($user_id){
 				$query  = "
 				SELECT COUNT('id')
 				FROM carrier_form 
-				WHERE CONCAT(dispatcher_id, creator_id) 
+				WHERE CONCAT(dispatcher_id, creator_id)
 				LIKE '%{$user_id}%'
+				AND company_id = '%{$safe_company_id}'
 				";
 			} else {
 				$query  = "
@@ -736,6 +739,7 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
+				AND company_id = '%{$safe_company_id}'
 				";
 			}
 			

@@ -70,9 +70,9 @@
         return $set;
         }
   
-    function find_all_invoices_pending_carriers(){
+    function find_all_invoices_pending_carriers($id){
         
-        $record_set_object = find_all_company_carriers();
+        $record_set_object = find_all_company_carriers($id);
         $record_set = array();
         
         while ($record = mysqli_fetch_assoc($record_set_object)) {

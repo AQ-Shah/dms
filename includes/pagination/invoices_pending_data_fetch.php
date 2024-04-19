@@ -5,7 +5,7 @@
 			}
 			
 			if ($record_per_page > 0 && $record_per_page <= 100) {
-			$no_of_records = no_of_invoices_pending_carriers();
+			$no_of_records = no_of_invoices_pending_carriers($user['company_id']);
 			$total_pages = ceil($no_of_records/$record_per_page);
 			$page = (isset ($_GET['page'])) ? (int)$_GET['page'] : 1 ;
 			$start = ($page-1) * $record_per_page;
