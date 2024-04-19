@@ -78,7 +78,7 @@
                             <tr>
                                 <?php if($department['id'] != 1) { ?>
                                 <td style="cursor: pointer;"
-                                    onclick="location.href='profile?id=<?php echo urlencode($record["id"]); ?>'"><?php
+                                    onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'"><?php
                                     if($record["team_id"]){
                                         $team = find_team_by_id($record["team_id"]);
                                         echo $team['name'];
