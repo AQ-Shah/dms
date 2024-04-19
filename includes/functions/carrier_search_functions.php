@@ -26,8 +26,9 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_available_carriers(){
+		function no_of_available_carriers($id){
 			global $connection;
+			$company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
@@ -38,9 +39,9 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_unavailable_carriers(){
+		function no_of_unavailable_carriers($id){
 			global $connection;
-			$company_id = $user['company_id'];
+			$company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
@@ -51,9 +52,9 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_removed_carriers(){
+		function no_of_removed_carriers($id){
 			global $connection;
-			$company_id = $user['company_id'];
+			$company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
@@ -64,9 +65,9 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_working_carriers(){
+		function no_of_active_carriers_by_company($id){
 			global $connection;
-			$company_id = $user['company_id'];
+			$company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
