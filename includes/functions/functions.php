@@ -252,12 +252,11 @@
 	function encrypt_id($id){
 		global $connection;
 		
-		$safe_id = mysqli_real_escape_string($id);
-		echo ">1<";
+		$safe_id = mysqli_real_escape_string($connection,$id);
+		
 		$encryption_key = get_encryption_key();
-		echo "<2>";
 		$id_vector_key = get_id_vector_key();
-		echo "<3>";
+	
 		$encrypted_id = openssl_encrypt($safe_id, "AES-256-CBC", $encryption_key, 0, $id_vector_key);
 		
 		return $encrypted_id;
@@ -266,7 +265,7 @@
 	function encrypt_permission($permission){
 		global $connection;
 		
-		$safe_permission = mysqli_real_escape_string($permission);
+		$safe_permission = mysqli_real_escape_string($connection,$permission);
 		
 		$encryption_key = get_encryption_key();
 		$permission_vector_key = get_permission_vector_key();
@@ -279,7 +278,7 @@
 	function find_id_by_encrypted_keyword($encryption_keyword){
 		global $connection;
 		
-		$safe_encryption_keyword = mysqli_real_escape_string($encryption_keyword);
+		$safe_encryption_keyword = mysqli_real_escape_string($connection,$encryption_keyword);
 		$encryption_key = get_encryption_key();
 		$id_vector_key = get_id_vector_key();
 
