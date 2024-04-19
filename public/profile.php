@@ -5,13 +5,16 @@
 
 	if (isset ($_GET['id'])){
 		$userData = find_user_by_id($_GET['id']);
-		if (!$userData || ( $userData && ($userData["compnay_id"] != $user["compnay_id"] ))){
+		if (!$userData ){
             $_SESSION["message"] = "User not found";
 			redirect_to("home");
 			}
-		}  else { 
+		}  elseif ($userData["compnay_id"] != $user["compnay_id"] ){ 
+            $_SESSION["message"] = "User not found";
+			redirect_to("home");
+        } else {
             $userData = $user;
-        } 
+        }
            ?>
 
 <div class="container-fluid">
