@@ -259,7 +259,7 @@
 
 		$encrypted_id = openssl_encrypt($safe_id, "AES-256-CBC", $encryption_key, 0, $id_vector_key);
 
-		return $encrypted_id
+		return $encrypted_id;
 	}
 
 	function encrypt_permission($permission){
@@ -272,8 +272,9 @@
 
 		$encrypted_permission = openssl_encrypt($safe_permission, "AES-256-CBC", $encryption_key, 0, $permission_vector_key);
 
-		return $encrypted_permission
+		return $encrypted_permission;
 	}
+
 	function find_id_by_encrypted_keyword($encryption_keyword){
 		global $connection;
 		
