@@ -249,6 +249,43 @@
 		return $user_id;
 	}
 
+	function encrypt_id($id){
+		global $connection;
+		
+		$safe_id = mysqli_real_escape_string($id);
+
+		$encryption_key = get_encryption_key();
+		$id_vector_key = get_id_vector_key();
+
+		$encrypted_id = openssl_encrypt($safe_id, "AES-256-CBC", $encryption_key, 0, $id_vector_key);
+
+		return $encrypted_id
+	}
+
+	function encrypt_permission($permission){
+		global $connection;
+		
+		$safe_permission = mysqli_real_escape_string($permission);
+		
+		$encryption_key = get_encryption_key();
+		$permission_vector_key = get_permission_vector_key();
+
+		$encrypted_permission = openssl_encrypt($safe_permission, "AES-256-CBC", $encryption_key, 0, $permission_vector_key);
+
+		return $encrypted_permission
+	}
+	function find_id_by_encrypted_keyword($encryption_keyword){
+		global $connection;
+		
+		$safe_encryption_keyword = mysqli_real_escape_string($encryption_keyword);
+		$encryption_key = get_encryption_key();
+		$id_vector_key = get_id_vector_key();
+
+		$user_id =  openssl_decrypt($safe_encryption_keyword, "AES-256-CBC", $encryption_key, 0, $id_vector_key);
+		return $user_id;
+	}
+
+
 
 	function user_logged_in() {
 		$user_id = find_user_id();
