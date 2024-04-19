@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             $id_vector_key = get_id_vector_key();
             $permission_vector_key = get_permission_vector_key();
 
-            $user_encrypted_id = openssl_encrypt($found_user["id"], "AES-256-CBC", $encryption_key, 0, $id_vector_key);
+            $user_encrypted_id = encrypt_id($found_user["id"]);
             $user_encrypted_permission = openssl_encrypt($found_user["permission"], "AES-256-CBC", $encryption_key, 0, $permission_vector_key);
             
             setcookie("id", $user_encrypted_id, time() + 28800, "/", "", false, false);
