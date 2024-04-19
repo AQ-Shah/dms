@@ -16,7 +16,7 @@
     <div class="col-3">
         <a href='list_carriers'>
             <div class=" custom-panel card" style="background:#23a6d5">
-                <h3><?php echo no_of_carriers_by_company($user['company_id']);?></h3>
+                <h3><?php echo no_of_carriers_by_company();?></h3>
                 <p>Total Carriers</p>
             </div>
         </a>
@@ -56,7 +56,7 @@
     <!-- <div class="col-3">
         <a href='list_available_carriers'>
             <div class=" custom-panel card" style="background:#d43a0f">
-                <h3><?php echo no_of_carriers_by_company($user['company_id'])-no_of_unavailable_carriers($user['company_id'])-no_of_dispatched_carriers();?></h3>
+                <h3><?php echo no_of_carriers_by_company()-no_of_unavailable_carriers($user['company_id'])-no_of_dispatched_carriers();?></h3>
                 <p>Pending Dispatch</p>
             </div>
         </a>

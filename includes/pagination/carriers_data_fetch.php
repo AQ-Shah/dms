@@ -1,4 +1,4 @@
-no_of_carriers_by_company<?php
+<?php
 	    $record_per_page = (isset ($_POST['no_of_record'])) ? (int)$_POST['no_of_record']  : 50 ;
 		if (isset ($_GET['no_of_record']) && is_numeric($_GET['no_of_record'])) {
 			$record_per_page= $_GET['no_of_record'];
