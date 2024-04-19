@@ -3,7 +3,7 @@
 
 		function find_all_company_carriers(){
 			global $connection;
-			$company_id = $user['company_id'];
+			$company_id = $users['company_id'];
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
@@ -15,7 +15,7 @@
 
 		function no_of_carrier_form(){
 			global $connection;
-			$company_id = $user['company_id'];
+			$company_id = $userz['company_id'];
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
@@ -72,7 +72,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
 			$query .= "AND company_id = '{$company_id}' ";
-			
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
