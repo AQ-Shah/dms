@@ -15,8 +15,9 @@
 			return $set;}
 
 		function no_of_carriers_by_company($id){
-			global $connection;
-			$company_id = mysqli_real_escape_string($connection, $id);
+			global $connection, $user;
+			$company_id = $user['company_id'];
+			$safe_company_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
