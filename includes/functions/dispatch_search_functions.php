@@ -1,18 +1,20 @@
 <?php
 	//Dispatch FUNCTIONS
 		function find_all_dispatch_list(){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
+			$query .= "WHERE company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY id DESC ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
 
 		function find_all_dispatch_list_from($start,$end){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
+			$query .= "WHERE company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY id DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -20,10 +22,11 @@
 			return $set;}
 
 		function no_of_dispatch_list(){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));
