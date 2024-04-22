@@ -759,21 +759,22 @@
 		//Searching Carriers functions 
 
 		function find_carrier_form_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
+			$query .= "WHERE company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;}
 
-		function no_of_carriers_by_company_by_keyword($company_id,$keyword) {
+		function no_of_carriers_by_company_by_keyword($keyword) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$safe_company_id = mysqli_real_escape_string($connection, $company_id);
+			$safe_company_id = $user["company_id"];
 
 			$user_id = find_user_id_by_keyword($safe_keyword);
 			if($user_id){
@@ -800,7 +801,7 @@
 
 		function no_of_available_carrier_form_by_keyword($keyword) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
 			if($user_id){
@@ -1020,11 +1021,12 @@
 			
 		
 		function find_available_carrier_form_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1 ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -1209,11 +1211,12 @@
 			}
 
 		function find_working_carrier_form_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -1221,11 +1224,12 @@
 			return $set;}
 
 		function find_unavailable_carrier_form_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 2  ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -1233,11 +1237,12 @@
 			return $set;}
 
 		function find_removed_carrier_form_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 3 OR status = 4  ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -1245,11 +1250,12 @@
 			return $set;}
 
 		function find_carrier_form_by_id($id){
-			global $connection;
+			global $connection, $user;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE id = {$safe_id} ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "LIMIT 1";
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
@@ -1260,11 +1266,12 @@
 			}}
 
 		function find_carrier_form_by_mc($mc){
-			global $connection;
+			global $connection, $user;
 			$safe_mc = mysqli_real_escape_string($connection, $mc);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE mc = {$safe_mc} ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "LIMIT 1";
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
@@ -1275,11 +1282,12 @@
 			}}
 
 		function find_carrier_form_by_dot($dot){
-			global $connection;
+			global $connection, $user;
 			$safe_dot = mysqli_real_escape_string($connection, $dot);
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE dot = {$safe_dot} ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "LIMIT 1";
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
