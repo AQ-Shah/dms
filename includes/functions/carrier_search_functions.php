@@ -946,7 +946,6 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				AND company_id = '%{$safe_company_id}'
 				LIKE '%{$safe_keyword}%'
-				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
