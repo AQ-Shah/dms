@@ -1000,7 +1000,7 @@
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				AND status = 2
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -1011,7 +1011,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 2
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -1034,8 +1034,8 @@
 				SELECT * 
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
-				AND (status = 3 || status = 4)
-				AND company_id = '%{$safe_company_id}'
+				AND (status = 3 OR status = 4)
+				AND company_id = '{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -1045,8 +1045,8 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
-				AND (status = 3 || status = 4)
-				AND company_id = '%{$safe_company_id}'
+				AND (status = 3 OR status = 4)
+				AND company_id = '{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -1195,7 +1195,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE sales_team_id = '{$safe_id}' ";
-			$query .= "AND (status = 3 || status = 4) ";
+			$query .= "AND (status = 3 OR status = 4) ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -1279,7 +1279,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 3 OR status = 4  ";
+			$query .= "WHERE (status = 3 OR status = 4)  ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY creation_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
