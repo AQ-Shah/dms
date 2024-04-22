@@ -119,7 +119,7 @@
 				WHERE CONCAT(dispatcher_id, creator_id)
 				LIKE '%{$user_id}%'
 				AND status = 1
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				";
 			} else {
 				$query  = "
@@ -128,7 +128,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 1
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				";
 			}
 			
@@ -150,7 +150,7 @@
 				WHERE CONCAT(dispatcher_id, creator_id)
 				LIKE '%{$user_id}%'
 				AND status = 2
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				";
 			} else {
 				$query  = "
@@ -159,7 +159,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 2
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				";
 			} 
 			
@@ -181,7 +181,7 @@
 					WHERE CONCAT(dispatcher_id, creator_id)
 					LIKE '%{$user_id}%'
 					AND (status = 3 || status =4)
-					AND company_id = '%{$safe_company_id}'
+					AND company_id = '{$safe_company_id}'
 					";
 				} else {
 					$query  = "
@@ -190,7 +190,7 @@
 					WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 					LIKE '%{$safe_keyword}%'
 					AND (status = 3 || status =4)
-					AND company_id = '%{$safe_company_id}'
+					AND company_id = '{$safe_company_id}'
 					";
 				}
 				
