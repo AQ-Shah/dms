@@ -87,7 +87,6 @@
 				SELECT COUNT(id)
 				FROM carrier_form 
 				WHERE (dispatcher_id = '{$user_id}' OR creator_id = '{$user_id}')
-				AND company_id = '{$safe_company_id}'
 				";
 			} else {
 				// Searching in concatenated fields for a string match
@@ -96,7 +95,6 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
-				AND company_id = '{$safe_company_id}'
 				";
 			}
 		
@@ -104,9 +102,7 @@
 			confirm_query($set);
 			$result = mysqli_fetch_assoc($set);
 			return $result ? max($result) : 0; 
-		}
-		
-
+			}
 		function no_of_available_carrier_form_by_keyword($keyword) {
 			
 			global $connection, $user;
@@ -935,7 +931,6 @@
 				SELECT * 
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
-				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -944,7 +939,6 @@
 				SELECT * 
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-				AND company_id = '%{$safe_company_id}'
 				LIKE '%{$safe_keyword}%'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}

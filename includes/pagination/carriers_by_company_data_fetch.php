@@ -14,7 +14,7 @@
 							isset($_GET['only_available']) ? no_of_available_carrier_form_by_keyword($_GET['keyword']) :
 							(isset($_GET['only_unavailable']) ? no_of_unavailable_carrier_form_by_keyword($_GET['keyword']) :
 							(isset($_GET['only_removed']) ? no_of_removed_carrier_form_by_keyword($_GET['keyword']) :
-							no_of_carriers_by_company_by_keyword($user['company_id'],$_GET['keyword']))
+							no_of_carriers_by_company_by_keyword($_GET['keyword']))
 							)
 						)
 						: (
