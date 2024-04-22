@@ -87,7 +87,6 @@
 				SELECT COUNT(id)
 				FROM carrier_form 
 				WHERE (dispatcher_id = '{$user_id}' OR creator_id = '{$user_id}')
-				AND company_id = '%{$safe_company_id}'
 				";
 			} else {
 				// Searching in concatenated fields for a string match
@@ -96,7 +95,6 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
-				AND company_id = '%{$safe_company_id}'
 				";
 			}
 		
