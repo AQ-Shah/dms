@@ -221,7 +221,7 @@ function find_all_active_sales_agent(){
         $query .= "FROM users ";
         $query .= "WHERE (permission = 9 OR permission = 10) ";
         $query .= "AND status = 1 ";
-        $query .= "AND company_id = '$user['company_id']'";
+        $query .= "AND company_id = '{$user['company_id']}'";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
