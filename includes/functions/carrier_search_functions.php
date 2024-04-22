@@ -932,7 +932,6 @@
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				ORDER BY creation_time DESC
-				AND company_id = '%{$safe_company_id}'
 				LIMIT {$start},{$end}
 				";
 			} else {
@@ -941,7 +940,6 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
-				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
