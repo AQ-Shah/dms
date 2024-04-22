@@ -215,12 +215,13 @@ function find_all_dispatcher(){
 
 
 function find_all_active_sales_agent(){
-        global $connection;
+        global $connection, $user;
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE department_id = 9 OR department_id = 10 ";
+        $query .= "WHERE (permission = 9 OR permission = 10) ";
         $query .= "AND status = 1 ";
+        $query .= "AND company_id = '$user['company_id']'";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
