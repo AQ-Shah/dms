@@ -286,10 +286,11 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_this_mon() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 0";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -309,10 +310,11 @@
 			return max($result, 0);}
 		
 		function no_of_dispatch_this_tue() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 1";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -332,10 +334,11 @@
 			return max($result, 0);}		
 
 		function no_of_dispatch_this_wed() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 2";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -355,10 +358,11 @@
 			return max($result, 0);}
 		
 		function no_of_dispatch_this_thu() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 3";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -379,10 +383,11 @@
 
 	
 		function no_of_dispatch_this_fri() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(dispatch_time) = 4";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -402,10 +407,11 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_last_mon() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 0";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -425,10 +431,11 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_last_tue() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 1";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -449,10 +456,11 @@
 
 
 		function no_of_dispatch_last_wed() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 2";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -473,10 +481,11 @@
 
 
 		function no_of_dispatch_last_thu() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 3";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -497,10 +506,11 @@
 
 
 		function no_of_dispatch_last_fri() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(dispatch_time) = 4";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
