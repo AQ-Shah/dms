@@ -1,6 +1,6 @@
 <?php
 
-$record_set = find_all_dispatcher();
+$record_set = find_all_active_dispatchers();
 
 ?>
 <script>
@@ -11,7 +11,7 @@ var dispatchGraphByAgentsCreation = new Chart(dispatchGraphByAgents, {
         labels: [
             <?php while($record = mysqli_fetch_assoc($record_set)) {echo "'".$record['full_name']."',"; }?>
         ],
-        <?php $record_set = find_all_dispatcher(); ?>
+        <?php $record_set = find_all_active_dispatchers(); ?>
         datasets: [{
             label: 'Dispatch Agents',
             data: [

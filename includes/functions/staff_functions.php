@@ -202,25 +202,40 @@ function find_team_id_by_department_id($id){
     }
 
 function find_all_dispatcher(){
-        global $connection;
+        global $connection, $user;
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE department_id = 5 OR department_id = 4 ";
+        $query .= "WHERE (function_code = 5 OR function_code = 4) ";
+        $query .= "AND company_id = {$user['company_id']} ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
         return $users_set;
     }
 
-
-function find_all_active_sales_agent(){
-        global $connection;
+function find_all_active_dispatchers(){
+        global $connection, $user;
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE department_id = 9 OR department_id = 10 ";
+        $query .= "WHERE (function_code = 5 OR function_code = 4) ";
         $query .= "AND status = 1 ";
+        $query .= "AND company_id = {$user['company_id']} ";
+        $query .= "ORDER BY full_name ASC";
+        $users_set = mysqli_query($connection, $query);
+        confirm_query($users_set);
+        return $users_set;
+    }
+
+function find_all_active_sales_agent(){
+        global $connection, $user;
+
+        $query  = "SELECT * ";
+        $query .= "FROM users ";
+        $query .= "WHERE (function_code = 9 OR function_code = 10) ";
+        $query .= "AND status = 1 ";
+        $query .= "AND company_id = {$user['company_id']} ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
@@ -234,7 +249,7 @@ function find_all_active_sales_agent_by_team($id){
 
     $query  = "SELECT * ";
     $query .= "FROM users ";
-    $query .= "WHERE department_id = 9 OR department_id = 10 ";
+    $query .= "WHERE function_code = 9 OR function_code = 10 ";
     $query .= "AND status = 1 ";
     $query .= " AND team_id = '{$safe_id}' "; 
     $query .= "ORDER BY full_name ASC";
@@ -249,7 +264,7 @@ function find_all_active_sales_agent_by_company($id){
 
     $query  = "SELECT * ";
     $query .= "FROM users ";
-    $query .= "WHERE department_id = 9 OR department_id = 10 ";
+    $query .= "WHERE function_code = 9 OR function_code = 10 ";
     $query .= "AND status = 1 ";
     $query .= " AND company_id = '{$safe_id}' "; 
     $query .= "ORDER BY full_name ASC";
@@ -311,7 +326,7 @@ function find_department_by_id($department_id) {
 
     //
 function find_all_users() {
-        global $connection;
+        global $connection, $user;
         
         $query  = "SELECT * ";
         $query .= "FROM users ";
