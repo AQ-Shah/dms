@@ -78,7 +78,7 @@
 			global $connection, $user;
 		
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$safe_company_id = (int)$user["company_id"];  // Cast as integer to ensure numeric context
+			$safe_company_id = $user["company_id"];  // Cast as integer to ensure numeric context
 			$user_id = find_user_id_by_keyword($safe_keyword);
 		
 			if ($user_id) {
@@ -87,6 +87,7 @@
 				SELECT COUNT(id)
 				FROM carrier_form 
 				WHERE (dispatcher_id = '{$user_id}' OR creator_id = '{$user_id}')
+				AND company_id = '%{$safe_company_id}'
 				";
 			} else {
 				// Searching in concatenated fields for a string match
@@ -95,6 +96,7 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
+				AND company_id = '%{$safe_company_id}'
 				";
 			}
 		
@@ -932,6 +934,7 @@
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				ORDER BY creation_time DESC
+				AND company_id = '%{$safe_company_id}'
 				LIMIT {$start},{$end}
 				";
 			} else {
@@ -940,6 +943,7 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
