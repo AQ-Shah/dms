@@ -201,7 +201,7 @@ function find_team_id_by_department_id($id){
         }
     }
 
-function find_all_dispatcher(){
+function find_all_active_dispatchers(){
         global $connection, $user;
 
         $query  = "SELECT * ";
