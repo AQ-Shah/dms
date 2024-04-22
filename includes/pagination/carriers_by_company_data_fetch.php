@@ -18,9 +18,9 @@
 							)
 						)
 						: (
-							isset($_GET['only_available']) ? no_of_active_carriers_by_company($user['company_id']) :
-							(isset($_GET['only_unavailable']) ? no_of_unavailable_carriers($user['company_id']) :
-							(isset($_GET['only_removed']) ? no_of_removed_carriers($user['company_id']) :
+							isset($_GET['only_available']) ? no_of_active_carriers_by_company() :
+							(isset($_GET['only_unavailable']) ? no_of_unavailable_carriers():
+							(isset($_GET['only_removed']) ? no_of_removed_carriers():
 							no_of_carriers_by_company())
 							)
 						)

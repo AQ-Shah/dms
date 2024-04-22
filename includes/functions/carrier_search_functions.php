@@ -25,53 +25,49 @@
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_available_carriers($id){
-			global $connection;
-			$company_id = mysqli_real_escape_string($connection, $id);
+		function no_of_available_carriers(){
+			global $connection, $user;
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1 ";
-			$query .= "AND company_id = '{$company_id}' ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_unavailable_carriers($id){
-			global $connection;
-			$company_id = mysqli_real_escape_string($connection, $id);
+		function no_of_unavailable_carriers(){
+			global $connection, $user;
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 2  ";
-			$query .= "AND company_id = '{$company_id}' ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_removed_carriers($id){
-			global $connection;
-			$company_id = mysqli_real_escape_string($connection, $id);
+		function no_of_removed_carriers(){
+			global $connection, $user;
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE ( status = 3 OR status = 4 )  ";
-			$query .= "AND company_id = '{$company_id}' ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
-		function no_of_active_carriers_by_company($id){
-			global $connection;
-			$company_id = mysqli_real_escape_string($connection, $id);
+		function no_of_active_carriers_by_company(){
+			global $connection, $user;
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 1  ";
-			$query .= "AND company_id = '{$company_id}' ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);

@@ -24,7 +24,7 @@
     <div class="col-3">
         <a href='list_carriers?only_available'>
             <div class=" custom-panel card" style="background:#58467e">
-                <h3><?php echo no_of_active_carriers_by_company($user['company_id']);?></h3>
+                <h3><?php echo no_of_active_carriers_by_company();?></h3>
                 <p>Available Carriers</p>
             </div>
         </a>
@@ -32,7 +32,7 @@
     <div class="col-3">
         <a href='list_carriers?only_unavailable'>
             <div class=" custom-panel card" style="background:#55847e">
-                <h3><?php echo no_of_unavailable_carriers($user['company_id']);?></h3>
+                <h3><?php echo no_of_unavailable_carriers();?></h3>
                 <p>Unavailable Carriers</p>
             </div>
         </a>
@@ -40,7 +40,7 @@
     <div class="col-3">
         <a href='list_carriers?only_removed'>
             <div class=" custom-panel card" style="background:#d43a0f">
-                <h3><?php echo no_of_removed_carriers($user['company_id']);?></h3>
+                <h3><?php echo no_of_removed_carriers();?></h3>
                 <p>Removed Carriers</p>
             </div>
         </a>
@@ -56,7 +56,7 @@
     <!-- <div class="col-3">
         <a href='list_available_carriers'>
             <div class=" custom-panel card" style="background:#d43a0f">
-                <h3><?php echo no_of_carriers_by_company()-no_of_unavailable_carriers($user['company_id'])-no_of_dispatched_carriers();?></h3>
+                <h3><?php echo no_of_carriers_by_company()-no_of_unavailable_carriers()- no_of_dispatched_carriers();?></h3>
                 <p>Pending Dispatch</p>
             </div>
         </a>
