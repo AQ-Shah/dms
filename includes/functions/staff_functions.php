@@ -206,8 +206,8 @@ function find_all_dispatcher(){
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE (function_code = 5 OR function_code = 4) ";
-        $query .= "AND company_id = {$user['company_id']} ";
+        $query .= "WHERE (permission = 5 OR permission = 4) ";
+        $query .= "AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
@@ -219,9 +219,9 @@ function find_all_active_dispatchers(){
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE (function_code = 5 OR function_code = 4) ";
+        $query .= "WHERE (permission = 5 OR permission = 4) ";
         $query .= "AND status = 1 ";
-        $query .= "AND company_id = {$user['company_id']} ";
+        $query .= "AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
@@ -233,9 +233,9 @@ function find_all_active_sales_agent(){
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE (function_code = 9 OR function_code = 10) ";
+        $query .= "WHERE (permission = 9 OR permission = 10) ";
         $query .= "AND status = 1 ";
-        $query .= "AND company_id = {$user['company_id']} ";
+        $query .= "AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
