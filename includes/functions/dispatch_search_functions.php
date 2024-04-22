@@ -1032,7 +1032,7 @@
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatcher_id = {$safe_dispatcher_id} ";
-			$query .= "AND company_id = '{$user['company_id']}' ";
+			$query .= "AND company_id = {$user['company_id']} ";
 
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
