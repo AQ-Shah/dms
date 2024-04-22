@@ -28,25 +28,25 @@
 
     <?php if (check_access("sales_dashboard_1_team")) { include("../includes/views/sales_dashboard_1_team.php"); } ?>
 
-    <?php // include("../includes/views/dispatch_stats_1.php"); ?>
+    <?php  include("../includes/views/dispatch_stats_1.php"); ?>
 
-    <?php // include("../includes/views/dispatch_agent_performance_1.php"); ?>
+    <?php  include("../includes/views/dispatch_agent_performance_1.php"); ?>
 
-    <?php // if (check_access("stats_box_dispatch_team_1")){ include("../includes/views/stats_box_dispatch_team_1.php"); } ?>
+    <?php  if (check_access("stats_box_dispatch_team_1")){ include("../includes/views/stats_box_dispatch_team_1.php"); } ?>
 
-    <?php // if (check_access("stats_box_dispatch_team_2")){  include("../includes/views/stats_box_dispatch_team_2.php"); }?>
+    <?php  if (check_access("stats_box_dispatch_team_2")){  include("../includes/views/stats_box_dispatch_team_2.php"); }?>
 
-    <?php // include("../includes/views/dispatch_dashboard_1.php"); ?>
+    <?php  include("../includes/views/dispatch_dashboard_1.php"); ?>
 
-    <?php // include("../includes/views/revenue_dashboard_1.php"); ?>
+    <?php  include("../includes/views/revenue_dashboard_1.php"); ?>
 
-    <?php // include("../includes/views/revenue_dashboard_2.php"); ?>
+    <?php  include("../includes/views/revenue_dashboard_2.php"); ?>
 
-    <?php // include("../includes/views/revenue_dashboard_3.php"); ?>
+    <?php  include("../includes/views/revenue_dashboard_3.php"); ?>
 
 
 
-    <?php // include("../includes/views/sales_agent_performance_1.php"); ?>
+    <?php  include("../includes/views/sales_agent_performance_1.php"); ?>
 
 
 </div>

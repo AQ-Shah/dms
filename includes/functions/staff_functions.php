@@ -206,9 +206,9 @@ function find_all_dispatcher(){
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE (permission = 5 OR permission = 4) ";
-        $query .= "AND company_id = '{$user['company_id']}' ";
-        $query .= "ORDER BY full_name ASC";
+        $query .= " WHERE (permission = 5 OR permission = 4) ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
+        $query .= " ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
         return $users_set;
@@ -219,9 +219,9 @@ function find_all_active_dispatchers(){
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE (permission = 5 OR permission = 4) ";
+        $query .= " WHERE (permission = 5 OR permission = 4) ";
         $query .= "AND company_id = '{$user['company_id']}' ";
-        $query .= "ORDER BY full_name ASC";
+        $query .= " ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
         return $users_set;
