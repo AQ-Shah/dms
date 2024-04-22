@@ -96,11 +96,12 @@
 			}
 			
 		function no_of_dispatch_this_month(){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m");
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -137,6 +138,7 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			$result = mysqli_fetch_array($set)[0];
@@ -161,6 +163,8 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
+			$query .= " AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -184,6 +188,8 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+			$query .= " AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -207,6 +213,8 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND DATE(dispatch_time) = CURDATE()";
+			$query .= " AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -230,6 +238,8 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+			$query .= " AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -253,6 +263,8 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= "AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$query .= " AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
