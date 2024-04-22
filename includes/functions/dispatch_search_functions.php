@@ -133,12 +133,14 @@
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_dispatch_last_month() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
-			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
 			$query .= " AND company_id = '{$user['company_id']}' ";
+			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			$result = mysqli_fetch_array($set)[0];
@@ -158,7 +160,8 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_this_week() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
@@ -183,7 +186,7 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_last_week() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
@@ -208,7 +211,7 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_today() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
@@ -233,7 +236,7 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_yesterday() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
@@ -258,7 +261,7 @@
 			return max($result, 0);}
 
 		function no_of_dispatch_sameDayLastWeek() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
@@ -518,11 +521,12 @@
 
 
 		function find_dispatch_list_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
@@ -562,11 +566,12 @@
 			}
 
 		function find_cancelled_dispatch_list_from($start,$end) {
-			global $connection;
+			global $connection, $user;
 
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE status = 'Cancelled' ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
