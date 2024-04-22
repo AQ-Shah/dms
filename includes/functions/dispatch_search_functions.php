@@ -47,12 +47,13 @@
 
 		function no_of_dispatched_by_dispatcher($id){
 
-			global $connection;
+			global $connection, $user;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatcher_id = '{$safe_id}' ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
 			$query .= "AND (status = 'Dispatched' OR status = 'Completed')  ";
 			$set = mysqli_query($connection, $query);
 			
@@ -562,12 +563,13 @@
 
 		function find_dispatched_by_id_from($id, $start,$end) {
 
-			global $connection;
+			global $connection, $user;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed') AND dispatcher_id = '{$safe_id}'  ";
+			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= "ORDER BY dispatch_time DESC ";
 			$query .= "LIMIT {$start},{$end}";
 			$set = mysqli_query($connection, $query);
