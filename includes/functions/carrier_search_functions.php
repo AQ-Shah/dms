@@ -814,7 +814,6 @@
 				LIKE '%{$user_id}%'
 				AND status = 1
 				AND company_id = '%{$safe_company_id}'
-
 				";
 			} else {
 				$query  = "
@@ -936,6 +935,7 @@
 				SELECT * 
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				AND company_id = '%{$safe_company_id}'
 				LIKE '%{$safe_keyword}%'
 				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
