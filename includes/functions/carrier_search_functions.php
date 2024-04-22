@@ -1,5 +1,5 @@
 <?php
-		//Carrier FUNCTIONS FOR COMPANY 
+		//Carrier Numbers FOR COMPANY 
 
 		function find_all_company_carriers($id){
 			global $connection;
@@ -74,7 +74,7 @@
 			return max(mysqli_fetch_assoc($set));}
 
 		
-		//Carrier search for Dispatchers 
+		//Carrier Numbers for Dispatchers 
 
 		function no_of_available_dispatch_by_dispatcher($id){
 			global $connection;
@@ -127,6 +127,8 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+		//Carrier Numbers for Sales 
 
 		function no_of_carriers_by_sales_agent($id){
 			global $connection;
@@ -296,7 +298,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= ' WHERE MONTH(creation_time) = '.date("m");
+			$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -309,7 +311,7 @@
 
 				$query  = "SELECT COUNT('id') ";
 				$query .= "FROM carrier_form ";
-				$query .= ' WHERE MONTH(creation_time) = '.date("m");
+				$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
 				$query .= " AND sales_team_id = '{$safe_id}' ";
 
 				$set = mysqli_query($connection, $query);
@@ -358,7 +360,7 @@
 
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM carrier_form ";
-			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
+			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1).' ';
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -385,7 +387,7 @@
 			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1)";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -398,7 +400,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1)";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) ";
 			$query .= " AND sales_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -409,7 +411,7 @@
 			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -422,7 +424,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) ";
 			$query .= " AND sales_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -445,7 +447,7 @@
 			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY) ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -456,7 +458,7 @@
 			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY) ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -482,7 +484,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY) ";
 			$query .= " AND sales_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -495,7 +497,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY) ";
 			$query .= " AND sales_team_id = '{$safe_id}' ";
 					
 			$set = mysqli_query($connection, $query);
@@ -507,7 +509,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 0";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 0 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -519,7 +521,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 1";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 1 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -531,7 +533,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 2";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 2 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -543,7 +545,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 3";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 3 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -555,7 +557,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 4";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 4 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -567,7 +569,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 0";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 0 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -579,7 +581,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 1";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 1 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -591,7 +593,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 2";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 2 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -603,7 +605,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 3";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 3 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -615,7 +617,7 @@
 
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 4";
+			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 4 ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
