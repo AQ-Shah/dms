@@ -1009,7 +1009,8 @@
 
 			return $record;}
 
-		
+		//finding dispatch with queries
+
 		function find_dispatch_list_by_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
@@ -1026,12 +1027,13 @@
 			}}
 
 		function find_dispatch_list_by_dispatcher($dispatcher_id){
-			global $connection;
+			global $connection, $user;
 			$safe_dispatcher_id = mysqli_real_escape_string($connection, $dispatcher_id);
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE dispatcher_id = {$safe_dispatcher_id} ";
-			
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
 			if($data = mysqli_fetch_assoc($data_set)) {
@@ -1041,7 +1043,7 @@
 			}}
 		function count_dispatch_list_by_carrier_name($keyword) {
 
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$carrier_set = find_carrier_form_by_keyword($safe_keyword);
 			$carrier = mysqli_fetch_assoc($carrier_set);
@@ -1051,7 +1053,8 @@
 				$query  = "
 					SELECT COUNT(id) 
 					FROM dispatch_list 
-					WHERE carrier_id = {$carrier_id}
+					WHERE carrier_id = '{$carrier_id}'
+					AND company_id = '{$user['company_id']}'
 				";
 
 				$set = mysqli_query($connection, $query);
@@ -1074,7 +1077,7 @@
 				$query  = "
 					SELECT * 
 					FROM dispatch_list 
-					WHERE carrier_id = {$carrier_id}
+					WHERE carrier_id = '{$carrier_id}'
 					ORDER BY dispatch_time DESC
 					LIMIT {$start},{$end}
 				";
@@ -1091,7 +1094,7 @@
 
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE invoice_id = {$safe_invoice_id} ";
+			$query .= "WHERE invoice_id = '{$safe_invoice_id}' ";
 			
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -1103,7 +1106,7 @@
 			$safe_carrier_id = mysqli_real_escape_string($connection, $carrier_id);
 			$query  = "SELECT * ";
 			$query .= "FROM dispatch_list ";
-			$query .= "WHERE carrier_id = {$safe_carrier_id} ";
+			$query .= "WHERE carrier_id = '{$safe_carrier_id}' ";
 			
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
