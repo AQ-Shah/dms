@@ -966,7 +966,7 @@
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				AND status = 1
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -977,7 +977,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 1
-				AND company_id = '%{$safe_company_id}'
+				AND company_id = '{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
