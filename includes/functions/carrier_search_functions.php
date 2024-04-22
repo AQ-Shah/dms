@@ -804,6 +804,8 @@
 			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT COUNT('id')
@@ -811,6 +813,8 @@
 				WHERE CONCAT(dispatcher_id, creator_id)
 				LIKE '%{$user_id}%'
 				AND status = 1
+				AND company_id = '%{$safe_company_id}'
+
 				";
 			} else {
 				$query  = "
@@ -819,6 +823,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 1
+				AND company_id = '%{$safe_company_id}'
 				";
 			}
 			
@@ -828,9 +833,11 @@
 
 		function no_of_unavailable_carrier_form_by_keyword($keyword) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT COUNT('id')
@@ -838,6 +845,7 @@
 				WHERE CONCAT(dispatcher_id, creator_id)
 				LIKE '%{$user_id}%'
 				AND status = 2
+				AND company_id = '%{$safe_company_id}'
 				";
 			} else {
 				$query  = "
@@ -846,6 +854,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 2
+				AND company_id = '%{$safe_company_id}'
 				";
 			} 
 			
@@ -855,9 +864,11 @@
 
 		function no_of_removed_carrier_form_by_keyword($keyword) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT COUNT('id')
@@ -865,6 +876,7 @@
 				WHERE CONCAT(dispatcher_id, creator_id)
 				LIKE '%{$user_id}%'
 				AND (status = 3 || status =4)
+				AND company_id = '%{$safe_company_id}'
 				";
 			} else {
 				$query  = "
@@ -873,6 +885,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND (status = 3 || status =4)
+				AND company_id = '%{$safe_company_id}'
 				";
 			}
 			
@@ -884,14 +897,16 @@
 		
 		function find_carrier_form_by_keyword($keyword) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			
+			$safe_company_id = $user["company_id"];
+
 				$query  = "
 				SELECT * 
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
+				AND company_id = '%{$safe_company_id}'
 				LIMIT 1
 				";
 		
@@ -902,14 +917,17 @@
 
 		function find_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT * 
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -919,6 +937,7 @@
 				FROM carrier_form 
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -930,15 +949,18 @@
 
 		function find_available_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT * 
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				AND status = 1
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -949,6 +971,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 1
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -960,15 +983,18 @@
 
 		function find_unavailable_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
-			global $connection;
+			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT * 
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				AND status = 2
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -979,6 +1005,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND status = 2
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -990,15 +1017,19 @@
 
 		function find_removed_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
-			global $connection;
+			global $connection, $user;
+
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
 			$user_id = find_user_id_by_keyword($safe_keyword);
+			$safe_company_id = $user["company_id"];
+
 			if($user_id){
 				$query  = "
 				SELECT * 
 				FROM carrier_form 
 				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
 				AND (status = 3 || status = 4)
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
@@ -1009,6 +1040,7 @@
 				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
 				LIKE '%{$safe_keyword}%'
 				AND (status = 3 || status = 4)
+				AND company_id = '%{$safe_company_id}'
 				ORDER BY creation_time DESC
 				LIMIT {$start},{$end}
 				";
