@@ -268,10 +268,13 @@
 			}
 
 		function no_of_dispatched_carriers(){
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE status = 'dispatched' ";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -289,10 +292,13 @@
 			return max(mysqli_fetch_assoc($set));}
 			
 		function no_of_carrier_this_month(){
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= ' WHERE MONTH(creation_time) = '.date("m");
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -348,10 +354,13 @@
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_last_month() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM carrier_form ";
 			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			$result = mysqli_fetch_array($set)[0];
@@ -373,10 +382,12 @@
 			return max($result, 0);}
 
 		function no_of_carrier_this_week() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1)";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -395,10 +406,12 @@
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_last_week() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -418,34 +431,40 @@
 
 	
 		function no_of_carrier_today() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE DATE(creation_time) = CURDATE()";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_yesterday() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_sameDayLastWeek() {
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE DATE(creation_time) = DATE_SUB(CURDATE(), INTERVAL 7 DAY)";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_today_by_team($id) {
-			global $connection;
+			global $connection, $user;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 
 			$query  = "SELECT COUNT('id') ";
@@ -484,95 +503,126 @@
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_this_mon() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 0";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 		
 		function no_of_carrier_this_tue() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 1";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_this_wed() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 2";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 		
 		function no_of_carrier_this_thu() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 3";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_this_fri() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW(), 1) AND WEEKDAY(creation_time) = 4";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 		
 		function no_of_carrier_last_mon() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 0";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 		
 		function no_of_carrier_last_tue() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 1";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_last_wed() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 2";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_last_thu() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 3";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_last_fri() {
-			global $connection;
+			global $connection, $user;
+
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE YEARWEEK(creation_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1) AND WEEKDAY(creation_time) = 4";
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
 
+		//Numbers by Team
 		function no_of_carrier_this_mon_by_team($id) {
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
@@ -702,6 +752,9 @@
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
+
+
+		//Searching Carriers functions 
 
 		function find_carrier_form_from($start,$end) {
 			global $connection;
