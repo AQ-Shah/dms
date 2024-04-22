@@ -3,7 +3,7 @@ if (check_access("carrier_assign_dispatcher") && not_executive($user["permission
 $record_set = find_all_users_by_team($user["team_id"]);
 } 
 if (!not_executive($user["permission"])) {
-    $record_set = find_all_active_dispatcher();
+    $record_set = find_all_active_dispatchers();
 }
 ?>
 <div id="assign-dispatcher-popup" class="popup">
