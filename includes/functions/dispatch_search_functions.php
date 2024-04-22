@@ -622,13 +622,15 @@
 			}
 
 		
-
+		//AMOUNT OF DISPATCH
+		
 		function find_dispatch_rate_total_this_month() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE (status = 'Dispatched' OR status = 'Completed') 
+			WHERE (status = 'Dispatched' OR status = 'Completed')
+			AND company_id = '{$user['company_id']}'
 			AND MONTH(dispatch_time) = MONTH(NOW())";
 
 			$result = mysqli_query($connection, $query);
@@ -675,11 +677,12 @@
 			return $record;}
 
 		function find_dispatch_rate_total_last_month() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(rate) AS total_rate
 					FROM dispatch_list
-					WHERE (status = 'Dispatched' OR status = 'Completed')  
+					WHERE (status = 'Dispatched' OR status = 'Completed')
+					AND company_id = '{$user['company_id']}'
 					AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 					AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 
@@ -765,11 +768,12 @@
 			return $record;}
 
 		function find_dispatch_rate_total_this_week() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			WHERE (status = 'Dispatched' OR status = 'Completed')
+			AND company_id = '{$user['company_id']}'
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -816,11 +820,12 @@
 			return $record;}
 
 		function find_dispatch_rate_total_last_week() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -867,11 +872,12 @@
 			return $record;}
 		
 		function find_dispatch_rate_total_today() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
-			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			WHERE (status = 'Dispatched' OR status = 'Completed')
+			AND company_id = '{$user['company_id']}'
 			AND DATE(dispatch_time) = CURDATE()";
 
 			$result = mysqli_query($connection, $query);
@@ -883,11 +889,12 @@
 			return $record;}
 
 		function find_dispatch_rate_total_yesterday() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(rate) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 
 			$result = mysqli_query($connection, $query);
@@ -899,11 +906,12 @@
 			return $record;}
 
 		function find_dispatch_commission_total_this_month() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND MONTH(dispatch_time) = MONTH(NOW())";
 
 			$result = mysqli_query($connection, $query);
@@ -915,11 +923,12 @@
 			return $record;}
 
 		function find_dispatch_commission_total_last_month() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(commission) AS total_rate
 					FROM dispatch_list
 					WHERE (status = 'Dispatched' OR status = 'Completed')  
+					AND company_id = '{$user['company_id']}'
 					AND YEAR(dispatch_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 					AND MONTH(dispatch_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 
@@ -933,11 +942,12 @@
 			return $record;}
 
 		function find_dispatch_commission_total_this_week() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW(), 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -949,11 +959,12 @@
 			return $record;}
 
 		function find_dispatch_commission_total_last_week() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND YEARWEEK(dispatch_time, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)";
 
 			$result = mysqli_query($connection, $query);
@@ -965,11 +976,12 @@
 			return $record;}
 		
 		function find_dispatch_commission_total_today() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND DATE(dispatch_time) = CURDATE()";
 
 			$result = mysqli_query($connection, $query);
@@ -981,11 +993,12 @@
 			return $record;}
 
 		function find_dispatch_commission_total_yesterday() {
-			global $connection;
+			global $connection, $user;
 
 			$query = "SELECT SUM(commission) AS total_rate
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
+			AND company_id = '{$user['company_id']}'
 			AND DATE(dispatch_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 
 			$result = mysqli_query($connection, $query);
