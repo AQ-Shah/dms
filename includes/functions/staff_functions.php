@@ -202,11 +202,13 @@ function find_team_id_by_department_id($id){
     }
 
 function find_all_dispatcher(){
-        global $connection;
+        global $connection, $user;
 
         $query  = "SELECT * ";
         $query .= "FROM users ";
-        $query .= "WHERE department_id = 5 OR department_id = 4 ";
+        $query .= "WHERE (permission = 4 OR permission = 5) ";
+        $query .= "AND status = 1 ";
+        $query .= "AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
@@ -221,7 +223,7 @@ function find_all_active_sales_agent(){
         $query .= "FROM users ";
         $query .= "WHERE (permission = 9 OR permission = 10) ";
         $query .= "AND status = 1 ";
-        $query .= "AND company_id = '{$user['company_id']}'";
+        $query .= "AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY full_name ASC";
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
