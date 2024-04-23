@@ -48,13 +48,14 @@
         if (isset($birth_date) && isset ($join_date)) $query .= ", '{$birth_date}', '{$join_date}'";
         $query .= ")";
         
+        echo $query
         $result = mysqli_query($connection, $query);
 
         if ($result) {
             // Success
-            $_SESSION["message"] = "User created.";
-            header("Location: " . $prev_url);
-            exit;
+            // $_SESSION["message"] = "User created.";
+            // header("Location: " . $prev_url);
+            // exit;
         
         } else {
             // Failure
@@ -64,9 +65,9 @@
 
         }
   } else {
-     $_SESSION["message"] = send_errors($errors);
-        header("Location: " . $prev_url);
-        exit;
+    //  $_SESSION["message"] = send_errors($errors);
+    //     header("Location: " . $prev_url);
+    //     exit;
   }
 
   ?>
