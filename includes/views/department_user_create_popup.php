@@ -7,7 +7,7 @@ $record_set = find_all_teams_by_department($department["id"]);
     <div class="row popup-content-wide">
         <form class="department-user-create-popup-form popup-form" action="" method="post">
 
-            <?php if (not_executive($_GET['id'])) {?>
+            <?php if (!find_department_is_executive($_GET['id'])) {?>
             <div class="form-row-col-6">
                 <label for="team_id">Team:</label>
                     <select name="team_id">
