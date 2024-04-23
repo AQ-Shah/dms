@@ -143,7 +143,7 @@
         $result = mysqli_query($connection, $query);
         confirm_query($result);
         if($single_result = mysqli_fetch_assoc($result)) {
-            return $single_result;
+            return $single_result["is_executive"];
         } else {
             return 0;
         }
