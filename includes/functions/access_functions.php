@@ -134,7 +134,7 @@
         $safe_department_id = mysqli_real_escape_string($connection, $department_id);
 
         $query  = "
-        SELECT 1
+        SELECT *
         FROM department
         WHERE id = '{$safe_department_id}'
         AND is_executive = 1
