@@ -43,7 +43,7 @@
 
         <div class="col-12 col-lg-4 panel-content-secondary">
             <div class="col-12 col-lg-6">Business Number : *</div>
-            <div class="col-12 col-lg-6"><input type="tel" maxlength="15"
+            <div class="col-12 col-lg-6"><input type="tel" maxlength="17"
                     class=" form-control w-100" name="b_number" value="<?php if (isset($b_number)){echo $b_number;}  ?>"
                     required></div>
         </div>
@@ -98,7 +98,7 @@
         </div>
         <div class="col-12 col-lg-4 panel-content-secondary">
             <div class="col-12 col-lg-6">Company Number : </div>
-            <div class="col-12 col-lg-6"><input type="tel" maxlength="15"
+            <div class="col-12 col-lg-6"><input type="tel" maxlength="17"
                     class="form-control w-100" name="insurance_number"
                     value="<?php if (isset($insurance_number)){echo $insurance_number;}  ?>"></div>
         </div>
@@ -205,7 +205,7 @@
         </div>
         <div class="col-12 col-lg-4 panel-content-secondary">
             <div class="col-12 col-lg-6">Company Number : </div>
-            <div class="col-12 col-lg-6"><input type="tel" maxlength="15"
+            <div class="col-12 col-lg-6"><input type="tel" maxlength="17"
                     class="form-control w-100" name="factoring_number"
                     value="<?php if (isset($factoring_number)){echo $factoring_number;}  ?>"></div>
         </div>
