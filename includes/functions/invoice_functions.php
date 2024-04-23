@@ -1,7 +1,7 @@
 <?php
 
     function no_of_invoices_pending_carriers(){
-    global $connection;
+        global $connection, $user;
 
         $query  = "SELECT COUNT(DISTINCT carrier_id) ";
         $query .= "FROM dispatch_list ";
@@ -17,7 +17,7 @@
         
     function no_of_invoices_generated(){
 
-        global $connection;
+        global $connection, $user;
         
         $query  = "SELECT COUNT('id') ";
         $query .= "FROM invoices ";
@@ -30,7 +30,7 @@
     
     function no_of_invoices_unpaid(){
 
-        global $connection;
+        global $connection, $user;
         
         $query  = "SELECT COUNT('id') ";
         $query .= "FROM invoices ";
@@ -44,7 +44,7 @@
     
     function find_all_invoices_generated_from($start,$end){
 
-       global $connection;
+        global $connection, $user;
 
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
@@ -57,8 +57,8 @@
         }
     function find_all_invoices_unpaid_from($start,$end){
 
-       global $connection;
-
+        global $connection, $user;
+        
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
         $query .= "WHERE invoice_status = 2 ";
@@ -81,8 +81,9 @@
         return $record_set;
         }
 
-function find_all_invoices_pending_carriers_from($start, $record_per_page){
-        global $connection;
+    function find_all_invoices_pending_carriers_from($start, $record_per_page){
+        global $connection, $user;
+        
         $carrier_id_set = array();
         $start_counter = 0;
         $end_counter = 0;
@@ -128,7 +129,8 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 
 
     function find_invoice_by_id($id){
-     	global $connection;
+        global $connection, $user;
+
         $safe_id = mysqli_real_escape_string($connection, $id);
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
@@ -146,7 +148,8 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 
     function find_pending_invoices_amount_by_carrier_id($id) {
         
-        global $connection;
+        global $connection, $user;
+
         $safe_id = mysqli_real_escape_string($connection, $id);
         $record_set_object = find_pending_invoices_by_carrier_id($safe_id);
        
@@ -160,7 +163,8 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
     }
 
     function find_pending_invoices_by_carrier_id($id) {
-        global $connection;
+        global $connection, $user;
+
         $safe_id = mysqli_real_escape_string($connection, $id);
 
         $query  = "SELECT * ";
@@ -174,7 +178,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
         return $set;}
 
     function invoice_creation_function($carrier_id,$total_amount,$due_date,$record_set){
-        global $connection;
+        global $connection, $user;
         
         $query  = "INSERT INTO invoices (";
         $query .= "  carrier_id, total_amount, due_date";
@@ -203,7 +207,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
         }}
 
     function paid_invoices_amount_this_month() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
@@ -219,7 +223,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function unpaid_invoices_amount_this_month() {
-			global $connection;
+            global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
@@ -235,7 +239,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
      
     function paid_invoices_amount_last_month() {
-			global $connection;
+            global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
@@ -252,7 +256,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
             
     function unpaid_invoices_amount_last_month() {
-			global $connection;
+            global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
@@ -269,7 +273,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_0() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -286,7 +290,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_1() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -303,7 +307,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_2() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -320,7 +324,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_3() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -337,7 +341,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_4() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -354,7 +358,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_5() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -371,7 +375,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_6() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -388,7 +392,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_7() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -405,7 +409,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_8() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -422,7 +426,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_invoices_amount_week_9() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -439,7 +443,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_0() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -456,7 +460,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
             
     function total_unpaid_invoices_amount_week_1() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -473,7 +477,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_2() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -490,7 +494,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_3() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -507,7 +511,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_4() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -524,7 +528,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_5() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -541,7 +545,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_6() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -558,7 +562,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_7() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -575,7 +579,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_8() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
@@ -592,7 +596,7 @@ function find_all_invoices_pending_carriers_from($start, $record_per_page){
 			return $record;}
 
     function total_unpaid_invoices_amount_week_9() {
-			global $connection;
+        global $connection, $user;
 
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
