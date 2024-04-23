@@ -140,7 +140,8 @@
         AND is_executive = 1
         LIMIT 1
         ";
-       
+        
+        echo $query;
         $result = mysqli_query($connection, $query);
         confirm_query($result);  // Ensure this function properly handles any errors and logging
         if (mysqli_fetch_assoc($result)) {
