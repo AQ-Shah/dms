@@ -7,11 +7,12 @@
       if (isset($_POST['full_name'])) {$full_name = mysql_prep($_POST["full_name"]);}
       if (isset($_POST['company_id'])) {$company_id = mysql_prep($_POST["company_id"]);}
       if (isset($_POST['department_id'])) {$department_id = mysql_prep($_POST["department_id"]);}
-      if (isset($_POST['team_id'])) {$team_id = mysql_prep($_POST["team_id"]);}
-      if (isset($_POST['role_id'])) {$role_id = mysql_prep($_POST["role_id"]);}
       if (!empty($_POST['birth_date']))  {$birth_date = mysql_prep($_POST["birth_date"]);} 
       if (!empty($_POST['join_date'])) {$join_date = mysql_prep($_POST["join_date"]);}
       
+      $team_id = isset($_POST['team_id']) ? mysql_prep($_POST["team_id"]) : 0;
+      $role_id = isset($_POST['role_id']) ? mysql_prep($_POST["role_id"]) : 1;
+
       $phone_num = isset($_POST['phone_num']) ? mysql_prep($_POST["phone_num"]) : NULL;
       $gender = isset($_POST['gender']) ? mysql_prep($_POST["gender"]) : 'male';
       $emergency_contact = isset($_POST['emergency_contact']) ? mysql_prep($_POST["emergency_contact"]) : NULL;
