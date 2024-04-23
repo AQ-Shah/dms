@@ -25,7 +25,7 @@
         $role_id = '1';}
       else  {
         $role_id = isset($_POST['role_id']) ? mysql_prep($_POST["role_id"]) : 0; }
-        
+
       $permission = find_permission($role_id);
       $designation = find_designation($role_id);
 
@@ -54,21 +54,21 @@
 
         if ($result) {
             // Success
-            // $_SESSION["message"] = "User created.";
-            // header("Location: " . $prev_url);
-            // exit;
+            $_SESSION["message"] = "User created.";
+            header("Location: " . $prev_url);
+            exit;
         
         } else {
             // Failure
-            // $_SESSION["message"] = "something went wrong.";
-            // header("Location: " . $prev_url);
-            // exit;
+            $_SESSION["message"] = "something went wrong.";
+            header("Location: " . $prev_url);
+            exit;
 
         }
   } else {
-    //  $_SESSION["message"] = send_errors($errors);
-    //     header("Location: " . $prev_url);
-    //     exit;
+     $_SESSION["message"] = send_errors($errors);
+        header("Location: " . $prev_url);
+        exit;
   }
 
   ?>
