@@ -48,7 +48,7 @@
         if (isset($birth_date) && isset ($join_date)) $query .= ", '{$birth_date}', '{$join_date}'";
         $query .= ")";
         
-        echo $query
+        echo $query;
         $result = mysqli_query($connection, $query);
 
         if ($result) {
