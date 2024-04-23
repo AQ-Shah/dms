@@ -134,16 +134,17 @@
         $safe_department_id = mysqli_real_escape_string($connection, $department_id);
 
         $query  = "
-        SELECT is_executive
+        SELECT *
         FROM department
         WHERE id = '{$safe_department_id}'
+        AND is_executive = 1
         LIMIT 1
         ";
        
         $result = mysqli_query($connection, $query);
         confirm_query($result);
         if($single_result = mysqli_fetch_assoc($result)) {
-            return $single_result["is_executive"];
+            return 1;
         } else {
             return 0;
         }
