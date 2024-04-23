@@ -22,10 +22,10 @@
       $about_privacy = isset($_POST['about_privacy']) ? mysql_prep($_POST["about_privacy"]) : 0;
     
       if (find_department_is_executive($department_id)){
-        echo true;
-        $role_id = 1;}
+        $role_id = '1';}
       else  {
         $role_id = isset($_POST['role_id']) ? mysql_prep($_POST["role_id"]) : 0; }
+        
       $permission = find_permission($role_id);
       $designation = find_designation($role_id);
 
