@@ -117,7 +117,7 @@
         if ($role_id === '5') return 5;
         if ($role_id === '9') return 9;
         if ($role_id === '10') return 10;
-        return 10;
+        return 0;
     }
    
     function find_designation($role_id){
@@ -127,6 +127,26 @@
         if ($role_id === '9') return 'Team Supervisor';
         if ($role_id === '10') return 'Sales Agent';
         return 'Not Assigned';
+    }
+
+    function find_department_is_executive($department_id){
+        global $connection;
+        $safe_department_id = mysqli_real_escape_string($connection, $department_id);
+
+        $query  = "
+        SELECT is_executive
+        FROM department
+        WHERE id = '{$safe_department_id}'
+        LIMIT 1
+        ";
+       
+        $result = mysqli_query($connection, $query);
+        confirm_query($result);
+        if($single_result = mysqli_fetch_assoc($result)) {
+            return $single_result;
+        } else {
+            return 0;
+        }
     }
     
 
