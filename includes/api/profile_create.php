@@ -11,8 +11,6 @@
       if (!empty($_POST['join_date'])) {$join_date = mysql_prep($_POST["join_date"]);}
       
       $team_id = isset($_POST['team_id']) ? mysql_prep($_POST["team_id"]) : 0;
-      $role_id = isset($_POST['role_id']) ? mysql_prep($_POST["role_id"]) : 1;
-
       $phone_num = isset($_POST['phone_num']) ? mysql_prep($_POST["phone_num"]) : NULL;
       $gender = isset($_POST['gender']) ? mysql_prep($_POST["gender"]) : 'male';
       $emergency_contact = isset($_POST['emergency_contact']) ? mysql_prep($_POST["emergency_contact"]) : NULL;
@@ -22,12 +20,15 @@
       $birthday_privacy = isset($_POST['birthday_privacy']) ? mysql_prep($_POST["birthday_privacy"]) : 0;
       $emergency_privacy = isset($_POST['emergency_privacy']) ? mysql_prep($_POST["emergency_privacy"]) : 0;
       $about_privacy = isset($_POST['about_privacy']) ? mysql_prep($_POST["about_privacy"]) : 0;
-
+    
+      if (is_executive($department_id))
+        $role_id = 1; 
+      else  $role_id = isset($_POST['role_id']) ? mysql_prep($_POST["role_id"]) : 0;
       $permission = find_permission($role_id);
       $designation = find_designation($role_id);
 
     // validations
-    $required_fields = array("email", "password", "full_name", "company_id", "department_id", "team_id");
+    $required_fields = array("email", "password", "full_name", "company_id", "department_id");
     validate_presences($required_fields);
     
     $fields_with_max_lengths = array("email" => 30, "full_name" => 30, "password" => 20,);
