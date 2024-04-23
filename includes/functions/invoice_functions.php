@@ -7,6 +7,8 @@
         $query .= "FROM dispatch_list ";
         $query .= "WHERE invoice_status = 1 ";
         $query .= "AND status != 'Cancelled' ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
+
 
         $set = mysqli_query($connection, $query);
         confirm_query($set);
@@ -21,6 +23,8 @@
         
         $query  = "SELECT COUNT('id') ";
         $query .= "FROM invoices ";
+        $query .= " WHERE company_id = '{$user['company_id']}' ";
+
 
         $set = mysqli_query($connection, $query);
         confirm_query($set);
@@ -35,6 +39,8 @@
         $query  = "SELECT COUNT('id') ";
         $query .= "FROM invoices ";
         $query .= "WHERE invoice_status = 2 ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
+
 
         $set = mysqli_query($connection, $query);
         confirm_query($set);
@@ -48,6 +54,7 @@
 
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
+        $query .= " WHERE company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY id DESC ";
         $query .= "LIMIT {$start},{$end}";
 
@@ -62,6 +69,7 @@
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
         $query .= "WHERE invoice_status = 2 ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY id DESC ";
         $query .= "LIMIT {$start},{$end}";
        
@@ -92,6 +100,7 @@
         $query  = "SELECT DISTINCT carrier_id ";
         $query .= "FROM dispatch_list ";
         $query .= "WHERE invoice_status = 1 ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
         $query .= "AND status != 'Cancelled' ";
 
         $set = mysqli_query($connection, $query);
@@ -135,6 +144,7 @@
         $query  = "SELECT * ";
         $query .= "FROM invoices ";
         $query .= "WHERE id = {$safe_id} ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
         $query .= "LIMIT 1";
         $data_set = mysqli_query($connection, $query);
 
@@ -172,6 +182,7 @@
         $query .= "WHERE invoice_status = '1' ";
         $query .= "AND carrier_id = '{$safe_id}' ";
         $query .= "AND status != 'Cancelled' ";
+        $query .= " AND company_id = '{$user['company_id']}' ";
         $query .= "ORDER BY dispatch_time DESC ";
         $set = mysqli_query($connection, $query);
         confirm_query($set);
@@ -179,11 +190,12 @@
 
     function invoice_creation_function($carrier_id,$total_amount,$due_date,$record_set){
         global $connection, $user;
+        $company_id = $user['company_id'];
         
         $query  = "INSERT INTO invoices (";
-        $query .= "  carrier_id, total_amount, due_date";
+        $query .= "  carrier_id, company_id, total_amount, due_date";
         $query .= ") VALUES (";
-        $query .= "  '{$carrier_id}', '{$total_amount}', '{$due_date}'";
+        $query .= "  '{$carrier_id}', '$company_id', '{$total_amount}', '{$due_date}'";
         $query .= ")";
         $result = mysqli_query($connection, $query);
         if($result){
@@ -212,6 +224,7 @@
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
 			WHERE invoice_status = 3
+            AND company_id = '{$user['company_id']}'
 			AND MONTH(creation_date) = MONTH(NOW())";
 
 			$result = mysqli_query($connection, $query);
@@ -228,6 +241,7 @@
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
 			WHERE invoice_status = 2
+            AND company_id = '{$user['company_id']}'
 			AND MONTH(creation_date) = MONTH(NOW())";
 
 			$result = mysqli_query($connection, $query);
@@ -244,6 +258,7 @@
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
 			WHERE invoice_status = 3
+            AND company_id = '{$user['company_id']}'
 			AND YEAR(creation_date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
             AND MONTH(creation_date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 
@@ -261,6 +276,7 @@
 			$query = "SELECT SUM(total_amount) AS total
 			FROM invoices
 			WHERE invoice_status = 2
+            AND company_id = '{$user['company_id']}'
 			AND YEAR(creation_date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
             AND MONTH(creation_date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
 
@@ -278,6 +294,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW(), 1)
             ";
 
@@ -295,6 +312,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)
             ";
 
@@ -312,6 +330,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 2 WEEK, 1)
             ";
 
@@ -329,6 +348,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 3 WEEK, 1)
             ";
 
@@ -346,6 +366,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 4 WEEK, 1)
             ";
 
@@ -363,6 +384,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 5 WEEK, 1)
             ";
 
@@ -380,6 +402,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 6 WEEK, 1)
             ";
 
@@ -397,6 +420,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 7 WEEK, 1)
             ";
 
@@ -414,6 +438,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 8 WEEK, 1)
             ";
 
@@ -431,6 +456,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2 OR invoice_status = 3)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 9 WEEK, 1)
             ";
 
