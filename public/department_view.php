@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-4 text-xl-end mt-xl-0 mt-2">
   
-                    <?php if (no_of_teams_by_department($department['id']) > 0) {?>
+                    <?php if (no_of_teams_by_department($department['id']) > 0 || $department['is_executive']) {?>
                     <button type="button" class="btn btn-danger mb-2 me-2" onclick="showDepartmentUserCreatePopup()"><i
                             class=" mdi mdi-basket me-1"></i>
                         Add User</button>
@@ -76,7 +76,7 @@
                             <?php if (isset($record_set)) { ?>
                             <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                             <tr>
-                                <?php if($department['id'] != 1) { ?>
+                                <?php if (!$department['is_executive'])  { ?>
                                 <td style="cursor: pointer;"
                                     onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'"><?php
                                     if($record["team_id"]){
