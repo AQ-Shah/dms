@@ -474,6 +474,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW(), 1)
             ";
 
@@ -491,6 +492,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 1 WEEK, 1)
             ";
 
@@ -508,6 +510,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 2 WEEK, 1)
             ";
 
@@ -525,6 +528,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 3 WEEK, 1)
             ";
 
@@ -542,6 +546,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 4 WEEK, 1)
             ";
 
@@ -559,6 +564,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 5 WEEK, 1)
             ";
 
@@ -576,6 +582,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 6 WEEK, 1)
             ";
 
@@ -593,6 +600,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 7 WEEK, 1)
             ";
 
@@ -610,6 +618,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 8 WEEK, 1)
             ";
 
@@ -627,6 +636,7 @@
 			$query = "SELECT SUM(total_amount) AS total
             FROM invoices
             WHERE (invoice_status = 2)
+            AND company_id = '{$user['company_id']}'
             AND YEARWEEK(creation_date, 1) = YEARWEEK(NOW() - INTERVAL 9 WEEK, 1)
             ";
 
