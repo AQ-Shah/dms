@@ -134,7 +134,7 @@
         $safe_department_id = mysqli_real_escape_string($connection, $department_id);
 
         $query  = "
-        SELECT *
+        SELECT 1
         FROM department
         WHERE id = '{$safe_department_id}'
         AND is_executive = 1
@@ -142,11 +142,11 @@
         ";
        
         $result = mysqli_query($connection, $query);
-        confirm_query($result);
-        if($single_result = mysqli_fetch_assoc($result)) {
-            return 1;
+        confirm_query($result);  // Ensure this function properly handles any errors and logging
+        if (mysqli_fetch_assoc($result)) {
+            return 1;  // is_executive is true for this department
         } else {
-            return 0;
+            return 0;  // is_executive is not true for this department
         }
     }
     
