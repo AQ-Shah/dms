@@ -35,8 +35,8 @@
 
     if (empty($errors)) { 
         
-        $query = "INSERT INTO dispatch_list (carrier_id, truck_id, dispatcher_id, dispatch_team_id, current_location, new_location, rate, commission, delivery_time, dispatch_time) ";
-        $query .= "VALUES ('" . $carrier["id"] . "', '" . $truck_id ."','" . $dispatcher_id ."', '" . $dispatch_team_id ."', '" . $current_location . "', '$new_location', '$rate', '$commission','$delivery_time','$pickup_datetime'); ";
+        $query = "INSERT INTO dispatch_list (company_id, carrier_id, truck_id, dispatcher_id, dispatch_team_id, current_location, new_location, rate, commission, delivery_time, dispatch_time) ";
+        $query .= "VALUES ('" . $carrier["company_id"] . "','" . $carrier["id"] . "', '" . $truck_id ."','" . $dispatcher_id ."', '" . $dispatch_team_id ."', '" . $current_location . "', '$new_location', '$rate', '$commission','$delivery_time','$pickup_datetime'); ";
         $query .= "UPDATE trucks_info SET truck_load_status = 2, current_location = '$new_location' WHERE id = $truck_id LIMIT 1; ";
         if ($carrier['sale_activation_dispatch_id'] == 0) 
         $query .= "UPDATE carrier_form SET sale_active = 1,sale_activation_date = CURRENT_TIMESTAMP, sale_activation_dispatch_id = LAST_INSERT_ID() WHERE id = {$carrier["id"]} LIMIT 1";
