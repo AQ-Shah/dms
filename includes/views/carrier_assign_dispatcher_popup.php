@@ -12,9 +12,8 @@ if (!not_executive($user["permission"])) {
             <h2>Assign Dispatcher</h2>
             <label for="dispatcher">Dispatcher:</label>
             <select name="dispatcher" id="dispatcher">
-
-                <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                 <option value="">Select Dispatcher*</option>
+                <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                 <option value="<?php echo htmlentities($record["id"]); ?>" >
                     <?php echo htmlentities($record["full_name"]); ?> </option>
                 <?php } ?>

@@ -9,7 +9,7 @@ $record_set = find_teams_by_department_id("5");
         <form class="assign-team-popup-form popup-form" action="" method="post">
             <label for="team-id">Dispatch Teams:</label>
             <select name="team-id" id="team-id">
-
+            <option value="">Select Team*</option>
                 <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                 <option value="<?php echo htmlentities($record["id"]); ?>">
                     <?php echo htmlentities($record["name"]); ?> </option>
