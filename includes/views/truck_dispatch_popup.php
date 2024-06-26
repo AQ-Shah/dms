@@ -10,6 +10,10 @@
                 <input type="number" id="rate" name="rate">
             </div>
             <div class="col-6">
+                <label for="rate">Loaded Miles:</label>
+                <input type="number" id="miles" name="miles">
+            </div>
+            <div class="col-6">
                 <label for="current_location">Dispatching From:</label>
                 <input type="text" id="current_location" name="current_location" placeholder="if not from current location">
             </div>
