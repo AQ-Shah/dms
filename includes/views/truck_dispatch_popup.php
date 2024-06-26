@@ -63,6 +63,7 @@ function hideTruckDispatchPopup() {
     popup.style.display = "none";
 }
 // Temporarily prevent form submission to debug
+// Temporarily prevent form submission to debug
 document.getElementById('truck-dispatch-popup-form').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent form submission
 
@@ -70,5 +71,8 @@ document.getElementById('truck-dispatch-popup-form').addEventListener('submit', 
     console.log("Form Submitted");
     console.log("Carrier ID (in form): " + document.getElementById('carrier-id').value);
     console.log("Truck ID (in form): " + document.getElementById('truck-id').value);
-}
+
+    // You can also manually trigger form submission if needed after debugging
+    // this.submit();
+});
 </script>
