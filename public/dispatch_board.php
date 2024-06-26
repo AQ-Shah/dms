@@ -37,13 +37,25 @@
                         <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
                         <?php if ($record["truck_load_status"] == 1) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities(find_carrier_form_by_id($record["carrier_id"])['b_name']) . ' - ' . htmlentities($record["d_name"]); ?></p>
+                            <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                <?php 
+                                $carrier = find_carrier_form_by_id($record["carrier_id"]); 
+                                echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]);
+                                ?>
+                            </p>
+                            <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
+                                <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
+                                <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
+                                <p>Note: <?php echo htmlentities($carrier['note']); ?></p>
+                            </div>
                         </div>
                         <?php } ?>
                         <?php } ?>
                         <?php } ?>
                     </div>
                 </div>
+</div>
+
                 <div class="kanban-column" id="dispatched">
                     <h3>Dispatched</h3>
                     <div class="kanban-items">
@@ -118,6 +130,15 @@
                 item.style.display = "none";
             }
         });
+    }
+
+    function toggleInfo(id) {
+        var info = document.getElementById('info-' + id);
+        if (info.style.display === 'none') {
+            info.style.display = 'block';
+        } else {
+            info.style.display = 'none';
+        }
     }
 </script>
 

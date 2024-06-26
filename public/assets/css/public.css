@@ -269,6 +269,7 @@ table th {
     margin: 0;
     font-size: 1em;
     color: #333;
+    cursor: pointer;
 }
 
 .kanban-item:hover {
@@ -280,6 +281,13 @@ table th {
     cursor: grabbing;
 }
 
+
+.kanban-info {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #dcdfe3;
+    background-color: #f7f8fa;
+}
 
 /* Buttons  */
 
