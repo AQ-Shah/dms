@@ -33,7 +33,7 @@
                     <div class="kanban-items">
                         <?php if (isset($available_trucks) && mysqli_num_rows($available_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['carrier_id']; ?>">
+                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -56,7 +56,7 @@
                     <div class="kanban-items">
                         <?php if (isset($onload_trucks) && mysqli_num_rows($onload_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['carrier_id']; ?>">
+                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -79,7 +79,7 @@
                     <div class="kanban-items">
                         <?php if (isset($unavailable_trucks) && mysqli_num_rows($unavailable_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($unavailable_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['carrier_id']; ?>">
+                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
