@@ -44,10 +44,10 @@
 <script>
 //for dispatch popup
 
-function showTruckDispatchPopup(carrierId, truckId) {
+function showTruckDispatchPopup(carrierId, carrierTruckId) {
     // Populate the form fields with default values
     document.getElementById("carrier-id").value = carrierId;
-    document.getElementById("truck-id").value = truckId;
+    document.getElementById("truck-id").value = carrierTruckId;
 
     var formAction = "dispatch_carrier?id=" + carrierId;
 
