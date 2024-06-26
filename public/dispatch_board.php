@@ -114,7 +114,7 @@
     });
 
     function dragStart(e) {
-        e.dataTransfer.setData('truck-id', e.target.dataset.truckId);
+        e.dataTransfer.setData('text/plain', e.target.dataset.id);
         e.dataTransfer.setData('carrier-id', e.target.dataset.carrierId);
     }
 
@@ -124,7 +124,7 @@
 
     function drop(e) {
         e.preventDefault();
-        const truckId = e.dataTransfer.getData('truck-id');
+        const truckId = e.dataTransfer.getData('text/plain');
         const carrierId = e.dataTransfer.getData('carrier-id');
         const draggable = document.querySelector(`[data-truck-id='${truckId}']`);
         const dropzone = e.target.closest('.kanban-column');
