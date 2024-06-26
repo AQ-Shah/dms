@@ -64,6 +64,7 @@ function hideTruckDispatchPopup() {
 }
 
 document.querySelector('.truck-dispatch-popup-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form submission
     console.log("Form Submitted");
     console.log("Carrier ID (in form): " + document.getElementById('carrier-id').value);
     console.log("Truck ID (in form): " + document.getElementById('truck-id').value);
