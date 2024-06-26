@@ -125,7 +125,33 @@
         e.preventDefault();
         const id = e.dataTransfer.getData('text/plain');
         const draggable = document.querySelector(`[data-id='${id}']`);
-        e.target.querySelector('.kanban-items').appendChild(draggable);
+        const dropzone = e.target.closest('.kanban-column');
+        const dropzoneId = dropzone.id;
+
+        // Perform the drop action
+        dropzone.querySelector('.kanban-items').appendChild(draggable);
+
+        // Handle popup based on dropzoneId
+        if (dropzoneId === 'dispatched') {
+            openDispatchPopup(id); // Function to open dispatch popup
+        } else if (dropzoneId === 'unavailable') {
+            openStatusPopup(id); // Function to open status popup
+        }
+    }
+
+    function openDispatchPopup(id) {
+        // Implement your logic to show the dispatch popup
+        // Example: You can use AJAX to load the popup content dynamically
+        // Here's a basic example assuming you have a function or script to handle this
+        // include("../includes/views/carrier_dispatch_popup.php");
+        console.log('Open dispatch popup for ID:', id);
+    }
+
+    function openStatusPopup(id) {
+        // Implement your logic to show the status popup
+        // Example: You can use AJAX to load the popup content dynamically
+        // include("../includes/views/carrier_status_popup.php");
+        console.log('Open status popup for ID:', id);
     }
 
     function kanban_search(event) {
@@ -152,6 +178,7 @@
         }
     }
 </script>
+
 
 <?php 
     include("../includes/views/action_dropdown_button.php");
