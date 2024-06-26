@@ -62,5 +62,13 @@ function hideTruckDispatchPopup() {
     var popup = document.getElementById("truck-dispatch-popup");
     popup.style.display = "none";
 }
+// Temporarily prevent form submission to debug
+document.getElementById('truck-dispatch-popup-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form submission
+
+    // Log the values to console
+    console.log("Form Submitted");
+    console.log("Carrier ID (in form): " + document.getElementById('carrier-id').value);
+    console.log("Truck ID (in form): " + document.getElementById('truck-id').value);
 
 </script>
