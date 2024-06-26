@@ -16,20 +16,20 @@
                 <input type="number" id="rate" name="rate">
             </div>
             <div class="col-6">
-                <label for="location">Dispatching From:</label>
+                <label for="current_location">Dispatching From:</label>
                 <input type="text" id="current_location" name="current_location"
                     placeholder="if not from current location">
             </div>
             <div class="col-6">
-                <label for="location">Dispatching To:</label>
+                <label for="dispatch_location">Dispatching To:</label>
                 <input type="text" id="dispatch_location" name="dispatch_location">
             </div>
             <div class="col-6">
-                <label for="datetime">Estimated Pickup Time:</label>
+                <label for="pickup_datetime">Estimated Pickup Time:</label>
                 <input type="datetime-local" id="pickup_datetime" name="pickup_datetime">
             </div>
             <div class="col-6">
-                <label for="datetime">Estimated Delivery Time:</label>
+                <label for="delivery_datetime">Estimated Delivery Time:</label>
                 <input type="datetime-local" id="delivery_datetime" name="delivery_datetime">
             </div>
 
@@ -58,14 +58,12 @@ function showTruckDispatchPopup(carrierId, truckId) {
 
     var formAction = "dispatch_carrier?id=" + carrierId;
 
-
     // set the form action to the constructed URL
     document.querySelector(".truck-dispatch-popup-form").action = formAction;
     // Show the popup
     var popup = document.getElementById("truck-dispatch-popup");
     popup.style.display = "flex";
 }
-
 
 function hideTruckDispatchPopup() {
     var popup = document.getElementById("truck-dispatch-popup");
