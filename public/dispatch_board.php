@@ -124,8 +124,8 @@
 
     function drop(e) {
         e.preventDefault();
-        const truckId = e.dataTransfer.getData('text/plain');
-        const carrierId = e.dataTransfer.getData('id');
+        const truckId = e.dataTransfer.getData('id');
+        const carrierId = e.dataTransfer.getData('carrier-id');
         const draggable = document.querySelector(`[data-id='${truckId}']`);
         const dropzone = e.target.closest('.kanban-column');
         const dropzoneId = dropzone.id;
