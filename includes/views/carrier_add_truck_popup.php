@@ -7,10 +7,10 @@
                 <div class="col-6"> <label>Driver Name *</label><input type="text" class="form-control w-100"
                         name="d_name" value="<?php if (isset($d_name)){echo $d_name;}  ?>">
                 </div>
-                <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
+                <div class="col-3 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
                         value="<?php if (isset($d_number)){echo $d_number;}  ?>">
                 </div>
-                <div class="col-6"> <label>Truck Type *</label>
+                <div class="col-3"> <label>Truck Type *</label>
                     <select name="truck_type" class="form-control w-100" required>
                         <option value="">Select truck type</option>
                         <option value="Sprinter Van"
@@ -44,7 +44,7 @@
             </div>
 
             <div class="col-12 col-lg-6 panel-content-secondary">
-                <div class="col-12 col-lg-6">Plate Number :</div>
+                <div class="col-12 col-lg-6">Truck Number :</div>
                 <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="truck_no"
                         value="<?php if (isset($truck_no)){echo $truck_no;} ?>" /></div>
             </div>
@@ -52,11 +52,6 @@
                 <div class="col-12 col-lg-6">Trailer Number : </div>
                 <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="trailer_no"
                         value="<?php if (isset($trailer_no)){echo $trailer_no;}  ?>"></div>
-            </div>
-            <div class="col-12 col-lg-6 panel-content-secondary">
-                <div class="col-12 col-lg-6">VIN Number : </div>
-                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="vin_no"
-                        value="<?php if (isset($vin_no)){echo $vin_no;}  ?>"></div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Truck Length (ft) :</div>
