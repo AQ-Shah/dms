@@ -45,22 +45,7 @@
             </div>
         </a>
     </div>
-    <!-- <div class="col-3">
-        <a href='list_dispatched'>
-            <div class=" custom-panel card" style="background:#d43a0f">
-                <h3><?php echo no_of_onload_trucks();?></h3>
-                <p>On Load</p>
-            </div>
-        </a>
-    </div> -->
-    <!-- <div class="col-3">
-        <a href='list_available_carriers'>
-            <div class=" custom-panel card" style="background:#d43a0f">
-                <h3><?php echo no_of_carriers_by_company()-no_of_unavailable_carriers()- no_of_dispatched_carriers();?></h3>
-                <p>Pending Dispatch</p>
-            </div>
-        </a>
-    </div> -->
+   
 </div>
 
 <?php } ?>

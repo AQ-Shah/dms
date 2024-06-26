@@ -2,7 +2,7 @@
     require_once("../includes/public_require.php"); 
     $current_page = "dispatch_board";
 	include("../includes/layouts/public_header.php"); 
-    include("../includes/pagination/carriers_by_company_data_fetch.php"); 
+    include("../includes/pagination/trucks_by_company_data_fetch.php"); 
 ?>
 
 <div class="container">
@@ -33,11 +33,11 @@
                 <div class="kanban-column" id="available">
                     <h3>Available</h3>
                     <div class="kanban-items">
-                        <?php if (isset($record_set)) { ?>
-                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                        <?php if ($record["status"] == 1) { ?>
+                        <?php if (isset($available_trucks)) { ?>
+                        <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
+                        <?php if ($record["truck_load_status"] == 1) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities($record["b_name"]); ?></p>
+                            <p><?php echo htmlentities($record["d_name"]); ?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
@@ -47,11 +47,11 @@
                 <div class="kanban-column" id="dispatched">
                     <h3>Dispatched</h3>
                     <div class="kanban-items">
-                        <?php if (isset($record_set)) { ?>
-                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                        <?php if ($record["status"] == 2) { ?>
+                        <?php if (isset($onload_trucks)) { ?>
+                        <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
+                        <?php if ($record["truck_load_status"] == 2) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities($record["b_name"]); ?></p>
+                            <p><?php echo htmlentities($record["d_name"]); ?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
@@ -61,11 +61,11 @@
                 <div class="kanban-column" id="unavailable">
                     <h3>Unavailable</h3>
                     <div class="kanban-items">
-                        <?php if (isset($record_set)) { ?>
-                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                        <?php if ($record["status"] == 3) { ?>
+                        <?php if (isset($unavailable_trucks)) { ?>
+                        <?php while($record = mysqli_fetch_assoc($unavailable_trucks)) { ?>
+                        <?php if ($record["truck_load_status"] == 3) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities($record["b_name"]); ?></p>
+                            <p><?php echo htmlentities($record["d_name"]); ?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
