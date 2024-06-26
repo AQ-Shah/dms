@@ -83,7 +83,7 @@
 			$query  = "
 				SELECT * 
 				FROM trucks_info 
-				WHERE truck_load_status = 3
+				WHERE truck_load_status = 2
 				AND company_id = '{$safe_company_id}' 
 				LIMIT 100
 			";
