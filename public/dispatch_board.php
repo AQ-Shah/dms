@@ -1,12 +1,11 @@
 <?php 
     require_once("../includes/public_require.php"); 
     $current_page = "dispatch_board";
-	include("../includes/layouts/public_header.php"); 
+    include("../includes/layouts/public_header.php"); 
     include("../includes/data/trucks_by_company_data_fetch.php"); 
 ?>
 
 <div class="container">
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -15,7 +14,6 @@
             </div>
         </div>
     </div>
-
     <div class="row card">
         <div class="col-12">
             <div class="row py-3">
@@ -23,8 +21,7 @@
                     <label>Dispatch Board</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
-                    <input class="form-control" id="kanbanSearch" onkeyup="kanban_search(event)" type="text"
-                        placeholder="Search..">
+                    <input class="form-control" id="kanbanSearch" onkeyup="kanban_search(event)" type="text" placeholder="Search..">
                 </div>
             </div>
             <div class="kanban-board">
@@ -33,7 +30,7 @@
                     <div class="kanban-items">
                         <?php if (isset($available_trucks) && mysqli_num_rows($available_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
+                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -50,13 +47,12 @@
                         <?php }  ?>
                     </div>
                 </div>
-
                 <div class="kanban-column" id="dispatched">
                     <h3>Dispatched</h3>
                     <div class="kanban-items">
                         <?php if (isset($onload_trucks) && mysqli_num_rows($onload_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
+                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -73,13 +69,12 @@
                         <?php } ?>
                     </div>
                 </div>
-
                 <div class="kanban-column" id="unavailable">
                     <h3>Unavailable</h3>
                     <div class="kanban-items">
                         <?php if (isset($unavailable_trucks) && mysqli_num_rows($unavailable_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($unavailable_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
+                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -99,50 +94,84 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<div id="truck-dispatch-popup" class="popup">
+    <form id="truck-dispatch-popup-form" class="popup-form" action="" method="post">
+        <div class="row popup-content-wide">
+            <div class="col-12 panel-content-secondary">
+                <h2>Dispatch Truck</h2>
+            </div>
+            <div class="col-6">
+                <label for="rate">Rate:</label>
+                <input type="number" id="rate" name="rate">
+            </div>
+            <div class="col-6">
+                <label for="location">Dispatching From:</label>
+                <input type="text" id="current_location" name="current_location" placeholder="if not from current location">
+            </div>
+            <div class="col-6">
+                <label for="location">Dispatching To:</label>
+                <input type="text" id="dispatch_location" name="dispatch_location">
+            </div>
+            <div class="col-6">
+                <label for="datetime">Estimated Pickup Time:</label>
+                <input type="datetime-local" id="pickup_datetime" name="pickup_datetime">
+            </div>
+            <div class="col-6">
+                <label for="datetime">Estimated Delivery Time:</label>
+                <input type="datetime-local" id="delivery_datetime" name="delivery_datetime">
+            </div>
+            <input type="hidden" id="carrier-id" name="carrier-id" value="">
+            <input type="hidden" id="truck-id" name="truck-id" value="">
+            <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+            <div class="col-6">
+                <button type="button" class="background:red" onclick="hideTruckDispatchPopup()">Cancel</button>
+            </div>
+            <div class="col-6">
+                <button type="submit" name="submit" onclick="hideTruckDispatchPopup()">Dispatch</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 <script>
-    document.querySelectorAll('.kanban-item').forEach(item => {
-        item.addEventListener('dragstart', dragStart);
-    });
+document.querySelectorAll('.kanban-item').forEach(item => {
+    item.addEventListener('dragstart', dragStart);
+});
 
-    document.querySelectorAll('.kanban-column').forEach(column => {
-        column.addEventListener('dragover', dragOver);
-        column.addEventListener('drop', drop);
-    });
+document.querySelectorAll('.kanban-column').forEach(column => {
+    column.addEventListener('dragover', dragOver);
+    column.addEventListener('drop', drop);
+});
 
-    function dragStart(e) {
-        e.dataTransfer.setData('id', e.target.dataset.id);
-        e.dataTransfer.setData('carrier-id', e.target.dataset.carrierId);
-        e.dataTransfer.setData('truck-id', e.target.dataset.carrierTruckId);
+function dragStart(e) {
+    e.dataTransfer.setData('text/plain', e.target.dataset.id);
+    e.dataTransfer.setData('carrier-id', e.target.dataset.carrierId);
+}
+
+function dragOver(e) {
+    e.preventDefault();
+}
+
+function drop(e) {
+    e.preventDefault();
+    const truckId = e.dataTransfer.getData('text/plain');
+    const carrierId = e.dataTransfer.getData('carrier-id');
+    const draggable = document.querySelector(`[data-id='${truckId}']`);
+    const dropzone = e.target.closest('.kanban-column');
+    const dropzoneId = dropzone.id;
+
+    // Perform the drop action
+    dropzone.querySelector('.kanban-items').appendChild(draggable);
+
+    // Handle popup based on dropzoneId
+    if (dropzoneId === 'dispatched') {
+        showTruckDispatchPopup(carrierId, truckId); // Function to show dispatch popup
+    } else if (dropzoneId === 'unavailable') {
+        showStatusPopup(carrierId); // Function to show status change popup
     }
-
-    function dragOver(e) {
-        e.preventDefault();
-    }
-
-    function drop(e) {
-        e.preventDefault();
-        const truckId = e.dataTransfer.getData('id');
-        const carrierId = e.dataTransfer.getData('carrier-id');
-        const carrierTruckId = e.dataTransfer.getData('truck-id');
-        const draggable = document.querySelector(`[data-id='${truckId}']`);
-        const dropzone = e.target.closest('.kanban-column');
-        const dropzoneId = dropzone.id;
-
-        // Perform the drop action
-        dropzone.querySelector('.kanban-items').appendChild(draggable);
-
-        // Handle popup based on dropzoneId
-        if (dropzoneId === 'dispatched') {
-            showTruckDispatchPopup(carrierId, id); // Function to show dispatch popup
-        } else if (dropzoneId === 'unavailable') {
-            showStatusPopup(carrierId); // Function to show status change popup
-        }
-    }
-
+}
     function kanban_search(event) {
         let input = document.getElementById("kanbanSearch");
         let filter = input.value.toUpperCase();
@@ -180,7 +209,6 @@
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
     include("../includes/views/carrier_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
-    include("../includes/views/carrier_dispatch_popup.php"); 
     include("../includes/views/truck_dispatch_popup.php"); 
     include("../includes/pagination/table_script.php"); 
     include("../includes/layouts/public_footer.php"); 
