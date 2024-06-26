@@ -47,9 +47,7 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                        <?php } else { ?>
-                            <p>No available trucks found.</p>
-                        <?php } ?>
+                        <?php }  ?>
                     </div>
                 </div>
 
@@ -72,8 +70,6 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                        <?php } else { ?>
-                            <p>No dispatched trucks found.</p>
                         <?php } ?>
                     </div>
                 </div>
@@ -97,8 +93,6 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                        <?php } else { ?>
-                            <p>No unavailable trucks found.</p>
                         <?php } ?>
                     </div>
                 </div>
