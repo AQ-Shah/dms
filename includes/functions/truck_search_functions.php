@@ -63,15 +63,14 @@
 		
 		function find_available_trucks_by_company(){
 			global $connection;
-			$safe_id = mysqli_real_escape_string($connection, $id);
+			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
 				FROM trucks_info 
 				WHERE truck_load_status = 1
-				AND company_id =  {$user['company_id']} 
+				AND company_id = '{$safe_company_id}' 
 				LIMIT 100
 			";
-			echo $query;
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
 			
@@ -80,12 +79,12 @@
 			
 		function find_onload_trucks_by_company(){
 			global $connection;
-			$safe_id = mysqli_real_escape_string($connection, $id);
+			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
 				FROM trucks_info 
 				WHERE truck_load_status = 3
-				AND company_id =  {$user['company_id']} 
+				AND company_id = '{$safe_company_id}' 
 				LIMIT 100
 			";
 			$data_set = mysqli_query($connection, $query);
@@ -95,12 +94,12 @@
 					
 		function find_unavailable_trucks_by_company(){
 			global $connection;
-			$safe_id = mysqli_real_escape_string($connection, $id);
+			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
 				FROM trucks_info 
 				WHERE truck_load_status = 3
-				AND company_id =  {$user['company_id']} 
+				AND company_id = '{$safe_company_id}' 
 				LIMIT 100
 			";
 			$data_set = mysqli_query($connection, $query);
@@ -111,11 +110,12 @@
 		function find_trucks_by_carrier_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
+			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
 				FROM trucks_info 
 				WHERE carrier_id = '{$safe_id}' 
-				AND company_id =  {$user['company_id']} 
+				AND company_id = '{$safe_company_id}' 
 				LIMIT 100
 			";
 			$data_set = mysqli_query($connection, $query);
@@ -127,11 +127,12 @@
 		function find_truck_by_id($id){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
+			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
 				FROM trucks_info 
 				WHERE id = '{$safe_id}'
-				AND company_id =  {$user['company_id']} 
+				AND company_id = '{$safe_company_id}' 
 				LIMIT 1 
 			";
 			$data_set = mysqli_query($connection, $query);
