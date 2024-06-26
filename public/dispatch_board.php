@@ -33,7 +33,7 @@
                     <div class="kanban-items">
                         <?php if (isset($available_trucks) && mysqli_num_rows($available_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
+                                <div class="kanban-item" draggable="true" data-truck-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -56,7 +56,7 @@
                     <div class="kanban-items">
                         <?php if (isset($onload_trucks) && mysqli_num_rows($onload_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
+                                <div class="kanban-item" draggable="true" data-truck-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -79,7 +79,7 @@
                     <div class="kanban-items">
                         <?php if (isset($unavailable_trucks) && mysqli_num_rows($unavailable_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($unavailable_trucks)) { ?>
-                                <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
+                                <div class="kanban-item" draggable="true" data-truck-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>">
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
@@ -114,7 +114,8 @@
     });
 
     function dragStart(e) {
-        e.dataTransfer.setData('text/plain', e.target.dataset.id);
+        e.dataTransfer.setData('text/plain', e.target.dataset.truckId);
+        e.dataTransfer.setData('carrier-id', e.target.dataset.carrierId);
     }
 
     function dragOver(e) {
@@ -123,8 +124,9 @@
 
     function drop(e) {
         e.preventDefault();
-        const id = e.dataTransfer.getData('text/plain');
-        const draggable = document.querySelector(`[data-id='${id}']`);
+        const truckId = e.dataTransfer.getData('text/plain');
+        const carrierId = e.dataTransfer.getData('carrier-id');
+        const draggable = document.querySelector(`[data-truck-id='${truckId}']`);
         const dropzone = e.target.closest('.kanban-column');
         const dropzoneId = dropzone.id;
 
@@ -133,9 +135,9 @@
 
         // Handle popup based on dropzoneId
         if (dropzoneId === 'dispatched') {
-            showDispatchPopup(id); // Function to show dispatch popup
+            showTruckDispatchPopup(carrierId, truckId); // Function to show dispatch popup
         } else if (dropzoneId === 'unavailable') {
-            showStatusPopup(id); // Function to show status change popup
+            showStatusPopup(carrierId); // Function to show status change popup
         }
     }
 
@@ -162,6 +164,10 @@
             info.style.display = 'none';
         }
     }
+
+   
+
+
 </script>
 
 
