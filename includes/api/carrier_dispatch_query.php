@@ -21,7 +21,7 @@
     if (isset($_POST['truck-id'])) {$truck_id = mysql_prep($_POST["truck-id"]);} 
  
     $carrier = find_carrier_form_by_id($id);
-    $truck = find_trucks_by_carrier_id($id);
+    $truck = find_truck_by_id($truck_id);
     if (!$carrier || ($truck["carrier_id"] != $carrier["id"])){
         $_SESSION["message"] = "Data doesnt match";
         header("Location: " . $prev_url);
