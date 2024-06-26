@@ -52,7 +52,7 @@
                         <?php if ($record["truck_load_status"] == 2) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
                             <p><?php 
-                                $carrier = find_carrier_form_by_id($record["carrier_id"])); 
+                                $carrier = find_carrier_form_by_id($record["carrier_id"]); 
                                 echo htmlentities(['b_name']).' '.htmlentities($record["d_name"])?></p>
                         </div>
                         <?php } ?>
