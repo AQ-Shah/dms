@@ -1,7 +1,7 @@
 <?php 
 
 		function no_of_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
@@ -14,7 +14,7 @@
 
 
         function no_of_trucks_by_carrier($id){
-			global $connection;
+			global $connection, $user;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "SELECT COUNT('id') ";
@@ -28,7 +28,7 @@
 			}
 
 		function no_of_onload_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM trucks_info ";
 			$query .= "WHERE truck_load_status = 2 ";
@@ -39,7 +39,7 @@
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_available_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM trucks_info ";
 			$query .= "WHERE truck_load_status = 1 ";
@@ -50,7 +50,7 @@
 			return max(mysqli_fetch_assoc($set));}
 		
 		function no_of_unavailable_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM trucks_info ";
 			$query .= "WHERE truck_load_status = 3 ";
@@ -62,7 +62,7 @@
 		
 		
 		function find_available_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
@@ -71,7 +71,6 @@
 				AND company_id = '{$safe_company_id}' 
 				LIMIT 100
 			";
-			echo $query;
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
 			
@@ -79,7 +78,7 @@
 
 			
 		function find_onload_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
@@ -94,7 +93,7 @@
 				return $data_set;}
 					
 		function find_unavailable_trucks_by_company(){
-			global $connection;
+			global $connection, $user;
 			$safe_company_id = $user["company_id"]; 
 			$query  = "
 				SELECT * 
@@ -109,7 +108,7 @@
 				return $data_set;}
 						
 		function find_trucks_by_carrier_id($id){
-			global $connection;
+			global $connection, $user;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$safe_company_id = $user["company_id"]; 
 			$query  = "
@@ -126,7 +125,7 @@
 			}
 
 		function find_truck_by_id($id){
-			global $connection;
+			global $connection, $user;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$safe_company_id = $user["company_id"]; 
 			$query  = "
