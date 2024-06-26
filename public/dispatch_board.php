@@ -2,7 +2,7 @@
     require_once("../includes/public_require.php"); 
     $current_page = "dispatch_board";
 	include("../includes/layouts/public_header.php"); 
-    include("../includes/pagination/trucks_by_company_data_fetch.php"); 
+    include("../includes/data/trucks_by_company_data_fetch.php"); 
 ?>
 
 <div class="container">
