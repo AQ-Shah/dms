@@ -77,7 +77,7 @@
 				return $data_set;}
 
 			
-		function find_unavailable_trucks_by_company(){
+		function find_onload_trucks_by_company(){
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 			$query  = "
