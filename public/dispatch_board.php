@@ -51,7 +51,9 @@
                         <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
                         <?php if ($record["truck_load_status"] == 2) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities(find_carrier_form_by_id($record["carrier_id"])); ?></p>
+                            <p><?php 
+                                $carrier = find_carrier_form_by_id($record["carrier_id"])); 
+                                echo htmlentities(['b_name']).' '.htmlentities($record["d_name"])?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
