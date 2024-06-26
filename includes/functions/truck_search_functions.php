@@ -68,7 +68,7 @@
 				SELECT * 
 				FROM trucks_info 
 				WHERE truck_load_status = 1
-				AND company_id =  '{$user['company_id']}' 
+				AND company_id =  {$user['company_id']} 
 				LIMIT 100
 			";
 			echo $query;
@@ -85,7 +85,7 @@
 				SELECT * 
 				FROM trucks_info 
 				WHERE truck_load_status = 3
-				AND company_id =  '{$user['company_id']}'
+				AND company_id =  {$user['company_id']} 
 				LIMIT 100
 			";
 			$data_set = mysqli_query($connection, $query);
@@ -100,7 +100,7 @@
 				SELECT * 
 				FROM trucks_info 
 				WHERE truck_load_status = 3
-				AND company_id =  '{$user['company_id']}'
+				AND company_id =  {$user['company_id']} 
 				LIMIT 100
 			";
 			$data_set = mysqli_query($connection, $query);
@@ -115,7 +115,7 @@
 				SELECT * 
 				FROM trucks_info 
 				WHERE carrier_id = '{$safe_id}' 
-				AND company_id =  '{$user['company_id']}'
+				AND company_id =  {$user['company_id']} 
 				LIMIT 100
 			";
 			$data_set = mysqli_query($connection, $query);
@@ -131,7 +131,7 @@
 				SELECT * 
 				FROM trucks_info 
 				WHERE id = '{$safe_id}'
-				AND company_id =  '{$user['company_id']}' 
+				AND company_id =  {$user['company_id']} 
 				LIMIT 1 
 			";
 			$data_set = mysqli_query($connection, $query);
