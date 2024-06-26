@@ -70,5 +70,5 @@ document.getElementById('truck-dispatch-popup-form').addEventListener('submit', 
     console.log("Form Submitted");
     console.log("Carrier ID (in form): " + document.getElementById('carrier-id').value);
     console.log("Truck ID (in form): " + document.getElementById('truck-id').value);
-
+}
 </script>
