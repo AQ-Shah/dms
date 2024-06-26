@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="kanban-board">
-                <div class="kanban-column" id="available">
+                <div class="kanban-column card" id="available">
                     <h3>Available</h3>
                     <div class="kanban-items">
                         <?php if (isset($record_set)) { ?>
@@ -48,7 +48,7 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="kanban-column" id="dispatched">
+                <div class="kanban-column card" id="dispatched">
                     <h3>Dispatched</h3>
                     <div class="kanban-items">
                         <?php if (isset($record_set)) { ?>
@@ -62,7 +62,7 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="kanban-column" id="unavailable">
+                <div class="kanban-column card" id="unavailable">
                     <h3>Unavailable</h3>
                     <div class="kanban-items">
                         <?php if (isset($record_set)) { ?>
