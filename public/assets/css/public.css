@@ -221,6 +221,24 @@ table th {
     color: var(--ct-body-color);
 }
 
+/* Dispatch board */
+
+.kanban-board {
+    display: flex;
+    justify-content: space-between;
+}
+
+.kanban-column {
+    width: 32%; /* Adjust the width as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.kanban-items {
+    min-height: 100px;
+}
 
 /* Buttons  */
 

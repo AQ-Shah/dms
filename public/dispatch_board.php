@@ -33,7 +33,6 @@
                         placeholder="Search..">
                 </div>
             </div>
-
             <div class="kanban-board">
                 <div class="kanban-column" id="available">
                     <h3>Available</h3>
@@ -78,6 +77,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 
