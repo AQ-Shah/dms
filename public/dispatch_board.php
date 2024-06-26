@@ -2,7 +2,7 @@
     require_once("../includes/public_require.php"); 
     $current_page = "dispatch_board";
 	include("../includes/layouts/public_header.php"); 
-    include("../includes/pagination/carriers_by_company_data_fetch.php"); 
+    include("../includes/pagination/trucks_by_company_data_fetch.php"); 
 ?>
 
 <div class="container">
@@ -11,22 +11,18 @@
         <div class="col-12">
             <div class="page-title-box">
                 <?php echo message(); ?>
-                <h2>Carriers</h2>
+                <h2>Dispatch Board</h2>
             </div>
         </div>
     </div>
 
-    <div class="row card">
-        <?php include("../includes/views/dispatch_stats_1.php"); ?>
-        <?php if (check_access("stats_box_dispatch_team_1")){ include("../includes/views/stats_box_dispatch_team_1.php"); } ?>
-        <?php if (check_access("stats_box_sales_team_1")){ include("../includes/views/stats_box_sales_team_1.php"); } ?>
-    </div>
+
 
     <div class="row card">
         <div class="col-12">
             <div class="row py-3">
                 <div class="col-3 simple-panel">
-                    <label>List of Carriers</label>
+                    <label>Dispatch Board</label>
                 </div>
                 <div class="col-6 simple-panel" style="background-color:transparent">
                     <input class="form-control" id="kanbanSearch" onkeyup="kanban_search(event)" type="text"
@@ -34,42 +30,42 @@
                 </div>
             </div>
             <div class="kanban-board">
-                <div class="kanban-column card" id="available">
+                <div class="kanban-column" id="available">
                     <h3>Available</h3>
                     <div class="kanban-items">
-                        <?php if (isset($record_set)) { ?>
-                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                        <?php if ($record["status"] == 1) { ?>
+                        <?php if (isset($available_trucks)) { ?>
+                        <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
+                        <?php if ($record["truck_load_status"] == 1) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities($record["b_name"]); ?></p>
+                            <p><?php echo htmlentities($record["d_name"]); ?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
                         <?php } ?>
                     </div>
                 </div>
-                <div class="kanban-column card" id="dispatched">
+                <div class="kanban-column" id="dispatched">
                     <h3>Dispatched</h3>
                     <div class="kanban-items">
-                        <?php if (isset($record_set)) { ?>
-                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                        <?php if ($record["status"] == 2) { ?>
+                        <?php if (isset($onload_trucks)) { ?>
+                        <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
+                        <?php if ($record["truck_load_status"] == 2) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities($record["b_name"]); ?></p>
+                            <p><?php echo htmlentities($record["d_name"]); ?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
                         <?php } ?>
                     </div>
                 </div>
-                <div class="kanban-column card" id="unavailable">
+                <div class="kanban-column" id="unavailable">
                     <h3>Unavailable</h3>
                     <div class="kanban-items">
-                        <?php if (isset($record_set)) { ?>
-                        <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
-                        <?php if ($record["status"] == 3) { ?>
+                        <?php if (isset($unavailable_trucks)) { ?>
+                        <?php while($record = mysqli_fetch_assoc($unavailable_trucks)) { ?>
+                        <?php if ($record["truck_load_status"] == 3) { ?>
                         <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>">
-                            <p><?php echo htmlentities($record["b_name"]); ?></p>
+                            <p><?php echo htmlentities($record["d_name"]); ?></p>
                         </div>
                         <?php } ?>
                         <?php } ?>
