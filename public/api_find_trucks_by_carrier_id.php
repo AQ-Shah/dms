@@ -13,6 +13,7 @@ function find_trucks($id) {
         SELECT *
         FROM trucks_info
         WHERE carrier_id = '{$safe_id}'
+        AND company_id = '{$user['company_id']}'
     ";
 
     $data_set = mysqli_query($connection, $query);
