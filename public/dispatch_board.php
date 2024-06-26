@@ -137,7 +137,7 @@
 
         // Handle popup based on dropzoneId
         if (dropzoneId === 'dispatched') {
-            showTruckDispatchPopup(carrierId, carrierTruckId); // Function to show dispatch popup
+            showTruckDispatchPopup(carrierId, truckId); // Function to show dispatch popup
         } else if (dropzoneId === 'unavailable') {
             showStatusPopup(carrierId); // Function to show status change popup
         }
