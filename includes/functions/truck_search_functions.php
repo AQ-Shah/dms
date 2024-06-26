@@ -71,6 +71,7 @@
 				AND company_id =  '{$user['company_id']}' 
 				LIMIT 100
 			";
+			echo $query;
 			$data_set = mysqli_query($connection, $query);
 			confirm_query($data_set);
 			
