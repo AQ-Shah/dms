@@ -13,7 +13,6 @@ function find_trucks($id) {
         SELECT *
         FROM trucks_info
         WHERE carrier_id = '{$safe_id}'
-        AND company_id = '{$user['company_id']}'
     ";
 
     $data_set = mysqli_query($connection, $query);
@@ -30,8 +29,10 @@ function find_trucks($id) {
 }
 
 $id = $_GET['id'];
-$trucks = find_trucks($id);
+if (find_carrier_form_by_id($id)) {
+    $trucks = find_trucks($id);
+    echo $trucks;
+}
 
-echo $trucks;
 
 ?>
