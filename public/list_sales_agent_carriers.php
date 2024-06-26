@@ -69,7 +69,8 @@
                                 <td><?php echo no_of_trucks_by_carrier($record["id"]); ?></td>
                                 <td><?php echo htmlentities($record["o_name"]); ?> </td>
                                 <td><?php echo htmlentities($record["b_number"]); ?> </td>
-                                <td><?php echo htmlentities($record["sale_active"]); ?> </td>
+                                <td><?php echo ($record["sale_active"]) ? '<span style="color: green;">'.htmlentities(date("M-d-Y", strtotime($record["sale_activation_date"]))).'</span>' : '<span style="color: red;">Inactive</span>'; ?>
+                                </td>
                                 <?php if($record["status"] == 'unavailable') { ?>
                                 <td style="color: red;">Unavailable</td>
                                 <?php } else { ?>

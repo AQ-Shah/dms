@@ -23,17 +23,6 @@
                     <input type="text" class="form-control" name="phone_num"
                         value="<?php echo htmlentities($user["phone_num"]); ?>">
                 </div>
-                <div class="form-group">
-                    <label>E-Mail:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" class="form-control" name="email"
-                        value="<?php echo htmlentities($user["email"]); ?>">
-                </div>
-                <!--
-						<div class="form-group">
-								<label>About Me:</label>
-								<textarea class="form-control" name="about_me" rows="6" cols="30"><?php echo htmlentities($user["about_me"]);?></textarea>
-						</div>-->
-
                 <input class="btn btn-default" type="submit" name="submit" value="Save" />
             </form>
         </div>
