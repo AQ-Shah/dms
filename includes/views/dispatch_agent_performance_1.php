@@ -1,6 +1,6 @@
    <?php 
     if (isset ($_GET['id'])){
-            $userData = find_user_by_id($_GET['id']);
+            $userData = find_user_by_id(decrypt_id($_GET['id']));
             if (!$userData){
                 $_SESSION["message"] = "User not found";
                 redirect_to("home");

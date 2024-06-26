@@ -97,7 +97,7 @@
     }
 
     function is_executive($role_id){
-        if ($role_id == '1') return true;
+        if ($role_id === '1') return true;
         return false;
     }
     
