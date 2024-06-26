@@ -52,6 +52,8 @@
             if ($current_page === 'show_carrier') return true;
             if ($current_page === 'stats_box_dispatch_team_1') return true;
             if ($current_page === 'dispatch_agent_performance_1') return true;
+            if ($current_page === 'dispatch_board') return true;
+
             
             }
 
