@@ -52,7 +52,7 @@ function showTruckDispatchPopup(carrierId, carrierTruckId) {
     var formAction = "dispatch_carrier?id=" + carrierId;
 
     // set the form action to the constructed URL
-    document.querySelector(".truck-dispatch-popup-form").action = formAction;
+    // document.querySelector(".truck-dispatch-popup-form").action = formAction;
     // Show the popup
     var popup = document.getElementById("truck-dispatch-popup");
     popup.style.display = "flex";
