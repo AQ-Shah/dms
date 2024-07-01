@@ -225,7 +225,9 @@
 			FROM invoices
 			WHERE invoice_status = 3
             AND company_id = '{$user['company_id']}'
-			AND MONTH(creation_date) = MONTH(NOW())";
+			AND MONTH(creation_date) = MONTH(NOW())
+            AND YEAR(creation_date) = YEAR(NOW())
+            ";
 
 			$result = mysqli_query($connection, $query);
 			confirm_query($result);
@@ -242,7 +244,9 @@
 			FROM invoices
 			WHERE invoice_status = 2
             AND company_id = '{$user['company_id']}'
-			AND MONTH(creation_date) = MONTH(NOW())";
+			AND MONTH(creation_date) = MONTH(NOW())
+            AND YEAR(creation_date) = YEAR(NOW())
+            ";
 
 			$result = mysqli_query($connection, $query);
 			confirm_query($result);
