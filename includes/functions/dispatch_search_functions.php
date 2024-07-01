@@ -102,7 +102,9 @@
 			$query .= "FROM dispatch_list ";
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m");
+			$query .= 'AND YEAR(dispatch_time) = '.date("y");
 			$query .= " AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -116,6 +118,8 @@
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
 			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m") ;
+			$query .= 'AND YEAR(dispatch_time) = '.date("y");
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -129,6 +133,8 @@
 			$query .= "WHERE dispatcher_id = '{$safe_id}' ";
 			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= 'AND MONTH(dispatch_time) = '.date("m") ;
+			$query .= 'AND YEAR(dispatch_time) = '.date("y");
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -141,6 +147,7 @@
 			$query .= "WHERE (status = 'Dispatched' OR status = 'Completed')  ";
 			$query .= " AND company_id = '{$user['company_id']}' ";
 			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
+			$query .= 'AND YEAR(dispatch_time) = '.date("y");
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -155,6 +162,8 @@
 			$query .= "WHERE dispatch_team_id = '{$safe_id}' ";
 			$query .= "AND (status = 'Dispatched' OR status = 'Completed') ";
 			$query .= 'AND MONTH(dispatch_time) = '.(date("m")-1);
+			$query .= 'AND YEAR(dispatch_time) = '.date("y");
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			$result = mysqli_fetch_array($set)[0];
