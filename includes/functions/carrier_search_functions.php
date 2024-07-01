@@ -424,14 +424,21 @@
 		function no_of_carrier_this_month(){
 			global $connection, $user;
 
-			$query  = "SELECT COUNT('id') ";
+			// Build the query string
+			$query  = "SELECT COUNT(id) AS count "; 
 			$query .= "FROM carrier_form ";
-			$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
-			$query .= "AND company_id = '{$user['company_id']}' ";
-
+			$query .= "WHERE MONTH(creation_time) = " . date("m") . " ";
+			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
+			$query .= "AND company_id = '{$user['company_id']}'";
+			
+			// Execute the query
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+			
+			// Fetch the result
+			$result = mysqli_fetch_assoc($set);
+			return $result['count']; // Return the count value
+			}
 
 		function no_of_carrier_this_month_by_team($id){
 				global $connection;
@@ -440,6 +447,7 @@
 				$query  = "SELECT COUNT('id') ";
 				$query .= "FROM carrier_form ";
 				$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
+				$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 				$query .= " AND sales_team_id = '{$safe_id}' ";
 
 				$set = mysqli_query($connection, $query);
@@ -479,6 +487,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE creator_id = '{$safe_id}' ";
 			$query .= 'AND MONTH(creation_time) = '.date("m");
+			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -489,6 +498,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM carrier_form ";
 			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1).' ';
+			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -503,6 +513,7 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM carrier_form ";
 			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
+			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 			$query .= " AND sales_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);

@@ -11,7 +11,7 @@
             </div>
             <div class="col-6">
                 <label for="rate">Loaded Miles:</label>
-                <input type="number" id="miles" name="miles">
+                <input type="number" id="miles" name="miles" placeholder="optional">
             </div>
             <div class="col-6">
                 <label for="current_location">Dispatching From:</label>
