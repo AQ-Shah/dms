@@ -436,9 +436,7 @@
 			confirm_query($set);
 			
 			// Fetch the result
-			$result = mysqli_fetch_assoc($set);
-			return $result['count']; // Return the count value
-			}
+			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_this_month_by_team($id){
 				global $connection;
