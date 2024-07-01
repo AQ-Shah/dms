@@ -427,6 +427,7 @@
 			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
 			$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
+			$query .= "AND YEAR(creation_time) = '.date("y").' ';
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
