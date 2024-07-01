@@ -424,18 +424,13 @@
 		function no_of_carrier_this_month(){
 			global $connection, $user;
 
-			// Build the query string
-			$query  = "SELECT COUNT(id) AS count "; 
+			$query  = "SELECT COUNT('id') ";
 			$query .= "FROM carrier_form ";
-			$query .= "WHERE MONTH(creation_time) = " . date("m") . " ";
-			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
-			$query .= "AND company_id = '{$user['company_id']}'";
-			
-			// Execute the query
+			$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
+			$query .= "AND company_id = '{$user['company_id']}' ";
+
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			
-			// Fetch the result
 			return max(mysqli_fetch_assoc($set));}
 
 		function no_of_carrier_this_month_by_team($id){
@@ -445,7 +440,6 @@
 				$query  = "SELECT COUNT('id') ";
 				$query .= "FROM carrier_form ";
 				$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
-				$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 				$query .= " AND sales_team_id = '{$safe_id}' ";
 
 				$set = mysqli_query($connection, $query);
@@ -485,7 +479,6 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE creator_id = '{$safe_id}' ";
 			$query .= 'AND MONTH(creation_time) = '.date("m");
-			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
@@ -496,7 +489,6 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM carrier_form ";
 			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1).' ';
-			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 			$query .= "AND company_id = '{$user['company_id']}' ";
 
 			$set = mysqli_query($connection, $query);
@@ -511,7 +503,6 @@
 			$query  = "SELECT COUNT(id) ";
 			$query .= "FROM carrier_form ";
 			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
-			$query .= "AND YEAR(creation_time) = " . date("Y") . " ";
 			$query .= " AND sales_team_id = '{$safe_id}' ";
 
 			$set = mysqli_query($connection, $query);
