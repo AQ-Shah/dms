@@ -16,7 +16,7 @@
             <div class="col-12 col-lg-6 panel-content-secondary">
             <div class="col-12 col-lg-6">Truck Type * :</div>
                 <div class="col-6">
-                    <select name="truck_type" class="form-control w-100" required>
+                    <select name="truck_type_edit" class="form-control w-100" required>
                         <option value="">Select truck type</option>
                         <option value="Sprinter Van"
                             <?php if (isset($truck_type) && $truck_type == "Sprinter Van") echo 'selected'; ?>>Sprinter Van
@@ -133,6 +133,24 @@ function showEditTruckPopup(truckId) {
     document.getElementById("trucks-carrier-id").value = truckId;
 
     var formAction = "carrier_truck_edit";
+
+    var apiRqForTruckbyID = new XMLHttpRequest();
+    apiRqForTruckbyID.open("GET", "api_find_truck_by_id.php?id=" + truckId);
+    apiRqForTruckbyID.onload = function() {
+        // Get the results of the AJAX request
+        var truck_info = JSON.parse(apiRqForTruckbyID.responseText);
+
+        // Populate the select element with the list of truck_info
+        var select = document.getElementById("truck-id");
+        select.innerHTML = "";
+        for (var i = 0; i < truck_info.length; i++) {
+            var option = document.createElement("option");
+            option.value = truck_info[i].id;
+            option.text = truck_info[i].d_name;
+            select.appendChild(option);
+        }
+    };
+    apiRqForTruckbyID.send();
 
     // set the form action to the constructed URL
     document.querySelector(".carrier-truck-edit-popup-form").action = formAction;
