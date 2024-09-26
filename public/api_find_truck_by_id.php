@@ -4,13 +4,11 @@
 	
     confirm_access($current_page);
 
-function json_truck_by_id($id) {
+function json_truck_by_id($id, $user) {
     global $connection;
 
     $safe_id = mysqli_real_escape_string($connection, $id);
-    $user_id = find_user_id();
-    $the_current_user = find_user_by_id($user_id)
-    $safe_company_id = $the_current_user["company_id"]; 
+    $safe_company_id = $user["company_id"]; 
 
     $query = "
         SELECT *
@@ -34,7 +32,7 @@ function json_truck_by_id($id) {
 
 $id = $_GET['id'];
 if (find_truck_by_id($id)) {
-    $trucks_info = json_truck_by_id($id);
+    $trucks_info = json_truck_by_id($id, $user);
     echo $trucks_info;
 }
 
