@@ -13,7 +13,7 @@
                     onclick="window.open('carrier_update?id=' + document.getElementById('carrier-id').value, '_blank')">Edit Info</button>
             </div>
             <div class="col-6">
-            <button type="button" onclick="showEditTruckPopup(document.getElementById('carrier-id').value)">Edit
+            <button type="button" onclick="showEditTruckViewPopup(document.getElementById('carrier-id').value)">Edit
             Truck</button>
             </div>
             <?php } ?>

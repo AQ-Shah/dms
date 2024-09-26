@@ -14,11 +14,11 @@
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 
             <div class="col-6">
-                <button type="button" class="background:red" onclick="hideTruckEditPopup()">Cancel</button>
+                <button type="button" class="background:red" onclick="hideTruckEditViewPopup()">Cancel</button>
             </div>
 
             <div class="col-6">
-                <button type="submit" name="submit" onclick="hideTruckEditPopup()">Edit</button>
+                <button type="submit" name="submit" onclick="hideTruckEditViewPopup()">Edit</button>
             </div>
         </div>
     </form>
@@ -27,11 +27,11 @@
 <script>
 //for dispatch popup
 
-function showEditTruckPopup(carrierId) {
+function showEditTruckViewPopup(carrierId) {
     // Populate the form fields with default values
     document.getElementById("carrier-id").value = carrierId;
 
-    var formAction = "truck_edit";
+    var formAction = "update_carrier_truck";
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "api_find_trucks_by_carrier_id.php?id=" + carrierId);
@@ -58,7 +58,7 @@ function showEditTruckPopup(carrierId) {
     popup.style.display = "flex";
 }
 
-function hideTruckEditPopup() {
+function hideTruckEditViewPopup() {
     var popup = document.getElementById("truck-edit-popup");
     popup.style.display = "none";
 }
