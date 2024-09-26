@@ -1,7 +1,7 @@
 <div id="carrier-truck-edit-popup" class="popup">
     <form class="carrier-truck-edit-popup-form popup-form" action="" method="post">
         <div class="row popup-content-wide">
-            <label>Edit Truck & Driver Info:</label>
+            <label>Truck & Driver Info:</label>
 
             <div class="col-12 panel-content-secondary">
                 <div class="col-6"> <label>Driver Name *</label><input type="text" class="form-control w-100"
@@ -139,7 +139,6 @@ function showEditTruckPopup(truckId) {
     // Show the popup
     var popup = document.getElementById("carrier-truck-edit-popup");
     popup.style.display = "flex";
-
 }
 
 function hideEditTruckPopup() {
