@@ -34,11 +34,11 @@ function showEditTruckViewPopup(carrierId) {
 
     var formAction = "update_carrier_truck";
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "api_find_trucks_by_carrier_id.php?id=" + carrierId);
-    xhr.onload = function() {
+    var apiRqforEditTruck = new XMLHttpRequest();
+    apiRqforEditTruck.open("GET", "api_find_trucks_by_carrier_id.php?id=" + carrierId);
+    apiRqforEditTruck.onload = function() {
         // Get the results of the AJAX request
-        var trucks = JSON.parse(xhr.responseText);
+        var trucks = JSON.parse(apiRqforEditTruck.responseText);
 
         // Populate the select element with the list of trucks
         var select = document.getElementById("truck-id");
@@ -50,7 +50,7 @@ function showEditTruckViewPopup(carrierId) {
             select.appendChild(option);
         }
     };
-    xhr.send();
+    apiRqforEditTruck.send();
 
     // set the form action to the constructed URL
     document.querySelector(".truck-edit-popup-form").action = formAction;
