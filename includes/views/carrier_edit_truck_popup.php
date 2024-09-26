@@ -4,8 +4,8 @@
             <label>Truck & Driver Info:</label>
 
             <div class="col-12 panel-content-secondary">
-                <div class="col-6"> <label>Driver Name *</label><input type="text" class="form-control w-100"
-                        name="t_d_name_edit" >
+                <div class="col-6"> <label>Driver Name *</label>
+                    <input type="text" class="form-control w-100" id="t_d_name_edit" name="t_d_name_edit" value="">
                 </div>
                 <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
                         value="<?php if (isset($d_number)){echo $d_number;}  ?>">
