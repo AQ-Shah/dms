@@ -16,7 +16,7 @@ function json_truck_by_id($id) {
         WHERE id = '{$safe_id}'
         AND company_id = '{$safe_company_id}' 
     ";
-
+    echo $query;
     $data_set = mysqli_query($connection, $query);
     confirm_query($data_set, "find_truck_by_id");
 
