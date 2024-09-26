@@ -282,6 +282,7 @@
 
 <?php 
     include("../includes/views/action_dropdown_button.php");
+    include("../includes/views/carrier_dispatch_popup.php"); 
     include("../includes/views/carrier_add_truck_popup.php"); 
     include("../includes/views/carrier_edit_truck_popup.php"); 
     include("../includes/views/carrier_truck_edit_view_popup.php"); 
@@ -289,7 +290,6 @@
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
-	include("../includes/views/carrier_dispatch_popup.php"); 
 	include("../includes/pagination/table_script.php"); 
 	include("../includes/layouts/public_footer.php"); 
 ?>
