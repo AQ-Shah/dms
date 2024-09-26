@@ -5,7 +5,7 @@
                 <h2>Edit Truck/Driver Info</h2>
             </div>
             <br>
-            <div class="col-6">
+            <div class="col-12">
                 <label for="truck-id">Select :</label>
                 <select name="truck-id" id="truck-id">
                 </select>
@@ -13,12 +13,12 @@
             <input type="hidden" id="carrier-id" name="carrier-id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 
-            <div class="col-6">
+            <div class="col-12">
                 <button type="button" class="background:red" onclick="hideTruckEditPopup()">Cancel</button>
             </div>
 
-            <div class="col-6">
-                <button type="submit" name="submit" onclick="hideTruckEditPopup()">Dispatch</button>
+            <div class="col-12">
+                <button type="submit" name="submit" onclick="hideTruckEditPopup()">Edit</button>
             </div>
         </div>
     </form>
