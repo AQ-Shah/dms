@@ -283,6 +283,7 @@
 <?php 
     include("../includes/views/action_dropdown_button.php");
     include("../includes/views/carrier_add_truck_popup.php"); 
+    include("../includes/views/truck_edit_popup.php"); 
     include("../includes/views/carrier_assign_team_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
