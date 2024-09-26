@@ -1,6 +1,7 @@
 <?php 
     require_once("../includes/public_require.php"); 
     $current_page = "home";
+    include("../includes/layouts/public_header.php"); 
 	
     confirm_access($current_page);
 
