@@ -18,7 +18,8 @@
             </div>
 
             <div class="col-6">
-                <button type="submit" name="submit" onclick="hideTruckEditViewPopup()">Edit</button>
+                <button type="button" onclick="showEditTruckPopup(document.getElementById('truck-id').value)">Edit
+                Truck</button>
             </div>
         </div>
     </form>
