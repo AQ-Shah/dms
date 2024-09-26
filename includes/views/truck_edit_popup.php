@@ -1,6 +1,6 @@
 <div id="truck-edit-popup" class="popup">
     <form class="truck-edit-popup-form popup-form" action="" method="post">
-        <div class="row popup-content-wide">
+        <div class="row popup-content">
             <div class="col-12 panel-content-secondary">
                 <h2>Edit Truck/Driver Info</h2>
             </div>
@@ -13,11 +13,11 @@
             <input type="hidden" id="carrier-id" name="carrier-id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 
-            <div class="col-12">
+            <div class="col-6">
                 <button type="button" class="background:red" onclick="hideTruckEditPopup()">Cancel</button>
             </div>
 
-            <div class="col-12">
+            <div class="col-6">
                 <button type="submit" name="submit" onclick="hideTruckEditPopup()">Edit</button>
             </div>
         </div>
