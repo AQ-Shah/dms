@@ -32,13 +32,13 @@ function showEditTruckViewPopup(carrierId) {
     // Populate the form fields with default values
     document.getElementById("carrier-id").value = carrierId;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "api_find_trucks_by_carrier_id.php?id=" + carrierId);
-    xhr.onload = function() {
+    var findTrucks = new XMLHttpRequest();
+    findTrucks.open("GET", "api_find_trucks_by_carrier_id.php?id=" + carrierId);
+    findTrucks.onload = function() {
         // Get the results of the AJAX request
-        var trucks = JSON.parse(xhr.responseText);
+        var trucks = JSON.parse(findTrucks.responseText);
 
-        // Populate the select element with the list of trucks
+        // Populate the select element with the list of truckss
         var select = document.getElementById("truck-id");
         select.innerHTML = "";
         for (var i = 0; i < trucks.length; i++) {
@@ -48,7 +48,7 @@ function showEditTruckViewPopup(carrierId) {
             select.appendChild(option);
         }
     };
-    xhr.send();
+    findTrucks.send();
 
     // set the form action to the constructed URL
     document.querySelector(".truck-edit-popup-form").action = formAction;
