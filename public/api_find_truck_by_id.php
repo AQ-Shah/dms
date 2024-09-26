@@ -1,7 +1,6 @@
 <?php 
     require_once("../includes/public_require.php"); 
     $current_page = "home";
-    include("../includes/layouts/public_header.php"); 
 	
     confirm_access($current_page);
 
@@ -9,14 +8,16 @@ function json_truck_by_id($id) {
     global $connection;
 
     $safe_id = mysqli_real_escape_string($connection, $id);
-    $safe_company_id = $user["company_id"]; 
+    $user_id = find_user_id();
+    $the_current_user = find_user_by_id($user_id)
+    $safe_company_id = $the_current_user["company_id"]; 
 
     $query = "
         SELECT *
         FROM trucks_info
         WHERE id = '{$safe_id}'
         AND company_id = '{$safe_company_id}' 
-    ";
+        ";
     echo $query;
     $data_set = mysqli_query($connection, $query);
     confirm_query($data_set, "find_truck_by_id");
