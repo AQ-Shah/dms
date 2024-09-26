@@ -14,7 +14,8 @@
             </div>
 
             <div class="col-12 col-lg-6 panel-content-secondary">
-                <div class="col-6"> <label>Truck Type *</label>
+            <div class="col-12 col-lg-6">Truck Type * :</div>
+                <div class="col-6">
                     <select name="truck_type" class="form-control w-100" required>
                         <option value="">Select truck type</option>
                         <option value="Sprinter Van"
