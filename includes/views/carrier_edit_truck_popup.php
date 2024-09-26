@@ -7,8 +7,8 @@
                 <div class="col-6"> <label>Driver Name *</label>
                     <input type="text" class="form-control w-100" id="t_d_name_edit" name="t_d_name_edit" value="">
                 </div>
-                <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
-                        value="<?php if (isset($d_number)){echo $d_number;}  ?>">
+                <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" id="d_number" name="d_number"
+                        value="">
                 </div>
                
             </div>
@@ -147,6 +147,7 @@ function showEditTruckPopup(truckId) {
 
             // Populate the form field with the 'd_name' value
             document.getElementById("t_d_name_edit").value = truck.d_name;
+            document.getElementById("d_number").value = truck.d_number;
         }
     };
     apiRqForTruckbyID.send();
