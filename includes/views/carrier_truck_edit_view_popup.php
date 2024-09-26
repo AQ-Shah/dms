@@ -32,8 +32,6 @@ function showEditTruckViewPopup(carrierId) {
     // Populate the form fields with default values
     document.getElementById("carrier-id").value = carrierId;
 
-    var formAction = "update_carrier_truck";
-
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "api_find_trucks_by_carrier_id.php?id=" + carrierId);
     xhr.onload = function() {
