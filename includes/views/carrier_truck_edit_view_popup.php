@@ -6,8 +6,8 @@
             </div>
             <br>
             <div class="col-12">
-                <label for="truck-id">Select :</label>
-                <select name="truck-id" id="truck-id">
+                <label for="carrier-truck-id-edit">Select :</label>
+                <select name="carrier-truck-id-edit" id="carrier-truck-id-edit">
                 </select>
             </div>
             <input type="hidden" id="carrier-id" name="carrier-id" value="">
@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-6">
-                <button type="button" onclick="showEditTruckPopup(document.getElementById('truck-id').value)">Edit
+                <button type="button" onclick="showEditTruckPopup(document.getElementById('carrier-truck-id-edit').value)">Edit
                 Truck</button>
             </div>
         </div>
@@ -41,7 +41,7 @@ function showEditTruckViewPopup(carrierId) {
         var trucks = JSON.parse(apiRqforEditTruck.responseText);
 
         // Populate the select element with the list of trucks
-        var select = document.getElementById("truck-id");
+        var select = document.getElementById("carrier-truck-id-edit");
         select.innerHTML = "";
         for (var i = 0; i < trucks.length; i++) {
             var option = document.createElement("option");
