@@ -12,19 +12,19 @@
         <h2>Truck & Drivers Info</h2>
     </div>
 
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Driver Name : </div>
         <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="d_name"
                 value="<?php if (isset($d_name)){echo $d_name;}  ?>"></div>
     </div>
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Driver Number : </div>
         <div class="col-12 col-lg-6"><input type="tel" pattern="[0-9]{10}" minlength="10" maxlength="10"
                 class="form-control w-100" name="d_number" value="<?php if (isset($d_number)){echo $d_number;}  ?>">
         </div>
     </div>
 
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Truck Type : *</div>
         <div class="col-12 col-lg-6">
             <select name="truck_type" class="form-control w-100" required>
@@ -46,22 +46,22 @@
             </select>
         </div>
     </div>
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Truck Number :</div>
         <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="truck_no"
                 value="<?php if (isset($truck_no)){echo $truck_no;} ?>" /></div>
     </div>
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Trailer Number : </div>
         <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="trailer_no"
                 value="<?php if (isset($trailer_no)){echo $trailer_no;}  ?>"></div>
     </div>
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Truck Length (ft) :</div>
         <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_length"
                 value="<?php if (isset($t_length)){echo $t_length;} ?>" /></div>
     </div>
-    <div class="col-12 col-lg-4 panel-content-secondary">
+    <div class="col-12 col-lg-6 panel-content-secondary">
         <div class="col-12 col-lg-6">Weight Limit (lbs) : </div>
         <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_weight"
                 value="<?php if (isset($t_weight)){echo $t_weight;}  ?>"></div>
