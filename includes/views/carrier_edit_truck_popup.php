@@ -5,7 +5,7 @@
 
             <div class="col-12 panel-content-secondary">
                 <div class="col-6"> <label>Driver Name *</label><input type="text" class="form-control w-100"
-                        name="d_name" value="<?php if (isset($d_name)){echo $d_name;}  ?>">
+                        name="d_name" >
                 </div>
                 <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
                         value="<?php if (isset($d_number)){echo $d_number;}  ?>">
@@ -141,14 +141,8 @@ function showEditTruckPopup(truckId) {
         var truck_info = JSON.parse(apiRqForTruckbyID.responseText);
 
         // Populate the select element with the list of truck_info
-        var select = document.getElementById("truck-id");
-        select.innerHTML = "";
-        for (var i = 0; i < truck_info.length; i++) {
-            var option = document.createElement("option");
-            option.value = truck_info[i].id;
-            option.text = truck_info[i].d_name;
-            select.appendChild(option);
-        }
+        document.getElementById("d_name").value = truck_info.d_name;
+       
     };
     apiRqForTruckbyID.send();
 
