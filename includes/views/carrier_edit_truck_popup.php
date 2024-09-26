@@ -140,8 +140,6 @@ function showEditTruckPopup(truckId) {
     var popup = document.getElementById("carrier-truck-edit-popup");
     popup.style.display = "flex";
 
-    var previous_popup = document.getElementById("truck-edit-popup");
-    previous_popup.style.display = "none";
 }
 
 function hideEditTruckPopup() {
