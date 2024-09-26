@@ -5,7 +5,7 @@
 
             <div class="col-12 panel-content-secondary">
                 <div class="col-6"> <label>Driver Name *</label><input type="text" class="form-control w-100"
-                        name="d_name" >
+                        name="t_d_name_edit" >
                 </div>
                 <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
                         value="<?php if (isset($d_number)){echo $d_number;}  ?>">
@@ -137,14 +137,20 @@ function showEditTruckPopup(truckId) {
     var apiRqForTruckbyID = new XMLHttpRequest();
     apiRqForTruckbyID.open("GET", "api_find_truck_by_id.php?id=" + truckId);
     apiRqForTruckbyID.onload = function() {
-        // Get the results of the AJAX request
+        // Parse the API response
         var truck_info = JSON.parse(apiRqForTruckbyID.responseText);
 
-        // Populate the select element with the list of truck_info
-        document.getElementById("d_name").value = truck_info.d_name;
-       
+        // Ensure truck_info is an array and has at least one element
+        if (truck_info.length > 0) {
+            // Access the first truck in the array
+            var truck = truck_info[0];
+
+            // Populate the form field with the 'd_name' value
+            document.getElementById("t_d_name_edit").value = truck.d_name;
+        }
     };
     apiRqForTruckbyID.send();
+
 
     // set the form action to the constructed URL
     document.querySelector(".carrier-truck-edit-popup-form").action = formAction;
