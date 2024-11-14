@@ -49,8 +49,8 @@
             </div>
             <div class="row">
                 <div class="col-6 justify-content-start">
-                    <p class="mb-1"><?php echo COMPANY_NAME; ?></p>
-                    <p class="mb-1"><?php echo COMPANY_NUMBER; ?></p>
+                    <p class="mb-1"><?php echo $company['c_name']; ?></p>
+                    <p class="mb-1"><?php echo $company['c_number']; ?></p>
                     <h6>Billing To:</h6>
                     <p class="mb-0"><?php echo htmlentities($carrier["b_name"]); ?></p>
                     <p class="mb-0"><?php echo htmlentities($carrier["b_address"]); ?></p>

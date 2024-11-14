@@ -155,7 +155,7 @@
         } else {
             return null;
         }}
-
+    
     function find_pending_invoices_amount_by_carrier_id($id) {
         
         global $connection, $user;
@@ -168,9 +168,7 @@
             $total_amount += $record["commission"] ;
         }
         
-        return $total_amount;
-       
-    }
+        return $total_amount;}
 
     function find_pending_invoices_by_carrier_id($id) {
         global $connection, $user;

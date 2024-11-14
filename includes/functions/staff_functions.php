@@ -312,7 +312,25 @@ function find_department_by_id($department_id) {
         }
     }
 
-    //
+function find_company_by_id($company_id) {
+        global $connection;
+        
+        $safe_company_id = mysqli_real_escape_string($connection, $company_id);
+        
+        $query  = "SELECT * ";
+        $query .= "FROM company ";
+        $query .= "WHERE id = {$safe_company_id} ";
+        $query .= "LIMIT 1";
+        $company_set = mysqli_query($connection, $query);
+        confirm_query($company_set);
+        if($company = mysqli_fetch_assoc($company_set)) {
+            return $company;
+        } else {
+            return null;
+        }
+    }
+
+    //user functions
 function find_all_users() {
         global $connection;
         
