@@ -3,7 +3,6 @@
  $current_page = "invoice_view";
  
  confirm_access($current_page);
-// get_image.php
 
 // Specify the base directory where images are stored (outside the public folder).
 $baseDir = __DIR__ . '/../includes/images/';
