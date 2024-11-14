@@ -36,7 +36,7 @@ document.getElementById("pageTitle").innerHTML =
         <div class="container-fluid py-3 bg-light border-bottom">
             <div class="row mb-3">
                 <div class="col-6 justify-content-start">
-                    <img src="assets/images/<?php echo htmlentities($company['logo_path']); ?>" alt="Company Logo" height="50">
+                <img src="get_image.php?path=<?php echo urlencode($company['logo_path']); ?>" alt="Company Logo" height="50">
                 </div>
 
                 <div class="col-6 text-end">
