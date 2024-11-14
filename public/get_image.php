@@ -3,9 +3,12 @@
  $current_page = "home";
  
  confirm_access($current_page);
+ 
+// Assuming $company['c_name'] is available and contains the company folder name
+$companyName = isset($company['c_name']) ? $company['c_name'] : '';
 
-// Specify the base directory where images are stored (outside the public folder).
-$baseDir = __DIR__ . '/../includes/images/';
+// Specify the base directory where images are stored, including the company name.
+$baseDir = __DIR__ . '/../includes/images/' . $companyName . '/';
 
 // Get the image path from the query parameter and sanitize it.
 $imagePath = isset($_GET['path']) ? basename($_GET['path']) : '';
