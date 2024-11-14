@@ -204,8 +204,7 @@
                        <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#"
                            role="button" aria-haspopup="false" aria-expanded="false">
                            <span class="account-user-avatar">
-                           <img src="get_image.php?path=<?php echo urlencode($user['photo_path']); ?>" alt="Company Logo" height="50">
-                                   class="rounded-circle">
+                           <img src="get_image.php?path=<?php echo urlencode($user['photo_path']); ?>" alt="Company Logo" height="50" class="rounded-circle">
                            </span>
                            <span class="d-lg-flex flex-column gap-1 d-none">
                                <h5 class="my-0"><?php echo $user["full_name"]; ?></h5>
