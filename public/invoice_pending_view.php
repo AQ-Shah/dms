@@ -6,6 +6,8 @@
     include("../includes/api/invoice_find_query.php"); 
 
     $total_amount_view =0;
+    $company = $user['company_id'];
+
 ?>
 
 
