@@ -1,6 +1,6 @@
 <?php
  require_once("../includes/public_require.php"); 
- $current_page = "invoice_view";
+ $current_page = "home";
  
  confirm_access($current_page);
 

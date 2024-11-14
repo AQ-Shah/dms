@@ -6,5 +6,7 @@
     
     confirm_user_logged_in();
     $user = find_user_by_id( find_user_id());
+    $company = find_company_by_id($user['company_id']);
+
     
 ?>

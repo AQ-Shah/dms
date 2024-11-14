@@ -8,20 +8,20 @@
                        <!-- Logo light -->
                        <a href="home" class="logo-light">
                            <span class="logo-lg">
-                               <img src="assets/images/logo.png" alt="logo">
+                           <img src="get_image.php?path=<?php echo urlencode($company['logo_path']); ?>" alt="Company Logo" height="50">
                            </span>
                            <span class="logo-sm">
-                               <img src="assets/images/logo-sm.png" alt="small logo">
+                           <img src="get_image.php?path=<?php echo urlencode($company['logo_path']); ?>" alt="Company Logo" height="50">
                            </span>
                        </a>
 
                        <!-- Logo Dark -->
                        <a href="home" class="logo-dark">
                            <span class="logo-lg">
-                               <img src="assets/images/logo-dark.png" alt="dark logo">
+                           <img src="get_image.php?path=<?php echo urlencode($company['logo_path']); ?>" alt="Company Logo" height="50">
                            </span>
                            <span class="logo-sm">
-                               <img src="assets/images/logo-dark-sm.png" alt="small logo">
+                           <img src="get_image.php?path=<?php echo urlencode($company['logo_path']); ?>" alt="Company Logo" height="50">
                            </span>
                        </a>
                    </div>

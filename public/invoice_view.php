@@ -4,7 +4,6 @@
 	include("../includes/layouts/public_header.php");
     
     include("../includes/api/invoice_created_find_query.php"); 
-    $company = find_company_by_id($user['company_id']);
 ?>
 <!-- to add the Carrier name and invoice in the title -->
 <script>
