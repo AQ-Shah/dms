@@ -37,8 +37,7 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <div class="avatar-lg">
-                                        <img src="assets/images/users/img_avatar1.png" alt=""
-                                            class="rounded-circle img-thumbnail">
+                                    <img src="get_image.php?path=<?php echo urlencode($user['photo_path']); ?>" alt="Company Logo" height="50" class="rounded-circle img-thumbnail">
                                     </div>
                                 </div>
                                 <div class="col">
