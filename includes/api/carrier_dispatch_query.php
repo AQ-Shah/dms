@@ -18,8 +18,8 @@
     if (isset($_POST['delivery_datetime'])) {$delivery_time = mysql_prep($_POST["delivery_datetime"]);}
     if (isset($_POST['pickup_datetime'])) {$pickup_datetime = mysql_prep($_POST["pickup_datetime"]);}
     if (isset($_POST['rate'])) {$rate = mysql_prep($_POST["rate"]);}
-    if (isset($_POST['loaded_miles'])) {$miles = mysql_prep($_POST["loaded_miles"]);} else { $loaded_miles = 0;}
-    if (isset($_POST['deadheads'])) {$miles = mysql_prep($_POST["deadheads"]);} else { $deadheads = 0;}
+    if (isset($_POST['loaded_miles'])) {$loaded_miles = mysql_prep($_POST["loaded_miles"]);} else { $loaded_miles = 0;}
+    if (isset($_POST['deadheads'])) {$deadheads = mysql_prep($_POST["deadheads"]);} else { $deadheads = 0;}
     if (isset($_POST['truck-id'])) {$truck_id = mysql_prep($_POST["truck-id"]);} 
  
     $carrier = find_carrier_form_by_id($id);
