@@ -32,7 +32,7 @@ function showStatusPopup(carrierId) {
     document.getElementById("carrier-id-for-truck-status").value = carrierId;
     document.getElementById("carrier_truck_status").value = currentStatus;
 
-    var formAction = "update_truck_status.php";
+    var formAction = "update_carrier_truck_status.php";
 
     // set the form action to the constructed URL
     document.querySelector(".carrier-truck-status-popup-form").action = formAction;

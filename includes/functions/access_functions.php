@@ -48,6 +48,7 @@
             if ($current_page === 'list_my_cancelled_dispatched') return true;
             if ($current_page === 'update_carrier_location') return true;
             if ($current_page === 'update_carrier_status') return true;
+            if ($current_page === 'update_carrier_truck_status') return true;
             if ($current_page === 'update_dispatched_status') return true;
             if ($current_page === 'dispatch_carrier') return true;
             if ($current_page === 'show_carrier') return true;
