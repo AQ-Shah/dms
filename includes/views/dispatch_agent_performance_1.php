@@ -5,16 +5,17 @@ if (isset($_GET['id'])) {
         $_SESSION["message"] = "User not found";
         redirect_to("home");
     }
+    $userDepartment = find_department_by_id($userData['department_id']);
 
-    $permission = $userData['permission'];
 } else {
     $userData = $user;
+    $userDepartment = find_department_by_id($userData['department_id']);
 }
 ?>
 
 <?php if ((check_access("dispatch_agent_performance_1") && $user['id'] === $userData['id']) || (($current_page != 'home') && is_executive($user['permission']))) { ?>
 
-    <?php if (is_dispatch_agent($userData['department_id'])) { ?>
+    <?php if (is_dispatch_agent($userDepartment['function_code'])) { ?>
 
         <div class="row">
             <div class="col-12">
