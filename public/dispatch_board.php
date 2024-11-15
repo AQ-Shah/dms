@@ -61,13 +61,14 @@
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
-                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]);
+                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
                                         ?>
                                     </p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
                                         <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
                                         <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
-                                        <p>Note: <?php echo htmlentities($carrier['note']); ?></p>
+                                        <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
+                                        <p>Note: <?php echo htmlentities($record['note']); ?></p>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -84,13 +85,14 @@
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
-                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]);
+                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
                                         ?>
                                     </p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
                                         <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
                                         <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
-                                        <p>Note: <?php echo htmlentities($carrier['note']); ?></p>
+                                        <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
+                                        <p>Note: <?php echo htmlentities($record['note']); ?></p>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -175,10 +177,7 @@
 
 
 <?php 
-    include("../includes/views/action_dropdown_button.php");
-    include("../includes/views/carrier_add_truck_popup.php"); 
-    include("../includes/views/carrier_assign_team_popup.php"); 
-    include("../includes/views/carrier_assign_dispatcher_popup.php"); 
+
     include("../includes/views/carrier_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
     include("../includes/views/truck_dispatch_popup.php"); 
