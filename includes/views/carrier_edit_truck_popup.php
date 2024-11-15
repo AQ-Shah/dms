@@ -100,6 +100,10 @@
                 </div>
             </div>
 
+            <div class="col-12 panel-content-secondary">
+                <label>Note</label>
+                <textarea class="form-control" name="note" id="note" rows="4"></textarea>
+            </div>
             <input type="hidden" id="carrier-id-for-truck-to-be-edited" name="carrier-id-for-truck-to-be-edited"
                 value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -144,10 +148,10 @@
             document.getElementById("note").value = truck.note;
 
             // Check checkboxes based on the truck info
-            document.getElementById("hazmat").checked = truck.hazmat == "1";
-            document.getElementById("twic").checked = truck.twic == "1";
-            document.getElementById("sida").checked = truck.sida == "1";
-            document.getElementById("atp").checked = truck.atp == "1";
+            document.getElementById("hazmat").checked = truck.hazmat == '1';
+            document.getElementById("twic").checked = truck.twic == '1';
+            document.getElementById("sida").checked = truck.sida == '1';
+            document.getElementById("atp").checked = truck.atp == '1';
         }
     };
     apiRqForTruckbyID.send();
