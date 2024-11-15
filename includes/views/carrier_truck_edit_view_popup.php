@@ -10,7 +10,7 @@
                 <select name="carrier-truck-id-edit" id="carrier-truck-id-edit">
                 </select>
             </div>
-            <input type="hidden" id="carrier-id" name="carrier-id" value="">
+            <input type="hidden" id="carrier-id-for-edit-truck" name="carrier-id-for-edit-truck" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 
             <div class="col-6">
@@ -30,7 +30,7 @@
 
 function showEditTruckViewPopup(carrierId) {
     // Populate the form fields with default values
-    document.getElementById("carrier-id").value = carrierId;
+    document.getElementById("carrier-id-for-edit-truck").value = carrierId;
 
     var formAction = "update_carrier_truck";
 

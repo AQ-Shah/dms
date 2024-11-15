@@ -282,7 +282,6 @@
 
 <?php 
     include("../includes/views/action_dropdown_button.php");
-    
     include("../includes/views/carrier_edit_truck_popup.php");
     include("../includes/views/carrier_add_truck_popup.php");  
     include("../includes/views/carrier_dispatch_popup.php"); 
