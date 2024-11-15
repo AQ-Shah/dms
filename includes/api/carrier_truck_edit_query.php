@@ -6,6 +6,7 @@ $prev_url = isset($_POST['prev_url']) ? $_POST['prev_url'] : 'home';
 $required_fields = array("truck_type", "d_name", "d_number", "carrier-id-for-truck-to-be-edited");
 validate_presences($required_fields);
 include("validators/carrier_truck_post_checker.php");
+sleep(1); 
 $company_id = $user['company_id'];
 $current_carrier = find_carrier_form_by_id($cid_truck_edit);
 
