@@ -37,7 +37,7 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <div class="avatar-lg">
-                                    <img src="get_image.php?path=<?php echo urlencode($user['photo_path']); ?>" alt="Company Logo" height="50" class="rounded-circle img-thumbnail">
+                                    <img src="get_image.php?path= <?php if($userData['photo_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo urlencode($userData['photo_path']) ; }?>" alt="Profile Photo" height="50" class="rounded-circle img-thumbnail">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -48,7 +48,7 @@
                                         <ul class="mb-0 list-inline text-light">
                                             <li class="list-inline-item me-3">
                                                 <h5 class="mb-1 text-white">
-                                                    <?php if($userData['email_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo $userData['email'] ; }?>
+                                                    <?php if($userData['email_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo urlencode($userData['email']) ; }?>
 
                                                 </h5>
                                                 <p class="mb-0 font-13 text-white-50">Email</p>
