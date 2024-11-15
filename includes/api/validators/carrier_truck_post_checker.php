@@ -1,7 +1,7 @@
 <?php 
   
    
-    if (isset($_POST['trucks-carrier-id'])) {$carrier_id = mysql_prep($_POST["trucks-carrier-id"]);} 
+    if (isset($_POST['carrier-id-for-add-truck'])) {$carrier_id = mysql_prep($_POST["carrier-id-for-add-truck"]);} 
     if (isset($_POST['truck_type'])) {$truck_type = mysql_prep($_POST["truck_type"]);} else {$truck_type = null;}   
     if (isset($_POST['d_name'])) {$d_name = mysql_prep($_POST["d_name"]);} else {$d_name = null;}
     if (isset($_POST['d_number'])) {$d_number = mysql_prep($_POST["d_number"]);} else {$d_number = null;}

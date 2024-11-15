@@ -16,7 +16,7 @@
                 <input type="number" id="rate" name="rate">
             </div>
             <div class="col-6">
-                <label for="loadedmiles">Loaded Miles:</label>
+                <label for="loaded_miles">Loaded Miles:</label>
                 <input type="number" id="loaded_miles" name="loaded_miles">
             </div>
             <div class="col-6">
