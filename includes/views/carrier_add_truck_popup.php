@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-            <input type="hidden" id="trucks-carrier-id" name="trucks-carrier-id" value="">
+            <input type="hidden" id="carrier-id-for-add-truck" name="carrier-id-for-add-truck" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit"  onclick="hideAddTruckPopup()">Save</button>
             <button type="button" onclick="hideAddTruckPopup()">Cancel</button>
@@ -130,7 +130,7 @@ function showAddTruckPopup(carrierId) {
 
 
     // Populate the form fields with the current move
-    document.getElementById("trucks-carrier-id").value = carrierId;
+    document.getElementById("carrier-id-for-add-truck").value = carrierId;
 
     var formAction = "carrier_truck_create";
 
