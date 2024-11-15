@@ -443,6 +443,8 @@
 				$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
 				$query .= 'AND YEAR(creation_time) = '.date("Y").' ';
 				$query .= " AND sales_team_id = '{$safe_id}' ";
+				$query .= "AND company_id = '{$user['company_id']}' ";
+
 
 				$set = mysqli_query($connection, $query);
 				confirm_query($set);
