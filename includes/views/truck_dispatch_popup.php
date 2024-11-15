@@ -5,13 +5,17 @@
                 <h2>Dispatch Truck</h2>
             </div>
             <br>
-            <div class="col-6">
+            <div class="col-4">
                 <label for="rate">Rate:</label>
                 <input type="number" id="rate" name="rate">
             </div>
-            <div class="col-6">
-                <label for="rate">Loaded Miles:</label>
-                <input type="number" id="miles" name="miles" placeholder="optional">
+            <div class="col-4">
+                <label for="loaded_miles">Loaded Miles:</label>
+                <input type="number" id="loaded_miles" name="loaded_miles">
+            </div>
+            <div class="col-4">
+                <label for="deadheads">Deadheads:</label>
+                <input type="number" id="deadheads" name="deadheads">
             </div>
             <div class="col-6">
                 <label for="current_location">Dispatching From:</label>
