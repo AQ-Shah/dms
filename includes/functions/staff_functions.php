@@ -237,7 +237,7 @@ function find_all_active_sales_agent_by_team($id){
 
     $query  = "SELECT * ";
     $query .= "FROM users ";
-    $query .= "WHERE department_id = 9 OR department_id = 10 ";
+    $query .= "WHERE (permission = 9 OR permission = 10) ";
     $query .= "AND status = 1 ";
     $query .= " AND team_id = '{$safe_id}' "; 
     $query .= "ORDER BY full_name ASC";
@@ -252,7 +252,7 @@ function find_all_active_sales_agent_by_company($id){
 
     $query  = "SELECT * ";
     $query .= "FROM users ";
-    $query .= "WHERE department_id = 9 OR department_id = 10 ";
+    $query .= "WHERE (permission = 9 OR permission = 10) ";
     $query .= "AND status = 1 ";
     $query .= " AND company_id = '{$safe_id}' "; 
     $query .= "ORDER BY full_name ASC";
