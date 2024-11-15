@@ -3,7 +3,7 @@
 $prev_url = isset($_POST['prev_url']) ? $_POST['prev_url'] : 'home';
 
 // validations
-$required_fields = array("truck_type", "d_name", "d_number", "carrier-id-for-add-truck");
+$required_fields = array("truck_type", "d_name", "d_number", "carrier-id-for-truck-to-be-edited");
 validate_presences($required_fields);
 include("validators/carrier_truck_post_checker.php");
 $company_id = $user['company_id'];
