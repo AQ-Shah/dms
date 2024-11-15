@@ -16,11 +16,6 @@
         exit;
     } 
 
-    if ($status != 1 || $status != 3 || $status != 4) {
-        $_SESSION["message"] = "Please Select right option.";
-         header("Location: " . $prev_url);
-        // exit;
-     } 
     
     $truck = find_truck_by_id($truck_id);
     
