@@ -1,4 +1,5 @@
-<?php if (not_executive($user["permission"])){ ?>
+<?php if (not_executive($user["permission"])){ 
+    echo "things are working so far";?>
 
 <?php include("../includes/data/team_sales_data_fetch.php"); ?>
 <div class="row text-center">
