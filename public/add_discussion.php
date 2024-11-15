@@ -37,7 +37,6 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<?php include("../includes/layouts/public_header.php"); ?>
 <div class="container">
     <div class="col-md-6">
         <div class="row">
@@ -56,4 +55,3 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
-<?php include("../includes/layouts/public_footer.php"); ?>
