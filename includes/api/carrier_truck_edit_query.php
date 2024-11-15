@@ -10,7 +10,8 @@ $company_id = $user['company_id'];
 
 if ($cid_truck_edit != $company_id) { 
   $_SESSION["message"] = "Something went wrong.";
-  redirect_to("home");
+  echo $cid_truck_edit.' & C id will' .$company_id;
+  //redirect_to("home");
 } 
 
 if (empty($errors)) {
