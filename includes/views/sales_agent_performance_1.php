@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
                                 <i class="ri-money-dollar-box-line float-end text-muted"></i>
                                 <h6 class="text-muted text-uppercase mt-0">Month Active</h6>
                                 <h2 class="m-b-20">
-                                    <span><?php echo no_of_carrier_this_month_by_agent($userData['id']); ?></span>
+                                    <span><?php echo no_of_active_carrier_this_month_by_agent($userData['id']); ?></span>
                                 </h2>
                                 <!-- <span class="badge bg-danger"> -0% </span> <span class="text-muted">From
                                     previous Month</span> -->
