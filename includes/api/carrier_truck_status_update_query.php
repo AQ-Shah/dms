@@ -16,22 +16,21 @@
         exit;
     } 
 
-    $_SESSION["message"] = "Stage 1 .";
+    
     $truck = find_truck_by_id($truck_id);
-    $_SESSION["message"] = "Stage 2 .";
+
     if (empty($errors) && $truck) { 
-        
+
         if ($truck['truck_load_status'] == $status) {
             $_SESSION["message"] = "Status is already same";
             header("Location: " . $prev_url);
             exit;
          } 
 
-       
-        $query  = "UPDATE truck_info SET truck_load_status ='{$status}',";
+        $query  = "UPDATE trucks_info SET truck_load_status ='{$status}',";
         $query .= "status_change_reason ='{$reason}' ";
         $query .= "WHERE id = {$truck_id} LIMIT 1  ";
-       
+         
         $result = mysqli_query($connection, $query);
 
         if ($result && mysqli_affected_rows($connection) == 1) {
