@@ -115,7 +115,7 @@
 
             <div class="col-12 panel-content-secondary">
                 <label>Note</label>
-                <input type="text" name="note" value="<?php if (isset($note)) { echo htmlentities($note); } ?>">
+                <textarea class="form-control" name="note" rows="4"><?php if (isset($note)) { echo htmlentities($note); } ?></textarea>
             </div>
 
 
