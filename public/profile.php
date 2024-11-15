@@ -37,7 +37,7 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <div class="avatar-lg">
-                                    <img src="get_image.php?path= <?php if($userData['photo_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo urlencode($userData['photo_path']) ; }?>" alt="Profile Photo" height="50" class="rounded-circle img-thumbnail">
+                                    <img src="get_image.php?path=<?php if($userData['photo_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo urlencode($userData['photo_path']) ; }?>" alt="Profile Photo" height="50" class="rounded-circle img-thumbnail">
                                     </div>
                                 </div>
                                 <div class="col">
