@@ -5,15 +5,19 @@
                 <h2>Dispatch Truck</h2>
             </div>
             <br>
-            <div class="col-4">
+            <div class="col-6">
+                <label for="rate">Driver:</label>
+                <input type="text" id="truck_d_name" name="truck_d_name">
+            </div>
+            <div class="col-6">
                 <label for="rate">Rate*:</label>
                 <input type="number" id="rate" name="rate">
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <label for="loaded_miles">Loaded Miles:</label>
                 <input type="number" id="loaded_miles" name="loaded_miles" placeholder="Optional">
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <label for="deadheads">Deadheads:</label>
                 <input type="number" id="deadheads" name="deadheads" placeholder="Optional">
             </div>
@@ -58,6 +62,23 @@ function showTruckDispatchPopup(carrierId, carrierTruckId) {
     document.getElementById("truck-id").value = carrierTruckId;
 
     var formAction = "dispatch_carrier?id=" + carrierId;
+
+    var apiRqForTruckbyID = new XMLHttpRequest();
+    apiRqForTruckbyID.open("GET", "api_find_truck_by_id.php?id=" + carrierTruckId);
+    apiRqForTruckbyID.onload = function () {
+        // Parse the API response
+        var truck_info = JSON.parse(apiRqForTruckbyID.responseText);
+
+        // Ensure truck_info is an array and has at least one element
+        if (truck_info.length > 0) {
+            // Access the first truck in the array
+            var truck = truck_info[0];
+            
+            // Populate the form fields with values
+            document.getElementById("truck_d_name").value = truck.d_name;
+        }
+    };
+    apiRqForTruckbyID.send();
 
     // set the form action to the constructed URL
     document.querySelector(".truck-dispatch-popup-form").action = formAction;
