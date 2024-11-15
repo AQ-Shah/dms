@@ -6,31 +6,31 @@
             </div>
             <br>
             <div class="col-4">
-                <label for="rate">Rate:</label>
+                <label for="rate">Rate*:</label>
                 <input type="number" id="rate" name="rate">
             </div>
             <div class="col-4">
                 <label for="loaded_miles">Loaded Miles:</label>
-                <input type="number" id="loaded_miles" name="loaded_miles">
+                <input type="number" id="loaded_miles" name="loaded_miles" placeholder="Optional">
             </div>
             <div class="col-4">
                 <label for="deadheads">Deadheads:</label>
-                <input type="number" id="deadheads" name="deadheads">
+                <input type="number" id="deadheads" name="deadheads" placeholder="Optional">
             </div>
             <div class="col-6">
                 <label for="current_location">Dispatching From:</label>
                 <input type="text" id="current_location" name="current_location" placeholder="if not from current location">
             </div>
             <div class="col-6">
-                <label for="dispatch_location">Dispatching To:</label>
+                <label for="dispatch_location">Dispatching To*:</label>
                 <input type="text" id="dispatch_location" name="dispatch_location">
             </div>
             <div class="col-6">
-                <label for="pickup_datetime">Estimated Pickup Time:</label>
+                <label for="pickup_datetime">Estimated Pickup Time*:</label>
                 <input type="datetime-local" id="pickup_datetime" name="pickup_datetime">
             </div>
             <div class="col-6">
-                <label for="delivery_datetime">Estimated Delivery Time:</label>
+                <label for="delivery_datetime">Estimated Delivery Time*:</label>
                 <input type="datetime-local" id="delivery_datetime" name="delivery_datetime">
             </div>
 
