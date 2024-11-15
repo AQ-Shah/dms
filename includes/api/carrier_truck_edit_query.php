@@ -7,11 +7,10 @@ $required_fields = array("truck_type", "d_name", "d_number", "carrier-id-for-add
 validate_presences($required_fields);
 include("validators/carrier_truck_post_checker.php");
 $company_id = $user['company_id'];
-
-if ($cid_truck_edit != $company_id) { 
+$current_carrier = find_carrier_by_id($cid_truck_edit)
+if ($current_carrier['company_id'] != $company_id) { 
   $_SESSION["message"] = "Something went wrong.";
-  echo $cid_truck_edit.' & C id will' .$company_id;
-  //redirect_to("home");
+  redirect_to("home");
 } 
 
 if (empty($errors)) {
