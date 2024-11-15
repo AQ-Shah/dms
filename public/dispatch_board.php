@@ -89,6 +89,7 @@
                                         ?>
                                     </p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
+                                        <p>Status Changed Reason: <?php echo htmlentities($record['status_change_reason']); ?></p>
                                         <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
                                         <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
                                         <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
@@ -142,7 +143,9 @@
         if (dropzoneId === 'dispatched') {
             showTruckDispatchPopup(carrierId, truckId); // Function to show dispatch popup
         } else if (dropzoneId === 'unavailable') {
-            showTruckStatusPopup(truckId); // Function to show status change popup
+            showTruckStatusPopup(truckId, '3'); // Function to show status change popup
+        } else if (dropzoneId === 'available') {
+            showTruckStatusPopup(truckId, '1'); // Function to show status change popup
         }
 
         

@@ -23,10 +23,10 @@
 <script>
 //for carrier status change popup
 
-function showTruckStatusPopup(truckId) {
+function showTruckStatusPopup(truckId,currentStatus ) {
     // Get the current status for the carrier with the given ID
     // You'll need to replace this with your own code to fetch the status from your database
-    var currentStatus = 1; // replace this with your query result
+   
 
     // Populate the form fields with the current status
     document.getElementById("truck-id-for-truck-status").value = truckId;
