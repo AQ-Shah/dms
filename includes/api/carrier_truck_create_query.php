@@ -6,13 +6,13 @@ $prev_url = isset($_POST['prev_url']) ? $_POST['prev_url'] : 'home';
 $required_fields = array("truck_type", "d_name", "d_number", "carrier-id-for-add-truck");
 validate_presences($required_fields);
 include("validators/carrier_truck_post_checker.php");
-sleep(1); 
 $company_id = $user['company_id'];
 $current_carrier = find_carrier_form_by_id($carrier_id);
 
 if ($current_carrier['company_id'] != $company_id) { 
   $_SESSION["message"] = "Something went wrong: Please contact system Admin.";
-  redirect_to("home");
+  $current_carrier['company_id'] .'are the two ids should be equal'. $company_id;
+  //redirect_to("home");
 } 
 
 if (empty($errors)) {
