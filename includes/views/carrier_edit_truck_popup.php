@@ -113,52 +113,56 @@
     //for carrier move change popup
 
     function showEditTruckPopup(truckId) {
-        // Get the current move for the carrier with the given ID
-        // You'll need to replace this with your own code to fetch the move from your database
+    // Get the current move for the carrier with the given ID
+    // You'll need to replace this with your own code to fetch the move from your database
 
+    // Populate the form fields with the current move
+    document.getElementById("carrier-id-for-truck-to-be-edited").value = truckId;
 
-        // Populate the form fields with the current move
-        document.getElementById("carrier-id-for-truck-to-be-edited").value = truckId;
+    var formAction = "carrier_truck_edit";
 
-        var formAction = "carrier_truck_edit";
+    var apiRqForTruckbyID = new XMLHttpRequest();
+    apiRqForTruckbyID.open("GET", "api_find_truck_by_id.php?id=" + truckId);
+    apiRqForTruckbyID.onload = function () {
+        // Parse the API response
+        var truck_info = JSON.parse(apiRqForTruckbyID.responseText);
 
-        var apiRqForTruckbyID = new XMLHttpRequest();
-        apiRqForTruckbyID.open("GET", "api_find_truck_by_id.php?id=" + truckId);
-        apiRqForTruckbyID.onload = function () {
-            // Parse the API response
-            var truck_info = JSON.parse(apiRqForTruckbyID.responseText);
+        // Ensure truck_info is an array and has at least one element
+        if (truck_info.length > 0) {
+            // Access the first truck in the array
+            var truck = truck_info[0];
+            
+            // Populate the form fields with values
+            document.getElementById("d_name").value = truck.d_name;
+            document.getElementById("d_number").value = truck.d_number;
+            document.getElementById("truck_type").value = truck.truck_type;
+            document.getElementById("truck_no").value = truck.truck_no;
+            document.getElementById("trailer_no").value = truck.trailer_no;
+            document.getElementById("t_length").value = truck.t_length; // Add for truck length
+            document.getElementById("t_weight").value = truck.t_weight;
+            document.getElementById("vin_no").value = truck.vin_no; // Add for VIN number
+            document.getElementById("note").value = truck.note;
 
-            // Ensure truck_info is an array and has at least one element
-            if (truck_info.length > 0) {
-                // Access the first truck in the array
-                var truck = truck_info[0];
-                
-                // Populate the form field with the value
-                document.getElementById("d_name").value = truck.d_name;
-                document.getElementById("d_number").value = truck.d_number;
-                document.getElementById("truck_type").value = truck.truck_type;
-                document.getElementById("truck_no").value = truck.truck_no;
-                document.getElementById("trailer_no").value = truck.trailer_no;
-                document.getElementById("t_weight").value = truck.t_weight;
-                document.getElementById("note").value = truck.note;
-                document.getElementById("hazmat").value = truck.hazmat;
-                document.getElementById("twic").value = truck.twic;
-                document.getElementById("sida").value = truck.sida;
-                document.getElementById("atp").value = truck.atp;
-            }
-        };
-        apiRqForTruckbyID.send();
+            // Check checkboxes based on the truck info
+            document.getElementById("hazmat").checked = truck.hazmat == "1";
+            document.getElementById("twic").checked = truck.twic == "1";
+            document.getElementById("sida").checked = truck.sida == "1";
+            document.getElementById("atp").checked = truck.atp == "1";
+        }
+    };
+    apiRqForTruckbyID.send();
 
+    // set the form action to the constructed URL
+    document.querySelector(".carrier-truck-edit-popup-form").action = formAction;
+    
+    // Show the popup
+    var popup = document.getElementById("carrier-truck-edit-popup");
+    popup.style.display = "flex";
 
-        // set the form action to the constructed URL
-        document.querySelector(".carrier-truck-edit-popup-form").action = formAction;
-        // Show the popup
-        var popup = document.getElementById("carrier-truck-edit-popup");
-        popup.style.display = "flex";
+    var popupPrevious = document.getElementById("truck-edit-popup");
+    popupPrevious.style.display = "none";
+}
 
-        var popupPrevious = document.getElementById("truck-edit-popup");
-        popupPrevious.style.display = "none";
-    }
 
     function hideEditTruckPopup() {
         var popup = document.getElementById("carrier-truck-edit-popup");

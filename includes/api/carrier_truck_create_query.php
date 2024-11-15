@@ -16,8 +16,8 @@ if ($carrier_id != $company_id) {
 if (empty($errors)) {
   // Perform the insertion query
 
-  $sql = "INSERT INTO trucks_info (company_id, carrier_id, truck_type, d_name, d_number, t_length, t_weight, truck_no, trailer_no, hazmat, twic, sida, atp, note)
-      VALUES ('$company_id','$carrier_id','$truck_type', '$d_name', '$d_number', '$t_length', '$t_weight','$truck_no', '$trailer_no', '$hazmat', '$twic', '$sida', '$atp', '$note')";
+  $sql = "INSERT INTO trucks_info (company_id, carrier_id, truck_type, d_name, d_number, t_length, t_weight, truck_no, trailer_no, vin_no, hazmat, twic, sida, atp, note)
+      VALUES ('$company_id','$carrier_id','$truck_type', '$d_name', '$d_number', '$t_length', '$t_weight','$truck_no', '$trailer_no', '$vin_no','$hazmat', '$twic', '$sida', '$atp', '$note')";
   $result = mysqli_query($connection, $sql);
   if ($result) {
     $_SESSION["message"] = "New truck added under the carrier.";

@@ -25,6 +25,7 @@ if (empty($errors)) {
     t_weight='$t_weight',
     truck_no='$truck_no',
     trailer_no='$trailer_no',
+    vin_no='$vin_no',
     note='$note',
     hazmat='$hazmat',
     twic='$twic',
