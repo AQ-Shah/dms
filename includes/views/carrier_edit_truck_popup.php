@@ -16,7 +16,7 @@
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Truck Type * :</div>
                 <div class="col-6">
-                    <select name="truck_type" class="form-control w-100" required>
+                    <select name="truck_type" class="form-control w-100"  id="truck_type" required>
                         <option value="">Select truck type</option>
                         <option value="Sprinter Van">Sprinter Van
                         </option>
@@ -42,26 +42,26 @@
 
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Plate Number :</div>
-                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="truck_no" value="" />
+                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="truck_no"  id="truck_no"value="" />
                 </div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Trailer Number : </div>
-                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="trailer_no" value="">
+                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="trailer_no" id="trailer_no" value="">
                 </div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">VIN Number : </div>
-                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="vin_no" value=""></div>
+                <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="vin_no" id="vin_no"value=""></div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Truck Length (ft) :</div>
-                <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_length" value="" />
+                <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_length" id="t_length" value="" />
                 </div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Weight Limit (lbs) : </div>
-                <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_weight" value="">
+                <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_weight" id="t_weight"value="">
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
                 <div class="col-lg-3">
                     <div class="form-check form-check-inline">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="hazmat">
+                            <input type="checkbox" class="custom-control-input" name="hazmat" id="hazmat">
                             <span class="custom-control-label ml-2" for="hazmat">HAZMAT</span>
                         </label>
                     </div>
@@ -77,7 +77,7 @@
                 <div class="col-lg-3">
                     <div class="form-check form-check-inline">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="twic">
+                            <input type="checkbox" class="custom-control-input" name="twic" id="twic">
                             <span class="custom-control-label ml-2" for="twic">TWIC</span>
                         </label>
                     </div>
@@ -85,7 +85,7 @@
                 <div class="col-lg-3">
                     <div class="form-check form-check-inline">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="sida">
+                            <input type="checkbox" class="custom-control-input" name="sida" id="sida">
                             <span class="custom-control-label ml-2" for="sida">SIDA</span>
                         </label>
                     </div>
@@ -93,7 +93,7 @@
                 <div class="col-lg-3">
                     <div class="form-check form-check-inline">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="atp">
+                            <input type="checkbox" class="custom-control-input" name="atp" id="atp">
                             <span class="custom-control-label ml-2" for="atp">Alcohol Transport Permit </span>
                         </label>
                     </div>
