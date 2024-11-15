@@ -2,7 +2,7 @@
   
    //fields which are required
     if (isset($_POST['carrier-id-for-add-truck'])) {$carrier_id = mysql_prep($_POST["carrier-id-for-add-truck"]);} 
-        elseif (isset($_POST['carrier-id-for-truck-to-be-edited'])) {$carrier_id = mysql_prep($_POST["carrier-id-for-truck-to-be-edited"]);} 
+    if (isset($_POST['carrier-id-for-truck-to-be-edited'])) {$cid_truck_edit = mysql_prep($_POST["carrier-id-for-truck-to-be-edited"]);} 
     if (isset($_POST['truck_type'])) {$truck_type = mysql_prep($_POST["truck_type"]);} 
     if (isset($_POST['d_name'])) {$d_name = mysql_prep($_POST["d_name"]);} 
     if (isset($_POST['d_number'])) {$d_number = mysql_prep($_POST["d_number"]);} 

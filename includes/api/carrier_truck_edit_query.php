@@ -8,7 +8,7 @@ validate_presences($required_fields);
 include("validators/carrier_truck_post_checker.php");
 $company_id = $user['company_id'];
 
-if ($carrier_id != $company_id) { 
+if ($cid_truck_edit != $company_id) { 
   $_SESSION["message"] = "Something went wrong.";
   redirect_to("home");
 } 
@@ -30,7 +30,7 @@ if (empty($errors)) {
     hazmat='$hazmat',
     twic='$twic',
     sida='$sida',
-    atp='$atp' WHERE id='$carrier_id'";
+    atp='$atp' WHERE id='$cid_truck_edit'";
 
   $result = mysqli_query($connection, $sql);
 
