@@ -37,13 +37,14 @@
                                     <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
-                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]);
+                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
                                         ?>
                                     </p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
                                         <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
                                         <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
-                                        <p>Note: <?php echo htmlentities($carrier['note']); ?></p>
+                                        <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
+                                        <p>Note: <?php echo htmlentities($record['note']); ?></p>
                                     </div>
                                 </div>
                             <?php } ?>
