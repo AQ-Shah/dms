@@ -18,7 +18,9 @@ $company_id = $user['company_id'];
 echo "<script>console.log('Company id with carrier Id assigned for checking');</script>";
 if ($carrier_id != $company_id) { 
   $_SESSION["message"] = "Something went wrong.";
-  redirect_to("home");
+  echo $carrier_id.' and compny id =';
+  echo $company_id;
+  //redirect_to("home");
 } 
 
 echo "<script>console.log('ready for query');</script>";
