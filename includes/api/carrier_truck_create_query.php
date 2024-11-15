@@ -13,10 +13,10 @@ echo "<script>console.log('required fields checked');</script>";
 include("validators/carrier_truck_post_checker.php");
 
 echo "<script>console.log('validator cleared');</script>";
-$carrier = find_carrier_by_id($carrier_id);
 $company_id = $user['company_id'];
 
-if ($carrier['company_id'] != $company_id) { 
+echo "<script>console.log('Company id with carrier Id assigned for checking');</script>";
+if ($carrier_id != $company_id) { 
   $_SESSION["message"] = "Something went wrong.";
   redirect_to("home");
 } 
