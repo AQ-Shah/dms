@@ -478,7 +478,7 @@
 			return max(mysqli_fetch_assoc($set));
 			}
 		
-		function no_of_carrier_this_month_by_agent($id){
+		function no_of_active_carrier_this_month_by_agent($id){
 			global $connection;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
@@ -487,6 +487,18 @@
 			$query .= "WHERE creator_id = '{$safe_id}' ";
 			$query .= 'AND MONTH(creation_time) = '.date("m");
 			$query .= ' AND sale_active = 1 ';
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			return max(mysqli_fetch_assoc($set));}
+
+		function no_of_carrier_this_month_by_agent($id){
+			global $connection;
+
+			$safe_id = mysqli_real_escape_string($connection, $id);
+			$query  = "SELECT COUNT('id') ";
+			$query .= "FROM carrier_form ";
+			$query .= "WHERE creator_id = '{$safe_id}' ";
+			$query .= 'AND MONTH(creation_time) = '.date("m");
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
