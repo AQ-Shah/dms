@@ -36,8 +36,9 @@ function find_discussions_from($start, $end){
 		$query .= "ORDER BY id DESC ";
 		$query .= "LIMIT {$start},{$end}";
 		$set = mysqli_query($connection, $query);
-		echo $query." & ".$set;
+		
 		confirm_query($set);
+		echo $query." & ".$set;
 		return $set;}
 
 function no_of_discussions(){
@@ -46,8 +47,9 @@ function no_of_discussions(){
 		$query .= "FROM forum_subject ";
 		$query .= "WHERE company_id = '{$user['company_id']}' ";
 		$set = mysqli_query($connection, $query);
-		echo $query." & ".$set;
+
 		confirm_query($set);
+		echo $query." & ".$set;
 		return max(mysqli_fetch_assoc($set));}
 
 //replies 
