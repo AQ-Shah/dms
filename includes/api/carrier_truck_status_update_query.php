@@ -10,7 +10,7 @@
 
     if (isset($_POST['reason'])) {$reason = mysql_prep($_POST["reason"]);} 
 
-    if (empty($reason) && ($status != 3 || $status != 4)) {
+    if (empty($reason) && ($status != 1)) {
        $_SESSION["message"] = "Please give reason for unavailability.";
         header("Location: " . $prev_url);
         exit;
