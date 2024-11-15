@@ -32,8 +32,8 @@ function find_discussions_from($start, $end){
 		global $connection;
 		$query  = "SELECT * ";
 		$query .= "FROM forum_subject ";
-		$query .= "ORDER BY id DESC ";
 		$query .= "WHERE company_id = '{$user['company_id']}' ";
+		$query .= "ORDER BY id DESC ";
 		$query .= "LIMIT {$start},{$end}";
 		$set = mysqli_query($connection, $query);
 		confirm_query($set);

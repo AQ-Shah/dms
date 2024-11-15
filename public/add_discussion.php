@@ -16,8 +16,8 @@ if (isset($_POST['submit'])) {
     $uploader = mysql_prep($user["id"]);
     $company_id = mysql_prep($company["id"]);
     $replies = 0 ;
-	$upload_date = date("Y-m-d");
-	$upload_time = date('H:i:s');
+    $upload_date = date("Y-m-d");
+    $upload_time = date('H:i:s');
     $query  = "INSERT INTO forum_subject (";
     $query .= "  company_id, topic, uploader, replies, upload_date, upload_time ";
     $query .= ") VALUES (";
