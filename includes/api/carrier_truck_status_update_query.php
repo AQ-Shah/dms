@@ -2,10 +2,12 @@
    
     if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
     
-    $required_fields = array("carrier_id", "carrier_truck_status");
+    $required_fields = array("truck-id-for-truck-status", "carrier_truck_status");
     validate_presences($required_fields);
 
     $status = mysql_prep($_POST["carrier_truck_status"]);
+    $truck_id = mysql_prep($_POST["truck-id-for-truck-status"]);
+
     if (isset($_POST['reason'])) {$reason = mysql_prep($_POST["reason"]);} 
 
     if (empty($reason) && ($status != 3 || $status != 4)) {
@@ -15,13 +17,12 @@
     } 
 
     if ($status != 1 || $status != 3 || $status != 4) {
-        echo $status;
         $_SESSION["message"] = "Please Select right option.";
          header("Location: " . $prev_url);
         // exit;
      } 
     
-    $truck = find_truck_by_id($id);
+    $truck = find_truck_by_id($truck_id);
     
     if (empty($errors) && $truck) { 
         
@@ -34,7 +35,7 @@
        
         $query  = "UPDATE truck_info SET truck_load_status ='{$status}',";
         $query .= "status_change_reason ='{$reason}' ";
-        $query .= "WHERE id = {$id} LIMIT 1  ";
+        $query .= "WHERE id = {$truck_id} LIMIT 1  ";
        
         $result = mysqli_query($connection, $query);
 

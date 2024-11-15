@@ -142,8 +142,10 @@
         if (dropzoneId === 'dispatched') {
             showTruckDispatchPopup(carrierId, truckId); // Function to show dispatch popup
         } else if (dropzoneId === 'unavailable') {
-            showStatusPopup(carrierId); // Function to show status change popup
+            showTruckStatusPopup(truckId); // Function to show status change popup
         }
+
+        
     }
 
     function kanban_search(event) {

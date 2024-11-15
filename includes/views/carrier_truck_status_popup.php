@@ -10,12 +10,12 @@
                 <option value="4">Not working anymore</option>
                 <?php } ?>
             </select><br>
-            <input type="hidden" id="carrier-id-for-truck-status" name="carrier_id" value="">
+            <input type="hidden" id="truck-id-for-truck-status" name="truck-id-for-truck-status" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <label for="reason">Reason:</label>
             <input type="text" id="reason" name="reason" placeholder="If changing to unavailable.."><br><br>
-            <button type="submit" name="submit" onclick="hideStatusPopup()">Save</button>
-            <button type="button" onclick="hideStatusPopup()">Cancel</button>
+            <button type="submit" name="submit" onclick="hideTruckStatusPopup()">Save</button>
+            <button type="button" onclick="hideTruckStatusPopup()">Cancel</button>
         </form>
     </div>
 </div>
@@ -23,13 +23,13 @@
 <script>
 //for carrier status change popup
 
-function showStatusPopup(carrierId) {
+function showTruckStatusPopup(truckId) {
     // Get the current status for the carrier with the given ID
     // You'll need to replace this with your own code to fetch the status from your database
     var currentStatus = 1; // replace this with your query result
 
     // Populate the form fields with the current status
-    document.getElementById("carrier-id-for-truck-status").value = carrierId;
+    document.getElementById("truck-id-for-truck-status").value = truckId;
     document.getElementById("carrier_truck_status").value = currentStatus;
 
     var formAction = "update_carrier_truck_status.php";
@@ -41,7 +41,7 @@ function showStatusPopup(carrierId) {
     popup.style.display = "flex";
 }
 
-function hideStatusPopup() {
+function hideTruckStatusPopup() {
     var popup = document.getElementById("carrier-truck-status-popup");
     popup.style.display = "none";
 }
