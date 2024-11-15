@@ -132,10 +132,19 @@
             if (truck_info.length > 0) {
                 // Access the first truck in the array
                 var truck = truck_info[0];
-
-                // Populate the form field with the 'd_name' value
+                
+                // Populate the form field with the value
                 document.getElementById("d_name").value = truck.d_name;
                 document.getElementById("d_number").value = truck.d_number;
+                document.getElementById("truck_type").value = truck.truck_type;
+                document.getElementById("truck_no").value = truck.truck_no;
+                document.getElementById("trailer_no").value = truck.trailer_no;
+                document.getElementById("t_weight").value = truck.t_weight;
+                document.getElementById("note").value = truck.note;
+                document.getElementById("hazmat").value = truck.hazmat;
+                document.getElementById("twic").value = truck.twic;
+                document.getElementById("sida").value = truck.sida;
+                document.getElementById("atp").value = truck.atp;
             }
         };
         apiRqForTruckbyID.send();
