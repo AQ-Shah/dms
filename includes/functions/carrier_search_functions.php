@@ -486,6 +486,7 @@
 			$query .= "FROM carrier_form ";
 			$query .= "WHERE creator_id = '{$safe_id}' ";
 			$query .= 'AND MONTH(creation_time) = '.date("m");
+			$query .= ' AND sale_active = 1 ';
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return max(mysqli_fetch_assoc($set));}
