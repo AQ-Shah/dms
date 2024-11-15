@@ -254,7 +254,7 @@
 
                                         echo $statusText;
                                         ?>
-                                </td>
+                                        </td>
 
                                 <?php if (isset($_GET['only_unavailable']) || (isset($_GET['only_removed']) && check_access("executive"))) { ?>
                                 <td><?php echo htmlentities($record["status_change_reason"]); ?></td>
