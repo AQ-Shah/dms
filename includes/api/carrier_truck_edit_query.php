@@ -11,7 +11,8 @@ $current_carrier = find_carrier_form_by_id($cid_truck_edit);
 
 if ($current_carrier['company_id'] != $company_id) { 
   $_SESSION["message"] = "Something went wrong.";
-  redirect_to("home");
+  $current_carrier['company_id'] .'carrier cid vs usercid='. $company_id
+  //redirect_to("home");
 } 
 
 if (empty($errors)) {
