@@ -78,6 +78,7 @@ function showTruckDispatchPopup(carrierId, carrierTruckId) {
             document.getElementById("truck_d_name").value = truck.d_name;
         }
     };
+    document.getElementById("truck_d_name").disabled = true;
     apiRqForTruckbyID.send();
 
     // set the form action to the constructed URL
