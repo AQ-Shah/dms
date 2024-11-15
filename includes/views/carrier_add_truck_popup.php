@@ -5,10 +5,10 @@
 
             <div class="col-12 panel-content-secondary">
                 <div class="col-6"> <label>Driver Name *</label><input type="text" class="form-control w-100"
-                        name="d_name" value="<?php if (isset($d_name)){echo $d_name;}  ?>">
+                        name="d_name" value="<?php if (isset($d_name)){echo htmlentities($d_name);}  ?>">
                 </div>
                 <div class="col-6 mx-2"><label>Driver Number *</label><input type="tel" maxlength="17" class="form-control w-100" name="d_number"
-                        value="<?php if (isset($d_number)){echo $d_number;}  ?>">
+                        value="<?php if (isset($d_number)){echo htmlentities($d_number);}  ?>">
                 </div>
                
             </div>
@@ -51,27 +51,27 @@
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Plate Number :</div>
                 <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="truck_no"
-                        value="<?php if (isset($truck_no)){echo $truck_no;} ?>" /></div>
+                        value="<?php if (isset($truck_no)){echo htmlentities($truck_no);} ?>" /></div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Trailer Number : </div>
                 <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="trailer_no"
-                        value="<?php if (isset($trailer_no)){echo $trailer_no;}  ?>"></div>
+                        value="<?php if (isset($trailer_no)){echo htmlentities($trailer_no);}  ?>"></div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">VIN Number : </div>
                 <div class="col-12 col-lg-6"><input type="text" class="form-control w-100" name="vin_no"
-                        value="<?php if (isset($vin_no)){echo $vin_no;}  ?>"></div>
+                        value="<?php if (isset($vin_no)){echo htmlentities($vin_no);}  ?>"></div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Truck Length (ft) :</div>
                 <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_length"
-                        value="<?php if (isset($t_length)){echo $t_length;} ?>" /></div>
+                        value="<?php if (isset($t_length)){echo htmlentities($t_length);} ?>" /></div>
             </div>
             <div class="col-12 col-lg-6 panel-content-secondary">
                 <div class="col-12 col-lg-6">Weight Limit (lbs) : </div>
                 <div class="col-12 col-lg-6"><input type="number" class="form-control w-100" name="t_weight"
-                        value="<?php if (isset($t_weight)){echo $t_weight;}  ?>"></div>
+                        value="<?php if (isset($t_weight)){echo htmlentities($t_weight);}  ?>"></div>
             </div>
 
             <div class="col-lg-12 panel-content-secondary">
@@ -114,9 +114,10 @@
             </div>
 
             <div class="col-12 panel-content-secondary">
-                <label>Note</label><input type="text" class="form-control"
-                        name="note" value="<?php if (isset($note)){echo $note;}  ?>">
+                <label>Note</label>
+                <input type="text" name="note" value="<?php if (isset($note)) { echo htmlentities($note); } ?>">
             </div>
+
 
             <input type="hidden" id="carrier-id-for-add-truck" name="carrier-id-for-add-truck" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
