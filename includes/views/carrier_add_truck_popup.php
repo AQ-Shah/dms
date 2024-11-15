@@ -113,6 +113,11 @@
                 </div>
             </div>
 
+            <div class="col-12 panel-content-secondary">
+                <label>Note</label><input type="text" class="form-control"
+                        name="note" value="<?php if (isset($note)){echo $note;}  ?>">
+            </div>
+
             <input type="hidden" id="carrier-id-for-add-truck" name="carrier-id-for-add-truck" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit"  onclick="hideAddTruckPopup()">Save</button>

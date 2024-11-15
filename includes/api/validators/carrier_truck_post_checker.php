@@ -9,6 +9,7 @@
     if (isset($_POST['t_weight'])) {$t_weight = mysql_prep($_POST["t_weight"]);} else {$t_weight = null;}
     if (isset($_POST['truck_no'])) {$truck_no = mysql_prep($_POST["truck_no"]);} else {$truck_no = null;}
     if (isset($_POST['trailer_no'])) {$trailer_no = mysql_prep($_POST["trailer_no"]);} else {$trailer_no = null;}
+    if (isset($_POST['note'])) {$note = mysql_prep($_POST["note"]);} else {$note = null;}
 
    // Sanitize inspection checkboxes
     $hazmat = isset($_POST['hazmat']) ? 1 : 0;
