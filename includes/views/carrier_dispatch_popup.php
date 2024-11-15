@@ -16,6 +16,14 @@
                 <input type="number" id="rate" name="rate">
             </div>
             <div class="col-6">
+                <label for="loadedmiles">Rate:</label>
+                <input type="number" id="loaded_miles" name="loaded_miles">
+            </div>
+            <div class="col-6">
+                <label for="deadheads">Rate:</label>
+                <input type="number" id="deadheads" name="deadheads">
+            </div>
+            <div class="col-6">
                 <label for="location">Dispatching From:</label>
                 <input type="text" id="current_location" name="current_location"
                     placeholder="if not from current location">

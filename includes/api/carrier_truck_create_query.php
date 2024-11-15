@@ -3,7 +3,7 @@
     if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
     
     // validations
-    $required_fields = array("truck_type", "d_name", "d_number", "trucks-carrier-id");
+    $required_fields = array("truck_type", "d_name", "d_number", "carrier-id-for-add-truck");
     validate_presences($required_fields);
     $company_id = $user['company_id'];
 
