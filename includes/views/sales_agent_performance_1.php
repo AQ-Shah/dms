@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 
 <?php  if ((check_access("sales_agent_performance_1") && $user['id'] === $userData['id']) || (($current_page != 'home') && is_executive($user['permission']))){ ?>
 
-    <?php if (is_dispatch_agent($userDepartment['function_code'])) { ?>
+    <?php if (is_sales_agent($userDepartment['function_code'])) { ?>
         <?php include("../includes/pagination/carriers_by_sales_agent_data_fetch.php"); ?>
 
         <div class="row">
