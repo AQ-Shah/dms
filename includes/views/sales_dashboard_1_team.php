@@ -1,7 +1,8 @@
 <?php if (not_executive($user["permission"])){ 
     echo "things are working so far";?>
 
-<?php include("../includes/data/team_sales_data_fetch.php"); ?>
+<?php include("../includes/data/team_sales_data_fetch.php"); 
+  echo "things are working so far again means dat fetched";?>
 <div class="row text-center">
     <div class="col-12">
         <div class="page-title-box">
