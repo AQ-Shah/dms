@@ -11,8 +11,8 @@ $current_carrier = find_carrier_form_by_id($cid_truck_edit);
 
 if ($current_carrier['company_id'] != $company_id) { 
   $_SESSION["message"] = "Something went wrong: Please contact system Admin.";
-  $current_carrier['company_id'] .'are the two ids should be equal'. $company_id;
-  //redirect_to("home");
+  header("Location: " . $prev_url);
+  exit;
 } 
 
 if (empty($errors)) {

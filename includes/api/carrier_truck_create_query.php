@@ -11,8 +11,8 @@ $current_carrier = find_carrier_form_by_id($carrier_id);
 
 if ($current_carrier['company_id'] != $company_id) { 
   $_SESSION["message"] = "Something went wrong: Please contact system Admin.";
-  $current_carrier['company_id'] .'are the two ids should be equal'. $company_id;
-  //redirect_to("home");
+  header("Location: " . $prev_url);
+  exit;
 } 
 
 if (empty($errors)) {
@@ -28,7 +28,8 @@ if (empty($errors)) {
   } else {
     // Failure
     $_SESSION["message"] = "Something went wrong.";
-    redirect_to("home");
+    header("Location: " . $prev_url);
+    exit;
   }
 } else {
   $_SESSION["message"] = send_errors($errors);
