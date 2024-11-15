@@ -438,12 +438,15 @@
 				global $connection;
 				$safe_id = mysqli_real_escape_string($connection, $id);
 
-				$query  = "SELECT COUNT('id') ";
-				$query .= "FROM carrier_form ";
-				$query .= ' WHERE MONTH(creation_time) = '.date("m").' ';
-				$query .= 'AND YEAR(creation_time) = '.date("Y").' ';
-				$query .= " AND sales_team_id = '{$safe_id}' ";
-				$query .= " AND company_id = '{$user['company_id']}' ";
+				$query = "
+				SELECT COUNT(id)
+				FROM carrier_form
+				WHERE MONTH(creation_time) = " . date("m") . "
+				AND YEAR(creation_time) = " . date("Y") . "
+				AND sales_team_id = '{$safe_id}'
+				AND company_id = '{$user['company_id']}'
+				";
+			
 
 
 				$set = mysqli_query($connection, $query);
@@ -505,11 +508,15 @@
 			global $connection;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 
-			$query  = "SELECT COUNT(id) ";
-			$query .= "FROM carrier_form ";
-			$query .= 'WHERE MONTH(creation_time) = '.(date("m")-1);
-			$query .= 'AND YEAR(creation_time) = '.date("Y").' ';
-			$query .= " AND sales_team_id = '{$safe_id}' ";
+			$query = "
+			SELECT COUNT(id)
+			FROM carrier_form
+			WHERE MONTH(creation_time) = " . (date("m") - 1) . "
+			AND YEAR(creation_time) = " . date("Y") . "
+			AND sales_team_id = '{$safe_id}'
+			AND company_id = '{$user['company_id']}'
+			";
+		
 
 			$set = mysqli_query($connection, $query);
 			
