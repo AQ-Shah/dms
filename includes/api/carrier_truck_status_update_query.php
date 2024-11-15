@@ -16,9 +16,9 @@
         exit;
     } 
 
-    
+    $_SESSION["message"] = "Stage 1 .";
     $truck = find_truck_by_id($truck_id);
-    
+    $_SESSION["message"] = "Stage 2 .";
     if (empty($errors) && $truck) { 
         
         if ($truck['truck_load_status'] == $status) {
