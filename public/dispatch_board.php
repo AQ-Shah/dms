@@ -178,7 +178,7 @@
 
 <?php 
 
-    include("../includes/views/carrier_status_popup.php"); 
+    include("../includes/views/carrier_truck_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
     include("../includes/views/truck_dispatch_popup.php"); 
     include("../includes/pagination/table_script.php"); 

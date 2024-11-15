@@ -37,6 +37,7 @@
             if ($current_page === 'list_team_dispatched') return true;
             if ($current_page === 'list_team_cancelled_dispatched') return true;
             if ($current_page === 'stats_box_dispatch_team_2') return true;
+            if ($current_page === 'removing_truck') return true;
             }
 
         if ( $permission === '4' || $permission === '5'){
