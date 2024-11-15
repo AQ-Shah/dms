@@ -26,7 +26,7 @@
 
     <?php include("../includes/views/sales_dashboard_1.php"); ?>
 
-    <?php if (check_access("sales_dashboard_1_team")) { include("../includes/views/sales_dashboard_1_team.php"); } ?>
+    <?php //if (check_access("sales_dashboard_1_team")) { include("../includes/views/sales_dashboard_1_team.php"); } ?>
 
     <?php  include("../includes/views/dispatch_stats_1.php"); ?>
 
