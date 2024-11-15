@@ -19,7 +19,7 @@ if (!not_executive($user["permission"])) {
                 <?php } ?>
 
             </select><br>
-            <input type="hidden" id="carrier-id" name="carrier_id" value="">
+            <input type="hidden" id="dispatcher-carrier-id" name="dispatcher-carrier-id" value="">
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideAssignDispatcherPopup()">Assign</button>
             <button type="button" onclick="hideAssignDispatcherPopup()">Cancel</button>
@@ -32,7 +32,7 @@ if (!not_executive($user["permission"])) {
 
 function showDAssignDispatcherPopup(carrierId) {
     // Populate the form fields with default values
-    document.getElementById("carrier-id").value = carrierId;
+    document.getElementById("dispatcher-carrier-id").value = carrierId;
     document.getElementById("dispatcher").value = "";
 
     var formAction = "carrier_assign_dispatcher?carrierId=" + carrierId;
