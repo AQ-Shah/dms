@@ -13,11 +13,9 @@
 
                 <?php echo message(); ?>
 
-                <h2>
+                <h2 style="text-align: center;">
                     Welcome <?php echo $user["full_name"]; ?>
                 </h2>
-
-            </div>
         </div>
     </div>
 
