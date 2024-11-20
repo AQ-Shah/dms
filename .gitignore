@@ -2,6 +2,10 @@
 includes/config.php
 .htaccess
 
+# Ignore everything in the includes/images/ directory
+/includes/images/
+
+
 # Other patterns to ignore (if needed)
 # file.txt
 # directory/

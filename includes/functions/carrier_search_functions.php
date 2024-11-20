@@ -82,21 +82,22 @@
 			$user_id = find_user_id_by_keyword($safe_keyword);
 		
 			if ($user_id) {
-				// Assuming dispatcher_id and creator_id need to be checked individually
+				// Adjusted query to check dispatcher_id via the carrier_dispatcher table
 				$query = "
-				SELECT COUNT(id)
-				FROM carrier_form 
-				WHERE (dispatcher_id = '{$user_id}' OR creator_id = '{$user_id}')
-				AND company_id = '{$safe_company_id}'
+				SELECT COUNT(DISTINCT cf.id)
+				FROM carrier_form cf
+				LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE (cd.d_id = '{$user_id}' OR cf.creator_id = '{$user_id}')
+				AND cf.company_id = '{$safe_company_id}'
 				";
 			} else {
 				// Searching in concatenated fields for a string match
 				$query = "
-				SELECT COUNT(id) 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				SELECT COUNT(cf.id)
+				FROM carrier_form cf
+				WHERE CONCAT(cf.b_name, cf.o_name, cf.b_number, cf.dot, cf.mc) 
 				LIKE '%{$safe_keyword}%'
-				AND company_id = '{$safe_company_id}'
+				AND cf.company_id = '{$safe_company_id}'
 				";
 			}
 		
@@ -104,153 +105,188 @@
 			confirm_query($set);
 			$result = mysqli_fetch_assoc($set);
 			return $result ? max($result) : 0; 
-			}
+		}
+		
 		function no_of_available_carrier_form_by_keyword($keyword) {
-			
 			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$safe_company_id = $user["company_id"];  // Cast as integer to ensure numeric context
 			$user_id = find_user_id_by_keyword($safe_keyword);
-			$safe_company_id = $user["company_id"];
-
-			if($user_id){
-				$query  = "
-				SELECT COUNT('id')
-				FROM carrier_form 
-				WHERE CONCAT(dispatcher_id, creator_id)
-				LIKE '%{$user_id}%'
-				AND status = 1
-				AND company_id = '{$safe_company_id}'
+		
+			if ($user_id) {
+				// Adjusted query to check dispatcher_id via the carrier_dispatcher table
+				$query = "
+				SELECT COUNT(DISTINCT cf.id)
+				FROM carrier_form cf
+				LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE (cd.d_id = '{$user_id}' OR cf.creator_id = '{$user_id}')
+				AND cf.status = 1
+				AND cf.company_id = '{$safe_company_id}'
 				";
 			} else {
-				$query  = "
-				SELECT COUNT('id') 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				// Searching in concatenated fields for a string match
+				$query = "
+				SELECT COUNT(cf.id)
+				FROM carrier_form cf
+				WHERE CONCAT(cf.b_name, cf.o_name, cf.b_number, cf.dot, cf.mc) 
 				LIKE '%{$safe_keyword}%'
-				AND status = 1
-				AND company_id = '{$safe_company_id}'
+				AND cf.status = 1
+				AND cf.company_id = '{$safe_company_id}'
 				";
 			}
-			
+		
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+			$result = mysqli_fetch_assoc($set);
+			return $result ? max($result) : 0; 
+		}
 
 		function no_of_unavailable_carrier_form_by_keyword($keyword) {
-			
 			global $connection, $user;
 			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$safe_company_id = $user["company_id"];  // Cast as integer to ensure numeric context
 			$user_id = find_user_id_by_keyword($safe_keyword);
-			$safe_company_id = $user["company_id"];
-
-			if($user_id){
-				$query  = "
-				SELECT COUNT('id')
-				FROM carrier_form 
-				WHERE CONCAT(dispatcher_id, creator_id)
-				LIKE '%{$user_id}%'
-				AND status = 2
-				AND company_id = '{$safe_company_id}'
+		
+			if ($user_id) {
+				// Adjusted query to check dispatcher_id via the carrier_dispatcher table
+				$query = "
+				SELECT COUNT(DISTINCT cf.id)
+				FROM carrier_form cf
+				LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE (cd.d_id = '{$user_id}' OR cf.creator_id = '{$user_id}')
+				AND cf.status = 2
+				AND cf.company_id = '{$safe_company_id}'
 				";
 			} else {
-				$query  = "
-				SELECT COUNT('id') 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+				// Searching in concatenated fields for a string match
+				$query = "
+				SELECT COUNT(cf.id)
+				FROM carrier_form cf
+				WHERE CONCAT(cf.b_name, cf.o_name, cf.b_number, cf.dot, cf.mc) 
 				LIKE '%{$safe_keyword}%'
-				AND status = 2
-				AND company_id = '{$safe_company_id}'
+				AND cf.status = 2
+				AND cf.company_id = '{$safe_company_id}'
 				";
-			} 
-			
+			}
+		
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+			$result = mysqli_fetch_assoc($set);
+			return $result ? max($result) : 0; 
+		}
 
 		function no_of_removed_carrier_form_by_keyword($keyword) {
-				
-				global $connection, $user;
-				$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-				$user_id = find_user_id_by_keyword($safe_keyword);
-				$safe_company_id = $user["company_id"];
-	
-				if($user_id){
-					$query  = "
-					SELECT COUNT('id')
-					FROM carrier_form 
-					WHERE CONCAT(dispatcher_id, creator_id)
-					LIKE '%{$user_id}%'
-					AND (status = 3 || status =4)
-					AND company_id = '{$safe_company_id}'
-					";
-				} else {
-					$query  = "
-					SELECT COUNT('id') 
-					FROM carrier_form 
-					WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-					LIKE '%{$safe_keyword}%'
-					AND (status = 3 || status =4)
-					AND company_id = '{$safe_company_id}'
-					";
-				}
-				
-				$set = mysqli_query($connection, $query);
-				confirm_query($set);
-				return max(mysqli_fetch_assoc($set));}
-			
+			global $connection, $user;
+			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+			$safe_company_id = $user["company_id"];  // Cast as integer to ensure numeric context
+			$user_id = find_user_id_by_keyword($safe_keyword);
+		
+			if ($user_id) {
+				// Adjusted query to check dispatcher_id via the carrier_dispatcher table
+				$query = "
+				SELECT COUNT(DISTINCT cf.id)
+				FROM carrier_form cf
+				LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE (cd.d_id = '{$user_id}' OR cf.creator_id = '{$user_id}')
+				AND (cf.status = 3 ||cf.status = 4)
+				AND cf.company_id = '{$safe_company_id}'
+				";
+			} else {
+				// Searching in concatenated fields for a string match
+				$query = "
+				SELECT COUNT(cf.id)
+				FROM carrier_form cf
+				WHERE CONCAT(cf.b_name, cf.o_name, cf.b_number, cf.dot, cf.mc) 
+				LIKE '%{$safe_keyword}%'
+				AND (cf.status = 3 ||cf.status = 4)
+				AND cf.company_id = '{$safe_company_id}'
+				";
+			}
+		
+			$set = mysqli_query($connection, $query);
+			confirm_query($set);
+			$result = mysqli_fetch_assoc($set);
+			return $result ? max($result) : 0; 
+		}
+
 		//Carrier Numbers for Dispatchers 
 
-		function no_of_available_dispatch_by_dispatcher($id){
+		function no_of_available_dispatch_by_dispatcher($id) {
 			global $connection;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 1 ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$query = "
+				SELECT COUNT(DISTINCT cf.id) 
+				FROM carrier_form cf 
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id 
+				WHERE cf.status = 1 
+				AND cd.d_id = '{$safe_id}'
+			";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+
+			return max(mysqli_fetch_assoc($set));
+		}
+
 
 		function no_of_all_carriers_by_dispatcher($id){
 			global $connection;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE (status = 1 || status = 2) ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$query = "
+				SELECT COUNT(DISTINCT cf.id) 
+				FROM carrier_form cf 
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id 
+				WHERE (cf.status = 1 || cf.status = 2)
+				AND cd.d_id = '{$safe_id}'
+			";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+
+			return max(mysqli_fetch_assoc($set));
+		}
 
 		function no_of_available_carriers_by_dispatcher($id){
 			global $connection;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 1  ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$query = "
+				SELECT COUNT(DISTINCT cf.id) 
+				FROM carrier_form cf 
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id 
+				WHERE cf.status = 1
+				AND cd.d_id = '{$safe_id}'
+			";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+
+			return max(mysqli_fetch_assoc($set));
+		}
 		
 		function no_of_unavailable_carriers_by_dispatcher($id){
 			global $connection;
 
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT COUNT('id') ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 2  ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
+
+			$query = "
+				SELECT COUNT(DISTINCT cf.id) 
+				FROM carrier_form cf 
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id 
+				WHERE cf.status = 2
+				AND cd.d_id = '{$safe_id}'
+			";
 
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
-			return max(mysqli_fetch_assoc($set));}
+
+			return max(mysqli_fetch_assoc($set));
+		}
 
 		//Carrier Numbers for Sales 
 
@@ -518,7 +554,7 @@
 			return max($result, 0);}
 
 		function no_of_carrier_last_month_by_team($id) {
-			global $connection;
+			global $connection, $user;
 			$safe_id = mysqli_real_escape_string($connection, $id);
 
 			$query = "
@@ -950,140 +986,155 @@
 		function find_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
 			global $connection, $user;
-			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$user_id = find_user_id_by_keyword($safe_keyword);
-			$safe_company_id = $user["company_id"];
-
-			if($user_id){
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
-			} else {
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-				LIKE '%{$safe_keyword}%'
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
-			}
 			
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return $set;}
+				$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+				$user_id = find_user_id_by_keyword($safe_keyword);
+				$safe_company_id = $user["company_id"];
+			
+				if ($user_id) {
+					// Search by dispatcher or creator ID with new table structure
+					$query = "
+						SELECT * 
+						FROM carrier_form cf
+						LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+						WHERE (cd.d_id = {$user_id} OR cf.creator_id = {$user_id})
+						AND cf.company_id = '{$safe_company_id}'
+						ORDER BY cf.creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				} else {
+					// Search by keyword in concatenated fields
+					$query = "
+						SELECT * 
+						FROM carrier_form 
+						WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+						LIKE '%{$safe_keyword}%'
+						AND company_id = '{$safe_company_id}'
+						ORDER BY creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				}
+			
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				return $set;
+			}
 
 		function find_available_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
 			global $connection, $user;
-			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$user_id = find_user_id_by_keyword($safe_keyword);
-			$safe_company_id = $user["company_id"];
-
-			if($user_id){
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
-				AND status = 1
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
-			} else {
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-				LIKE '%{$safe_keyword}%'
-				AND status = 1
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
-			}
 			
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return $set;}
-
+				$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+				$user_id = find_user_id_by_keyword($safe_keyword);
+				$safe_company_id = $user["company_id"];
+			
+				if ($user_id) {
+					// Search by dispatcher or creator ID with new table structure
+					$query = "
+						SELECT * 
+						FROM carrier_form cf
+						LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+						WHERE (cd.d_id = {$user_id} OR cf.creator_id = {$user_id})
+						AND cf.status = 1
+						AND cf.company_id = '{$safe_company_id}'
+						ORDER BY cf.creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				} else {
+					// Search by keyword in concatenated fields
+					$query = "
+						SELECT * 
+						FROM carrier_form 
+						WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+						LIKE '%{$safe_keyword}%'
+						AND status = 1
+						AND company_id = '{$safe_company_id}'
+						ORDER BY creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				}
+			
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				return $set;
+			}
 		function find_unavailable_carrier_form_by_keyword_from($keyword,$start,$end) {
 			
 			global $connection, $user;
-			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$user_id = find_user_id_by_keyword($safe_keyword);
-			$safe_company_id = $user["company_id"];
-
-			if($user_id){
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
-				AND status = 2
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
-			} else {
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-				LIKE '%{$safe_keyword}%'
-				AND status = 2
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
+			
+				$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+				$user_id = find_user_id_by_keyword($safe_keyword);
+				$safe_company_id = $user["company_id"];
+			
+				if ($user_id) {
+					// Search by dispatcher or creator ID with new table structure
+					$query = "
+						SELECT * 
+						FROM carrier_form cf
+						LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+						WHERE (cd.d_id = {$user_id} OR cf.creator_id = {$user_id})
+						AND cf.status = 2
+						AND cf.company_id = '{$safe_company_id}'
+						ORDER BY cf.creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				} else {
+					// Search by keyword in concatenated fields
+					$query = "
+						SELECT * 
+						FROM carrier_form 
+						WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+						LIKE '%{$safe_keyword}%'
+						AND status = 2
+						AND company_id = '{$safe_company_id}'
+						ORDER BY creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				}
+			
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				return $set;
 			}
+
+			function find_removed_carrier_form_by_keyword_from($keyword, $start, $end) {
+				global $connection, $user;
 			
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return $set;}
-
-		function find_removed_carrier_form_by_keyword_from($keyword,$start,$end) {
+				$safe_keyword = mysqli_real_escape_string($connection, $keyword);
+				$user_id = find_user_id_by_keyword($safe_keyword);
+				$safe_company_id = $user["company_id"];
 			
-			global $connection, $user;
-
-			$safe_keyword = mysqli_real_escape_string($connection, $keyword);
-			$user_id = find_user_id_by_keyword($safe_keyword);
-			$safe_company_id = $user["company_id"];
-
-			if($user_id){
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE (dispatcher_id = {$user_id} OR creator_id = {$user_id})
-				AND (status = 3 OR status = 4)
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
-			} else {
-				$query  = "
-				SELECT * 
-				FROM carrier_form 
-				WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
-				LIKE '%{$safe_keyword}%'
-				AND (status = 3 OR status = 4)
-				AND company_id = '{$safe_company_id}'
-				ORDER BY creation_time DESC
-				LIMIT {$start},{$end}
-				";
+				if ($user_id) {
+					// Search by dispatcher or creator ID with new table structure
+					$query = "
+						SELECT * 
+						FROM carrier_form cf
+						LEFT JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+						WHERE (cd.d_id = {$user_id} OR cf.creator_id = {$user_id})
+						AND (cf.status = 3 OR cf.status = 4)
+						AND cf.company_id = '{$safe_company_id}'
+						ORDER BY cf.creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				} else {
+					// Search by keyword in concatenated fields
+					$query = "
+						SELECT * 
+						FROM carrier_form 
+						WHERE CONCAT(b_name, o_name, b_number, dot, mc) 
+						LIKE '%{$safe_keyword}%'
+						AND (status = 3 OR status = 4)
+						AND company_id = '{$safe_company_id}'
+						ORDER BY creation_time DESC
+						LIMIT {$start}, {$end}
+					";
+				}
+			
+				$set = mysqli_query($connection, $query);
+				confirm_query($set);
+				return $set;
 			}
-			
-			$set = mysqli_query($connection, $query);
-			confirm_query($set);
-			return $set;}
-			
-			
-		
+
 		function find_available_carrier_form_from($start,$end) {
 			global $connection, $user;
 
@@ -1111,50 +1162,120 @@
 			confirm_query($set);
 			return $set;}
 
-		function find_all_carriers_by_dispatcher_form_from($id,$start,$end) {
+		function find_all_carriers_by_dispatcher_form_from($id, $start, $end) {
 			global $connection;
-
+		
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT * ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE (status = 1 || status = 2 )  ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
-			$query .= "ORDER BY creation_time DESC ";
-			$query .= "LIMIT {$start},{$end}";
+		
+			$query = "
+				SELECT * 
+				FROM carrier_form cf
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE (cf.status = 1 OR cf.status = 2)
+				AND cd.d_id = '{$safe_id}'
+				ORDER BY cf.creation_time DESC
+				LIMIT {$start}, {$end}
+			";
+		
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;
-			}
+		}
+			
 
 		function find_available_carriers_by_dispatcher_form_from($id,$start,$end) {
 			global $connection;
-
+		
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT * ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 1  ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
-			$query .= "ORDER BY creation_time DESC ";
-			$query .= "LIMIT {$start},{$end}";
+		
+			$query = "
+				SELECT * 
+				FROM carrier_form cf
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE cf.status = 1
+				AND cd.d_id = '{$safe_id}'
+				ORDER BY cf.creation_time DESC
+				LIMIT {$start}, {$end}
+			";
+		
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;
-			}
+		}
 
 		function find_unavailable_carriers_by_dispatcher_form_from($id,$start,$end) {
 			global $connection;
-
+		
 			$safe_id = mysqli_real_escape_string($connection, $id);
-			$query  = "SELECT * ";
-			$query .= "FROM carrier_form ";
-			$query .= "WHERE status = 2  ";
-			$query .= "AND dispatcher_id = '{$safe_id}' ";
-			$query .= "ORDER BY creation_time DESC ";
-			$query .= "LIMIT {$start},{$end}";
+		
+			$query = "
+				SELECT * 
+				FROM carrier_form cf
+				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				WHERE cf.status = 2
+				AND cd.d_id = '{$safe_id}'
+				ORDER BY cf.creation_time DESC
+				LIMIT {$start}, {$end}
+			";
+		
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
 			return $set;
+		}
+
+		function get_dispatchers_name_by_carrier($carrier_id) {
+			global $connection;
+		
+			// Fetch all dispatchers for this carrier
+			$query = "
+				SELECT u.full_name
+				FROM carrier_dispatcher d
+				JOIN users u ON d.d_id = u.id
+				WHERE d.c_id = {$carrier_id}
+			";
+			$result = mysqli_query($connection, $query);
+		
+			if (mysqli_num_rows($result) > 0) {
+				$dispatchers = [];
+				while ($dispatcher = mysqli_fetch_assoc($result)) {
+					$dispatchers[] = $dispatcher['full_name'];
+				}
+				return implode(', ', $dispatchers); // Return as a comma-separated string
+			} else {
+				return "Not Assigned"; // Return if no dispatchers
 			}
+		}
+		
+		function get_unique_truck_types_names_by($carrier_id) {
+			global $connection;
+
+			// Query to get all truck types for the carrier
+			$query = "
+				SELECT truck_type, COUNT(*) as count
+				FROM trucks_info
+				WHERE carrier_id = {$carrier_id}
+				GROUP BY truck_type
+			";
+
+			// Execute the query and check for errors
+			$result = mysqli_query($connection, $query);
+
+			// If the query failed, print the error
+			if (!$result) {
+				die('Error in query: ' . mysqli_error($connection));
+			}
+
+			$truck_types = [];
+
+			// Collect truck types and their counts
+			while ($truck = mysqli_fetch_assoc($result)) {
+				$truck_types[] = "{$truck['truck_type']} ({$truck['count']})";
+			}
+
+			// Return comma-separated truck types with their counts
+			return implode(', ', $truck_types);
+		}
+		
 
 		function find_carriers_by_sales_agent_form_from($id,$start,$end) {
 			global $connection;

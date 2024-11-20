@@ -4,34 +4,36 @@
 	
     confirm_access($current_page);
 
-function json_truck_by_id($id, $user) {
+function json_dispatchers_by_carrier_id($id, $user) {
     global $connection;
 
     $safe_id = mysqli_real_escape_string($connection, $id);
     $safe_company_id = $user["company_id"]; 
 
+    // Fetch all dispatchers for this carrier
     $query = "
-        SELECT *
-        FROM trucks_info
-        WHERE id = '{$safe_id}'
+        SELECT u.id, u.full_name
+        FROM carrier_dispatcher d
+        JOIN users u ON d.d_id = u.id
+        WHERE d.c_id = {$safe_id}
         AND company_id = '{$safe_company_id}' 
         ";
     $data_set = mysqli_query($connection, $query);
-    confirm_query($data_set, "find_truck_by_id");
+    confirm_query($data_set);
 
-    $truck_info = [];
+    $dispatchers_info = [];
     if ($data_set) {
         while ($data = mysqli_fetch_assoc($data_set)) {
-            $truck_info[] = $data;
+            $dispatchers_info[] = $data;
         }
     }
 
-   return json_encode($truck_info);
+   return json_encode($dispatchers_info);
 }
 
 $id = mysql_prep($_GET['id']);
-if (find_truck_by_id($id)) {
-    $trucks_info = json_truck_by_id($id, $user);
+if (find_carrier_form_by_id($id)) {
+    $trucks_info = json_dispatchers_by_carrier_id($id, $user);
     echo $trucks_info;
 }
 

@@ -30,7 +30,7 @@ function find_trucks($id, $user) {
    return json_encode($trucks);
 }
 
-$id = $_GET['id'];
+$id = mysql_prep($_GET['id']);
 if (find_carrier_form_by_id($id)) {
     $trucks = find_trucks($id, $user);
     echo $trucks;

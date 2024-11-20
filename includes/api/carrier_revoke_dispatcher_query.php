@@ -10,18 +10,17 @@
     
     if (!find_carrier_form_by_id($carrierId)) $errors["carrier_missing"] = "Carrier Not found";
     if (!($user = find_user_by_id($dispatcherId))) $errors[$dispatcherId] =  "User Not found";
-    $teamId = $user['team_id'];
     
 
     if (empty($errors)) { 
         
-        $query = "INSERT IGNORE INTO carrier_dispatcher (c_id, d_id, t_id) VALUES ('$carrierId', '$dispatcherId', '$teamId')";
+        $query = "DELETE FROM carrier_dispatcher WHERE c_id = '$carrierId' AND d_id = '$dispatcherId'";
         
         $result = mysqli_multi_query($connection, $query);
 
          if ($result) {
             // Success
-            $_SESSION["message"] = "Dispatcher Assigned.";
+            $_SESSION["message"] = "Dispatcher Revoked.";
             header("Location: " . $prev_url);
             exit;
         } else {

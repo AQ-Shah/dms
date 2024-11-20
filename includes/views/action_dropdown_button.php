@@ -3,7 +3,7 @@
         <label> Actions:</label>
 
         <div class="row popup-form">
-            <div class="col-12">
+            <div class="col-6">
                 <button type="button"
                     onclick="window.open('show_carrier?id=' + document.getElementById('carrier-id').value, '_blank')">View</button>
             </div>
@@ -38,7 +38,12 @@
             <?php if (check_access("carrier_assign_dispatcher")) {?>
             <div class="col-6">
                 <button type="button"
-                    onclick="showDAssignDispatcherPopup(document.getElementById('carrier-id').value)">Assign
+                    onclick="showDAssignDispatcherPopup(document.getElementById('carrier-id').value)">Assign User
+                    </button>
+            </div>
+            <div class="col-6">
+                <button type="button"
+                    onclick="showRevokeDispatcherPopup(document.getElementById('carrier-id').value)">Revoke
                     User</button>
             </div>
             <?php } ?>

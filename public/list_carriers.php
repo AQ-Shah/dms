@@ -129,7 +129,7 @@
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
-                                    Truck
+                                    Truck(s) Type owned
                                     <span class="sort-arrows"></span>
                                 </th>
                                 <th onclick="sortTable(<?php echo $columnIndex;$columnIndex++;?>)">
@@ -182,13 +182,8 @@
                                 <?php } ?>
                                 <?php if (check_access("dispatch_supervisor")){ ?>
                                 <td>
-                                    <?php
-                                    if($record["dispatcher_id"]){
-                                        $dispatcher = find_user_by_id($record["dispatcher_id"]);
-                                        echo $dispatcher['full_name'];
-                                    } else {
-                                        echo "Not Assigned";
-                                    }
+                                <?php
+                                    echo get_dispatchers_name_by_carrier($record['id']);
                                     ?>
                                 </td>
                                 <?php } ?>
@@ -208,18 +203,7 @@
                                 </td>
                                 <td><?php echo htmlentities($record["o_name"]); ?></td>
                                 <td><?php echo htmlentities($record["b_number"]); ?></td>
-                                <td>
-                                    <?php  
-                                        $truckSet = find_trucks_by_carrier_id($record["id"]);
-                                        $counter = 1;
-                                        
-                                        while($truck = mysqli_fetch_assoc($truckSet)) {
-                                            if ($counter > 1) echo ','; 
-                                            echo htmlentities($truck["truck_type"]).' ';    
-                                            $counter ++;
-                                        }
-                                    ?>
-                                </td>
+                                <td><?php echo get_unique_truck_types_names_by($record['id']);?> </td>
                                 <td><?php echo ($record["sale_active"]) ? '<span style="color: green;">'.htmlentities(date("M-d-Y", strtotime($record["sale_activation_date"]))).'</span>' : '<span style="color: red;">Inactive</span>'; ?>
                                 </td>
                                 <?php if (check_access("executive")){ ?>
@@ -287,6 +271,7 @@
     include("../includes/views/carrier_dispatch_popup.php"); 
     include("../includes/views/carrier_truck_edit_view_popup.php"); 
     include("../includes/views/carrier_assign_team_popup.php"); 
+    include("../includes/views/carrier_revoke_dispatcher_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
     include("../includes/views/carrier_move_popup.php"); 
