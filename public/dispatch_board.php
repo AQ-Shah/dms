@@ -29,22 +29,46 @@
             </div>
             <div class="kanban-board">
                 <div class="kanban-column" id="available">
-                    <h3>Available</h3>
+                    <h3 class="custom-panel card" style="background:#23a6d5">Available</h3>
                     <div class="kanban-items">
                         <?php if (isset($available_trucks) && mysqli_num_rows($available_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($available_trucks)) { ?>
                                 <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
-                                    <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                    <p class="board-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
-                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
+                                        echo htmlentities($carrier['b_name']);
                                         ?>
                                     </p>
+                                    <p class="board-sub-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                        <?php 
+                                        $carrier = find_carrier_form_by_id($record["carrier_id"]); 
+                                        echo htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
+                                        ?>
+                                    </p>
+                                    <p class="board-sub-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)"><strong>
+                                        <?php 
+                                        $carrier = find_carrier_form_by_id($record["carrier_id"]); 
+                                        echo htmlentities($record["current_location"]);
+                                        ?>
+                                    </strong></p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
-                                        <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
-                                        <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
-                                        <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
-                                        <p>Note: <?php echo htmlentities($record['note']); ?></p>
+                                        <p class="info-text">MC: <strong><?php echo htmlentities($carrier['mc']); ?></strong></p>
+                                        <p class="info-text">Business Number: <strong><?php echo htmlentities($carrier['b_number']); ?></strong></p>
+                                        <p class="info-text">Drivers Number: <strong><?php echo htmlentities($record['d_number']); ?></strong></p><br/>
+                                        <p class="info-text"><strong>Note</strong></p>
+                                        <hr class="separator">
+                                        <p class="info-text"><?php echo nl2br(htmlentities($record['note'])); ?></p>
+                                        <hr class="separator">
+
+                                        <div class="button-container">
+                                            <button class="action-button" onclick="showEditTruckNotePopup(<?php echo $record['id']; ?>)">
+                                                <i class="fas fa-edit"></i> Edit Note
+                                            </button>
+                                            <button class="action-button" onclick="showMovePopup(<?php echo $record['id']; ?>)">
+                                                <i class="fas fa-map-marker-alt"></i> Change Location
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -53,22 +77,43 @@
                 </div>
 
                 <div class="kanban-column" id="dispatched">
-                    <h3>Dispatched</h3>
+                    <h3 class=" custom-panel card" style="background:#58467e">Dispatched</h3>
                     <div class="kanban-items">
                         <?php if (isset($onload_trucks) && mysqli_num_rows($onload_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($onload_trucks)) { ?>
                                 <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
-                                    <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                <p class="board-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
-                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
+                                        echo htmlentities($carrier['b_name']);
                                         ?>
                                     </p>
+                                    <p class="board-sub-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                        <?php 
+                                        $carrier = find_carrier_form_by_id($record["carrier_id"]); 
+                                        echo htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
+                                        ?>
+                                    </p>
+                                    <p class="board-sub-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)"><strong>
+                                        <?php 
+                                        $carrier = find_carrier_form_by_id($record["carrier_id"]); 
+                                        echo htmlentities($record["current_location"]);
+                                        ?>
+                                    </strong></p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
-                                        <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
-                                        <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
-                                        <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
-                                        <p>Note: <?php echo htmlentities($record['note']); ?></p>
+                                        <p class="info-text">MC: <strong><?php echo htmlentities($carrier['mc']); ?></strong></p>
+                                        <p class="info-text">Business Number: <strong><?php echo htmlentities($carrier['b_number']); ?></strong></p>
+                                        <p class="info-text">Drivers Number: <strong><?php echo htmlentities($record['d_number']); ?></strong></p><br/>
+                                        <p class="info-text"><strong>Note</strong></p>
+                                        <hr class="separator">
+                                        <p class="info-text"><?php echo nl2br(htmlentities($record['note'])); ?></p>
+                                        <hr class="separator">
+
+                                        <div class="button-container">
+                                            <button class="action-button" onclick="showEditTruckNotePopup(<?php echo $record['id']; ?>)">
+                                                <i class="fas fa-edit"></i> Edit Note
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -77,24 +122,40 @@
                 </div>
 
                 <div class="kanban-column" id="unavailable">
-                    <h3>Unavailable</h3>
+                    <h3 class=" custom-panel card" style="background:#d43a0f">Unavailable</h3>
                     <div class="kanban-items">
                         <?php if (isset($unavailable_trucks) && mysqli_num_rows($unavailable_trucks) > 0) { ?>
                             <?php while($record = mysqli_fetch_assoc($unavailable_trucks)) { ?>
                                 <div class="kanban-item" draggable="true" data-id="<?php echo $record['id']; ?>" data-carrier-id="<?php echo $record['carrier_id']; ?>" data-truck-id="<?php echo $record['id']; ?>">
-                                    <p onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                <p class="board-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)">
                                         <?php 
                                         $carrier = find_carrier_form_by_id($record["carrier_id"]); 
-                                        echo htmlentities($carrier['b_name']) . ' - ' . htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
+                                        echo htmlentities($carrier['b_name']);
+                                        ?>
+                                    </p>
+                                    <p class="board-sub-heading" onclick="toggleInfo(<?php echo $record['id']; ?>)">
+                                        <?php 
+                                        $carrier = find_carrier_form_by_id($record["carrier_id"]); 
+                                        echo htmlentities($record["d_name"]) . ' - ' . htmlentities($record["truck_type"]);
                                         ?>
                                     </p>
                                     <div id="info-<?php echo $record['id']; ?>" class="kanban-info" style="display:none;">
-                                        <p>Status Changed Reason: <?php echo htmlentities($record['status_change_reason']); ?></p>
-                                        <p>MC: <?php echo htmlentities($carrier['mc']); ?></p>
-                                        <p>Business Number: <?php echo htmlentities($carrier['b_number']); ?></p>
-                                        <p>Drivers Number: <?php echo htmlentities($record['d_number']); ?></p>
-                                        <p>Note: <?php echo htmlentities($record['note']); ?></p>
+                                        <p class="info-text">MC: <strong><?php echo htmlentities($carrier['mc']); ?></strong></p>
+                                        <p class="info-text">Business Number: <strong><?php echo htmlentities($carrier['b_number']); ?></strong></p>
+                                        <p class="info-text">Drivers Number: <strong><?php echo htmlentities($record['d_number']); ?></strong></p><br/>
+                                        <p class="info-text">Unavailable Cause</p>
+                                        <p><strong><?php echo htmlentities($record['status_change_reason']); ?></strong></p><br/>
+                                        <p class="info-text"><strong>Note</strong></p>
+                                        <hr class="separator">
+                                        <p class="info-text"><?php echo nl2br(htmlentities($record['note'])); ?></p>
+                                        <hr class="separator">
+                                        <div class="button-container">
+                                            <button class="action-button" onclick="showEditTruckNotePopup(<?php echo $record['id']; ?>)">
+                                                <i class="fas fa-edit"></i> Edit Note
+                                            </button>
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             <?php } ?>
                         <?php } ?>
@@ -184,7 +245,8 @@
 <?php 
 
     include("../includes/views/carrier_truck_status_popup.php"); 
-    include("../includes/views/carrier_move_popup.php"); 
+    include("../includes/views/carrier_edit_truck_note_popup.php"); 
+    include("../includes/views/truck_move_popup.php"); 
     include("../includes/views/truck_dispatch_popup.php"); 
     include("../includes/pagination/table_script.php"); 
     include("../includes/layouts/public_footer.php"); 

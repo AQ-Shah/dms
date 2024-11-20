@@ -16,7 +16,7 @@ function json_dispatchers_by_carrier_id($id, $user) {
         FROM carrier_dispatcher d
         JOIN users u ON d.d_id = u.id
         WHERE d.c_id = {$safe_id}
-        AND company_id = '{$safe_company_id}' 
+        AND u.company_id = '{$safe_company_id}' 
         ";
     $data_set = mysqli_query($connection, $query);
     confirm_query($data_set);
@@ -33,8 +33,8 @@ function json_dispatchers_by_carrier_id($id, $user) {
 
 $id = mysql_prep($_GET['id']);
 if (find_carrier_form_by_id($id)) {
-    $trucks_info = json_dispatchers_by_carrier_id($id, $user);
-    echo $trucks_info;
+    $dispatcher_info = json_dispatchers_by_carrier_id($id, $user);
+    echo $dispatcher_info;
 }
 
 

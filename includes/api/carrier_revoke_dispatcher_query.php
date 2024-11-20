@@ -14,7 +14,7 @@
 
     if (empty($errors)) { 
         
-        $query = "DELETE FROM carrier_dispatcher WHERE c_id = '$carrierId' AND d_id = '$dispatcherId'";
+        $query = "DELETE FROM carrier_dispatcher WHERE c_id = '$carrierId' AND d_id = '$dispatcherId' AND company_id='{$user['company_id']}'";
         
         $result = mysqli_multi_query($connection, $query);
 

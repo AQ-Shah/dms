@@ -104,6 +104,20 @@ footer {
     box-shadow: var(--shadow-primary);
 }
 
+/* dispatch board  */
+.bold-text {
+    font-weight: bold;
+}
+
+.board-heading {
+    text-align: center;
+    font-weight: bold;
+}
+
+.board-sub-heading {
+    text-align: center;
+
+}
 
 /* Nav bar css */
 
@@ -225,9 +239,11 @@ table th {
 
 .kanban-board {
     display: flex;
-    gap: 20px; /* Add space between columns */
+    gap: 20px;
+    /* Add space between columns */
     padding: 20px;
-    background-color: #f0f2f5; /* Light background color for the board */
+    background-color: #f0f2f5;
+    /* Light background color for the board */
 }
 
 .kanban-column {
@@ -284,10 +300,54 @@ table th {
 
 .kanban-info {
     margin-top: 10px;
-    padding: 10px;
-    border-top: 1px solid #dcdfe3;
-    background-color: #f7f8fa;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #dcdfe3;
+    background-color: #fffbcc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+    text-align: center;
 }
+
+.kanban-info::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.info-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info-text strong {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.separator {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
 
 /* Buttons  */
 
@@ -544,14 +604,17 @@ div.message {
     .no-print {
         visibility: hidden;
     }
+
     .page-break {
         page-break-before: always;
     }
+
     header {
         display: none;
         position: fixed;
         top: 0;
     }
+
     .panel-content-primary {
         font-size: 8pt;
     }

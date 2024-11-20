@@ -1,28 +1,24 @@
 <?php 
-   
-     if (isset($_GET['id'])) {$id = mysql_prep($_GET['id']);} else {
-        $_SESSION["message"] = "Please provide valid id through the dashboard.";
-        redirect_to("home");
-    }
     if (isset($_POST['prev_url'])) {$prev_url = $_POST["prev_url"];} else { $prev_url = 'home';}
     
-    $required_fields = array("location");
+    $required_fields = array("location", "truck-id-for-move");
     validate_presences($required_fields);
 
     $location = mysql_prep($_POST["location"]);
-    $carrier = find_carrier_form_by_id($id);
+    $truckId = mysql_prep($_POST["truck-id-for-move"]);
+    $truck = find_truck_by_id($truckId);
     
-    if (empty($errors) && $carrier) { 
+    if (empty($errors) && $truck) { 
         
-        if ($carrier['current_location'] == $location) {
+        if ($truck['current_location'] == $location) {
             $_SESSION["message"] = "Current Location is already ".$location;
             header("Location: " . $prev_url);
             exit;
          } 
        
-        $query  = "UPDATE carrier_form SET current_location ='{$location}' ";
-        $query .= "WHERE id = {$id} LIMIT 1  ";
-       
+        $query  = "UPDATE trucks_info SET current_location ='{$location}' ";
+        $query .= "WHERE id = {$truckId}  ";
+        $query .= "AND company_id='{$user['company_id']}' LIMIT 1 ";       
         $result = mysqli_query($connection, $query);
 
         if ($result && mysqli_affected_rows($connection) == 1) {
@@ -32,7 +28,7 @@
            exit;
         } else {
             // Failure
-            $_SESSION["message"] = "Location Change failed.";
+            $_SESSION["message"] = "Location Change failed. ";
             header("Location: " . $prev_url);
             exit;
             

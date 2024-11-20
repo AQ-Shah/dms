@@ -1168,14 +1168,15 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 		
 			$query = "
-				SELECT * 
+				SELECT cf.id AS carrier_id, cf.* 
 				FROM carrier_form cf
-				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				INNER JOIN carrier_dispatcher cd ON cd.c_id = cf.id
 				WHERE (cf.status = 1 OR cf.status = 2)
 				AND cd.d_id = '{$safe_id}'
 				ORDER BY cf.creation_time DESC
 				LIMIT {$start}, {$end}
 			";
+
 		
 			$set = mysqli_query($connection, $query);
 			confirm_query($set);
@@ -1189,9 +1190,9 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 		
 			$query = "
-				SELECT * 
+				SELECT cf.id AS carrier_id, cf.* 
 				FROM carrier_form cf
-				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				INNER JOIN carrier_dispatcher cd ON cd.c_id = cf.id
 				WHERE cf.status = 1
 				AND cd.d_id = '{$safe_id}'
 				ORDER BY cf.creation_time DESC
@@ -1209,9 +1210,9 @@
 			$safe_id = mysqli_real_escape_string($connection, $id);
 		
 			$query = "
-				SELECT * 
+				SELECT cf.id AS carrier_id, cf.* 
 				FROM carrier_form cf
-				INNER JOIN carrier_dispatcher cd ON cf.id = cd.c_id
+				INNER JOIN carrier_dispatcher cd ON cd.c_id = cf.id
 				WHERE cf.status = 2
 				AND cd.d_id = '{$safe_id}'
 				ORDER BY cf.creation_time DESC

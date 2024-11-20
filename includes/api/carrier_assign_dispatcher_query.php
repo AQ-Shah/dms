@@ -11,11 +11,11 @@
     if (!find_carrier_form_by_id($carrierId)) $errors["carrier_missing"] = "Carrier Not found";
     if (!($user = find_user_by_id($dispatcherId))) $errors[$dispatcherId] =  "User Not found";
     $teamId = $user['team_id'];
-    
+    $companyId = $user['company_id'];
 
     if (empty($errors)) { 
         
-        $query = "INSERT IGNORE INTO carrier_dispatcher (c_id, d_id, t_id) VALUES ('$carrierId', '$dispatcherId', '$teamId')";
+        $query = "INSERT IGNORE INTO carrier_dispatcher (c_id, d_id, t_id, company_id) VALUES ('$carrierId', '$dispatcherId', '$teamId', '$companyId')";
         
         $result = mysqli_multi_query($connection, $query);
 

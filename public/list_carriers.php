@@ -181,24 +181,10 @@
                                 </td>
                                 <?php } ?>
                                 <?php if (check_access("dispatch_supervisor")){ ?>
-                                <td>
-                                <?php
-                                    echo get_dispatchers_name_by_carrier($record['id']);
-                                    ?>
-                                </td>
+                                    <td> <?php echo get_dispatchers_name_by_carrier($record['id']);?></td>
                                 <?php } ?>
-                                <td>
-                                    <?php
-                                        $mc_validity = new DateTime($record["mc_validity"]);
-                                        $current_date = new DateTime(); 
-
-                                        $interval = $current_date->diff($mc_validity);
-                                        $days_passed = $interval->days;
-
-                                        echo "{$days_passed} days ago";
-                                    ?>
-                                </td>
-                                <td><?php echo htmlentities($record["mc"]); ?></td>
+                                <td><?php echo format_time_difference($record["mc_validity"]); ?></td> 
+                                <td><?php echo htmlentities($record["mc"]) ; ?></td>
                                 <td><?php echo htmlentities($record["b_name"]).'('.no_of_trucks_by_carrier($record["id"]).')'; ?>
                                 </td>
                                 <td><?php echo htmlentities($record["o_name"]); ?></td>
@@ -274,7 +260,7 @@
     include("../includes/views/carrier_revoke_dispatcher_popup.php"); 
     include("../includes/views/carrier_assign_dispatcher_popup.php"); 
 	include("../includes/views/carrier_status_popup.php"); 
-    include("../includes/views/carrier_move_popup.php"); 
+    include("../includes/views/truck_move_popup.php"); 
 	include("../includes/pagination/table_script.php"); 
 	include("../includes/layouts/public_footer.php"); 
 ?>

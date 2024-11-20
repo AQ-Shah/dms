@@ -57,4 +57,35 @@ function has_inclusion_in($value, $set) {
 	return in_array($value, $set);
 }
 
+
+// formating the date for MC
+function format_time_difference($date) {
+    $mc_validity = new DateTime($date);
+    $current_date = new DateTime();
+
+    $interval = $current_date->diff($mc_validity);
+    $days_passed = $interval->days;
+
+    if ($days_passed >= 365) {
+        $years = floor($days_passed / 365);
+        $remaining_days = $days_passed % 365;
+        $months = floor($remaining_days / 30);
+        $days = $remaining_days % 30;
+
+        $result = "{$years} year(s)";
+        if ($months > 0) $result .= " {$months} month(s)";
+        if ($days > 0) $result .= " {$days} day(s)";
+    } elseif ($days_passed > 30) {
+        $months = floor($days_passed / 30);
+        $days = $days_passed % 30;
+
+        $result = "{$months} month(s)";
+        if ($days > 0) $result .= " {$days} day(s)";
+    } else {
+        $result = "{$days_passed} day(s)";
+    }
+
+    return $result . " ago";
+}
+
 ?>
