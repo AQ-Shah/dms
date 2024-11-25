@@ -124,7 +124,6 @@ function find_all_users_by_team($team_id){
         return $users_set;
     }
 
-
 function find_all_teams_by_department($department_id){
         global $connection;
         $safe_department_id = mysqli_real_escape_string($connection, $department_id);
@@ -135,6 +134,22 @@ function find_all_teams_by_department($department_id){
         $users_set = mysqli_query($connection, $query);
         confirm_query($users_set);
         return $users_set;
+    }
+
+function find_all_dispatch_teams_by_company($company_id){
+        global $connection;
+        $safe_company_id = mysqli_real_escape_string($connection, $company_id);
+        $query = "
+            SELECT t.* 
+            FROM teams t
+            INNER JOIN department d ON t.department_id = d.id
+            WHERE t.company_id = '$safe_company_id'
+            AND d.company_id = '$safe_company_id'
+            AND d.function_code = 5
+        ";
+        $result = mysqli_query($connection, $query);
+        confirm_query($result);
+        return $result;
     }
 function find_team_by_id($id){
        global $connection;

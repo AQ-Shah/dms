@@ -1,6 +1,6 @@
 <?php
 if (check_access("carrier_assign_dispatcher")) {
-$record_set = find_teams_by_department_id("5");
+$record_set = find_all_dispatch_teams_by_company($user["company_id"]);
 } 
 ?>
 <div id="assign-team-popup" class="popup">
