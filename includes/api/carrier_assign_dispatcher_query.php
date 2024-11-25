@@ -14,29 +14,51 @@
     $companyId = $user['company_id'];
 
     if (empty($errors)) { 
+        $query = "INSERT IGNORE INTO carrier_dispatcher (c_id, d_id, t_id, company_id) 
+                  VALUES ('$carrierId', '$dispatcherId', '$teamId', '$companyId')";
         
-        $query = "INSERT IGNORE INTO carrier_dispatcher (c_id, d_id, t_id, company_id) VALUES ('$carrierId', '$dispatcherId', '$teamId', '$companyId')";
-        
-        $result = mysqli_multi_query($connection, $query);
-
-         if ($result) {
-            // Success
-            $_SESSION["message"] = "Dispatcher Assigned.";
-            header("Location: " . $prev_url);
-            exit;
+        $result = mysqli_query($connection, $query);
+    
+        if ($result) {
+            if (mysqli_affected_rows($connection) > 0) {
+                $checkQuery = "SELECT dispatch_team_id 
+                               FROM carrier_form 
+                               WHERE id = '$carrierId' 
+                               LIMIT 1";
+                
+                $checkResult = mysqli_query($connection, $checkQuery);
+                confirm_query($checkResult);
+    
+                $row = mysqli_fetch_assoc($checkResult);
+                $currentTeamId = $row['dispatch_team_id'];
+    
+                if ($currentTeamId != $teamId) {
+                    $updateQuery = "UPDATE carrier_form 
+                                    SET dispatch_team_id = '$teamId' 
+                                    WHERE id = '$carrierId'";
+                    
+                    $updateResult = mysqli_query($connection, $updateQuery);
+                    confirm_query($updateResult);
+                    
+                    $_SESSION["message"] = "Dispatcher Assigned and Team Assigned.";
+                } else {
+                    $_SESSION["message"] = "Dispatcher Assigned.";
+                }
+            } else {
+                $_SESSION["message"] = "Dispatcher already assigned.";
+            }
         } else {
-            // Failure
-            $_SESSION["message"] = "Something went wrong.";
-            header("Location: " . $prev_url);
-            exit;
-            
+            // Failure: INSERT query failed
+            $_SESSION["message"] = "Something went wrong while assigning dispatcher.";
         }
-        
-        
+        header("Location: " . $prev_url);
+        exit;
     } else {
+        // Handle errors
         $_SESSION["message"] = send_errors($errors);
         header("Location: " . $prev_url);
         exit;
-        }
+    }
+    
     
 ?>
