@@ -57,10 +57,10 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                     <?php while($record = mysqli_fetch_assoc($record_set)) { ?>
                     <tr>
                         <td style="cursor: pointer;"
-                            onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
+                            onclick="location.href='department_view?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                             <?php echo htmlentities($record["name"]); ?></td>
                         <td style="cursor: pointer;"
-                            onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">
+                            onclick="location.href='department_view?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                             <?php echo htmlentities(no_of_users_by_department($record["id"])); ?></td>
 
                         <td>
@@ -68,16 +68,16 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                                 <button class="dropdown-button">Actions</button>
                                 <div class="dropdown-content">
                                     <button
-                                        onclick="location.href='department_view?id=<?php echo urlencode($record["id"]); ?>'">View</button>
+                                        onclick="location.href='department_view?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">View</button>
 
                                     <button onclick="showDepartmentEditPopup(
-                                  '<?php echo urlencode($record["id"]); ?>',
+                                  '<?php echo urlencode(encrypt_id($record["id"])); ?>',
                                   '<?php echo $record["name"]; ?>',
                                   '<?php echo $record["function_code"]; ?>'
                               )">Edit</button>
 
                                     <button
-                                        onclick="if(confirm('Are you sure?')){location.href='department_delete?id=<?php echo urlencode($record["id"]); ?>'}">Delete</button>
+                                        onclick="if(confirm('Are you sure?')){location.href='department_delete?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'}">Delete</button>
                                 </div>
                             </div>
                         </td>

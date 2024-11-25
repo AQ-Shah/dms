@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_GET["id"])){
-    $department = find_department_by_id($_GET["id"]);
+    $department = find_department_by_id(decrypt_id($_GET["id"]));
     if (!$department) {
     // department ID was missing or invalid or 
     // department couldn't be found in database
