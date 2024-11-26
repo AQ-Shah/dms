@@ -29,6 +29,7 @@
             <input type="hidden" name="prev_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
             <button type="submit" name="submit" onclick="hideDepartmentUserEditPopup()">Edit</button>
             <button type="button" onclick="hideDepartmentUserEditPopup()">Cancel</button>
+            <p>*NOTE: will not work yet</p>
         </form>
     </div>
 </div>
