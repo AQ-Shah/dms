@@ -33,6 +33,8 @@ function showDepartmentEditPopup(recordId, recordName, functionType) {
     // Show the popup
     var popup = document.getElementById("department-edit-popup");
     popup.style.display = "flex";
+    var popup = document.getElementById("department-action-popup");
+    popup.style.display = "none";
 }
 
 function hideDepartmentEditPopup() {

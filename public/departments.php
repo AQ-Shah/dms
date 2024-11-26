@@ -64,21 +64,8 @@ $record_set = find_all_departments_of_company($user["company_id"]);
                             <?php echo htmlentities(no_of_users_by_department($record["id"])); ?></td>
 
                         <td>
-                            <div class="dropdown">
-                                <button class="dropdown-button">Actions</button>
-                                <div class="dropdown-content">
-                                    <button
-                                        onclick="location.href='department_view?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">View</button>
-
-                                    <button onclick="showDepartmentEditPopup(
-                                  '<?php echo urlencode(encrypt_id($record["id"])); ?>',
-                                  '<?php echo $record["name"]; ?>',
-                                  '<?php echo $record["function_code"]; ?>'
-                              )">Edit</button>
-
-                                    <button
-                                        onclick="if(confirm('Are you sure?')){location.href='department_delete?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'}">Delete</button>
-                                </div>
+                        <button class="dropdown dropdown-button"
+                                    onclick="showDepartmentActionPopup('<?php echo urlencode(encrypt_id($record["id"])); ?>','<?php echo $record["name"]; ?>','<?php echo $record["function_code"]; ?>')">Actions</button>
                             </div>
                         </td>
                     </tr>
@@ -94,4 +81,5 @@ $record_set = find_all_departments_of_company($user["company_id"]);
     include("../includes/views/department_edit_popup.php"); 
     include("../includes/pagination/table_script.php"); 
     include("../includes/layouts/public_footer.php"); 
+    include("../includes/views/action_dropdown_department_button.php"); 
 ?>

@@ -103,22 +103,17 @@
                                     onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">
                                     <?php if ($record["status"] == 1) echo "Active"; else echo "Resigned"; ?></td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button class="dropdown-button">Actions</button>
-                                        <div class="dropdown-content">
-                                            <button
-                                                onclick="location.href='profile?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'">View</button>
-
-                                            <button onclick="showDepartmentEditPopup(
-                                              '<?php echo urlencode(encrypt_id($record["id"])); ?>',
-                                              '<?php echo $record["full_name"]; ?>',
-                                              '<?php echo $record["email"]; ?>'
-                                          )">Edit</button>
-
-                                            <button
-                                                onclick="if(confirm('Are you sure?')){location.href='profile_delete?id=<?php echo urlencode(encrypt_id($record["id"])); ?>'}">Delete</button>
-                                        </div>
-                                    </div>
+                                    <button class="dropdown dropdown-button"
+                                    onclick="showDepartmentUsersActionPopup(
+                                    '<?php echo urlencode(encrypt_id($record["id"])); ?>',
+                                    '<?php echo $record["full_name"]; ?>',
+                                    '<?php echo $record["email"]; ?>',
+                                    '<?php echo $record["phone_num"]; ?>',
+                                    '<?php echo $record["emergency_contact"]; ?>',
+                                    '<?php echo $record["gender"]; ?>',
+                                    '<?php echo $record["join_date"]; ?>',
+                                    '<?php echo $record["birth_date"]; ?>')">
+                                    Actions</button>                                
                                 </td>
                             </tr>
                             <?php } ?>
@@ -137,8 +132,10 @@
 
 
 <?php
-    include("../includes/views/department_team_create_popup.php"); 
     include("../includes/views/department_user_create_popup.php"); 
+    include("../includes/views/department_team_create_popup.php"); 
+    include("../includes/views/department_user_edit_popup.php"); 
     include("../includes/pagination/table_script.php"); 
     include("../includes/layouts/public_footer.php"); 
+    include("../includes/views/action_dropdown_users_button.php"); 
 ?>

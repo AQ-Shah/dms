@@ -48,7 +48,7 @@
                                         <ul class="mb-0 list-inline text-light">
                                             <li class="list-inline-item me-3">
                                                 <h5 class="mb-1 text-white">
-                                                    <?php if($userData['email_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo urlencode($userData['email']) ; }?>
+                                                    <?php if($userData['email_privacy'] || $userData["id"]=== $user["id"] || !not_executive($user['permission'])) { echo htmlspecialchars($userData['email']) ; }?>
 
                                                 </h5>
                                                 <p class="mb-0 font-13 text-white-50">Email</p>
