@@ -641,7 +641,8 @@
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')
 			AND company_id = '{$user['company_id']}'
-			AND MONTH(dispatch_time) = MONTH(NOW())";
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE)";
 
 			$result = mysqli_query($connection, $query);
 			confirm_query($result);
@@ -657,7 +658,8 @@
 			$query = "SELECT SUM(commission) AS commission
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')
-			AND MONTH(dispatch_time) = MONTH(NOW())
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE)
 			AND dispatcher_id = {$safe_id}";
 
 			$result = mysqli_query($connection, $query);
@@ -675,7 +677,8 @@
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed') 
 			AND invoice_status = 3 
-			AND MONTH(dispatch_time) = MONTH(NOW())
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE)
 			AND dispatcher_id = {$safe_id}";
 
 			$result = mysqli_query($connection, $query);
@@ -922,7 +925,8 @@
 			FROM dispatch_list
 			WHERE (status = 'Dispatched' OR status = 'Completed')  
 			AND company_id = '{$user['company_id']}'
-			AND MONTH(dispatch_time) = MONTH(NOW())";
+			AND YEAR(dispatch_time) = YEAR(CURRENT_DATE)
+			AND MONTH(dispatch_time) = MONTH(CURRENT_DATE)";
 
 			$result = mysqli_query($connection, $query);
 			confirm_query($result);
