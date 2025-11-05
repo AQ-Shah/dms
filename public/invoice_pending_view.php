@@ -71,44 +71,68 @@
 
             <div class="row panel">
                 <div class="panel-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
+                    <?php
+                    // Group records by driver
+                    $grouped_by_driver = [];
+                    if (isset($record_set)) {
+                        foreach ($record_set as $record) {
+                            $driver_name = 'Unassigned';
+                            if($record["truck_id"]){
+                                $dispatcher = find_truck_by_id($record["truck_id"]);
+                                $driver_name = $dispatcher['d_name'];
+                            }
 
-                                <th> Dispatch Date</span> </th>
-                                <th> Driver </span> </th>
-                                <th> From</span> </th>
-                                <th> To</span> </th>
-                                <th> Rate Con.</span> </th>
-                                <th> Commission</span> </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (isset($record_set)) { ?>
-                            <?php foreach ($record_set as $record)  { ?>
-                            <tr>
-                                <td><?php echo htmlentities(date("M-d-Y", strtotime($record["dispatch_time"]))); ?></td>
-                                <td>
-                                    <?php
-                                    if($record["truck_id"]){
-                                        $dispatcher = find_truck_by_id($record["truck_id"]);
-                                        echo $dispatcher['d_name'];
-                                    } 
+                            if (!isset($grouped_by_driver[$driver_name])) {
+                                $grouped_by_driver[$driver_name] = [];
+                            }
+                            $grouped_by_driver[$driver_name][] = $record;
+                        }
+                    }
+
+                    // Display each driver's data
+                    foreach ($grouped_by_driver as $driver_name => $driver_records) {
+                        $driver_subtotal = 0;
+                    ?>
+
+                    <div class="driver-section mb-4">
+                        <h4 class="bg-primary text-white p-2 mb-0"><?php echo htmlentities($driver_name); ?></h4>
+                        <table class="table table-hover mb-2">
+                            <thead>
+                                <tr>
+                                    <th> Dispatch Date</span> </th>
+                                    <th> From</span> </th>
+                                    <th> To</span> </th>
+                                    <th> Rate Con.</span> </th>
+                                    <th> Commission</span> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($driver_records as $record) { ?>
+                                <tr>
+                                    <td><?php echo htmlentities(date("M-d-Y", strtotime($record["dispatch_time"]))); ?></td>
+                                    <td><?php echo htmlentities($record["current_location"]); ?></td>
+                                    <td><?php echo htmlentities($record["new_location"]); ?></td>
+                                    <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
+                                    <td><?php echo '$'.htmlentities($record["commission"]); ?></td>
+                                </tr>
+                                <?php
+                                    $driver_subtotal += $record["commission"];
+                                    $total_amount_view += $record["commission"];
                                 ?>
-                                </td>
-                                <td><?php echo htmlentities($record["current_location"]); ?></td>
-                                <td><?php echo htmlentities($record["new_location"]); ?></td>
-                                <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
-                                <td><?php echo '$'.htmlentities($record["commission"]); ?></td>
-                            </tr>
-                            <?php $total_amount_view += $record["commission"] ?>
-                            <?php } ?>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                    <div class="row form_panel mb-1">
+                                <?php } ?>
+                                <tr class="table-active">
+                                    <td colspan="4" class="text-end"><strong>Driver Subtotal:</strong></td>
+                                    <td><strong>$<?php echo number_format($driver_subtotal, 2); ?></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <?php } ?>
+
+                    <div class="row form_panel mb-1 mt-4">
                         <div class="col-10 text-end">
-                            <label>Subtotal: $<?php echo $total_amount_view;?> </label>
+                            <label>Subtotal: $<?php echo number_format($total_amount_view, 2);?> </label>
                         </div>
                     </div>
                     <div class="row form_panel mb-1">
@@ -118,7 +142,7 @@
                     </div>
                     <div class="row form_panel mb-1">
                         <div class="col-10 text-end">
-                            <label> Total: $<?php echo $total_amount_view;?></label>
+                            <label> Total: $<?php echo number_format($total_amount_view, 2);?></label>
                         </div>
                     </div>
                 </div>
