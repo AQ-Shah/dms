@@ -175,6 +175,18 @@
 
 <style>
 @media print {
+    /* A4 Page Setup */
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        font-size: 10pt;
+        line-height: 1.3;
+    }
+
+    /* Driver Header Styling */
     .driver-header {
         background-color: #0d6efd !important;
         color: white !important;
@@ -183,6 +195,95 @@
         color-adjust: exact;
         font-weight: bold;
         border: 2px solid #0d6efd;
+        padding: 8px !important;
+        font-size: 12pt;
+    }
+
+    /* Prevent driver section from breaking across pages */
+    .driver-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* If driver section must break, keep header with at least 2 rows */
+    .driver-section table {
+        page-break-inside: auto;
+        break-inside: auto;
+    }
+
+    .driver-section thead {
+        display: table-header-group;
+    }
+
+    /* Prevent orphaned headers - keep header with content */
+    .driver-section h4.driver-header {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    /* Keep table header with first row */
+    .driver-section table thead {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    /* Allow rows to break but keep row content together */
+    .driver-section table tbody tr {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Keep the driver totals row with previous content if possible */
+    .driver-section table tbody tr.table-active {
+        page-break-before: avoid;
+        break-before: avoid;
+    }
+
+    /* Table styling for print */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9pt;
+    }
+
+    table th,
+    table td {
+        padding: 4px 6px;
+        border: 1px solid #dee2e6;
+    }
+
+    table thead {
+        background-color: #f8f9fa !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Compact spacing for print */
+    .driver-section {
+        margin-bottom: 15px !important;
+    }
+
+    .container, .row, .col-12 {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Hide print button and unnecessary elements */
+    .btn, button {
+        display: none !important;
+    }
+
+    /* Ensure totals section stays together */
+    .form_panel {
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 }
 </style>
