@@ -95,34 +95,55 @@
                     ?>
 
                     <div class="driver-section mb-4">
-                        <h4 class="bg-primary text-white p-2 mb-0"><?php echo htmlentities($driver_name); ?></h4>
+                        <h4 class="driver-header bg-primary text-white p-2 mb-0"><?php echo htmlentities($driver_name); ?></h4>
                         <table class="table table-hover mb-2">
                             <thead>
                                 <tr>
                                     <th> Dispatch Date</span> </th>
                                     <th> From</span> </th>
                                     <th> To</span> </th>
+                                    <th> Loaded Miles</span> </th>
                                     <th> Rate Con.</span> </th>
+                                    <th> Rate/Mile</span> </th>
                                     <th> Commission</span> </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($driver_records as $record) { ?>
+                                <?php
+                                $driver_total_miles = 0;
+                                $driver_total_rate = 0;
+                                $driver_total_commission = 0;
+
+                                foreach ($driver_records as $record) {
+                                    $loaded_miles = $record["loaded_miles"] ?? 0;
+                                    $rate = $record["rate"] ?? 0;
+                                    $commission = $record["commission"] ?? 0;
+                                    $rate_per_mile = ($loaded_miles > 0) ? ($rate / $loaded_miles) : 0;
+                                ?>
                                 <tr>
                                     <td><?php echo htmlentities(date("M-d-Y", strtotime($record["dispatch_time"]))); ?></td>
                                     <td><?php echo htmlentities($record["current_location"]); ?></td>
                                     <td><?php echo htmlentities($record["new_location"]); ?></td>
-                                    <td><?php echo '$'.htmlentities($record["rate"]); ?></td>
-                                    <td><?php echo '$'.htmlentities($record["commission"]); ?></td>
+                                    <td><?php echo htmlentities($loaded_miles); ?></td>
+                                    <td><?php echo '$'.number_format($rate, 2); ?></td>
+                                    <td><?php echo '$'.number_format($rate_per_mile, 2); ?></td>
+                                    <td><?php echo '$'.number_format($commission, 2); ?></td>
                                 </tr>
                                 <?php
-                                    $driver_subtotal += $record["commission"];
-                                    $total_amount_view += $record["commission"];
+                                    $driver_total_miles += $loaded_miles;
+                                    $driver_total_rate += $rate;
+                                    $driver_total_commission += $commission;
+                                    $total_amount_view += $commission;
                                 ?>
-                                <?php } ?>
-                                <tr class="table-active">
-                                    <td colspan="4" class="text-end"><strong>Driver Subtotal:</strong></td>
-                                    <td><strong>$<?php echo number_format($driver_subtotal, 2); ?></strong></td>
+                                <?php }
+                                $driver_avg_rate_per_mile = ($driver_total_miles > 0) ? ($driver_total_rate / $driver_total_miles) : 0;
+                                ?>
+                                <tr class="table-active font-weight-bold">
+                                    <td colspan="3" class="text-end"><strong>Driver Totals:</strong></td>
+                                    <td><strong><?php echo number_format($driver_total_miles, 0); ?> mi</strong></td>
+                                    <td><strong>$<?php echo number_format($driver_total_rate, 2); ?></strong></td>
+                                    <td><strong>$<?php echo number_format($driver_avg_rate_per_mile, 2); ?></strong></td>
+                                    <td><strong>$<?php echo number_format($driver_total_commission, 2); ?></strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -151,6 +172,20 @@
     </div>
 
 </div>
+
+<style>
+@media print {
+    .driver-header {
+        background-color: #0d6efd !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+        font-weight: bold;
+        border: 2px solid #0d6efd;
+    }
+}
+</style>
 
 <script>
 function invoiceCreateFunction() {
