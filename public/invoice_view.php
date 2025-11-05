@@ -147,19 +147,27 @@ document.getElementById("pageTitle").innerHTML =
 
                     <?php } ?>
 
-                    <div class="row form_panel mb-1 mt-4">
-                        <div class="col-10 text-end">
-                            <label>Subtotal: $<?php echo number_format($invoice["total_amount"], 2);?> </label>
-                        </div>
-                    </div>
-                    <div class="row form_panel mb-1">
-                        <div class="col-10 text-end">
-                            <label>Tax(0%): $0 </label>
-                        </div>
-                    </div>
-                    <div class="row form_panel mb-1">
-                        <div class="col-10 text-end">
-                            <label> Total: $<?php echo number_format($invoice["total_amount"], 2);?></label>
+                    <div class="invoice-summary mt-4 border-top pt-3">
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4">
+                                <table class="table table-sm mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-end border-0"><strong>Subtotal:</strong></td>
+                                            <td class="text-end border-0">$<?php echo number_format($invoice["total_amount"], 2);?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-end border-0"><strong>Tax (0%):</strong></td>
+                                            <td class="text-end border-0">$0.00</td>
+                                        </tr>
+                                        <tr class="border-top">
+                                            <td class="text-end pt-2"><strong style="font-size: 1.1em;">Total:</strong></td>
+                                            <td class="text-end pt-2"><strong style="font-size: 1.1em;">$<?php echo number_format($invoice["total_amount"], 2);?></strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,6 +178,25 @@ document.getElementById("pageTitle").innerHTML =
 </div>
 
 <style>
+/* Invoice Summary Styling */
+.invoice-summary {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.invoice-summary table {
+    background-color: white;
+}
+
+.invoice-summary td {
+    padding: 8px 12px !important;
+}
+
+.invoice-summary .border-top {
+    border-top: 2px solid #dee2e6 !important;
+}
+
 @media print {
     /* A4 Page Setup */
     @page {
@@ -180,6 +207,13 @@ document.getElementById("pageTitle").innerHTML =
     body {
         font-size: 10pt;
         line-height: 1.3;
+    }
+
+    /* Invoice Summary Print Styling */
+    .invoice-summary {
+        background-color: #f8f9fa !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     /* Driver Header Styling */
