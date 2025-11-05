@@ -181,7 +181,7 @@
         $query .= "AND carrier_id = '{$safe_id}' ";
         $query .= "AND status != 'Cancelled' ";
         $query .= " AND company_id = '{$user['company_id']}' ";
-        $query .= "ORDER BY dispatch_time DESC ";
+        $query .= "ORDER BY dispatch_time ASC ";
         $set = mysqli_query($connection, $query);
         confirm_query($set);
         return $set;}
