@@ -70,8 +70,10 @@ document.getElementById("pageTitle").innerHTML =
             <div class="row panel">
                 <div class="panel-body">
                     <?php
-                    // Group records by driver
+                    // Group records by driver and calculate totals
                     $grouped_by_driver = [];
+                    $total_rate_con = 0;
+
                     if (isset($record_set)) {
                         foreach ($record_set as $record) {
                             $driver_name = 'Unassigned';
@@ -84,6 +86,7 @@ document.getElementById("pageTitle").innerHTML =
                                 $grouped_by_driver[$driver_name] = [];
                             }
                             $grouped_by_driver[$driver_name][] = $record;
+                            $total_rate_con += $record["rate"];
                         }
                     }
 
@@ -102,7 +105,7 @@ document.getElementById("pageTitle").innerHTML =
                                     <th> Loaded Miles</span> </th>
                                     <th> Rate Con.</span> </th>
                                     <th> Rate/Mile</span> </th>
-                                    <th> Commission</span> </th>
+                                    <th> Dispatch Fee</span> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -154,7 +157,11 @@ document.getElementById("pageTitle").innerHTML =
                                 <table class="table table-sm mb-0">
                                     <tbody>
                                         <tr>
-                                            <td class="text-end border-0"><strong>Subtotal:</strong></td>
+                                            <td class="text-end border-0"><strong>Total Rate Con.:</strong></td>
+                                            <td class="text-end border-0">$<?php echo number_format($total_rate_con, 2);?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-end border-0"><strong>Dispatch Fee (<?php echo htmlentities($carrier["percentage"]);?>%):</strong></td>
                                             <td class="text-end border-0">$<?php echo number_format($invoice["total_amount"], 2);?></td>
                                         </tr>
                                         <tr>
@@ -162,8 +169,8 @@ document.getElementById("pageTitle").innerHTML =
                                             <td class="text-end border-0">$0.00</td>
                                         </tr>
                                         <tr class="border-top">
-                                            <td class="text-end pt-2"><strong style="font-size: 1.1em;">Total:</strong></td>
-                                            <td class="text-end pt-2"><strong style="font-size: 1.1em;">$<?php echo number_format($invoice["total_amount"], 2);?></strong></td>
+                                            <td class="text-end pt-2"><strong style="font-size: 1.2em;">Total Amount Due:</strong></td>
+                                            <td class="text-end pt-2"><strong style="font-size: 1.2em;">$<?php echo number_format($invoice["total_amount"], 2);?></strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
