@@ -152,8 +152,8 @@ document.getElementById("pageTitle").innerHTML =
 
                     <div class="invoice-summary mt-4 border-top pt-3">
                         <div class="row">
-                            <div class="col-8"></div>
-                            <div class="col-4">
+                            <div class="col-6"></div>
+                            <div class="col-6">
                                 <table class="table table-sm mb-0">
                                     <tbody>
                                         <tr>
